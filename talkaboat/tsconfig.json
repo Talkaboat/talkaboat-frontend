@@ -21,6 +21,7 @@
     "module": "es2020",
     "paths" : {
       "fs": ["./node_modules/fs"],
+      "url": ["./node_modules/url"],
       "crypto": ["./node_modules/crypto-browserify"],
       "stream": ["./node_modules/stream-browserify"],
       "assert": ["./node_modules/assert"],
