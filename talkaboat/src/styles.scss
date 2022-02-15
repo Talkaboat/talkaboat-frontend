@@ -1,3 +1,15 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+body {
+  @apply ease-in-out duration-500 transition-all;
+}
+
+a, button, input {
+  @apply hover:outline-none hover:ring-main-400 hover:ring-1  focus-visible:outline-none focus:ring-main-300 focus:ring-1 ease-in-out duration-500 transition-all;
+}
+
+.btn {
+  @apply rounded ring-shadow-500 ring-1;
+}
