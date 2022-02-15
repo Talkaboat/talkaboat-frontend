@@ -18,7 +18,14 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     this.isSidebarOpen = this.websiteStateService.isSidebarOpen;
     this.websiteStateService.onSidebarStateChanged.subscribe(state => this.isSidebarOpen = state);
+    this.closeSidebarIfMobile();
     await this.web3Service.reConnect();
+  }
+
+  closeSidebarIfMobile() {
+    if (window.innerWidth <= 500) {
+      this.websiteStateService.toggleSidebar(true, false);
+    }
   }
 
   title = 'talkaboat';

@@ -7,8 +7,6 @@ import { Subject } from 'rxjs';
 export class WebsiteStateService {
 
   isSidebarOpen = true;
-
-
   public onSidebarStateChanged = new Subject<boolean>();
 
   constructor() { }
