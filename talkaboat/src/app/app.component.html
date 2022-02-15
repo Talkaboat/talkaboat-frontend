@@ -1,2 +1,15 @@
+<div class="background">
+  <div class="logo-background">
+    <div class="logo-background-blur">
+    </div>
+  </div>
+</div>
+
 <app-header></app-header>
 <app-sidebar></app-sidebar>
+
+<div [class.sidebar-open]="isSidebarOpen" class="md:left-[4.5rem] transition-all ease-in-out duration-500 absolute bottom-0 right-0  top-[4.5rem]">
+  <app-footer></app-footer>
+</div>
+
+<app-media-player></app-media-player>

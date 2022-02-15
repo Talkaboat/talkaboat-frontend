@@ -12,13 +12,17 @@ import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config
 import { TranslatePipe } from './services/i18n/translate.pipe';
 import { HeaderComponent } from './static-components/header/header.component';
 import { SidebarComponent } from './static-components/sidebar/sidebar.component';
+import { FooterComponent } from './static-components/footer/footer.component';
+import { MediaPlayerComponent } from './static-components/media-player/media-player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TranslatePipe,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    FooterComponent,
+    MediaPlayerComponent
   ],
   imports: [
     BrowserModule,

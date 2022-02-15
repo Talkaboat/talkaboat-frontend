@@ -31,9 +31,6 @@ module.exports = {
         "900": "#04070B"
       }
     },
-    fontColo: {
-
-    }
     fontFamily: {
       sans: [ 'Raleway', 'Segoe UI', 'sans-serif' ]
     }

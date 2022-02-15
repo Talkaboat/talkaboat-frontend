@@ -2,7 +2,45 @@ $header-height: 4.5rem;
 $sidebar-collapsed: 5.5rem;
 $sidebar-expanded: 26rem;
 
-.sidebar {
-  position: relative;
-  top: $header-height;
+.sidebar-open {
+  @apply md:left-[26rem];
+}
+
+.background {
+  background-image: url('../assets/images/background.PNG');
+  background-repeat: repeat;
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(78, 78, 78, 0.479);
+}
+
+.logo-background {
+  position: fixed;
+  height: 80%;
+  width: 50%;
+  max-width: 600px;
+  left: 10%;
+  bottom: 300px;
+  right: 10%;
+  top: 500px;
+  margin: auto;
+  opacity: 0.85;
+  background-image: url('../assets/images/logo.png');
+  background-repeat: no-repeat;
+  background-size:contain;
+  .logo-background-blur {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    @apply bg-shadow-500;
+  }
 }

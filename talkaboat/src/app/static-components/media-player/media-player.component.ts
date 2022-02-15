@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { WebsiteStateService } from 'src/app/services/website-state/website-state.service';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  selector: 'app-media-player',
+  templateUrl: './media-player.component.html',
+  styleUrls: ['./media-player.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class MediaPlayerComponent implements OnInit {
 
   isSidebarOpen = true;
   constructor(private readonly websiteStateService: WebsiteStateService) { }
