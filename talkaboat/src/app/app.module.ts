@@ -10,10 +10,14 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
+import { TranslatePipe } from 'src/services/i18n/translate.pipe';
+import { HeaderComponent } from './static-components/header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TranslatePipe,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

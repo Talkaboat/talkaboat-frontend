@@ -1,0 +1,22 @@
+<header class="fixed left-0 right-0 h-header">
+  <nav class="bg-main-500 border-gray-200 px-6 py-3 flex justify-between font-semibold max-h-[4.5rem]">
+    <div id="left-header-area" class="flex text-[1.5rem]">
+      <button class="mr-6 h-[fit-content] my-auto">
+        &#9776;
+      </button>
+      <a class="my-auto h-[fit-content] cursor-pointer" tabindex="0" href=".">Talkaboat</a>
+    </div>
+    <div id="search-slot-area">
+      <div class="relative">
+        <input type="text" class="bg-shadow-500 pr-[25px] h-[3rem] w-[20rem] md:w-[30rem] lg:w-[40rem] text-main-300 text-[1.25rem] font-semibold px-3 rounded" [placeholder]="'search_podcast_placeholder' | translate"/>
+        <button class="flex absolute inset-y-0 right-3 items-center h-[fit-content] my-auto">
+          <svg class="w-5 h-5 text-main-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+        </button>
+      </div>
+
+    </div>
+    <div id="profile-icon-area" class="my-auto">
+      <button class="btn hover:outline-none px-[0.6rem] py-[0.3rem] font-semibold">Login</button>
+    </div>
+  </nav>
+</header>
