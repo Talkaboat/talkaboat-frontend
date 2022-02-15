@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "talkaboat:build:production",
+            "firebaseProject": "enodi-bc",
+            "firebaseHostingSite": "enodi-bc"
+          }
         }
       }
     }
