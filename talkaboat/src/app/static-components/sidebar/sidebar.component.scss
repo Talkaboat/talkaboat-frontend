@@ -2,12 +2,19 @@
   @apply w-[26rem];
 }
 
+li {
+  @apply min-w-[3rem] min-h-[3rem];
+}
+
 a, button {
-  @apply flex h-full ;
+  @apply flex h-full min-w-[3rem] min-h-[3rem] px-5;
+  span {
+    @apply my-auto;
+  }
 }
 
 img {
-  @apply my-auto w-6 h-6 mr-3;
+  @apply my-auto w-8 h-8 mr-3;
 }
 
 li {

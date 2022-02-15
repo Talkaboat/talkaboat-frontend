@@ -1,7 +1,7 @@
 <nav [class.open]="isSidebarOpen"
   class="transition-all ease-in-out duration-500 fixed left-0 top-[4.5rem] overflow-hidden rounded-br-[2rem] w-[0rem] md:w-[4.5rem] bottom-0 text-[1.3rem] bg-shadow-600 font-semibold">
   <div>
-    <ul [class.w-[26rem]]="isSidebarOpen" class="px-6 py-5">
+    <ul [class.w-[26rem]]="isSidebarOpen" class="py-5">
       <li><a [routerLink]="['/shipyard']" class="flex hover-up" [queryParams]="{ 'tokenA': null, 'tokenB': null }">
           <img src="./assets/images/sidebar/home.svg" />
           <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
@@ -22,7 +22,7 @@
         </a></li>
     </ul>
     <!-- BOTTOM AREA -->
-    <ul [class.min-w-[20rem]]="isSidebarOpen" class="absolute  bottom-0 py-5 px-5">
+    <ul [class.min-w-[20rem]]="isSidebarOpen" class="absolute  bottom-0 py-5">
       <li><a [routerLink]="['/info']" class="flex hover-up" queryParamsHandling="">
           <img src="./assets/images/sidebar/info.svg" />
           <span [class.hidden]="!isSidebarOpen">
