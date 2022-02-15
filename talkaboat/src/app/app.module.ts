@@ -14,6 +14,10 @@ import { HeaderComponent } from './static-components/header/header.component';
 import { SidebarComponent } from './static-components/sidebar/sidebar.component';
 import { FooterComponent } from './static-components/footer/footer.component';
 import { MediaPlayerComponent } from './static-components/media-player/media-player.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,9 @@ import { MediaPlayerComponent } from './static-components/media-player/media-pla
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideFunctions(() => getFunctions()),
@@ -35,7 +42,16 @@ import { MediaPlayerComponent } from './static-components/media-player/media-pla
     provideRemoteConfig(() => getRemoteConfig())
   ],
   providers: [
-    ScreenTrackingService
+    ScreenTrackingService,
+    {
+      provide: JWT_OPTIONS,
+      useValue: JWT_OPTIONS
+    }, JwtHelperService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
