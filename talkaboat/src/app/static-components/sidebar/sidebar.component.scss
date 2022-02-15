@@ -6,6 +6,10 @@ a, button {
   @apply flex h-full ;
 }
 
+img {
+  @apply my-auto w-6 h-6 mr-3;
+}
+
 li {
   @apply h-[2rem] mb-2;
 }
