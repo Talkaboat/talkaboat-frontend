@@ -1,3 +1,47 @@
-<nav [class.open]="isSidebarOpen" class="transition-all ease-in-out duration-500 fixed left-0 top-[4.5rem] overflow-hidden w-[0rem] md:w-[4.5rem] bottom-0 bg-shadow-500">
-  Test
+<nav [class.open]="isSidebarOpen"
+  class="transition-all ease-in-out duration-500 fixed left-0 top-[4.5rem] overflow-hidden w-[0rem] md:w-[4.5rem] bottom-0 text-[1.3rem] bg-shadow-500 font-semibold">
+  <div>
+    <ul [class.w-[26rem]]="isSidebarOpen" class="px-6 py-5">
+      <li><a [routerLink]="['/info']" class="flex hover-up" queryParamsHandling="">
+          <img class="my-auto w-6 h-6 mr-3" src="./assets/images/header/filter.svg" />
+          <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
+            {{ 'further_information' | translate}}
+          </span>
+        </a></li>
+      <li><a [routerLink]="['/info']" class="flex hover-up"  queryParamsHandling="">
+          <img class="my-auto w-6 h-6 mr-3" src="./assets/images/header/filter.svg" />
+          <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
+            {{ 'further_information' | translate}}
+          </span>
+        </a></li>
+    </ul>
+    <ul [class.min-w-[20rem]]="isSidebarOpen" class="absolute  bottom-0 py-5 px-5">
+      <li><a [routerLink]="['/info']" class="flex hover-up"  queryParamsHandling="" >
+          <img class="my-auto w-6 h-6 mr-3" src="./assets/images/header/filter.svg" />
+          <span [class.hidden]="!isSidebarOpen">
+            {{ 'further_information' | translate}}
+          </span>
+        </a>
+      </li>
+      <li><a [routerLink]="['/tasks']" class="flex hover-up"  queryParamsHandling="">
+          <img class="my-auto w-6 h-6 mr-3" src="./assets/images/header/filter.svg" />
+          <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
+            {{ 'further_information' | translate}}
+          </span>
+        </a></li>
+      <li><a [routerLink]="['/gift']" class="flex hover-up"  queryParamsHandling="">
+          <img class="my-auto w-6 h-6 mr-3" src="./assets/images/header/filter.svg" />
+          <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
+            {{ 'further_information' | translate}}
+          </span>
+        </a></li>
+      <li><button (click)="toggleLang()" class="flex hover-up text-left font-semibold">
+          <img class="my-auto w-6 h-6 mr-3" src="./assets/images/header/filter.svg" />
+          <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
+            {{ 'lang' | translate}}
+          </span>
+        </button></li>
+    </ul>
+  </div>
+
 </nav>

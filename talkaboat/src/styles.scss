@@ -7,9 +7,13 @@ body {
 }
 
 a, button, input {
-  @apply hover:outline-none hover:ring-main-400 hover:ring-1  focus-visible:outline-none focus:ring-main-300 focus:ring-1 ease-in-out duration-500 transition-all;
+  @apply hover:outline-none hover:ring-0 focus-visible:outline-none focus:ring-main-300 focus:ring-1 ease-in-out duration-500 transition-all;
 }
 
 .btn {
   @apply rounded ring-shadow-500 ring-1;
+}
+
+.hover-up {
+  @apply relative top-0 hover:top-[-0.3rem];
 }
