@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Web3Service } from 'src/services/web3/web3.service';
+import { Web3Service } from './services/web3/web3.service';
 
 
 @Component({

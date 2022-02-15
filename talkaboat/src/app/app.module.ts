@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -10,14 +9,16 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
-import { TranslatePipe } from 'src/services/i18n/translate.pipe';
+import { TranslatePipe } from './services/i18n/translate.pipe';
 import { HeaderComponent } from './static-components/header/header.component';
+import { SidebarComponent } from './static-components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TranslatePipe,
-    HeaderComponent
+    HeaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,8 @@
+$header-height: 4.5rem;
+$sidebar-collapsed: 5.5rem;
+$sidebar-expanded: 26rem;
+
+.sidebar {
+  position: relative;
+  top: $header-height;
+}
