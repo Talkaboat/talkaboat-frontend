@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
+import { TranslatePipe } from 'src/app/services/i18n/translate.pipe';
 
 import { SidebarComponent } from './sidebar.component';
 
@@ -8,7 +12,8 @@ describe('SidebarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SidebarComponent ]
+      declarations: [SidebarComponent, TranslatePipe],
+      imports: [RouterTestingModule]
     })
     .compileComponents();
   });
@@ -22,4 +27,7 @@ describe('SidebarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+
 });
