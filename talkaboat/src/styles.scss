@@ -17,3 +17,7 @@ a, button, input {
 .hover-up {
   @apply relative top-0 hover:top-[-0.3rem];
 }
+
+h1 {
+  @apply font-semibold text-[2.6rem];
+}

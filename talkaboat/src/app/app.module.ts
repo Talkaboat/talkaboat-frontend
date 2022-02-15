@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
+import { HomeComponent } from './routing-components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HttpInterceptorService } from './services/http-interceptor/http-interce
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    MediaPlayerComponent
+    MediaPlayerComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

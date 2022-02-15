@@ -9,6 +9,7 @@
 <app-sidebar></app-sidebar>
 
 <div [class.sidebar-open]="isSidebarOpen" class="md:left-[4.5rem] transition-all ease-in-out duration-500 absolute bottom-0 right-0  top-[4.5rem]">
+  <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>
 
