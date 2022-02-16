@@ -16,10 +16,11 @@ export class ProfileSidebarComponent implements OnInit {
   @Input() isProfileSidebarOpen: boolean = false;
   @Input() userData: UserProfileData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
   isSendingMail: boolean = false;
+  isUserKyced = true;
   constructor(private readonly userService: UserService, private readonly userRepositoryService: UserRepositoryService) { }
 
   ngOnInit(): void {
-
+    this.userRepositoryService.isUserKyced().subscribe(isKyced => this.isUserKyced = isKyced);
   }
 
   getKYC() {
