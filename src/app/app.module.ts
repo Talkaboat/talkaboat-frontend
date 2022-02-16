@@ -20,6 +20,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
 import { HomeComponent } from './routing-components/home/home.component';
 import { LoginComponent } from './routing-components/login/login.component';
+import { ProfileSidebarComponent } from './static-components/header/profile-sidebar/profile-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoginComponent } from './routing-components/login/login.component';
     FooterComponent,
     MediaPlayerComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileSidebarComponent
   ],
   imports: [
     BrowserModule,

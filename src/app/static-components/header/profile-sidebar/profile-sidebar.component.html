@@ -1,0 +1,12 @@
+<div [class.open]="isProfileSidebarOpen" class="fixed bg-shadow-700 max-h-0 right-[0rem] top-[6.5rem] overflow-hidden md:top-[7.5rem] md:rounded-[1rem] rounded-[2rem] w-0 transition-all duration-500 ease-in-out">
+  <div class="p-5 min-w-[14rem] min-h-[5rem]">
+    <div *ngIf="isProfileSidebarOpen" class="content">
+      <button class="btn">{{ userData.userName }}</button>
+      <button *ngIf="userData.verified" class="btn" [class.disabled]="isSendingMail" (click)="resendMail()">{{ ("resend_email" ) | translate }}</button>
+      <div class="btn">
+        <a [href]="getKYC()" target="_blank" rel="noopener noreferrer">KYC</a>
+      </div>
+    </div>
+
+  </div>
+</div>
