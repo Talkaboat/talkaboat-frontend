@@ -1,19 +1,19 @@
-<header class="fixed left-[2rem] md:left-[4rem] right-[2rem] md:right-[2rem] top-[1rem] h-header">
+<header class="fixed left-[1rem] md:left-[4rem] right-[2rem] md:right-[1rem] top-[1rem] h-header">
   <nav
-    class="bg-main-500 border-gray-200 pl-3 pr-6 py-3 flex justify-between font-semibold max-h-[4.5rem] rounded-[2rem]">
+    class="border-gray-200 py-3 flex justify-between font-semibold max-h-[4.5rem] rounded-b-[2rem]">
     <div id="left-header-area" class="flex text-[1.5rem]">
-      <button class="mr-1 md:mr-8 w-[3rem] h-[3rem] my-auto" (click)="toggleSidebar()">
+      <button class="mr-1 md:mr-8 w-[3rem] h-[3rem] my-auto bg-shadow-700 rounded-[1rem]" (click)="toggleSidebar()">
         &#9776;
       </button>
       <a class="my-auto h-[fit-content] hidden md:visible cursor-pointer" tabindex="0" [routerLink]="['']">Talkaboat</a>
     </div>
     <div id="search-slot-area">
       <div class="relative">
-        <button class="flex absolute inset-y-0 left-0 items-center w-[3rem] ">
+        <button class="flex absolute inset-y-0 left-0 items-center  w-[3rem] ">
           <img class="w-4 h-4 mx-auto text-main-500" src="./assets/images/header/filter.svg" />
         </button>
         <input type="text"
-          class="bg-shadow-500 pl-[3.5rem] pr-[3.5rem] h-[3rem] w-[20rem] md:w-[30rem] lg:w-[40rem] text-main-300 text-[1.25rem] font-semibold px-3 rounded"
+          class="bg-shadow-700 pl-[3.5rem] pr-[3.5rem] h-[3rem] w-[20rem] md:w-[30rem] lg:w-[40rem] text-main-100 text-[1.25rem] font-semibold px-3 rounded"
           [placeholder]="'search_podcast_placeholder' | translate" />
         <button class="flex absolute inset-y-0 right-0 items-center w-[3rem]">
           <svg class="w-5 h-5 mx-auto text-main-500" fill="currentColor" viewBox="0 0 20 20"
@@ -26,11 +26,11 @@
       </div>
 
     </div>
-    <div id="profile-icon-area" class="my-auto w-[6.6rem] max-w-[6.6rem] flex justify-end text-center">
+    <div id="profile-icon-area" class="my-auto w-[7rem] max-w-[7rem] flex justify-end text-center">
       <a *ngIf="!userData.userName" [routerLink]="['/login']"
         class="btn hover:outline-none w-full  px-[0.6rem] py-[0.3rem] font-semibold">Login</a>
       <button *ngIf="userData.userName" (click)="isProfileSidebarOpen = !isProfileSidebarOpen"
-        class="hover:outline-none rounded flex w-full ring-main-700 ring-1 px-[0.6rem] py-[0.3rem] overflow-hidden text-ellipsis font-semibold">
+        class="hover:outline-none flex w-full ring-main-700 bg-shadow-700 rounded-[1rem] ring-1 px-[0.8rem] py-[0.3rem] overflow-hidden text-ellipsis font-semibold">
         {{ userData.userName }}
         <svg *ngIf="!isProfileSidebarOpen" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down"
           class="w-5 h-5 my-auto ml-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
