@@ -149,7 +149,6 @@ export class Web3Service {
       return '';
     }
     this.accounts = await this.web3.eth.getAccounts();
-    console.log(this.accounts);
     this.accountsObservable.emit(this.accounts);
     return this.accounts[0];
   }
