@@ -1,5 +1,5 @@
 <nav [class.open]="isSidebarOpen"
-  class="transition-all ease-in-out duration-500 fixed left-0 top-[6.5rem] overflow-hidden rounded-r-[2rem] w-[0rem] md:w-[4.5rem] bottom-[1rem] text-[1.3rem] bg-shadow-600 font-semibold">
+  class="transition-all ease-in-out duration-500 fixed left-0 md:left-[3rem] top-[6.5rem] md:top-[7.5rem] md:rounded-[1rem] overflow-hidden rounded-r-[2rem] w-[0rem] md:w-[4.5rem] bottom-[1rem] text-[1.3rem] bg-shadow-600 font-semibold">
   <div>
     <ul [class.w-[26rem]]="isSidebarOpen" class="py-5">
       <li><a [routerLink]="['/shipyard']" class="flex hover-up" [queryParams]="{ 'tokenA': null, 'tokenB': null }">
