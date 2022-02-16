@@ -13,4 +13,8 @@ describe('Web3Service', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should create modal on startup', () => {
+    expect(service.web3Modal).toBeTruthy();
+  });
 });
