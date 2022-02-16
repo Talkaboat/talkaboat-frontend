@@ -1,0 +1,22 @@
+export const USER_API = {
+    URL: "user",
+    CLAIM_URL: "/claim/",
+    REGISTER_URL: "/register",
+    CONFIRMATION_URL: "/register/confirm/",
+    LOGIN_URL: "/login",
+    REQUEST_LOGIN_URL: "/login/{wallet}",
+    PROFILE_URL: "/profile",
+    CHECK_PASSWORD_URL: "/password/",
+    KYC_URL: "/kyc",
+    VERIFY_TWITTER: "/twitter/{campaign}/{name}",
+    VERIFY_TELEGRAM: "/tg/{campaign}/{name}",
+    WHITELIST: "/whitelist",
+    REQUEST_WHITELIST: "/whitelist/{campaign}/{wallet}",
+    REQUEST_REFERAL_ID: "/referal/{campaign}/{wallet}",
+    SUBSCRIBE_URL: "/email/{email}/subscribe",
+    UNSUBSCRIBE_URL: "/email/{email}/unsubscribe",
+    REQUEST_REFERAL_AMOUNT: "/referal/{campaign}/{wallet}/amount",
+    CONFIRM_EMAIL: "/email/{email}/confirm/{code}",
+    RESEND_EMAIL: "/email/{email}/resend",
+    REWARD_URL: "/reward/"
+}

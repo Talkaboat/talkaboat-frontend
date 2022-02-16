@@ -1,0 +1,95 @@
+import { Injectable } from '@angular/core';
+import { RepositoryService } from '../repository.service';
+import { AuthorizationResponse as AuthorizationResponse } from './models/authorization-response.model';
+import { UserProfileData } from './models/user-profile-data.model';
+import { UserAuthorizationRequestResponse } from './models/user-authorization-request.response.model';
+import { USER_API } from './user-urls.const';
+import { Observable, of } from 'rxjs';
+import { Reward } from './models/reward.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserRepositoryService  extends RepositoryService {
+
+    //Which information do we need?
+  public register(mailAdress: string, userName: string, address: string): Observable<UserAuthorizationRequestResponse> {
+    if (!this.web3Service.accounts) {
+      return of();
+    }
+    const api = USER_API.URL + USER_API.REGISTER_URL;
+    const body = { address, mailAdress, userName };
+    return this.post<UserAuthorizationRequestResponse>(api, body);
+  }
+
+  confirmMail(email: string, code: string): Observable<any> {
+    const api = USER_API.URL + USER_API.CONFIRM_EMAIL.replace("{email}", email).replace("{code}", code);
+    return this.post(api, null);
+  }
+
+  resendMail(email: string): Observable<any> {
+    const api = USER_API.URL + USER_API.RESEND_EMAIL.replace("{email}", email);
+    return this.post(api, null);
+  }
+
+  public isUserKyced(): Observable<boolean> {
+    const api = USER_API.URL + USER_API.KYC_URL;
+    return this.get<boolean>(api);
+  }
+
+  public confirm(signature: string): Observable<any> {
+    if (!this.web3Service.accounts) {
+      return of();
+    }
+    const api = USER_API.URL + USER_API.CONFIRMATION_URL + this.web3Service.accounts[0];
+    return this.post(api, signature);
+  }
+
+  public getRewards(username: string): Observable<Reward> {
+    const api = USER_API.URL + USER_API.REWARD_URL + username;
+    return this.get(api);
+  }
+
+  public claim(address: string): Observable<any> {
+    const api = USER_API.URL + USER_API.CLAIM_URL + address;
+    return this.post(api, null);
+  }
+
+  requestLogin(wallet: string): Observable<UserAuthorizationRequestResponse> {
+    if (!wallet) {
+      return of();
+    }
+    const api = USER_API.URL + USER_API.REQUEST_LOGIN_URL.replace('{wallet}', wallet);
+    return this.post<UserAuthorizationRequestResponse>(api);
+  }
+
+  login(wallet: string, signature: string): Observable<AuthorizationResponse> {
+    if (!wallet) {
+      return of();
+    }
+    const api = USER_API.URL + USER_API.LOGIN_URL;
+    const body = { address: wallet, signature };
+    return this.post<AuthorizationResponse>(api, body);
+  }
+
+  getProfile(): Observable<UserProfileData> {
+    const api = USER_API.URL + USER_API.PROFILE_URL;
+    return this.get<UserProfileData>(api);
+  }
+
+
+
+  subscribeNewsletter(email: string, subscribe: number): Observable<any> {
+    const shouldSubscribe = subscribe == 1;
+    const api = USER_API.URL + (shouldSubscribe ? USER_API.SUBSCRIBE_URL : USER_API.UNSUBSCRIBE_URL).replace("{email}", email);
+    return this.post(api);
+  }
+
+  isWalletWhitelisted(campaign: string, wallet: string): Observable<boolean> {
+    if (!wallet) {
+      return of(false);
+    }
+    const api = USER_API.URL + USER_API.REQUEST_WHITELIST.replace("{campaign}", campaign).replace("{wallet}", wallet);
+    return this.get(api);
+  }
+}
