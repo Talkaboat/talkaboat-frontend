@@ -39,7 +39,7 @@ export const de = {
     explore_header: 'Entdecke neue Podcasts',
     explore_sub_header: 'mit unserem Podcast-Roulette!',
     responsive_image: './assets/images/collection/responsive.jpg',
-    talkaboat_sub: '<h4 class="col-lg-3 text-center mb-3">Entdecken.</h4><h4 class="col-lg-3 text-center mb-3">Anhören.</h4><h4 class="col-lg-5 text-center mb-3">Verdienen.</h4>',
+    talkaboat_sub: '<span class="col-lg-3 text-center mb-3">Entdecken.</span><span class="col-lg-3 text-center mb-3">Anhören.</span><span class="col-lg-5 text-center mb-3">Verdienen.</span>',
     talkaboat_info: "85 % der Podcaster erhalten nahezu keine Reichweite und Werbemittel.<br>Talkaboat setzt auf ein Krypto-Ökosystem bei dem Podcaster und Zuhörer belohnt werden.<br>Die Community steht dabei stets im Vordergrund und kann auch kleine Podcaster komfortabel unterstützen.<br><br><b>Let's Talkaboat!<b>",
     talkaboat_entry: 'Was möchtest du machen?',
     unique: 'Einzigartig',

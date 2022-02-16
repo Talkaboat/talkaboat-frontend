@@ -33,7 +33,7 @@ export const en = {
     explore_sub_header: 'with our podcast roulette!',
     studio_image: './assets/images/collection/studio.jpg',
     responsive_image: './assets/images/collection/responsive.jpg',
-    talkaboat_sub: '<h4 class="col-lg-3 text-center mb-3">Discover.</h4><h4 class="col-lg-3 text-center mb-3">Listen.</h4><h4 class="col-lg-5 text-center mb-3">Earn.</h4>',
+    talkaboat_sub: '<span class="col-lg-3 text-center mb-3">Discover.</span><span class="col-lg-3 text-center mb-3">Listen.</span><span class="col-lg-5 text-center mb-3">Earn.</span>',
     talkaboat_info: "85 % der Podcaster erhalten nahezu keine Reichweite und Werbemittel.<br>Talkaboat setzt auf ein Krypto-Ökosystem bei dem Podcaster und Zuhörer belohnt werden.<br>Die Community steht dabei stets im Vordergrund und kann auch kleine Podcaster komfortabel unterstützen.<br><br><b>Let's Talkaboat!<b>",
     talkaboat_entry: 'What would you like to do?',
     unique: 'Unique',
