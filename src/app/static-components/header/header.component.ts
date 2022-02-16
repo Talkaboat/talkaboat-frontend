@@ -8,6 +8,7 @@ import { WebsiteStateService } from 'src/app/services/website-state/website-stat
 })
 export class HeaderComponent implements OnInit {
 
+  isLoginOpen = false;
   constructor(private readonly websiteStateService: WebsiteStateService) { }
 
   ngOnInit(): void {
