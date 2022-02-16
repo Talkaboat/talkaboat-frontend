@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import Web3 from "web3";
 import Web3Modal from "web3modal";
 import WalletConnectProvider from '@walletconnect/web3-provider';
@@ -14,8 +14,8 @@ export class Web3Service {
   public accounts: any;
   public chainId: number = 56;
   web3Modal: Web3Modal = new Web3Modal();
-  public chainIdObservable = new Subject<number>();
-  public accountsObservable = new Subject<string[]>();
+  public chainIdObservable = new EventEmitter<number>();
+  public accountsObservable = new EventEmitter<string[]>();
   constructor() {
     this.createModal();
   }
@@ -80,23 +80,27 @@ export class Web3Service {
     }
   }
 
-  async connect() {
+  async connect(clearCached = false) {
+    if (clearCached) {
+      this.web3Modal.clearCachedProvider();
+    }
     this.provider = await this.web3Modal.connect();
     if (this.provider) {
+      this.configListeners();
       this.web3 = new Web3(this.provider);
       await this.configChainOnMetaMask();
-      this.configListeners();
     } else {
       await this.disconnect();
     }
+    await this.refreshAccounts();
   }
 
   async defaultLogin() {
     this.web3 = new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
     this.chainId = await this.web3.eth.net.getId();
     this.accounts = undefined;
-    this.accountsObservable.next([]);
-    this.chainIdObservable.next(this.chainId);
+    this.accountsObservable.emit([]);
+    this.chainIdObservable.emit(this.chainId);
   }
 
   async disconnect() {
@@ -117,7 +121,7 @@ export class Web3Service {
     this.provider.on("accountsChanged", (accounts: string[]) => {
       if (this.provider) {
         this.accounts = accounts;
-        this.accountsObservable.next(this.accounts);
+        this.accountsObservable.emit(this.accounts);
       }
     });
     this.provider.on("chainChanged", async (chainId: number) => {
@@ -133,7 +137,7 @@ export class Web3Service {
       await this.disconnect();
     } else {
       this.chainId = chainId
-      this.chainIdObservable.next(this.chainId);
+      this.chainIdObservable.emit(this.chainId);
     }
     return true;
   }
@@ -141,11 +145,12 @@ export class Web3Service {
   async refreshAccounts(): Promise<string> {
     if (!this.web3) {
       this.accounts = [];
-      this.accountsObservable.next(this.accounts);
+      this.accountsObservable.emit(this.accounts);
       return '';
     }
     this.accounts = await this.web3.eth.getAccounts();
-    this.accountsObservable.next(this.accounts);
+    console.log(this.accounts);
+    this.accountsObservable.emit(this.accounts);
     return this.accounts[0];
   }
 }

@@ -19,6 +19,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
 import { HomeComponent } from './routing-components/home/home.component';
+import { LoginComponent } from './routing-components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HomeComponent } from './routing-components/home/home.component';
     SidebarComponent,
     FooterComponent,
     MediaPlayerComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
