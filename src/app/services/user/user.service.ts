@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { LoaderService } from '../loader/loader.service';
 import { AuthorizationResponse } from '../repository/user-repository/models/authorization-response.model';
 import { UserAuthorizationRequestResponse } from '../repository/user-repository/models/user-authorization-request.response.model';
 import { UserProfileData } from '../repository/user-repository/models/user-profile-data.model';
@@ -13,7 +14,7 @@ export class UserService {
   userData: UserProfileData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
 
   onUserStateChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-  constructor(private readonly userRepositoryService: UserRepositoryService, private readonly web3Service: Web3Service) { }
+  constructor(private readonly userRepositoryService: UserRepositoryService, private readonly web3Service: Web3Service, private readonly loaderService: LoaderService) { }
 
   isUserLoggedIn(): boolean {
     return this.userData.userName ? true : false;
@@ -29,16 +30,21 @@ export class UserService {
     if (localStorage.getItem('aboat_access')) {
       await this.web3Service.connect();
       if (this.web3Service.accounts) {
+
+        this.loaderService.show();
         await this.getUserProfile();
       }
     } else {
       await this.web3Service.reConnect();
     }
+    this.loaderService.hide();
   }
 
   async register(email: string, username: string) {
+
     await this.web3Service.connect(true);
     if (this.web3Service.accounts) {
+      this.loaderService.show();
       this.userRepositoryService.register(email, username, this.web3Service.accounts[0]).subscribe({
         next: v => this.signAuthorizationError(v),
         error: e => this.registerError(e)
@@ -60,19 +66,21 @@ export class UserService {
   }
 
   registerError(error: any) {
-
+    this.loaderService.hide();
   }
 
   confirmationError(error: any) {
-
+    this.loaderService.hide();
   }
 
 
   async connect() {
     await this.web3Service.connect(true);
     if (this.web3Service.accounts) {
+      this.loaderService.show();
       if (localStorage.getItem('aboat_access')) {
         await this.getUserProfile();
+        this.loaderService.hide();
       } else {
         this.userRepositoryService.requestLogin(this.web3Service.accounts[0]).subscribe({
           next: (v) => this.signAuthorizationRequestAndLogin(v),
@@ -106,23 +114,25 @@ export class UserService {
   }
 
   successfullyLogin(authorization: AuthorizationResponse) {
+    this.loaderService.hide();
     localStorage.setItem('aboat_access', authorization.token);
     this.getUserProfile();
   }
 
   requestLoginError(error: any) {
     //Show request login error
+    this.loaderService.hide();
   }
 
   signAuthorizationError(error: any) {
-
+    this.loaderService.hide();
   }
 
   loginError(error: any) {
-
+    this.loaderService.hide();
   }
 
   profileError(error: any) {
-
+    this.loaderService.hide();
   }
 }

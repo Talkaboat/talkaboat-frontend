@@ -1,6 +1,8 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import '~ngx-toastr/toastr';
+
 ::-webkit-scrollbar {
   width: 7.5px;
   background-color: #64A4FD;

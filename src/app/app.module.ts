@@ -22,6 +22,9 @@ import { HomeComponent } from './routing-components/home/home.component';
 import { LoginComponent } from './routing-components/login/login.component';
 import { ProfileSidebarComponent } from './static-components/header/profile-sidebar/profile-sidebar.component';
 import { RegisterComponent } from './routing-components/register/register.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoadingComponent } from './static-components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { RegisterComponent } from './routing-components/register/register.compon
     HomeComponent,
     LoginComponent,
     ProfileSidebarComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,14 @@ import { RegisterComponent } from './routing-components/register/register.compon
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+      positionClass: 'toast-top-right',
+      timeOut: 2500,
+      progressBar: true,
+      progressAnimation: 'increasing'
+    }),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideFunctions(() => getFunctions()),

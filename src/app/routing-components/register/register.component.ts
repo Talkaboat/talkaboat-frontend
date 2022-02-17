@@ -68,7 +68,10 @@ export class RegisterComponent implements OnInit {
 
   async connect() {
     if (this.isEmailValid() && this.isUsernameValid()) {
-
+      this.userService.register(
+        this.registerForm.get('email')?.value,
+        this.registerForm.get('username')?.value,
+      );
     }
   }
 
