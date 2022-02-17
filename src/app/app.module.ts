@@ -25,6 +25,7 @@ import { RegisterComponent } from './routing-components/register/register.compon
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingComponent } from './static-components/loading/loading.component';
+import { SearchSlotComponent } from './static-components/header/search-slot/search-slot.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { LoadingComponent } from './static-components/loading/loading.component'
     LoginComponent,
     ProfileSidebarComponent,
     RegisterComponent,
-    LoadingComponent
+    LoadingComponent,
+    SearchSlotComponent
   ],
   imports: [
     BrowserModule,

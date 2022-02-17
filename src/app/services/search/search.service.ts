@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { LoaderService } from '../loader/loader.service';
 import { PodcastSearchResponse } from '../repository/search-repository/models/podcast-search-response.model';
@@ -32,7 +32,8 @@ export class SearchService {
   constructor(
     private readonly podcastRepositoryService: PodcastRepositoryService,
     private readonly loaderService: LoaderService,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly router: Router
   ) {
     this.activatedRoute.queryParams.subscribe((queryParams: Params) => {
       if (queryParams['q']) {
@@ -129,7 +130,7 @@ export class SearchService {
     }
   }
 
-  public async search(searchTerm: string) {
+  public async search(searchTerm: string, navigate: boolean = false) {
     if (searchTerm) {
       this.searchTerm = searchTerm;
     }
@@ -137,7 +138,21 @@ export class SearchService {
       return;
     }
     this.loaderService.show();
-    return this.podcastRepositoryService.search(this.getSearchQuery()).subscribe(result => {
+    if (navigate) {
+      this.router.navigate(['/search'], {
+        queryParams: {
+          'q': searchTerm, 'view': 'viewer', 'qtype': this.searchType, 'qlang': this.searchLanguages, 'qgenre': this.searchGenres, 'qminlen': this.searchLengthMin, 'qmaxlen': this.searchLengthMax
+        }, queryParamsHandling: 'merge'
+      }).then(v => this.executeSearch(searchTerm));
+    } else {
+      this.executeSearch(searchTerm);
+    }
+  }
+
+  executeSearch(searchTerm: string) {
+    console.log(searchTerm);
+    return;
+    this.podcastRepositoryService.search(this.getSearchQuery()).subscribe(result => {
       this.searchResponse = result;
       if (this.searchTerm == searchTerm) {
         this.onChangedSearch.emit(searchTerm);
