@@ -6,6 +6,7 @@ import { UserProfileData } from '../repository/user-repository/models/user-profi
 import { UserRepositoryService } from '../repository/user-repository/user-repository.service';
 import { Web3Service } from '../web3/web3.service';
 import { ToastrService } from 'ngx-toastr';
+import { firstValueFrom, lastValueFrom } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -27,7 +28,7 @@ export class UserService {
   logout() {
     localStorage.removeItem('aboat_access');
     this.userData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
-    this.toastrService
+    this.web3Service.disconnect();
     this.onUserStateChanged.emit(false);
   }
 

@@ -37,4 +37,8 @@ export class ProfileSidebarComponent implements OnInit {
     });
   }
 
+  logout() {
+    this.userService.logout();
+  }
+
 }

@@ -1,6 +1,5 @@
-import { HostListener, Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Subject } from 'rxjs';
 import { MediaPlayerState } from 'src/app/static-components/media-player/mediaplayer-state';
 import { LoaderService } from '../loader/loader.service';
 

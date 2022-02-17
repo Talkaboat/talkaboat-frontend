@@ -18,6 +18,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.userService.onUserStateChanged.subscribe(userState => {
       this.userData = this.userService.userData;
+      if (!this.userData.userName) {
+        this.isProfileSidebarOpen = false;
+      }
     });
   }
 
