@@ -1,5 +1,4 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
 import Web3 from "web3";
 import Web3Modal from "web3modal";
 import WalletConnectProvider from '@walletconnect/web3-provider';
@@ -82,7 +81,7 @@ export class Web3Service {
 
   async connect(clearCached = false) {
     if (clearCached) {
-      this.web3Modal.clearCachedProvider();
+        await this.web3Modal.clearCachedProvider();
     }
     this.provider = await this.web3Modal.connect();
     if (this.provider) {
