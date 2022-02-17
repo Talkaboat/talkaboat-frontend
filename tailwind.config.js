@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   mode: 'jit',
   purge: {
@@ -29,7 +31,8 @@ module.exports = {
         "700": "#0E1825",
         "800": "#0A111A",
         "900": "#04070B"
-      }
+      },
+      "red": colors.red
     },
     fontFamily: {
       sans: [ 'Raleway', 'Segoe UI', 'sans-serif' ]

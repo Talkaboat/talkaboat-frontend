@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthorizationResponse } from 'src/app/services/repository/user-repository/models/authorization-response.model';
@@ -9,17 +9,22 @@ import { UserService as UserService } from 'src/app/services/user/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
-  subscription: Subscription[] = [];
+  subscriptions: Subscription[] = [];
 
   constructor(private readonly userService: UserService, private readonly router: Router) { }
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => {
+      subscription.unsubscribe();
+    });
+  }
 
   ngOnInit(): void {
     if (this.userService.isUserLoggedIn()) {
       this.navigateToHome();
     } else {
-      this.subscription.push(this.userService.onUserStateChanged.subscribe(state => {
+      this.subscriptions.push(this.userService.onUserStateChanged.subscribe(state => {
         if (state) {
           this.navigateToHome();
         }

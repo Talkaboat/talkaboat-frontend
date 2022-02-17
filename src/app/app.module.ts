@@ -21,6 +21,7 @@ import { HttpInterceptorService } from './services/http-interceptor/http-interce
 import { HomeComponent } from './routing-components/home/home.component';
 import { LoginComponent } from './routing-components/login/login.component';
 import { ProfileSidebarComponent } from './static-components/header/profile-sidebar/profile-sidebar.component';
+import { RegisterComponent } from './routing-components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProfileSidebarComponent } from './static-components/header/profile-side
     MediaPlayerComponent,
     HomeComponent,
     LoginComponent,
-    ProfileSidebarComponent
+    ProfileSidebarComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

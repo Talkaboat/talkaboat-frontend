@@ -34,23 +34,23 @@ a, button, input {
 }
 
 h1 {
-  @apply font-semibold text-[3.2rem];
+  @apply font-semibold text-[2.6rem] md:text-[3.2rem];
 }
 
 h2 {
-  @apply font-semibold text-[2.4rem];
+  @apply font-semibold text-[2.1rem] md:text-[2.4rem];
 }
 
 h3 {
-  @apply font-semibold text-[1.872rem];
+  @apply font-semibold text-[1.472rem] md:text-[1.872rem];
 }
 
 h4 {
-  @apply font-semibold text-[1.6rem];
+  @apply font-semibold text-[1.2rem] md:text-[1.6rem];
 }
 
 h5 {
-  @apply font-semibold text-[1.328rem];
+  @apply font-semibold text-[1.128rem] md:text-[1.328rem];
 }
 
 h6 {

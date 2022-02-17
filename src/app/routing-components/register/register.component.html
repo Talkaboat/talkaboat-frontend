@@ -1,0 +1,25 @@
+<div class="mx-auto max-w-[66rem]  pb-[15rem] text-center ">
+  <div class="content pt-6 pb-6 bg-shadow-700 rounded-[1rem] mx-3 px-6">
+    <h1>Welcome on board!</h1>
+    <h3>Please fill the form.</h3>
+    <form [formGroup]="registerForm">
+     <div>
+      <label class="hidden" for="email">E-Mail</label>
+      <input type="text" class="bg-shadow-500 px-[1rem] rounded-[1rem] h-[4.5rem] w-[30rem]  text-main-100 text-[1.25rem] font-semibold" formControlName="email" id="email" name="email" placeholder="E-Mail" required />
+      <p id="register-email-error" class="mt-1 text-red-500" *ngIf="emailError">
+        Please enter a valid email
+      </p>
+     </div>
+      <div class="mt-3">
+        <label class="hidden" for="username">Username</label>
+        <input type="text" class="bg-shadow-500 px-[1rem] rounded-[1rem] h-[4.5rem] w-[30rem]  text-main-100 text-[1.25rem] font-semibold" formControlName="username" id="username" name="username" placeholder="Username" required />
+        <p id="register-email-error" class="mt-1 text-red-500" *ngIf="usernameError">
+          Please enter an alphanumeric username with 3 to 16 characters
+        </p>
+      </div>
+      <button (click)="connect()" class="mt-10 mx-auto text-[2rem] py-5 w-[28rem] font-semibold bg-main-500 rounded ring-1 ring-shadow-500" >{{ 'connect_wallet' | translate }}</button>
+    </form>
+
+    <p class="mt-10 text-[1.25rem]">Already on board? <a class="underline font-semibold" [routerLink]="['/login']">Login</a></p>
+  </div>
+</div>
