@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { UserService } from './services/user/user.service';
 import { Web3Service } from './services/web3/web3.service';
 import { WebsiteStateService } from './services/website-state/website-state.service';
@@ -19,15 +19,16 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     this.isSidebarOpen = this.websiteStateService.isSidebarOpen;
     this.websiteStateService.onSidebarStateChanged.subscribe(state => this.isSidebarOpen = state);
-    this.closeSidebarIfSmallerThanLg();
+    this.websiteStateService.closeSidebarIfSmallerThanLg();
     // await this.userService.autoConnect();
   }
 
-  closeSidebarIfSmallerThanLg() {
-    if (window.innerWidth <= 1024) {
-      this.websiteStateService.toggleSidebar(true, false);
-    }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.websiteStateService.closeSidebarIfSmallerThanLg();
   }
+
+
 
   title = 'talkaboat';
 

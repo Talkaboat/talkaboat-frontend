@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { HostListener, Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { LoaderService } from '../loader/loader.service';
@@ -17,6 +17,12 @@ export class WebsiteStateService {
         loaderService.hide();
       }
     });
+  }
+
+  public closeSidebarIfSmallerThanLg() {
+    if (this.isSidebarOpen && window.innerWidth <= 1024) {
+      this.toggleSidebar(true, false);
+    }
   }
 
   public toggleSidebar(forceState = false, state = false) {
