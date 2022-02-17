@@ -7,13 +7,17 @@
 
 
 
-<div class="left-0 md:left-[4.5rem] transition-all h-[fit-content] ease-in-out duration-500 absolute bottom-0 right-0 pb-[16rem] md:top-[7.5rem]  top-[6.5rem]">
+<div class="z-40">
+  <app-media-player></app-media-player>
+  <app-header></app-header>
+  <app-sidebar></app-sidebar>
+
+</div>
+
+
+<div tabindex="0" class=" z-0 left-0 md:left-[4.5rem] transition-all h-[fit-content] ease-in-out duration-500 absolute bottom-0 right-0 pb-[16rem] md:top-[7.5rem]  top-[6.5rem]">
   <router-outlet></router-outlet>
   <app-loading></app-loading>
   <app-footer></app-footer>
 </div>
-
-<app-media-player></app-media-player>
-<app-header></app-header>
-<app-sidebar></app-sidebar>
 
