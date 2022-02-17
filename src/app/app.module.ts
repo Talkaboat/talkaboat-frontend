@@ -26,6 +26,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingComponent } from './static-components/loading/loading.component';
 import { SearchSlotComponent } from './static-components/header/search-slot/search-slot.component';
+import { SearchComponent } from './routing-components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SearchSlotComponent } from './static-components/header/search-slot/sear
     ProfileSidebarComponent,
     RegisterComponent,
     LoadingComponent,
-    SearchSlotComponent
+    SearchSlotComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

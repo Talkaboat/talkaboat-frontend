@@ -52,13 +52,11 @@ export class RegisterComponent implements OnInit {
 
   isEmailValid(): boolean {
     this.emailError = !this.registerForm.get('email')?.valid!;
-    console.log(this.emailError);
     return !this.emailError;
   }
 
   isUsernameValid(): boolean {
     this.usernameError = !this.registerForm.get('username')?.valid!;
-    console.log(this.usernameError);
     return !this.usernameError;
   }
 

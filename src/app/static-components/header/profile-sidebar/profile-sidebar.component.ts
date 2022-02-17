@@ -20,7 +20,9 @@ export class ProfileSidebarComponent implements OnInit {
   constructor(private readonly userService: UserService, private readonly userRepositoryService: UserRepositoryService) { }
 
   ngOnInit(): void {
-    this.userRepositoryService.isUserKyced().subscribe(isKyced => this.isUserKyced = isKyced);
+    if (this.userData.userName) {
+      this.userRepositoryService.isUserKyced().subscribe(isKyced => this.isUserKyced = isKyced);
+    }
   }
 
   getKYC() {

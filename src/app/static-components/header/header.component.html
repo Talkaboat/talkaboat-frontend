@@ -32,4 +32,4 @@
     </div>
   </nav>
 </header>
-<app-profile-sidebar [isProfileSidebarOpen]="isProfileSidebarOpen" [userData]="userData"></app-profile-sidebar>
+<app-profile-sidebar *ngIf="userData.userName" [isProfileSidebarOpen]="isProfileSidebarOpen" [userData]="userData"></app-profile-sidebar>
