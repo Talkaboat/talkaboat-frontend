@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { UserService } from './services/user/user.service';
 import { Web3Service } from './services/web3/web3.service';
 import { WebsiteStateService } from './services/website-state/website-state.service';
-
+import { ToastrModule } from 'ngx-toastr';
 describe('AppComponent', () => {
 
   let userService: jasmine.SpyObj<UserService>;
@@ -16,7 +16,7 @@ describe('AppComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule, HttpClientTestingModule
+        RouterTestingModule, HttpClientTestingModule, ToastrModule.forRoot()
       ],
       declarations: [
         AppComponent

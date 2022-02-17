@@ -4,7 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslatePipe } from 'src/app/services/i18n/translate.pipe';
 import { UserService } from 'src/app/services/user/user.service';
-
+import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
@@ -16,7 +16,7 @@ describe('LoginComponent', () => {
     userService = jasmine.createSpyObj('UserService', ['register', 'onUserStateChanged']);
     await TestBed.configureTestingModule({
       declarations: [LoginComponent, TranslatePipe ],
-      imports: [ HttpClientTestingModule, RouterTestingModule],
+      imports: [ HttpClientTestingModule, RouterTestingModule, ToastrModule.forRoot() ],
       providers: [ { provides: UserService, useValue: userService} ]
     })
     .compileComponents();

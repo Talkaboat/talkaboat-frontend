@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslatePipe } from 'src/app/services/i18n/translate.pipe';
 import { UserService } from 'src/app/services/user/user.service';
-
+import { ToastrModule } from 'ngx-toastr';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -15,7 +15,7 @@ describe('HeaderComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent, TranslatePipe],
-      imports: [RouterTestingModule, HttpClientTestingModule],
+      imports: [RouterTestingModule, HttpClientTestingModule, ToastrModule.forRoot()],
       providers: [
         UserService
       ]

@@ -5,7 +5,7 @@ import { UserAuthorizationRequestResponse } from '../repository/user-repository/
 import { UserProfileData } from '../repository/user-repository/models/user-profile-data.model';
 import { UserRepositoryService } from '../repository/user-repository/user-repository.service';
 import { Web3Service } from '../web3/web3.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +14,11 @@ export class UserService {
   userData: UserProfileData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
 
   onUserStateChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-  constructor(private readonly userRepositoryService: UserRepositoryService, private readonly web3Service: Web3Service, private readonly loaderService: LoaderService) { }
+  constructor(
+    private readonly userRepositoryService: UserRepositoryService,
+    private readonly web3Service: Web3Service,
+    private readonly loaderService: LoaderService,
+    private readonly toastrService: ToastrService) { }
 
   isUserLoggedIn(): boolean {
     return this.userData.userName ? true : false;
@@ -23,6 +27,7 @@ export class UserService {
   logout() {
     localStorage.removeItem('aboat_access');
     this.userData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
+    this.toastrService
     this.onUserStateChanged.emit(false);
   }
 

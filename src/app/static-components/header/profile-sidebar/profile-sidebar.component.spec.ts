@@ -1,7 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserService } from 'src/app/services/user/user.service';
-
+import { ToastrModule } from 'ngx-toastr';
 import { ProfileSidebarComponent } from './profile-sidebar.component';
 
 describe('ProfileSidebarComponent', () => {
@@ -12,7 +12,7 @@ describe('ProfileSidebarComponent', () => {
     userService = jasmine.createSpyObj('UserService', ['isUserKyced', 'resendMail']);
     await TestBed.configureTestingModule({
       declarations: [ProfileSidebarComponent],
-      imports: [ HttpClientTestingModule ],
+      imports: [ HttpClientTestingModule, ToastrModule.forRoot() ],
       providers: [ { provides: UserService, useValue: userService} ]
     })
     .compileComponents();
