@@ -2,3 +2,14 @@
 .sidebar-open {
   @apply md:left-[26rem];
 }
+
+.minimized {
+  @apply h-[6rem];
+  .hide-minimized {
+    @apply hidden;
+  }
+
+  .minimize {
+    @apply h-0 w-0;
+  }
+}
