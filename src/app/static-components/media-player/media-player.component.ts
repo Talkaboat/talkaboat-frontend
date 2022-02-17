@@ -8,12 +8,10 @@ import { WebsiteStateService } from 'src/app/services/website-state/website-stat
 })
 export class MediaPlayerComponent implements OnInit {
 
-  isSidebarOpen = true;
-  constructor(private readonly websiteStateService: WebsiteStateService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.isSidebarOpen = this.websiteStateService.isSidebarOpen;
-    this.websiteStateService.onSidebarStateChanged.subscribe(state => this.isSidebarOpen = state);
+
   }
 
 }

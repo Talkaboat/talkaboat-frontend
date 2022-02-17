@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     this.isSidebarOpen = this.websiteStateService.isSidebarOpen;
     this.websiteStateService.onSidebarStateChanged.subscribe(state => this.isSidebarOpen = state);
     this.websiteStateService.closeSidebarIfSmallerThanLg();
-    // await this.userService.autoConnect();
+    await this.userService.autoConnect();
   }
 
   @HostListener('window:resize', ['$event'])

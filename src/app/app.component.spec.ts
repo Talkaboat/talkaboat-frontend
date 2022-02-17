@@ -1,26 +1,28 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { UserService } from './services/user/user.service';
 import { Web3Service } from './services/web3/web3.service';
 import { WebsiteStateService } from './services/website-state/website-state.service';
 
 describe('AppComponent', () => {
 
-  let web3ServiceSpy: jasmine.SpyObj<Web3Service>;
+  let userService: jasmine.SpyObj<UserService>;
   let websiteStateServiceSpy: jasmine.SpyObj<WebsiteStateService>;
 
   beforeEach(async () => {
-    web3ServiceSpy = jasmine.createSpyObj('Web3Service', ['reConnect']);
+    userService = jasmine.createSpyObj('UserService', ['autoConnect']);
 
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule, HttpClientTestingModule
       ],
       declarations: [
         AppComponent
       ],
       providers: [
-        { provide: Web3Service, useValue: web3ServiceSpy },
+        { provide: Web3Service, useValue: userService },
         WebsiteStateService
       ]
     }).compileComponents();

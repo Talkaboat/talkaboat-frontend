@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { WebsiteStateService } from './website-state.service';
 
@@ -6,7 +7,11 @@ describe('WebsiteStateService', () => {
   let service: WebsiteStateService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ]
+    });
     service = TestBed.inject(WebsiteStateService);
   });
 
