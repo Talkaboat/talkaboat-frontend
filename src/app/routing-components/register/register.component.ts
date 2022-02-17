@@ -25,6 +25,18 @@ export class RegisterComponent implements OnInit {
 
   constructor(private readonly userService: UserService, private readonly router: Router, private formBuilder: FormBuilder, private translateService: TranslateService) { }
 
+  ngOnInit(): void {
+    if (this.userService.isUserLoggedIn()) {
+      this.navigateToHome();
+    } else {
+      this.subscriptions.push(this.userService.onUserStateChanged.subscribe(state => {
+        if (state) {
+          this.navigateToHome();
+        }
+      }));
+    }
+  }
+
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => {
       subscription.unsubscribe();
@@ -49,17 +61,6 @@ export class RegisterComponent implements OnInit {
     console.log(this.usernameError);
     return !this.usernameError;
   }
-  ngOnInit(): void {
-    if (this.userService.isUserLoggedIn()) {
-      this.navigateToHome();
-    } else {
-      this.subscriptions.push(this.userService.onUserStateChanged.subscribe(state => {
-        if (state) {
-          this.navigateToHome();
-        }
-      }));
-    }
-  }
 
   navigateToHome() {
     this.router.navigate(['']);
@@ -67,7 +68,7 @@ export class RegisterComponent implements OnInit {
 
   async connect() {
     if (this.isEmailValid() && this.isUsernameValid()) {
-      console.log("Register");
+
     }
   }
 

@@ -36,6 +36,38 @@ export class UserService {
     }
   }
 
+  async register(email: string, username: string) {
+    await this.web3Service.connect(true);
+    if (this.web3Service.accounts) {
+      this.userRepositoryService.register(email, username, this.web3Service.accounts[0]).subscribe({
+        next: v => this.signAuthorizationError(v),
+        error: e => this.registerError(e)
+      })
+    }
+  }
+
+  signAuthorizationRequestAndConfirmWallet(authorizationRequest: UserAuthorizationRequestResponse) {
+    this.web3Service.web3.eth.personal.sign(authorizationRequest.key, this.web3Service.accounts[0])
+      .then((v: string) => this.login(v))
+      .catch((e: any) => this.signAuthorizationError(e));
+  }
+
+  confirmWallet(signature: string) {
+    this.userRepositoryService.confirm(signature).subscribe({
+      next: v => this.successfullyLogin(v),
+      error: e => this.confirmationError(e)
+    });
+  }
+
+  registerError(error: any) {
+
+  }
+
+  confirmationError(error: any) {
+
+  }
+
+
   async connect() {
     await this.web3Service.connect(true);
     if (this.web3Service.accounts) {
@@ -43,7 +75,7 @@ export class UserService {
         await this.getUserProfile();
       } else {
         this.userRepositoryService.requestLogin(this.web3Service.accounts[0]).subscribe({
-          next: (v) => this.signAuthorizationRequest(v),
+          next: (v) => this.signAuthorizationRequestAndLogin(v),
           error: (e) => this.requestLoginError(e)
         });
       }
@@ -60,7 +92,7 @@ export class UserService {
     })
   }
 
-  signAuthorizationRequest(authorizationRequest: UserAuthorizationRequestResponse) {
+  signAuthorizationRequestAndLogin(authorizationRequest: UserAuthorizationRequestResponse) {
     this.web3Service.web3.eth.personal.sign(authorizationRequest.key, this.web3Service.accounts[0])
       .then((v: string) => this.login(v))
       .catch((e: any) => this.signAuthorizationError(e));

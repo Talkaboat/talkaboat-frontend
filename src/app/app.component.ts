@@ -19,12 +19,12 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     this.isSidebarOpen = this.websiteStateService.isSidebarOpen;
     this.websiteStateService.onSidebarStateChanged.subscribe(state => this.isSidebarOpen = state);
-    this.closeSidebarIfMobile();
+    this.closeSidebarIfSmallerThanLg();
     await this.userService.autoConnect();
   }
 
-  closeSidebarIfMobile() {
-    if (window.innerWidth <= 500) {
+  closeSidebarIfSmallerThanLg() {
+    if (window.innerWidth <= 1024) {
       this.websiteStateService.toggleSidebar(true, false);
     }
   }

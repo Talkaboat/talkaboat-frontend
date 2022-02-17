@@ -14,11 +14,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor(private readonly userService: UserService, private readonly router: Router) { }
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(subscription => {
-      subscription.unsubscribe();
-    });
-  }
 
   ngOnInit(): void {
     if (this.userService.isUserLoggedIn()) {
@@ -30,6 +25,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
       }));
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => {
+      subscription.unsubscribe();
+    });
   }
 
   navigateToHome() {

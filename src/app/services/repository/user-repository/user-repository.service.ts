@@ -37,7 +37,7 @@ export class UserRepositoryService  extends RepositoryService {
     return this.get<boolean>(api);
   }
 
-  public confirm(signature: string): Observable<any> {
+  public confirm(signature: string): Observable<AuthorizationResponse> {
     if (!this.web3Service.accounts) {
       return of();
     }
