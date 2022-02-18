@@ -6,9 +6,9 @@ import { RegisterComponent } from './routing-components/register/register.compon
 import { SearchComponent } from './routing-components/search/search.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: '', component: HomeComponent,  data: { animation: "isLeft"} },
+  { path: 'login', component: LoginComponent, data: { animation: "isRight"} },
+  { path: 'register', component: RegisterComponent, data: { animation: 'isBottom' } },
   { path: 'search', component: SearchComponent },
 
 

@@ -8,16 +8,20 @@
 
 
 <div class="z-40">
-  <app-media-player></app-media-player>
   <app-header></app-header>
   <app-sidebar></app-sidebar>
 
 </div>
 
 
-<div tabindex="0" class=" z-0 left-0 md:left-[4.5rem] transition-all h-[fit-content] ease-in-out duration-500 absolute bottom-0 right-0 pb-[16rem] md:top-[7.5rem]  top-[6.5rem]">
-  <router-outlet></router-outlet>
+<div tabindex="0" class="z-0 left-0 focus-visible:outline-none md:left-[4.5rem] transition-all h-[fit-content] ease-in-out duration-500 absolute bottom-0 right-0 pb-[16rem] md:top-[7.5rem]  top-[6.5rem]">
+  <div [@routeAnimations]="prepareRoute(outlet)" class="relative">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
   <app-loading></app-loading>
   <app-footer></app-footer>
 </div>
+
+
+<app-media-player></app-media-player>
 

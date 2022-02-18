@@ -19,7 +19,11 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: #4b79a194;
 }
+html {
+  overflow-x: hidden;
+}
 body {
+  overflow-x: hidden;
   @apply ease-in-out duration-500 transition-all;
 }
 
