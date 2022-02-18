@@ -7,7 +7,33 @@ import {
   animateChild,
   group,
   query,
+  stagger,
 } from '@angular/animations';
+
+export const listAnimation =
+  trigger('list', [
+    transition(':enter', [
+      query('@listItem', stagger(100, animateChild()))
+    ]),
+  ]);
+
+export const listItemAnimation =
+  trigger('listItem', [
+    transition(':enter', [
+      style({ transform: 'scale(0.5)', opacity: 0 }),  // initial
+      animate('1s cubic-bezier(.8, -0.6, 0.2, 1.5)',
+        style({ transform: 'scale(1)', opacity: 1 }))  // final
+    ]),
+    transition(':leave', [
+      style({ transform: 'scale(1)', opacity: 1, height: '*' }),
+      animate('1s cubic-bezier(.8, -0.6, 0.2, 1.5)',
+       style({
+         transform: 'scale(0.5)', opacity: 0,
+         height: '0px', margin: '0px'
+       }))
+    ])
+  ]);
+
 export const fader =
   trigger('routeAnimations', [
 

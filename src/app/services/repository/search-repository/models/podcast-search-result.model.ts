@@ -18,5 +18,6 @@ export interface PodcastSearchResult {
     title_highlighted: string;
     description_original: string;
     description_highlighted?: string;
-    transcripts_highlighted?: any[];
+  transcripts_highlighted?: any[];
+  isLoading?:boolean;
 }

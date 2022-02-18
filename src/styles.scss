@@ -35,6 +35,13 @@ a, button, input {
   @apply rounded ring-shadow-500 ring-1;
 }
 
+.img-placeholder {
+  background:
+    url(./assets/gifs/loading.gif)
+    no-repeat
+    left center;
+}
+
 .hover-up {
   @apply relative top-0 hover:top-[-0.3rem];
 }
