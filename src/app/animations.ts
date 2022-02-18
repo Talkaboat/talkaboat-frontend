@@ -34,23 +34,22 @@ export const listItemAnimation =
     ])
   ]);
 
-export const fader =
-  trigger('routeAnimations', [
-
-  ]);
-
 export const slider =
   trigger('routeAnimations', [
-    transition('* => isBottom', fadeTo('bottom')),
-    transition('isBottom => isRight', fadeTo('top')),
-    transition('isBottom => *', slideTo('left')),
-    transition('* => isLeft', slideTo('left')),
-    transition('* => isRight', slideTo('right')),
-    transition('isRight => *', slideTo('left')),
-    transition('isLeft => *', slideTo('right')),
+    transition('home => isRight', slideTo('right')),
+    transition('home => isLeft', slideTo('left')),
+    transition('home => *', fadeTo()),
+    transition('isRight => home', slideTo('left')),
+    transition('isLeft => home', slideTo('right')),
+    transition('* => home', slideTo('left')),
+    transition('* => isBottom', fadeTo()),
+    transition('isBottom => *', fadeTo()),
+    transition('isRight => isLeft', slideTo('left')),
+    transition('isLeft => isRight', slideTo('right')),
   ]);
 
-function fadeTo(direction: any) {
+
+function fadeTo() {
   const optional = { optional: true };
   return [
     query(':enter, :leave', [
@@ -61,11 +60,11 @@ function fadeTo(direction: any) {
         opacity: 0,
         transform: 'scale(0%) translateY(100%)',
       }),
-    ]),
+    ], optional),
     // Animate the new page in
     query(':enter', [
       animate('1000ms ease', style({ opacity: 1, transform: 'scale(1) translateY(0)' })),
-    ])
+    ], optional)
   ]
 }
 
@@ -82,16 +81,16 @@ function slideTo(direction: any) {
     ], optional),
     query(':enter', [
       style({ [direction]: '-100%'})
-    ]),
+    ], optional),
     group([
       query(':leave', [
         animate('600ms ease', style({ [direction]: '100%'}))
       ], optional),
       query(':enter', [
         animate('600ms ease', style({ [direction]: '0%'}))
-      ])
+      ], optional)
     ]),
-    query(':leave', animateChild()),
-    query(':enter', animateChild()),
+    query(':leave', animateChild(), optional),
+    query(':enter', animateChild(), optional),
   ];
 }

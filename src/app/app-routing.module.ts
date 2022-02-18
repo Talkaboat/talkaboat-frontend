@@ -6,13 +6,13 @@ import { RegisterComponent } from './routing-components/register/register.compon
 import { SearchComponent } from './routing-components/search/search.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent,  data: { animation: "isLeft"} },
+  { path: '', component: HomeComponent,  data: { animation: "home"} },
   { path: 'login', component: LoginComponent, data: { animation: "isRight"} },
   { path: 'register', component: RegisterComponent, data: { animation: 'isBottom' } },
   { path: 'search', component: SearchComponent },
 
 
-  { path: '**', component: HomeComponent }
+  { path: '**', component: HomeComponent, data: { animation: "home"} }
 ];
 
 @NgModule({

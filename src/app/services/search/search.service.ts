@@ -21,6 +21,8 @@ export class SearchService {
   private currentOffset: number = 0;
   public searchLengthMin = 0;
   public searchLengthMax = 240;
+  public isSearching = false;
+  private lastSearch: PodcastSearch = { searchTerm: '' };
   public onChangedSearch = new EventEmitter<string>();
   public onChangedSearchType = new EventEmitter<string>();
   public onChangedLanguages = new EventEmitter<string[]>();
@@ -39,6 +41,7 @@ export class SearchService {
       if (queryParams['q']) {
         this.searchTerm = queryParams['q'];
       } else {
+        this.searchResponse = { took: 0, count: 0, total: 0, results: [], next_offset: 0};
         this.searchTerm = "";
       }
       this.searchLengthMin = Number(queryParams['qminlen']);
@@ -90,9 +93,9 @@ export class SearchService {
   }
 
   public changeLanguage(language: string) {
-    this.rawSearchLanguages = language;
     var languages: any = [];
-    if (language) {
+    if (language && language.length > 0) {
+      this.rawSearchLanguages = language;
       if (language.includes(",")) {
         languages = language.split(",");
       } else {
@@ -105,17 +108,19 @@ export class SearchService {
   }
 
   public changeGenres(genre: string) {
-    this.rawSearchGenres = genre;
+
     var genres: any = [];
-    if (genre) {
+    if (genre && genre.length > 0) {
+      this.rawSearchGenres = genre;
       if (genre.includes(",")) {
         genres = genre.split(",");
       } else {
         genres.push(genre);
       }
+      this.searchGenres = genres;
     }
 
-    this.searchGenres = genres;
+
     this.onChangedGenres.emit(this.searchGenres);
   }
 
@@ -125,9 +130,9 @@ export class SearchService {
       minLength: this.searchLengthMin,
       type: this.searchType.toLowerCase(),
       maxLength: this.searchLengthMax != 240 ? this.searchLengthMax : undefined,
-      language: this.rawSearchLanguages != "all" ? this.rawSearchLanguages : undefined,
-      genres: this.rawSearchGenres != "-1" ? this.rawSearchGenres : undefined
-    }
+      language: this.rawSearchLanguages && this.rawSearchLanguages.length > 0 ? this.rawSearchLanguages : undefined,
+      genres: this.rawSearchGenres && this.rawSearchGenres.length > 0  ? this.rawSearchGenres : undefined
+    };
   }
 
   public async search(searchTerm: string, navigate: boolean = false) {
@@ -137,26 +142,51 @@ export class SearchService {
     if (!this.searchTerm) {
       return;
     }
+    this.isSearching = true;
     this.loaderService.show();
     if (navigate) {
       this.router.navigate(['/search'], {
         queryParams: {
           'q': searchTerm, 'view': 'viewer', 'qtype': this.searchType, 'qlang': this.searchLanguages, 'qgenre': this.searchGenres, 'qminlen': this.searchLengthMin, 'qmaxlen': this.searchLengthMax
         }, queryParamsHandling: 'merge'
-      }).then(v => this.executeSearch(searchTerm));
+      }).then(v => {
+        this.executeSearch(searchTerm)
+      });
     } else {
       this.executeSearch(searchTerm);
     }
   }
 
+  isSearchEqualToLastSearch(): boolean {
+    const searchQuery = this.getSearchQuery();
+    return searchQuery.genres == this.lastSearch.genres
+      && searchQuery.searchTerm == this.lastSearch.searchTerm
+      && searchQuery.language == this.lastSearch.language
+      && searchQuery.minLength == this.lastSearch.minLength
+      && searchQuery.maxLength == this.lastSearch.maxLength
+      && searchQuery.minEpisodes == this.lastSearch.minEpisodes
+      && searchQuery.maxEpisodes == this.lastSearch.maxEpisodes;
+  }
+
   executeSearch(searchTerm: string) {
-    console.log(searchTerm);
-    return;
-    this.podcastRepositoryService.search(this.getSearchQuery()).subscribe(result => {
-      this.searchResponse = result;
-      if (this.searchTerm == searchTerm) {
-        this.onChangedSearch.emit(searchTerm);
-        this.onChangedSearchResponse.emit(this.searchResponse);
+    if (this.isSearchEqualToLastSearch()) {
+      return;
+    }
+    this.lastSearch = this.getSearchQuery();
+    this.loaderService.show();
+    this.podcastRepositoryService.search(this.lastSearch).subscribe({
+      next: result => {
+        this.searchResponse = result;
+        if (this.searchTerm == searchTerm) {
+          this.onChangedSearch.emit(searchTerm);
+          this.onChangedSearchResponse.emit(this.searchResponse);
+        }
+      },
+      complete: () => {
+        if (this.searchTerm == searchTerm) {
+          this.loaderService.hide();
+          this.isSearching = false;
+        }
       }
     });
   }

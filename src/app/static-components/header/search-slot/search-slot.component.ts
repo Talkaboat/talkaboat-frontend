@@ -14,6 +14,7 @@ export class SearchSlotComponent implements OnInit {
   constructor(private readonly searchService: SearchService) { }
 
   ngOnInit(): void {
+    this.searchService.onChangedSearch.subscribe(term => this.searchTerm.setValue(term));
     this.searchTerm.setValue(this.searchService.searchTerm);
   }
 
