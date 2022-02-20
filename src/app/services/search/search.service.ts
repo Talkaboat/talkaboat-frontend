@@ -41,6 +41,7 @@ export class SearchService {
       if (queryParams['q']) {
         this.searchTerm = queryParams['q'];
       } else {
+        this.lastSearch = { searchTerm: '' };
         this.searchResponse = { took: 0, count: 0, total: 0, results: [], next_offset: 0};
         this.searchTerm = "";
       }
@@ -172,6 +173,7 @@ export class SearchService {
     if (this.isSearchEqualToLastSearch()) {
       return;
     }
+    return;
     this.lastSearch = this.getSearchQuery();
     this.loaderService.show();
     this.podcastRepositoryService.search(this.lastSearch).subscribe({

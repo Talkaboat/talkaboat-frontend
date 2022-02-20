@@ -27,6 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadingComponent } from './static-components/loading/loading.component';
 import { SearchSlotComponent } from './static-components/header/search-slot/search-slot.component';
 import { SearchComponent } from './routing-components/search/search.component';
+import { PodcastDetailComponent } from './routing-components/podcast-detail/podcast-detail.component';
+import { EpisodeDetailComponent } from './routing-components/episode-detail/episode-detail.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { SearchComponent } from './routing-components/search/search.component';
     RegisterComponent,
     LoadingComponent,
     SearchSlotComponent,
-    SearchComponent
+    SearchComponent,
+    PodcastDetailComponent,
+    EpisodeDetailComponent
   ],
   imports: [
     BrowserModule,

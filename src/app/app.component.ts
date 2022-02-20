@@ -25,13 +25,13 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     this.isSidebarOpen = this.websiteStateService.isSidebarOpen;
     this.websiteStateService.onSidebarStateChanged.subscribe(state => this.isSidebarOpen = state);
-    this.websiteStateService.closeSidebarIfSmallerThanLg();
+    this.websiteStateService.closeSidebarIfSmallerThanDefinedPixel();
     await this.userService.autoConnect();
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.websiteStateService.closeSidebarIfSmallerThanLg();
+    this.websiteStateService.closeSidebarIfSmallerThanDefinedPixel();
   }
 
 
