@@ -39,4 +39,8 @@ export class SearchComponent implements OnInit {
 
   }
 
+  add(track: PodcastSearchResult) {
+    console.log("Add " + track.title_original);
+  }
+
 }

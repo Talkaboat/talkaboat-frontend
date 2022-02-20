@@ -1,6 +1,6 @@
 <ul *ngIf="searchResponse.results.length > 0" @list class="mx-auto max-w-[110rem] grid grid-cols-2  sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 px-[2rem] ">
-  <li @listItem *ngFor="let item of searchResponse.results" class="mb-5 bg-shadow-700 rounded-[1rem] shadow-lg">
-    <div class="mx-auto  rounded-[1rem]">
+  <li @listItem *ngFor="let item of searchResponse.results" class="mb-5 flex flex-col bg-shadow-700 rounded-[1rem] shadow-lg">
+    <div class="mx-auto w-full h-auto relative rounded-[1rem]">
 
       <div class="shadow-lg relative overflow-hidden rounded-[1rem]">
         <img [class.hidden]="item.isLoading" (load)="item.isLoading = false" class="w-full mx-auto h-full img-placeholder rounded-[1rem]" [src]="item.image">
@@ -19,6 +19,13 @@
         <p class="text-gray-700 text-[1.2rem] line-clamp-3 max-h-[4.5rem] overflow-hidden text-ellipsis text-base mt-2" [innerHtml]="item.description_original ">
         </p>
       </div>
+
+
     </div>
+    <div class="mt-auto pb-3 mx-auto">
+      <button class="btn rounded-[1rem] px-8 py-3 bg-shadow-700 text-main-300 border-main-300 border-1 font-semibold" (click)="add(item)">Add</button>
+    </div>
+
+
   </li>
 </ul>
