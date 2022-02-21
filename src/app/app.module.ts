@@ -30,6 +30,7 @@ import { SearchComponent } from './routing-components/search/search.component';
 import { PodcastDetailComponent } from './routing-components/podcast-detail/podcast-detail.component';
 import { EpisodeDetailComponent } from './routing-components/episode-detail/episode-detail.component';
 import { LibraryPipe } from './services/media/library/library.pipe';
+import { LoadingAnimationComponent } from './static-components/loading/loading-animation/loading-animation.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { LibraryPipe } from './services/media/library/library.pipe';
     SearchComponent,
     PodcastDetailComponent,
     EpisodeDetailComponent,
-    LibraryPipe
+    LibraryPipe,
+    LoadingAnimationComponent
   ],
   imports: [
     BrowserModule,

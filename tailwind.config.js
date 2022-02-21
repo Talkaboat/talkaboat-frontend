@@ -37,6 +37,9 @@ module.exports = {
       },
       "red": colors.red
     },
+    animation: {
+      'spin-slow': 'spin 3s ease-in-out infinite',
+    },
     fontFamily: {
       sans: [ 'Raleway', 'Segoe UI', 'sans-serif' ]
     }

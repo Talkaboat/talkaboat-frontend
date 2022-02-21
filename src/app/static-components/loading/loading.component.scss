@@ -2,7 +2,7 @@
     visibility: hidden;
 }
 .loader-overlay {
-    position: absolute;
+    position: fixed;
     width: 500px;
     height: 300px;
     top: 50%;
@@ -26,7 +26,5 @@
 .gif {
 
     border-radius: 50%;
-    width: 500px;
-    height: 300px;
     opacity: 0.9;
 }

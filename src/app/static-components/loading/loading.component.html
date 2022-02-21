@@ -1,8 +1,11 @@
 <div [class.hidden]="!show" class="z-50">
     <div class="loader-overlay mx-auto">
-        <div class="loader-background bg-shadow-700 bg-opacity-60">
+        <div class="loader-background bg-shadow-700 bg-opacity-10">
+          <div class="w-full h-full" *ngIf="show">
+            <app-loading-animation></app-loading-animation>
 
+          </div>
         </div>
-        <img *ngIf="show" src="./assets/gifs/loading.gif" alt="" class="gif" />
+
     </div>
 </div>

@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class RegisterComponent implements OnInit {
 
   subscriptions: Subscription[] = [];
+  isRegisterVideoOpen = false;
 
   private readonly ALPHA_NUMERIC_REGEX = /^[a-zA-Z0-9_]*$/;
 

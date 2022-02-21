@@ -161,4 +161,12 @@ export const en = {
   donate_aboat: "Donate Aboat",
   privacy_policy_link: "https://www.iubenda.com/privacy-policy/72909882/full-legal",
   terms_of_use_link: "https://www.iubenda.com/terms-and-conditions/72909882",
+  consume_home: "Consume 2 Earn",
+  consume_home_sub: "Every interaction in the Aboat Ecosystem can bring real value like earning $ABOAT, EXP or NFTs.",
+  play_home: "Play Games",
+  play_home_sub: "Level up and bring your NFTs to play our games which are also part of the $ABOAT Ecosystem",
+  gamefi_home: "GameFi",
+  gamefi_home_sub: "Trade your NFTs on our Marketplace or utilize them in our games. You can also engage in our DeFi features like Staking.",
+  desc_home: "Aboat Entertainment",
+  desc_home_sub: "Talkaboat is a podcast platform and first product of Aboat Entertainment. Each product will be part of the Aboat Ecosystem on Blockchain and driven through the home made token: $ABOAT. Another thing that all products will share is the heavy focus on gamification to ensure a seamless transition into the Entertainment Metaverse.",
 }

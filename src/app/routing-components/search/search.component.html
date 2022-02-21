@@ -3,13 +3,15 @@
     <div class="mx-auto w-full h-auto relative rounded-[1rem]">
 
       <div class="shadow-lg relative overflow-hidden rounded-[1rem]">
-        <img [class.hidden]="item.isLoading" (load)="item.isLoading = false" class="w-full mx-auto h-full img-placeholder rounded-[1rem]" [src]="item.image">
+        <img (load)="item.isLoading = false" class="w-full mx-auto h-full img-placeholder rounded-[1rem]" [src]="item.image">
         <button *ngIf="item.podcast" [class.hidden]="item.isLoading" class="btn opacity-30 hover:opacity-75 hover:bg-main-800 focus-visible:bg-main-800 focus-visible:opacity-75 absolute w-full h-full top-0 right-0 left-0 bottom-0 bg-shadow-500 rounded-[1rem]" (click)="play(item)">
           <img class="w-[5rem] h-[5rem] my-auto mx-auto img-placeholder rounded-[1rem]" src="./assets/images/player/play.png">
         </button>
         <a *ngIf="!item.podcast" [routerLink]="['/podcast']"  [queryParams]="{ 'pd': item.id }" queryParamsHandling="merge" [class.hidden]="item.isLoading" class="absolute w-full opacity-0 hover:bg-main-800 hover:opacity-75 focus-visible:bg-main-800 focus-visible:opacity-75 h-full top-0 right-0 left-0 bottom-0 rounded-[1rem]" (click)="play(item)">
         </a>
-        <img *ngIf="item.isLoading" class="w-full mx-auto h-full img-placeholder rounded-[1rem]" src="./assets/gifs/loading.gif">
+        <div *ngIf="item.isLoading" class="w-full absolute left-0 right-0 top-0 bottom-0 mx-auto h-full img-placeholder rounded-[1rem]">
+          <app-loading-animation></app-loading-animation>
+        </div>
       </div>
       <div class="px-3 py-4">
         <h3 class="truncate"><a tabindex="0" [routerLink]="['/podcast' + (item.podcast ? '/episode' : '')]" [queryParams]="item.podcast ? { 'ep': item.id, 'pd': null} : { 'pd': item.id, 'ep': null }"

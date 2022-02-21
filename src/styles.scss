@@ -42,6 +42,13 @@ a, button, input {
     left center;
 }
 
+.card {
+  @apply rounded-[1rem] w-full bg-shadow-700 p-5 bg-opacity-20;
+  &.glass {
+    @apply bg-opacity-10 backdrop-filter backdrop-blur-lg;
+  }
+}
+
 .hover-up {
   @apply relative top-0 hover:top-[-0.3rem];
 }
