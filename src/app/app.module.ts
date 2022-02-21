@@ -29,6 +29,7 @@ import { SearchSlotComponent } from './static-components/header/search-slot/sear
 import { SearchComponent } from './routing-components/search/search.component';
 import { PodcastDetailComponent } from './routing-components/podcast-detail/podcast-detail.component';
 import { EpisodeDetailComponent } from './routing-components/episode-detail/episode-detail.component';
+import { LibraryPipe } from './services/media/library/library.pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { EpisodeDetailComponent } from './routing-components/episode-detail/epis
     SearchSlotComponent,
     SearchComponent,
     PodcastDetailComponent,
-    EpisodeDetailComponent
+    EpisodeDetailComponent,
+    LibraryPipe
   ],
   imports: [
     BrowserModule,

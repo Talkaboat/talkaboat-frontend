@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MediaService } from 'src/app/services/media/media.service';
+import { MediaHelperService } from 'src/app/services/media/media-helper.service';
 import { Episode } from 'src/app/services/repository/search-repository/models/episode.model';
 import { Podcast } from 'src/app/services/repository/search-repository/models/podcast.model';
 import { WebsiteStateService } from 'src/app/services/website-state/website-state.service';
@@ -17,7 +17,7 @@ export class PodcastDetailComponent implements OnInit {
   isLoading = true;
   isDescriptionOpen = false;
   genreNames: string[] = [];
-  constructor(private readonly websiteStateService: WebsiteStateService, private readonly mediaService: MediaService) { }
+  constructor(private readonly websiteStateService: WebsiteStateService, private readonly mediaService: MediaHelperService) { }
 
   ngOnInit(): void {
     this.podcastData = JSON.parse(JSON.stringify(PODCAST_DETAIL_MOCK));

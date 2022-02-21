@@ -1,9 +1,39 @@
-<section class="w-auto md:max-w-[80rem] max-w-[40rem] pt-3 px-5 mx-auto">
-  <h1 class="intro-header text-center text-[6.5rem] md:text-[10rem]" [innerHtml]="'talkaboat_intro' | translate"></h1>
-  <h3 [innerHtml]="'talkaboat_sub' | translate" class="mx-auto max-w-[40rem] text-[2rem] md:text-[2rem] flex justify-between"></h3>
-  <div class="flex justify-between px-3 pt-10">
-    <button class="mx-auto text-[3rem] w-[16rem] md:w-[24rem] font-semibold bg-main-500 rounded ring-1 ring-shadow-500 animate-bounce">Enter</button>
-    <button class="mx-auto text-[2.6rem] w-[16rem]  md:w-[24rem] font-semibold rounded bg-shadow-500  ring-1 ring-main-500">Pitch Deck</button>
+<section class="w-auto md:max-w-[96rem] max-w-[40rem] pt-3 px-5 mx-auto rounded-[1rem]">
+  <div class="flex w-full">
+    <div class=" pr-5 lg:max-w-[48rem]">
+      <h1 class="intro-header text-left text-[6.5rem] md:text-[8rem]" [innerHtml]="'talkaboat_intro' | translate"></h1>
+      <h2 [innerHtml]="'talkaboat_sub' | translate" class="mt-10 px-3 max-w-[30rem] flex justify-between"></h2>
+      <h3 [innerHtml]="'info_description' | translate" class="px-3"></h3>
+
+    </div>
+
+    <div class="w-full hidden lg:inline-block">
+      <img class="w-full h-full" src="./assets/images/logo.png">
+    </div>
+  </div>
+  <div class="flex  justify-start mt-10 px-3">
+    <a tabindex="0" [routerLink]="['/register']"
+      class="text-center text-[2rem] mr-3 md:mr-10 flex items-center w-[16rem] py-3 md:w-[24rem] font-semibold bg-main-500 rounded ring-1 ring-shadow-500"><span
+        class="mx-auto">{{ 'register_now' | translate }}</span></a>
+    <a tabindex="0" [routerLink]="['/pitch']"
+      class="text-center text-[2rem] w-[16rem] py-3 flex items-center md:w-[24rem] font-semibold rounded bg-shadow-500  ring-1 ring-main-500"><span
+        class="mx-auto">Pitch Deck</span></a>
+  </div>
+
+</section>
+
+<section class="mt-10 w-full md:max-w-[96rem] max-w-[40rem] mx-auto px-5">
+  <div class="rounded-[1rem] bg-shadow-500 p-5 bg-opacity-60">
+    <h2>Built for <span class="text-main-500">equality</span></h2>
+    <h4><span class="text-main-300">Creators</span> and <span class="text-main-300">Fans</span>  benefit <span class="text-main-300">equally</span>  in our <span class="text-main-300">ecosystem</span> </h4>
+    <img class="w-full" src="./assets/images/infos/reward_system.png"/>
+  </div>
+</section>
+
+<section class="mt-10 w-full md:max-w-[96rem] max-w-[40rem] mx-auto px-5">
+  <div class="rounded-[1rem] bg-shadow-500 p-5 bg-opacity-60">
+    <h2>One <span class="text-main-500">token</span> - a whole <span class="text-main-500">ecosystem</span></h2>
+    <p></p>
   </div>
 </section>
 

@@ -23,7 +23,10 @@
 
     </div>
     <div class="mt-auto pb-3 mx-auto">
-      <button class="btn rounded-[1rem] px-8 py-3 bg-shadow-700 text-main-300 border-main-300 border-1 font-semibold" (click)="add(item)">Add</button>
+      <button class="btn rounded-[1rem] px-8 py-3 bg-shadow-700 text-main-300 border-main-300 border-1 font-semibold" (click)="add(item)">
+        <span *ngIf="item.podcast">{{ item.aboat_id | library }}</span>
+        <span *ngIf="!item.podcast">Add</span>
+      </button>
     </div>
 
 
