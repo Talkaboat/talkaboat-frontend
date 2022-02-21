@@ -1,4 +1,4 @@
-<section class="w-auto md:max-w-[96rem] max-w-[40rem] pt-3 px-5 mx-auto rounded-[1rem]">
+<section class="w-auto md:max-w-[96rem]  pt-3 px-5 mx-auto rounded-[1rem]">
   <div class="flex w-full">
     <div class=" pr-5 lg:max-w-[48rem]">
       <h1 class="intro-header text-left text-[6.5rem] md:text-[8rem]" [innerHtml]="'talkaboat_intro' | translate"></h1>
@@ -8,7 +8,7 @@
     </div>
 
     <div class="w-full hidden lg:inline-block">
-      <img class="w-full h-full" src="./assets/images/logo.png">
+      <img class="w-full h-full hover-up" src="./assets/images/logo.png">
     </div>
   </div>
   <div class="flex  justify-start mt-10 px-3">
@@ -22,31 +22,31 @@
 
 </section>
 
-<section class="mt-10 w-full md:max-w-[96rem] max-w-[40rem] mx-auto px-5">
+<section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
   <div class="card glass">
     <h2>Built for <span class="text-main-500">equality</span></h2>
     <h4><span class="text-main-300">Creators</span> and <span class="text-main-300">Fans</span> benefit <span
         class="text-main-300">equally</span> in our <span class="text-main-300">ecosystem</span> </h4>
-    <img class="mt-8 w-full" src="./assets/images/infos/reward_system.png" />
+    <img class="mt-8 w-full hover-up" src="./assets/images/infos/reward_system.png" />
   </div>
 </section>
 
-<section class="mt-10 w-full md:max-w-[96rem] max-w-[40rem] px-5 mx-auto">
+<section class="mt-10 w-full md:max-w-[96rem]  px-5 mx-auto">
   <div class="card glass">
     <h2>One <span class="text-main-500 ">token</span> - a whole <span class="text-main-500">ecosystem</span></h2>
     <h4>Every <span class="text-main-300">product</span> and <span class="text-main-300">feature</span> will be based on
       <span class="text-main-300">$ABOAT</span></h4>
-    <img class="mt-8 w-full max-w-[55rem] mx-auto" src="./assets/images/infos/ecosystem.png" />
+    <img class="mt-8 w-full max-w-[55rem] mx-auto hover-up" src="./assets/images/infos/ecosystem.png" />
     <div class="grid mt-3 text-left grid-cols-3 gap-2">
-      <div class="-mt-[6rem] h-[fit-content] bg-shadow-700 bg-opacity-75  p-3 rounded-[1rem]">
+      <div class="-mt-[6rem] h-[fit-content] hover-up bg-shadow-700 bg-opacity-75  p-3 rounded-[1rem]">
         <h4 class="text-main-300">{{ 'play_home' | translate }}</h4>
         <p class="md:text-[1.2rem]">{{ 'play_home_sub' | translate }}</p>
       </div>
-      <div class=" bg-shadow-700  h-[fit-content] bg-opacity-75  p-3 rounded-[1rem]">
+      <div class=" bg-shadow-700 hover-up  h-[fit-content] bg-opacity-75  p-3 rounded-[1rem]">
         <h4 class="text-main-300">{{ 'consume_home' | translate }}</h4>
         <p class="md:text-[1.2rem]">{{ 'consume_home_sub' | translate }}</p>
       </div>
-      <div class="-mt-[6rem]  h-[fit-content] bg-shadow-700 bg-opacity-7 p-3 rounded-[1rem]">
+      <div class="-mt-[6rem] hover-up  h-[fit-content] bg-shadow-700 bg-opacity-7 p-3 rounded-[1rem]">
         <h4 class="text-main-300">{{ 'gamefi_home' | translate }}</h4>
         <p class="md:text-[1.2rem]">{{ 'gamefi_home_sub' | translate }}</p>
       </div>
@@ -54,13 +54,13 @@
   </div>
 </section>
 
-<section class="mt-10 w-full md:max-w-[96rem] max-w-[40rem] mx-auto px-5">
+<section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
   <div class="card glass">
     <h2>Your <span class="text-main-500">content</span>. Your <span class="text-main-500">decisions</span></h2>
     <h4><span class="text-main-300">We support you</span> regardless where your content comes from</h4>
     <div class="grid grid-cols-1 md:grid-cols-2 mt-8 gap-3">
       <div>
-        <img class="w-full max-w-[50rem]" src="./assets/images/infos/hosting.png" />
+        <img class="w-full hover-up max-w-[50rem]" src="./assets/images/infos/hosting.png" />
       </div>
       <div class="flex items-center">
         <a tabindex="0" href="" target="_blank"
@@ -71,21 +71,21 @@
   </div>
 </section>
 
-<section class="mt-10 w-full md:max-w-[96rem] max-w-[40rem] mx-auto px-5">
+<section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
   <div class="card glass">
     <h2>Our <span class="text-main-500">team</span></h2>
     <h4><span class="text-main-300">Your feedback</span> is mandatory for the development as the ecosystem shall be
       designed by community, for community</h4>
     <ul @list class="mt-10 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-      <li @listItem *ngFor="let item of team" class="mb-5 flex flex-col bg-shadow-700 rounded-[1rem] shadow-lg">
+      <li @listItem *ngFor="let item of team" class="mb-5 flex flex-col bg-shadow-700 rounded-[1rem] shadow-lg hover-up">
         <div class="mx-auto w-full h-auto relative rounded-[1rem]">
 
           <div class="shadow-lg relative overflow-hidden rounded-[1rem]">
             <img [class.hidden]="item.isLoading" (load)="item.isLoading = false"
-              class="w-full mx-auto h-full img-placeholder rounded-[1rem]" [src]="item.image">
+              class="w-full mx-auto h-full hover-up img-placeholder rounded-[1rem]" [src]="item.image">
             <a [href]="item.linkedin"
               class="absolute w-full opacity-0 hover:bg-main-800 hover:opacity-75 focus-visible:bg-main-800 focus-visible:opacity-75 h-full top-0 right-0 left-0 bottom-0 rounded-[1rem]"></a>
-            <img *ngIf="item.isLoading" class="w-full mx-auto h-full img-placeholder rounded-[1rem]"
+            <img *ngIf="item.isLoading" class="w-full hover-up mx-auto h-full img-placeholder rounded-[1rem]"
               src="./assets/gifs/loading.gif">
           </div>
           <div class="px-3 py-4">
