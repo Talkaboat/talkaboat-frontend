@@ -7,7 +7,7 @@ li {
 }
 
 a, button {
-  @apply flex h-full min-w-[3rem] min-h-[3rem] px-5;
+  @apply flex h-full min-w-[3rem] min-h-[3rem] pl-5;
   span {
     @apply my-auto;
   }

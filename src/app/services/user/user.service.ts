@@ -6,7 +6,6 @@ import { UserProfileData } from '../repository/user-repository/models/user-profi
 import { UserRepositoryService } from '../repository/user-repository/user-repository.service';
 import { Web3Service } from '../web3/web3.service';
 import { ToastrService } from 'ngx-toastr';
-import { firstValueFrom, lastValueFrom } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -40,8 +39,6 @@ export class UserService {
         this.loaderService.show();
         await this.getUserProfile();
       }
-    } else {
-      await this.web3Service.reConnect();
     }
     this.loaderService.hide();
   }
