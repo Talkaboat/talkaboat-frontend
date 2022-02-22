@@ -3,25 +3,25 @@
   <div>
     <ul [class.w-[26rem]]="isSidebarOpen" class="py-5">
       <li class="hover-up md:hidden"><a [routerLink]="['']" class="flex" [queryParams]="{ 'tokenA': null, 'tokenB': null }">
-        <img src="./assets/images/sidebar/a.png" />
+        <img src="./assets/images/sidebar/a.png"  alt="aboat logo"/>
         <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
           Talkaboat
         </span>
       </a></li>
       <li class="hover-up"><a [routerLink]="['/shipyard']" class="flex" [queryParams]="{ 'tokenA': null, 'tokenB': null }">
-          <img src="./assets/images/sidebar/home.svg" />
+          <img src="./assets/images/sidebar/home.png"  alt="shipyard"/>
           <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
             {{ 'home' | translate}}
           </span>
         </a></li>
       <li class="hover-up"><a [routerLink]="['/swap']" class="flex" queryParamsHandling="">
-          <img src="./assets/images/sidebar/swap.svg" />
+          <img src="./assets/images/sidebar/swap.png"  alt="swap"/>
           <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
             {{ 'swap' | translate}}
           </span>
         </a></li>
       <li class="hover-up"><a [routerLink]="['/lounge']" class="flex" queryParamsHandling="">
-          <img src="./assets/images/sidebar/lounge.svg" />
+          <img src="./assets/images/sidebar/lounge.png" alt="lounge" />
           <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
             {{ 'lounge' | translate}}
           </span>
@@ -30,26 +30,26 @@
     <!-- BOTTOM AREA -->
     <ul [class.min-w-[20rem]]="isSidebarOpen" class="absolute  bottom-0 py-5">
       <li class="hover-up"><a [routerLink]="['/info']" class="flex" queryParamsHandling="">
-          <img src="./assets/images/sidebar/info.svg" />
+          <img src="./assets/images/sidebar/info.png"  alt="info" />
           <span [class.hidden]="!isSidebarOpen">
             {{ 'further_information' | translate}}
           </span>
         </a>
       </li>
       <li class="hover-up"><a [routerLink]="['/tasks']" class="flex" queryParamsHandling="">
-          <img src="./assets/images/sidebar/tasks.svg" />
+          <img src="./assets/images/sidebar/tasks.png"  alt="tasks" />
           <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
             {{ 'tasks' | translate}}
           </span>
         </a></li>
       <li class="hover-up"><a [routerLink]="['/gift']" class="flex" queryParamsHandling="">
-          <img src="./assets/images/sidebar/gift.svg" />
+          <img src="./assets/images/sidebar/gift.png"  alt="gift" />
           <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
             {{ 'gift' | translate}}
           </span>
         </a></li>
-      <li class="hover-up"><button (click)="toggleLang()" class="flex text-left font-semibold">
-          <img src="./assets/images/sidebar/globe.svg" />
+      <li class="hover-up"><button aria-label="change language" (click)="toggleLang()" class="flex text-left font-semibold">
+          <img src="./assets/images/sidebar/globe.png" alt="globe" />
           <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
             {{ 'lang' | translate}}
           </span>

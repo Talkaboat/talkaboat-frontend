@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit {
     {
       name: 'Alex',
       role: 'Marketing',
-      image: './assets/images/team/alex.jpg',
+      image: './assets/images/team/alex.png',
       isLoading: false
     },
     {
@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit {
       name: 'Joscha Reichenberg',
       role: 'App & Game Developer',
       linkedin: 'https://www.linkedin.com/in/joscha-reichenberg-323396227/',
-      image: './assets/images/team/Joscha.jpg',
+      image: './assets/images/team/joscha.png',
       isLoading: false
     },
   ];

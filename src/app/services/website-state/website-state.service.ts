@@ -17,7 +17,6 @@ export class WebsiteStateService {
     router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) {
         loaderService.hide();
-        console.log(ev.urlAfterRedirects);
         this.navigationHistory.push(ev.urlAfterRedirects);
       }
     });

@@ -53,27 +53,31 @@ a, button, input {
   @apply relative top-0 hover:top-[-0.3rem] transition-all duration-700;
 }
 
+body {
+  @apply text-[1.2rem] md:text-[1.4rem];
+}
+
 h1 {
-  @apply font-semibold text-[2.6rem] md:text-[3.2rem];
+  @apply font-semibold text-[2.8rem] md:text-[3.4rem];
 }
 
 h2 {
-  @apply font-semibold text-[2.1rem] md:text-[2.4rem];
+  @apply font-semibold text-[2.3rem] md:text-[2.6rem];
 }
 
 h3 {
-  @apply font-semibold text-[1.472rem] md:text-[1.872rem];
+  @apply font-semibold text-[1.672rem] md:text-[2.072rem];
 }
 
 h4 {
-  @apply font-semibold text-[1.2rem] md:text-[1.6rem];
+  @apply font-semibold text-[1.4rem] md:text-[1.8rem];
 }
 
 h5 {
-  @apply font-semibold text-[1.128rem] md:text-[1.328rem];
+  @apply font-semibold text-[1.328rem] md:text-[1.528rem];
 }
 
 h6 {
-  @apply font-semibold text-[1.072rem];
+  @apply font-semibold text-[1.272rem] md:text-[1.472rem];
 }
 

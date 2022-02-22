@@ -6,7 +6,7 @@
       <div>
         <label class="hidden" for="email">E-Mail</label>
         <input type="text"
-          class="bg-shadow-500 px-[1rem] rounded-[1rem] h-[4.5rem] w-[30rem]  text-main-100 text-[1.25rem] font-semibold"
+          class="bg-shadow-500 px-[1rem] rounded-[1rem] h-[4.5rem] w-[30rem]  text-main-100 font-semibold"
           formControlName="email" id="email" name="email" placeholder="E-Mail" required />
         <p id="register-email-error" class="mt-1 text-red-500" *ngIf="emailError">
           Please enter a valid email
@@ -15,23 +15,23 @@
       <div class="mt-3">
         <label class="hidden" for="username">Username</label>
         <input type="text"
-          class="bg-shadow-500 px-[1rem] rounded-[1rem] h-[4.5rem] w-[30rem]  text-main-100 text-[1.25rem] font-semibold"
+          class="bg-shadow-500 px-[1rem] rounded-[1rem] h-[4.5rem] w-[30rem]  text-main-100 font-semibold"
           formControlName="username" id="username" name="username" placeholder="Username" required />
         <p id="register-email-error" class="mt-1 text-red-500" *ngIf="usernameError">
           Please enter an alphanumeric username with 3 to 16 characters
         </p>
       </div>
-      <button (click)="connect()"
+      <button aria-label="connect wallet" (click)="connect()"
         class="mt-10 mx-auto text-[2rem] py-5 w-[28rem] font-semibold bg-main-500 rounded ring-1 ring-shadow-500">{{
         'connect_wallet' | translate }}</button>
     </form>
 
-    <p class="mt-10 text-[1.25rem]">Already on board? <a class="underline font-semibold"
+    <p class="mt-10">Already on board? <a class="underline font-semibold"
         [routerLink]="['/login']">Login</a></p>
     <hr class="w-[80%] mx-auto border-main-300 mt-10">
     <div class="mt-10">
       <p class="md:space-x-1 space-y-1 md:space-y-0 mb-4">
-        <button
+        <button aria-label="toggle register video"
           class="my-auto cursor-pointer mx-auto text-[2rem] px-5 py-3 bg-shadow-700 rounded-[1rem] text-main-500 font-semibold ring-1 ring-main-500"
           type="button" (click)="isRegisterVideoOpen = !isRegisterVideoOpen">
           How to register?

@@ -3,14 +3,14 @@
     <div tabindex="0" class="focus-visible:outline-none h-full bg-shadow-300  mx-auto max-w-[66rem] overflow-hidden rounded-[2rem] flex justify-between transition-all ease-in-out duration-500">
       <div class="flex w-full px-5 my-auto justify-between overflow-hidden">
         <div id="play-area" class="flex justify-between max-w-[10rem] my-auto mr-10 transition-all ease-in-out duration-500">
-          <button class="w-[2rem] h-[2rem] mr-5 hide-minimized my-auto"><img class="w-full h-full rotate-180" src="./assets/images/player/skip.png"/></button>
-          <button class="w-[3rem] h-[3rem] mr-3"><img class="w-full h-full" src="./assets/images/player/play.png"/></button>
-          <button class="w-[2rem] h-[2rem] hide-minimized my-auto"><img class="w-full h-full" src="./assets/images/player/skip.png"/></button>
+          <button aria-label="skip back" class="w-[2rem] h-[2rem] mr-5 hide-minimized my-auto"><img  alt="skip back" class="w-full h-full rotate-180" src="./assets/images/player/skip.png"/></button>
+          <button aria-label="play/pause"  class="w-[3rem] h-[3rem] mr-3"><img  alt="play/pause" class="w-full h-full" src="./assets/images/player/play.png"/></button>
+          <button aria-label="skip forward" class="w-[2rem] h-[2rem] hide-minimized my-auto"><img  alt="skip forward" class="w-full h-full" src="./assets/images/player/skip.png"/></button>
         </div>
         <div id="track-area my-auto">
           <div class="flex justify-between mx-auto transition-all ease-in-out duration-500 ">
             <div class="track-cover hidden md:block overflow-hidden hide-minimized my-auto">
-              <a class="rounded-[1rem]" tabindex="0"><img class="w-[8rem] h-[8rem]  minimize rounded-[1rem] inline" [src]="track.image" /></a>
+              <a class="rounded-[1rem]" tabindex="0"><img  [alt]="track.title_original + ' portrait'" class="w-[8rem] h-[8rem]  minimize rounded-[1rem] inline" [src]="track.image" /></a>
             </div>
             <div class="track-meta item-body px-2">
               <div class="track-title ">
@@ -25,7 +25,7 @@
 
         </div>
         <div id="my-auto">
-          <button class="w-8 h-10 rotate-90 my-auto" (click)="togglePlayer()"><img class="w-full h-full" src="./assets/images/player/play.png"/></button>
+          <button aria-label="toggle player" class="w-8 h-10 rotate-90 my-auto" (click)="togglePlayer()"><img alt="toggle" class="w-full h-full" src="./assets/images/player/play.png"/></button>
         </div>
       </div>
     </div>
