@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { SearchService } from 'src/app/services/search/search.service';
 
@@ -7,11 +7,14 @@ import { SearchService } from 'src/app/services/search/search.service';
   templateUrl: './search-slot.component.html',
   styleUrls: ['./search-slot.component.scss']
 })
-export class SearchSlotComponent implements OnInit {
+export class SearchSlotComponent implements OnInit, OnDestroy {
 
   searchTerm = new FormControl('', [Validators.required]);
 
   constructor(private readonly searchService: SearchService) { }
+
+  ngOnDestroy(): void {
+  }
 
   ngOnInit(): void {
     this.searchService.onChangedSearch.subscribe(term => this.searchTerm.setValue(term));
