@@ -14,11 +14,16 @@
 </div>
 
 
-<div tabindex="0" class="z-0 left-0 focus-visible:outline-none md:left-[4.5rem] transition-all h-[fit-content] ease-in-out duration-500 absolute bottom-0 right-0 pb-[16rem] md:top-[7.5rem]  top-[6.5rem]">
-  <div [@routeAnimations]="prepareRoute(outlet)" class="relative">
-    <router-outlet #outlet="outlet"></router-outlet>
+<div tabindex="0" class="z-0 left-0 focus-visible:outline-none md:left-[4.5rem] transition-all h-[fit-content] ease-in-out duration-500">
+  <div class="min-h-screen md:pt-[9.6rem] pt-[8rem]">
+    <div [@routeAnimations]="prepareRoute(outlet)" class="relative">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
   </div>
-  <app-footer></app-footer>
+
+  <div class="pb-[18rem]">
+    <app-footer></app-footer>
+  </div>
 </div>
 
 
