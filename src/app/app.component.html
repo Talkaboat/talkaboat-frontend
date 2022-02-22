@@ -1,6 +1,6 @@
-<div class="background fixed bottom-0 right-0 top-0 left-0">
-  <div class="logo-background transition-all ease-in-out left-[10%] duration-500">
-    <div class="logo-background-blur">
+<div class="background fixed bottom-0 right-0 top-0 left-0 overflow-hidden">
+  <div class="logo-background transition-all ease-in-out left-[10%] duration-500 overflow-hidden">
+    <div class="logo-background-blur overflow-hidden">
     </div>
   </div>
 </div>
@@ -14,16 +14,14 @@
 </div>
 
 
-<div tabindex="0" class="z-0 left-0 focus-visible:outline-none md:left-[4.5rem] transition-all h-[fit-content] ease-in-out duration-500">
-  <div class="min-h-screen md:pt-[9.6rem] pt-[8rem]">
-    <div [@routeAnimations]="prepareRoute(outlet)" class="relative">
+<div tabindex="0" class="z-0 left-0 focus-visible:outline-none md:left-[4.5rem] transition-all h-[fit-content] ease-in-out duration-500 overflow-hidden">
+  <div class="min-h-screen md:pt-[8.5rem] pt-[6.5rem] pb-[15rem]">
+    <div [@routeAnimations]="prepareRoute(outlet)" class="relative z-10">
       <router-outlet #outlet="outlet"></router-outlet>
     </div>
   </div>
 
-  <div class="pb-[18rem]">
-    <app-footer></app-footer>
-  </div>
+  <app-footer></app-footer>
 </div>
 
 

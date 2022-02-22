@@ -4,7 +4,7 @@
 }
 
 .minimized {
-  @apply h-[6rem];
+  @apply h-[4rem] md:h-[6rem];
   .hide-minimized {
     @apply hidden;
   }
