@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { GENRES } from 'src/constants/media/genres.constants';
 import { PodcastRepositoryService } from '../repository/search-repository/podcast-repository.service';
 import { UserService } from '../user/user.service';
@@ -9,6 +9,7 @@ import { UserService } from '../user/user.service';
 export class MediaHelperService {
   genreData = GENRES;
   library: number[] = [];
+  onLibraryChanged: EventEmitter<number[]> = new EventEmitter<number[]>();
   constructor(private readonly podcastRepositoryService: PodcastRepositoryService, private readonly userService: UserService) {
     userService.onUserStateChanged.subscribe(state => {
       if (state) {
@@ -21,7 +22,10 @@ export class MediaHelperService {
 
   public getLibrary() {
     this.podcastRepositoryService.getLibrary().subscribe(
-      entries => this.library = entries
+      entries => {
+        this.library = entries;
+        this.onLibraryChanged.emit(this.library);
+      }
     );
   }
 

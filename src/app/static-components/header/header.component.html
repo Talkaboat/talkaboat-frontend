@@ -12,17 +12,17 @@
   <nav
     class="border-gray-200 py-3 flex justify-between font-semibold max-h-[4.5rem] md:max-h-[5.5rem] rounded-b-[2rem]">
     <div id="left-header-area" class="flex text-[1.5rem]">
-      <button aria-label="toggle sidebar" class="mr-1 md:mr-5 w-[3rem] md:w-[4.5rem] md:h-[4.5rem] h-[3rem] my-auto bg-shadow-700 rounded-[1rem]" (click)="toggleSidebar()">
+      <button aria-label="toggle sidebar" class="mr-1 md:mr-5 w-[3.5rem] md:w-[4.5rem] md:h-[4.5rem] h-[3.5rem] my-auto bg-shadow-700 rounded-[1rem]" (click)="toggleSidebar()">
         &#9776;
       </button>
-      <a class="my-auto h-[fit-content] hidden text-[3rem] md:block cursor-pointer" tabindex="0" [routerLink]="['']">Talkaboat</a>
+      <a class="my-auto h-fit hidden text-[3rem] md:block cursor-pointer" tabindex="0" [routerLink]="['']">Talkaboat</a>
     </div>
-    <div id="search-slot-area" class="sm:pl-[4rem] md:pl-0 md:pr-[6rem]">
+    <div id="search-slot-area" class="sm:pl-[4rem] md:pl-0 md:pr-[6rem] my-auto h-fit">
       <app-search-slot></app-search-slot>
     </div>
     <div id="profile-icon-area" class="my-auto w-[7rem] md:w-[8rem] md:max-w-[8rem] max-w-[7rem] flex justify-end text-center">
       <a *ngIf="!userData.userName" [routerLink]="['/login']"
-        class="btn hover:outline-none w-full rounded-[1rem] md:py-[1.5rem]  px-[0.6rem] py-[0.75rem] bg-shadow-700 font-semibold">Login</a>
+        class="btn hover:outline-none w-full rounded-[1rem] md:py-[1.2rem]  px-[0.6rem] py-[0.8rem] bg-shadow-700 font-semibold">Login</a>
       <button aria-label="toggle profile sidebar" *ngIf="userData.userName" (click)="isProfileSidebarOpen = !isProfileSidebarOpen"
         class="hover:outline-none rounded-[1rem] md:py-[1.5rem] flex w-full justify-end ring-main-700 bg-shadow-700 ring-1 px-[0.8rem] py-[0.75rem] overflow-hidden text-ellipsis font-semibold">
         {{ userData.userName }}
