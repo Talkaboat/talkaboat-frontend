@@ -9,7 +9,23 @@ module.exports = {
   plugins: [
     require('@tailwindcss/line-clamp'),
   ],
+
   theme: {
+    extend: {
+      keyframes: {
+        'floating': {
+          '0%': {
+            transform: 'translateY(0px)'
+          },
+          '50%': {
+            transform: 'translateY(10px)'
+          },
+          '100%': {
+            transform: 'translateY(0px)'
+          },
+        },
+      },
+    },
     colors: {
       "main": {
         "50": "#F0F6FF",
@@ -39,6 +55,10 @@ module.exports = {
     },
     animation: {
       'spin-slow': 'spin 3s ease-in-out infinite',
+
+      'bounce-slow': 'bounce 3s ease-in-out infinite',
+
+      'floating': 'floating 3s ease-in-out infinite',
     },
     fontFamily: {
       sans: [ 'Raleway', 'Segoe UI', 'sans-serif' ]
