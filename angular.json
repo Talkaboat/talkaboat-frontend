@@ -58,8 +58,11 @@
             "development": {
               "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": false,
+              "namedChunks": true,
+              "aot": true,
+              "buildOptimizer": false,
+              "optimization": false
             }
           },
           "defaultConfiguration": "production"
