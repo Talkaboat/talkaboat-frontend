@@ -9,15 +9,28 @@ import { UserService } from '../user/user.service';
 export class MediaHelperService {
   genreData = GENRES;
   library: number[] = [];
+  isManipulating: number[] = [];
   onLibraryChanged: EventEmitter<number[]> = new EventEmitter<number[]>();
   constructor(private readonly podcastRepositoryService: PodcastRepositoryService, private readonly userService: UserService) {
     userService.onUserStateChanged.subscribe(state => {
       if (state) {
-        this.getLibrary();
+        this.setup();
       } else {
-        this.library = [];
+        this.reset();
       }
     });
+  }
+
+  public isBookmarked(id: number) {
+    return this.library.includes(id);
+  }
+
+  public setup() {
+    this.getLibrary();
+  }
+
+  public reset() {
+    this.library = [];
   }
 
   public getLibrary() {
@@ -27,6 +40,23 @@ export class MediaHelperService {
         this.onLibraryChanged.emit(this.library);
       }
     );
+  }
+
+  public addOrRemoveBookmark(id: number) {
+    if (this.isManipulating.includes(id)) {
+      return;
+    }
+    this.isManipulating.push(id);
+    if (this.isBookmarked(id)) {
+      this.podcastRepositoryService.removeBookmark(id).subscribe(_ => this.finishManipulation(id));
+    } else {
+      this.podcastRepositoryService.addBookmark(id).subscribe(_ => this.finishManipulation(id));
+    }
+  }
+
+  finishManipulation(id: number) {
+    this.getLibrary()
+    this.isManipulating = this.isManipulating.filter(entry => entry !== id);
   }
 
   public getGenreNamesFromIds(genreIds: number[] | undefined): string[] {

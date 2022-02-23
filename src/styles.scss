@@ -79,3 +79,6 @@ h6 {
   @apply font-semibold text-[1.272rem] md:text-[1.472rem];
 }
 
+.web3modal-modal-lightbox {
+  z-index: 60 !important;
+}

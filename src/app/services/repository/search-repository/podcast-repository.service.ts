@@ -32,13 +32,13 @@ export class PodcastRepositoryService extends RepositoryService {
     return this.post(api, query);
   }
 
-  addBookmark(aboat_id: string): Observable<any> {
-    const api = PODCAST_API.URL + PODCAST_API.LIBRARY_ADD_URL.replace("{id}", aboat_id);
+  addBookmark(aboat_id: number): Observable<any> {
+    const api = PODCAST_API.URL + PODCAST_API.LIBRARY_ADD_URL.replace("{id}", aboat_id.toString());
     return this.post(api, undefined);
   }
 
-  removeBookmark(aboat_id: string) {
-    const api = PODCAST_API.URL + PODCAST_API.LIBRARY_REMOVE_URL.replace("{id}", aboat_id);
+  removeBookmark(aboat_id: number) {
+    const api = PODCAST_API.URL + PODCAST_API.LIBRARY_REMOVE_URL.replace("{id}", aboat_id.toString());
     return this.post(api, undefined);
   }
 

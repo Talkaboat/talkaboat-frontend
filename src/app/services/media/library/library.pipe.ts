@@ -1,17 +1,33 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { MediaHelperService } from '../media-helper.service';
 
 @Pipe({
-  name: 'library'
+  name: 'library',
+  pure: false
 })
-export class LibraryPipe implements PipeTransform {
+export class LibraryPipe implements PipeTransform, OnDestroy {
 
-  constructor(private readonly mediaService: MediaHelperService) {
+  isBookmarked = false;
+  shouldRefresh = true;
+  subscription = new Subscription();
 
+  constructor(private readonly mediaHelper: MediaHelperService) {
+    this.subscription = this.mediaHelper.onLibraryChanged.subscribe(_ => {
+      this.shouldRefresh = true;
+    })
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: number, ...args: unknown[]): boolean {
+    if (this.shouldRefresh) {
+      this.shouldRefresh = false;
+      this.isBookmarked = this.mediaHelper.isBookmarked(value);
+    }
+
+    return this.isBookmarked;
   }
 
 }

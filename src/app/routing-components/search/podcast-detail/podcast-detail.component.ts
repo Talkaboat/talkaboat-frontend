@@ -23,7 +23,6 @@ export class PodcastDetailComponent implements OnInit {
     this.podcastData = JSON.parse(JSON.stringify(PODCAST_DETAIL_MOCK));
     this.canNavigateBack = this.websiteStateService.canNavigateBack();
     this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData?.genre_ids);
-    console.log(this.podcastData)
   }
 
   backNavigation() {
@@ -32,7 +31,7 @@ export class PodcastDetailComponent implements OnInit {
 
   play(episodeIndex: number) {
     if (this.podcastData && this.podcastData.episodes && this.podcastData.episodes.length > 0) {
-      console.log(this.podcastData.episodes[episodeIndex]);
+
     }
   }
 

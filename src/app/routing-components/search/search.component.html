@@ -3,9 +3,9 @@
     <div class="mx-auto w-full h-auto relative rounded-[1rem]">
 
       <div class="shadow-lg relative overflow-hidden rounded-[1rem]">
-        <img [alt]="item.title_original + ' portrait'" (load)="item.isLoading = false" class="w-full mx-auto h-full img-placeholder rounded-[1rem]" [src]="item.image">
+        <img width="120" height="120" [alt]="item.title_original + ' portrait'" (load)="item.isLoading = false" class="w-full mx-auto h-full img-placeholder rounded-[1rem]" [src]="item.image">
         <button aria-label="play track" *ngIf="item.podcast" [class.hidden]="item.isLoading" class="btn opacity-30 hover:opacity-75 hover:bg-main-800 focus-visible:bg-main-800 focus-visible:opacity-75 absolute w-full h-full top-0 right-0 left-0 bottom-0 bg-shadow-500 rounded-[1rem]" (click)="play(item)">
-          <img alt="play/pause" class="w-[5rem] h-[5rem] my-auto mx-auto img-placeholder rounded-[1rem]" src="./assets/images/player/play.png">
+          <img  width="60" height="60" alt="play/pause" class="w-[5rem] h-[5rem] my-auto mx-auto img-placeholder rounded-[1rem]" src="./assets/images/player/play.png">
         </button>
         <a *ngIf="!item.podcast" [routerLink]="['./podcast']"  [queryParams]="{ 'pd': item.id }" queryParamsHandling="merge" [class.hidden]="item.isLoading" class="absolute w-full opacity-0 hover:bg-main-800 hover:opacity-75 focus-visible:bg-main-800 focus-visible:opacity-75 h-full top-0 right-0 left-0 bottom-0 rounded-[1rem]" (click)="play(item)">
         </a>
@@ -26,8 +26,13 @@
     </div>
     <div class="mt-auto pb-3 mx-auto">
       <button aria-label="add to playlist or library" class="btn rounded-[1rem] px-8 py-3 bg-shadow-700 text-main-300 border-main-300 border-1 font-semibold" (click)="add(item)">
-        <span *ngIf="item.podcast"><img class="h-full max-h-[2.4rem]" src="./assets/images/library/bookmark_add.png"/></span>
-        <span *ngIf="!item.podcast">Add</span>
+        <span *ngIf="!item.podcast">
+          <img *ngIf="!(item.aboat_id | library); else bookmarked" width="24" height="24" class="h-full max-h-[2.4rem]" src="./assets/images/library/bookmark_add.png"/>
+          <ng-template #bookmarked>
+            <img width="24" height="24" class="h-full max-h-[2.4rem]" src="./assets/images/library/bookmark_remove.png"/>
+          </ng-template>
+        </span>
+        <span *ngIf="item.podcast">Add</span>
       </button>
     </div>
 

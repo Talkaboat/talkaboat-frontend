@@ -169,4 +169,12 @@ export const en = {
   gamefi_home_sub: "Trade your NFTs on our Marketplace or utilize them in our games. You can also engage in our DeFi features like Staking.",
   desc_home: "Aboat Entertainment",
   desc_home_sub: "Talkaboat is a podcast platform and first product of Aboat Entertainment. Each product will be part of the Aboat Ecosystem on Blockchain and driven through the home made token: $ABOAT. Another thing that all products will share is the heavy focus on gamification to ensure a seamless transition into the Entertainment Metaverse.",
+  equality_home: 'Built for <span class="text-main-500">equality</span>',
+  equality_home_benefit: '<span class="text-main-300">Creators</span> and <span class="text-main-300">Fans</span> benefit <span class="text-main-300">equally</span> in our <span class="text-main-300">ecosystem</span>',
+  ecosystem_home: 'One <span class="text-main-500 ">token</span> - a whole <span class="text-main-500">ecosystem</span>',
+  ecosystem_token_home: 'Every <span class="text-main-300">product</span> and <span class="text-main-300">feature</span> will be based on <span class="text-main-300">$ABOAT</span>',
+  content_home: 'Your <span class="text-main-500">content</span>. Your <span class="text-main-500">decisions</span>',
+  content_support_home: '<span class="text-main-300">We support you</span> regardless where your content comes from',
+  team_home: 'Our <span class="text-main-500">team</span>',
+  team_feedback_home: '<span class="text-main-300">Your feedback</span> is mandatory for the development as the ecosystem shall bedesigned by community, for community',
 }
