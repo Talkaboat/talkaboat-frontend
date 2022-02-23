@@ -40,6 +40,7 @@
             "production": {
               "buildOptimizer": true,
               "optimization": true,
+              "aot": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -58,8 +59,11 @@
             "development": {
               "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": false,
+              "namedChunks": true,
+              "aot": true,
+              "buildOptimizer": false,
+              "optimization": false
             }
           },
           "defaultConfiguration": "production"

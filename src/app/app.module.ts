@@ -9,52 +9,34 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
-import { TranslatePipe } from './services/i18n/translate.pipe';
-import { HeaderComponent } from './static-components/header/header.component';
-import { SidebarComponent } from './static-components/sidebar/sidebar.component';
-import { FooterComponent } from './static-components/footer/footer.component';
-import { MediaPlayerComponent } from './static-components/media-player/media-player.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
 import { HomeComponent } from './routing-components/home/home.component';
 import { LoginComponent } from './routing-components/login/login.component';
-import { ProfileSidebarComponent } from './static-components/header/profile-sidebar/profile-sidebar.component';
 import { RegisterComponent } from './routing-components/register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoadingComponent } from './static-components/loading/loading.component';
-import { SearchSlotComponent } from './static-components/header/search-slot/search-slot.component';
-import { SearchComponent } from './routing-components/search/search.component';
-import { PodcastDetailComponent } from './routing-components/podcast-detail/podcast-detail.component';
-import { EpisodeDetailComponent } from './routing-components/episode-detail/episode-detail.component';
+import { SharedModule } from './static-components/shared.module';
+import { CommonModule } from '@angular/common';
 import { LibraryPipe } from './services/media/library/library.pipe';
-import { LoadingAnimationComponent } from './static-components/loading/loading-animation/loading-animation.component';
+import { PipeModule } from './pipes/pipe.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TranslatePipe,
-    HeaderComponent,
-    SidebarComponent,
-    FooterComponent,
-    MediaPlayerComponent,
     HomeComponent,
     LoginComponent,
-    ProfileSidebarComponent,
     RegisterComponent,
-    LoadingComponent,
-    SearchSlotComponent,
-    SearchComponent,
-    PodcastDetailComponent,
-    EpisodeDetailComponent,
-    LibraryPipe,
-    LoadingAnimationComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
+    PipeModule,
+    SharedModule,
     AppRoutingModule,
+    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

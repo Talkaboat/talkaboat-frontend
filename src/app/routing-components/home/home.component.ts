@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { listAnimation, listItemAnimation } from 'src/app/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+
+  animations: [listAnimation, listItemAnimation]
 })
 export class HomeComponent implements OnInit {
   partners = [
