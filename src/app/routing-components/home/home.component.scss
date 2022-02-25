@@ -2,6 +2,10 @@
   line-height: 8rem;
 }
 
+.active-selection {
+  @apply bg-main-500 ring-1 ring-shadow-700
+}
+
 @media screen and (min-width: 640px) {
   .landing {
     position:initial;

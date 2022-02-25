@@ -17,7 +17,7 @@
   <h4 [innerHtml]="'info_description' | translate" class="px-3 mb-10 max-w-[60rem]"></h4>
   <div class="flex  justify-start mt-10 px-3">
     <a tabindex="0" [routerLink]="['/register']"
-      class="text-center text-[2rem] mr-3 md:mr-10 flex items-center w-[16rem] py-3 md:w-[24rem] rounded-[1rem] font-semibold bg-main-500 ring-1 ring-shadow-500"><span
+      class="text-center text-[2rem] mr-3 md:mr-10 flex items-center w-[16rem] py-3 md:w-[24rem] rounded-[1rem] font-semibold bg-main-500 ring-1 ring-shadow-700"><span
         class="mx-auto">{{ 'register_now' | translate }}</span></a>
     <a tabindex="0" [routerLink]="['/pitch']"
       class="text-center text-[2rem] w-[16rem] py-3 flex items-center md:w-[24rem] font-semibold rounded-[1rem] bg-shadow-500  ring-1 ring-main-500"><span
@@ -29,11 +29,11 @@
 <section class="mt-[10rem] w-full md:max-w-[96rem]  mx-auto px-5 text-center">
   <h3>Please select:</h3>
   <div class="w-full flex justify-between mt-4">
-    <button [class.activeSelection]="!isCreator" (mouseover)="isCreator = false" (click)="isCreator = false" class="mx-auto text-[2rem] w-[16rem] py-3 px-5 md:w-[24rem] font-semibold rounded-[1rem] bg-shadow-500  ring-1 ring-main-500">
+    <button [class.active-selection]="!isCreator" (mouseover)="isCreator = false" (click)="isCreator = false" class="mx-auto text-[2rem] w-[16rem] py-3 px-5 md:w-[24rem] font-semibold rounded-[1rem] bg-shadow-500  ring-1 ring-main-500">
       <img width="256" height="256"  src="./assets/images/home/fan.png">
       <p>I'm a Fan</p>
     </button>
-    <button [class.activeSelection]="isCreator" (mouseover)="isCreator = true" (click)="isCreator = true" class="mx-auto text-[2rem] w-[16rem] py-3 px-5 md:w-[24rem] font-semibold rounded-[1rem] bg-shadow-500  ring-1 ring-main-500">
+    <button [class.active-selection]="isCreator" (mouseover)="isCreator = true" (click)="isCreator = true" class="mx-auto text-[2rem] w-[16rem] py-3 px-5 md:w-[24rem] font-semibold rounded-[1rem] bg-shadow-500  ring-1 ring-main-500">
       <img width="256" height="256"  src="./assets/images/home/creator.png">
       <p>I'm a Creator</p>
     </button>
