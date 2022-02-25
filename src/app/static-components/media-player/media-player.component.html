@@ -29,15 +29,14 @@
       </div>
     </div>
 </div> -->
-<div class="media-player-bg grid">
+<div class="media-player-bg grid grid-cols-3">
   <vg-player class="hidden" (onPlayerReady)="onPlayerReady($event)">
-    <audio #myMedia
-           [vgMedia]="$any(myMedia)"
-           id="my-video"
-           src="http://static.videogular.com/assets/videos/videogular.mp4"
-           type="video/mp4">
-  </audio>
-</vg-player>
-<button (click)="play()">fire</button>
-<button class="bg-[green]" (click)="pause()">pause</button>
+    <audio #myMedia [vgMedia]="$any(myMedia)" id="my-video" src="{{audio}}" type="video/mp4" [attr.autoplay]="initialized ? '' : null">
+    </audio>
+  </vg-player>
+  <button class="" (click)="play()">fire</button>
+  <button class="bg-[green]" (click)="pause()">pause</button>
+  <button class="bg-[orange]" (click)="changeSource()">change</button>
+  <button class="bg-[blue]" (click)="skip()">skip</button>
+  <button class="bg-[brown] col-start-3" (click)="back()">back</button>
 </div>
