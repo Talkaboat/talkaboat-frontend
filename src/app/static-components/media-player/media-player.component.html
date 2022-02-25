@@ -1,5 +1,4 @@
-
-<div [class.minimized]="mediaPlayerState == 'MINIMIZED'" class="z-30 fixed overflow-hidden left-[1rem] md:left-[1rem] bottom-[1rem] h-[8rem] md:h-[12rem] right-[1rem] transition-all ease-in-out duration-500">
+<!-- <div [class.minimized]="mediaPlayerState == 'MINIMIZED'" class="z-30 fixed overflow-hidden left-[1rem] md:left-[1rem] bottom-[1rem] h-[8rem] md:h-[12rem] right-[1rem] transition-all ease-in-out duration-500">
     <div tabindex="0" class="focus-visible:outline-none h-full bg-shadow-300  mx-auto max-w-[66rem] overflow-hidden rounded-[2rem] flex justify-between transition-all ease-in-out duration-500">
       <div class="flex w-full px-5 my-auto justify-between overflow-hidden">
         <div id="play-area" class="flex justify-between max-w-[10rem] my-auto mr-10 transition-all ease-in-out duration-500">
@@ -29,4 +28,16 @@
         </div>
       </div>
     </div>
+</div> -->
+<div class="media-player-bg grid">
+  <vg-player class="hidden" (onPlayerReady)="onPlayerReady($event)">
+    <audio #myMedia
+           [vgMedia]="$any(myMedia)"
+           id="my-video"
+           src="http://static.videogular.com/assets/videos/videogular.mp4"
+           type="video/mp4">
+  </audio>
+</vg-player>
+<button (click)="play()">fire</button>
+<button class="bg-[green]" (click)="pause()">pause</button>
 </div>

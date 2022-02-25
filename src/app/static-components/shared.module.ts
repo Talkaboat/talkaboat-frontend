@@ -1,4 +1,5 @@
 import { CommonModule } from "@angular/common";
+import { VgCoreModule } from '@videogular/ngx-videogular/core'
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -33,7 +34,8 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
     RouterModule,
     FormsModule,
     PipeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    VgCoreModule
   ],
   exports: [
     ProfileSidebarComponent,

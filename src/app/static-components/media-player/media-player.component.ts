@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VgApiService, VgFullscreenApiService } from '@videogular/ngx-videogular/core';
 import { WebsiteStateService } from 'src/app/services/website-state/website-state.service';
 import { MediaPlayerState } from './mediaplayer-state';
 
@@ -37,8 +38,12 @@ export class MediaPlayerComponent implements OnInit {
   }
 
   public mediaPlayerState: MediaPlayerState = MediaPlayerState.MAXIMIZED;
+  public preload: string = 'auto';
+  public api: VgApiService | undefined;
+  public readyToPlay: boolean = false;
 
-  constructor(private readonly websiteStateService: WebsiteStateService) { }
+  constructor(
+    private readonly websiteStateService: WebsiteStateService) { }
 
   ngOnInit(): void {
     this.websiteStateService.onMediaPlayerStateChanged.subscribe((state: MediaPlayerState) => {
@@ -48,6 +53,31 @@ export class MediaPlayerComponent implements OnInit {
 
   togglePlayer() {
     this.mediaPlayerState = this.mediaPlayerState == MediaPlayerState.MAXIMIZED || this.mediaPlayerState == MediaPlayerState.OPEN ? MediaPlayerState.MINIMIZED : MediaPlayerState.MAXIMIZED;
+  }
+
+  onPlayerReady(api: VgApiService) {
+      this.api = api;
+      console.log(this.api.getDefaultMedia().canPlay);
+      this.api.getDefaultMedia().subscriptions.ended.subscribe(
+          () => {
+              // Set the video to the beginning
+              if(this.api) {
+                this.api.getDefaultMedia().currentTime = 0;
+              }
+          }
+      );
+  }
+
+  play() {
+    if (this.api) {
+      this.api.play();
+    }
+  }
+
+  pause() {
+    if (this.api) {
+      this.api.pause();
+    }
   }
 
 }
