@@ -13,7 +13,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
-import { HomeComponent } from './routing-components/home/home.component';
 import { LoginComponent } from './routing-components/login/login.component';
 import { RegisterComponent } from './routing-components/register/register.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -24,7 +23,6 @@ import { SharedModule } from './static-components/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     LoginComponent,
     RegisterComponent,
   ],

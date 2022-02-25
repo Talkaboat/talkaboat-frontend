@@ -31,7 +31,6 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
   imports: [
     CommonModule,
     RouterModule,
-    BrowserModule,
     FormsModule,
     PipeModule,
     ReactiveFormsModule
