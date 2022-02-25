@@ -177,4 +177,8 @@ export const en = {
   content_support_home: '<span class="text-main-300">We support you</span> regardless where your content comes from',
   team_home: 'Our <span class="text-main-500">team</span>',
   team_feedback_home: '<span class="text-main-300">Your feedback</span> is mandatory for the development as the ecosystem shall bedesigned by community, for community',
+  want_header: 'You want...',
+  want_sub: '<ul><li>... more <span class="text-main-300">visiblity</span>.</li><li>... fair <span class="text-main-300">monetization</span>.</li><li>... an engaged <span class="text-main-300">community</span>.</li></ul>',
+  need_header: 'But need help to...',
+  need_sub: '<ul><li>... <span class="text-main-300">kickstart</span> your community?</li><li>... <span class="text-main-300">monetize</span> your content?</li><li>... <span class="text-main-300">engage</span> with community?</li></ul>'
 }

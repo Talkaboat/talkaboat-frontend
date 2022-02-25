@@ -6,14 +6,17 @@ import { UserProfileData } from '../repository/user-repository/models/user-profi
 import { UserRepositoryService } from '../repository/user-repository/user-repository.service';
 import { Web3Service } from '../web3/web3.service';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
   userData: UserProfileData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
-
   onUserStateChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+  onSignMessageRequested: EventEmitter<boolean> = new EventEmitter<boolean>();
+  signRequestId = 0;
+  cancelRequestId = -1;
   constructor(
     private readonly userRepositoryService: UserRepositoryService,
     private readonly web3Service: Web3Service,
@@ -49,16 +52,25 @@ export class UserService {
     if (this.web3Service.accounts) {
       this.loaderService.show();
       this.userRepositoryService.register(email, username, this.web3Service.accounts[0]).subscribe({
-        next: v => this.signAuthorizationError(v),
+        next: v => {
+          this.signAuthorizationRequestAndConfirmWallet(v);
+        },
         error: e => this.registerError(e)
       })
     }
   }
 
   signAuthorizationRequestAndConfirmWallet(authorizationRequest: UserAuthorizationRequestResponse) {
+    const requestId = this.signRequestId++;
+    this.onSignMessageRequested.emit(true);
     this.web3Service.web3.eth.personal.sign(authorizationRequest.key, this.web3Service.accounts[0])
-      .then((v: string) => this.login(v))
-      .catch((e: any) => this.signAuthorizationError(e));
+      .then((v: string) => {
+        if (this.cancelRequestId < requestId) {
+          this.confirmWallet(v);
+        }
+      })
+      .catch((e: any) => this.signAuthorizationError(e))
+      .finally(() => this.onSignMessageRequested.emit(false));
   }
 
   confirmWallet(signature: string) {
@@ -104,9 +116,15 @@ export class UserService {
   }
 
   signAuthorizationRequestAndLogin(authorizationRequest: UserAuthorizationRequestResponse) {
+    const requestId = this.signRequestId++;
     this.web3Service.web3.eth.personal.sign(authorizationRequest.key, this.web3Service.accounts[0])
-      .then((v: string) => this.login(v))
-      .catch((e: any) => this.signAuthorizationError(e));
+      .then((v: string) => {
+        if (this.cancelRequestId < requestId) {
+          this.login(v)
+        }
+      })
+      .catch((e: any) => this.signAuthorizationError(e))
+      .finally(() => this.onSignMessageRequested.emit(false));
   }
 
   login(signature: string) {
@@ -136,6 +154,14 @@ export class UserService {
   }
 
   profileError(error: any) {
+    this.loaderService.hide();
+    localStorage.removeItem('aboat_access');
+  }
+
+  cancelSign() {
+    this.web3Service.disconnect();
+    localStorage.removeItem('aboat_access');
+    this.cancelRequestId = this.signRequestId - 1;
     this.loaderService.hide();
   }
 }

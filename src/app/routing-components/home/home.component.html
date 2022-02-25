@@ -40,6 +40,8 @@
   </div>
 </section>
 
+
+
 <div *ngIf="isCreator">
   <app-creator-home></app-creator-home>
 </div>
@@ -47,6 +49,14 @@
 <div *ngIf="!isCreator">
   <app-fan-home></app-fan-home>
 </div>
+
+<section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
+  <div class="card glass">
+    <h2 [innerHtml]=" 'equality_home' | translate "></h2>
+    <h4 [innerHtml]=" 'equality_home_benefit' | translate"></h4>
+    <img width="910" height="295" loading="lazy" class="mt-8 w-full hover-up" src="./assets/images/infos/reward_system.png"  alt="reward system info graphic" />
+  </div>
+</section>
 
 <section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
   <div class="card glass">

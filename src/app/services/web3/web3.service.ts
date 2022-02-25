@@ -32,11 +32,10 @@ export class Web3Service {
           },
           chainId: 56
         }
-      }
+      },
     };
 
     this.web3Modal = new Web3Modal({
-      cacheProvider: true, // optional
       providerOptions, // required
       network: "binance",
       theme: {
@@ -81,7 +80,7 @@ export class Web3Service {
 
   async connect(clearCached = false) {
     if (clearCached) {
-        await this.web3Modal.clearCachedProvider();
+      await this.web3Modal.clearCachedProvider();
     }
     this.provider = await this.web3Modal.connect();
     if (this.provider) {
@@ -105,6 +104,11 @@ export class Web3Service {
   async disconnect() {
     this.web3Modal.clearCachedProvider();
     this.web3 = undefined;
+    try {
+      this.provider.disconnect();
+    } catch (error) {
+      //Can't disconnect
+    }
     this.provider = undefined;
     await this.defaultLogin();
   }
