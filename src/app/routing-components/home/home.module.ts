@@ -4,10 +4,14 @@ import { HomeComponent } from './home.component'
 import { HomeRoutingModule } from './home-routing.module';
 import { PipeModule } from '../../pipes/pipe.module';
 import { SharedModule } from 'src/app/static-components/shared.module';
+import { CreatorHomeComponent } from './creator-home/creator-home.component';
+import { FanHomeComponent } from './fan-home/fan-home.component';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    CreatorHomeComponent,
+    FanHomeComponent
   ],
   imports: [
     CommonModule,
