@@ -35,7 +35,7 @@ export const en = {
   explore_sub_header: 'with our podcast roulette!',
   studio_image: './assets/images/collection/studio.jpg',
   responsive_image: './assets/images/collection/responsive.jpg',
-  talkaboat_sub: '<span class="col-lg-3 text-center mb-3">Discover.</span><span class="col-lg-3 text-center mb-3">Listen.</span><span class="col-lg-5 text-center mb-3">Earn.</span>',
+  talkaboat_sub: '<span class="col-lg-3 text-center mb-3">Use.</span><span class="col-lg-3 text-center mb-3">Enjoy.</span><span class="col-lg-5 text-center mb-3">Earn.</span>',
   talkaboat_info: "85 % der Podcaster erhalten nahezu keine Reichweite und Werbemittel.<br>Talkaboat setzt auf ein Krypto-Ökosystem bei dem Podcaster und Zuhörer belohnt werden.<br>Die Community steht dabei stets im Vordergrund und kann auch kleine Podcaster komfortabel unterstützen.<br><br><b>Let's Talkaboat!<b>",
   talkaboat_entry: 'What would you like to do?',
   unique: 'Unique',
@@ -178,7 +178,18 @@ export const en = {
   team_home: 'Our <span class="text-main-500">team</span>',
   team_feedback_home: '<span class="text-main-300">Your feedback</span> is mandatory for the development as the ecosystem shall bedesigned by community, for community',
   want_header: 'You want...',
+  creator_ambassador: 'Become an ambassador now!',
   want_sub: '<ul><li>... more <span class="text-main-300">visiblity</span>.</li><li>... fair <span class="text-main-300">monetization</span>.</li><li>... an engaged <span class="text-main-300">community</span>.</li></ul>',
   need_header: 'But need help to...',
-  need_sub: '<ul><li>... <span class="text-main-300">kickstart</span> your community?</li><li>... <span class="text-main-300">monetize</span> your content?</li><li>... <span class="text-main-300">engage</span> with community?</li></ul>'
+  need_sub: '<ul><li>... <span class="text-main-300">kickstart</span> your community?</li><li>... <span class="text-main-300">monetize</span> your content?</li><li>... <span class="text-main-300">engage</span> with community?</li></ul>',
+  got_you_creator: 'We assist you...',
+  got_you_creator_sub: '<ul><li>... <span class="text-main-300">free content aggregation and hosting</span></li><li>... <span class="text-main-300">blockchain-based ecosystem</span></li><li>... <span class="text-main-300">bust common monetization models</span></li><li>... <span class="text-main-300">bring fair monetization for everyone</span></li><li>... <span class="text-main-300">incentivizing the engagement</span></li>',
+  login_welcome: 'Welcome on board!',
+  login_info: 'You only have to connect your wallet if you are already registered.',
+  not_registered: 'Not yet on board?',
+  register_sub: 'Please fill the form below.',
+  invalid_email: 'Please submit a valid E-Mail',
+  invalid_username: 'Please submit a valid alphanumeric username with 3 to 16 characters.',
+  already_registered: 'Already on board?',
+  how_to_register: 'How to register?'
 }

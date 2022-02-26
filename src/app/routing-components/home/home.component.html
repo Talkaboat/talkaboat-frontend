@@ -27,15 +27,14 @@
 </section>
 
 <section class="mt-[10rem] w-full md:max-w-[96rem]  mx-auto px-5 text-center">
-  <h3>Please select:</h3>
   <div class="w-full flex justify-between mt-4">
     <button [class.active-selection]="!isCreator" (mouseover)="isCreator = false" (click)="isCreator = false" class="mx-auto text-[2rem] w-[16rem] py-3 px-5 md:w-[24rem] font-semibold rounded-[1rem] bg-shadow-500  ring-1 ring-main-500">
       <img width="256" height="256"  src="./assets/images/home/fan.png">
-      <p>I'm a Fan</p>
+      <p>{{ 'home_fan' | translate }}</p>
     </button>
     <button [class.active-selection]="isCreator" (mouseover)="isCreator = true" (click)="isCreator = true" class="mx-auto text-[2rem] w-[16rem] py-3 px-5 md:w-[24rem] font-semibold rounded-[1rem] bg-shadow-500  ring-1 ring-main-500">
       <img width="256" height="256"  src="./assets/images/home/creator.png">
-      <p>I'm a Creator</p>
+      <p> {{ 'home_creator' | translate }}</p>
     </button>
   </div>
 </section>
