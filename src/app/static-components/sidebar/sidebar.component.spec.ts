@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
-import { TranslatePipe } from 'src/app/services/i18n/translate.pipe';
+import { TranslatePipe } from 'src/app/pipes/translate/translate.pipe';
 
 import { SidebarComponent } from './sidebar.component';
 
