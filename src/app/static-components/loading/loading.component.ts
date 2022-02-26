@@ -11,19 +11,21 @@ import { UserService } from 'src/app/services/user/user.service';
 export class LoadingComponent implements OnInit, OnDestroy {
 
   show = false;
-  private subscription: Subscription = new Subscription();
+  isSignRequest = false;
+  private subscriptions: Subscription[] = [];
 
   constructor(private readonly loaderService: LoaderService, private readonly userService: UserService) { }
 
   ngOnInit() {
-    this.subscription = this.loaderService.onLoadingStateChanged
+    this.subscriptions.push(this.loaderService.onLoadingStateChanged
       .subscribe((state: boolean) => {
         this.show = state;
-      });
+      }));
+    this.subscriptions.push(this.userService.onSignMessageRequested.subscribe(state => this.isSignRequest = state));
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
   cancelSignRequest() {

@@ -117,6 +117,7 @@ export class UserService {
 
   signAuthorizationRequestAndLogin(authorizationRequest: UserAuthorizationRequestResponse) {
     const requestId = this.signRequestId++;
+    this.onSignMessageRequested.emit(true);
     this.web3Service.web3.eth.personal.sign(authorizationRequest.key, this.web3Service.accounts[0])
       .then((v: string) => {
         if (this.cancelRequestId < requestId) {
