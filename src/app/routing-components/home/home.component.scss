@@ -6,6 +6,14 @@
   @apply bg-main-500 ring-1 ring-shadow-700
 }
 
+.creator {
+  @apply text-creator-500;
+}
+
+.fan {
+  @apply text-fan-500;
+}
+
 @media screen and (min-width: 640px) {
   .landing {
     position:initial;

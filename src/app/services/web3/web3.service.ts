@@ -1,8 +1,8 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import Web3 from "web3";
-import Web3Modal from "web3modal";
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import { BLOCKCHAIN } from 'src/constants/blockchain.constants';
+import Web3 from "web3";
+import Web3Modal from "web3modal";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,7 @@ export class Web3Service {
       walletconnect: {
         package: WalletConnectProvider, //required
         options: {
+
           bridge: 'https://bridge.walletconnect.org',
           rpc: {
             1: "https://bsc-dataseed.binance.org/",

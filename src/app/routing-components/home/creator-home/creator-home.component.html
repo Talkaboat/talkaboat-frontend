@@ -1,19 +1,19 @@
-<section class="mt-10 w-full md:max-w-[96rem]  px-5 mx-auto">
-  <div class="card glass grid sm:grid-cols-2 grid-cols-1">
+<section class="mt-10 w-full md:max-w-[96rem]  px-5 mx-auto ">
+  <div class="card glass grid sm:grid-cols-2 grid-cols-1  gap-y-10 ">
     <div>
-      <h2 class="text-main-500" [innerHtml]=" 'want_header' | translate "></h2>
-      <h3 class="mt-10 px-3" [innerHtml]=" 'want_sub' | translate "></h3>
+      <h2 class="text-creator-500" [innerHtml]=" 'want_header' | translate "></h2>
+      <h3 class="sm:mt-10 mt-3 px-3" [innerHtml]=" 'want_sub' | translate "></h3>
     </div>
     <div>
-      <h2 class="text-main-500" [innerHtml]=" 'need_header' | translate "></h2>
-      <h3 class="mt-10 px-3" [innerHtml]=" 'need_sub' | translate "></h3>
+      <h2 class="text-creator-500" [innerHtml]=" 'need_header' | translate "></h2>
+      <h3 class="sm:mt-10 mt-3 px-3" [innerHtml]=" 'need_sub' | translate "></h3>
     </div>
   </div>
 </section>
 
 <section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
   <div class="card glass">
-    <h2 class="text-main-500" [innerHtml]=" 'got_you_creator' | translate "></h2>
+    <h2 class="text-creator-500" [innerHtml]=" 'got_you_creator' | translate "></h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 content-center">
       <div class="flex order-2 sm:order-1">
         <h3 class="mt-10" [innerHtml]=" 'got_you_creator_sub' | translate"></h3>
@@ -27,7 +27,7 @@
 
 <section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
   <div class="card glass">
-    <h2 [innerHtml]=" 'content_home' | translate "></h2>
+    <h2 class="text-creator-500" [innerHtml]=" 'content_home' | translate "></h2>
     <h4 [innerHtml]=" 'content_support_home' | translate "></h4>
     <div class="grid grid-cols-1 md:grid-cols-2 mt-8 gap-3">
       <div>
@@ -35,7 +35,7 @@
       </div>
       <div class="flex items-center mx-auto px-3">
         <a tabindex="0" href="" target="_blank"
-          class="text-center mt-10 text-[2rem] md:my-auto py-3 px-5 flex items-center font-semibold rounded-[1rem] bg-shadow-500  ring-1 ring-main-500">{{ 'creator_ambassador' | translate}}</a>
+          class="text-center mt-10 text-[2rem] md:my-auto py-3 px-5 flex items-center font-semibold rounded-[1rem] bg-shadow-500  ring-1 ring-creator-500">{{ 'creator_ambassador' | translate}}</a>
       </div>
     </div>
   </div>

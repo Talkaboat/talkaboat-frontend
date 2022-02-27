@@ -2,6 +2,6 @@
   @apply w-[14rem] max-h-[500rem] right-[1rem];
 }
 
-div.btn, button {
-  @apply hover:outline-none w-full rounded-[1rem] md:py-[1.5rem] my-[0.5rem] px-[0.6rem] py-[0.75rem] bg-shadow-500 text-main-300 font-semibold text-center;
+.btn, button {
+  @apply md:py-[1.5rem] my-[0.5rem] px-[0.6rem] py-[0.75rem] bg-shadow-500;
 }

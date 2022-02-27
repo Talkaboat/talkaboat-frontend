@@ -191,5 +191,13 @@ export const en = {
   invalid_email: 'Please submit a valid E-Mail',
   invalid_username: 'Please submit a valid alphanumeric username with 3 to 16 characters.',
   already_registered: 'Already on board?',
-  how_to_register: 'How to register?'
+  how_to_register: 'How to register?',
+  home_fan: 'I want to discover!',
+  home_creator: 'I want to create!',
+  fan_want_header: 'You want...',
+  fan_want_sub: '<ul> <li>... to enjoy <span class="text-main-300">discovery</span>. </li> <li> ... to be <span class = "text-main-300">part</span> of the <span class = "text-main-300 "> success </span>. </li> <li> ... an active <span class =" text-main-300 "> community </span>. </li> </ul> ' ,
+  fan_need_header: 'And want a platform that...',
+  fan_need_sub: '<ul> <li> ... takes <span class="text-main-300"> community feedback </span> seriously? </li> <li> ... rewards you for <span class="text-main-300">using</span>?</li> <li> ... makes <span class="text-main-300">discovery entertaining</span>?</li> </ul> ',
+  got_you_fan: 'Then you\'ve come to the right place! We offer ... ',
+  got_you_fan_sub: '<ul> <li> ... <span class = "text-main-300"> rewards </span> for <span class = "text-main-300"> usage </span> of our platform !</li> <li> ... <span class = "text-main-300">gamification </span> for <span class = "text-main-300">fun </span> while using! </li> <li> ... our <span class="text-main-300">blockchain-based ecosystem</span>! </li> <li> ... easy and fast <span class = " text-main-300 "> Support </span> of your favorite artist! </li> <li> ... <span class =" text-main-300 "> fair monetization</span> for <span class =" text-main-300 "><u>all</u> </span>! </li> </ul> ',
 }

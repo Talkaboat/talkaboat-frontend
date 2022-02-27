@@ -51,7 +51,7 @@
 
 <section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
   <div class="card glass">
-    <h2 [innerHtml]=" 'equality_home' | translate "></h2>
+    <h2 [class.creator]="isCreator" [class.fan]="!isCreator" [innerHtml]=" 'equality_home' | translate "></h2>
     <h4 [innerHtml]=" 'equality_home_benefit' | translate"></h4>
     <img width="910" height="295" loading="lazy" class="mt-8 w-full hover-up" src="./assets/images/infos/reward_system.png"  alt="reward system info graphic" />
   </div>
@@ -59,7 +59,7 @@
 
 <section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
   <div class="card glass">
-    <h2 [innerHtml]=" 'team_home' | translate"></h2>
+    <h2 [class.creator]="isCreator" [class.fan]="!isCreator" [innerHtml]=" 'team_home' | translate"></h2>
     <h4 [innerHtml]="'team_feedback_home' | translate"></h4>
     <ul @list class="mt-10 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
       <li @listItem *ngFor="let item of team" class="mb-5 flex flex-col bg-shadow-700 rounded-[1rem] shadow-lg hover-up">

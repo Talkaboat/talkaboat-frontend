@@ -1,13 +1,9 @@
 <div [class.open]="isProfileSidebarOpen" class="fixed z-30 bg-shadow-700 max-h-0 right-[0rem] top-[6.5rem] overflow-hidden md:top-[7.5rem] md:rounded-[1rem] rounded-[2rem] w-0 transition-all duration-500 ease-in-out">
   <div class="p-5 min-w-[14rem] min-h-[5rem]">
     <div *ngIf="isProfileSidebarOpen" class="content">
-      <div class="btn">
-        <a class="">{{ userData.userName }}</a>
-      </div>
+        <a class="btn w-full h-full inline-block cursor-pointer">{{ userData.userName }}</a>
       <button aria-label="resend email" *ngIf="!userData.verified" class="btn" [class.disabled]="isSendingMail" (click)="resendMail()">{{ ("resend_email" ) | translate }}</button>
-      <div class="btn" *ngIf="!isUserKyced">
-        <a [href]="getKYC()" target="_blank" rel="noopener noreferrer">KYC</a>
-      </div>
+      <a *ngIf="!isUserKyced" class="btn w-full h-full inline-block cursor-pointer" [href]="getKYC()" target="_blank" rel="noopener noreferrer">KYC</a>
       <button aria-label="logout" class="btn" (click)="logout()">Logout</button>
     </div>
 

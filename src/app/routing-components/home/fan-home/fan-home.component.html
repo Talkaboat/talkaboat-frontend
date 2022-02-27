@@ -1,6 +1,33 @@
 <section class="mt-10 w-full md:max-w-[96rem]  px-5 mx-auto">
+  <div class="card glass grid sm:grid-cols-2 grid-cols-1 gap-y-10">
+    <div>
+      <h2 class="text-fan-500" [innerHtml]=" 'fan_want_header' | translate "></h2>
+      <h3 class="sm:mt-10 mt-3 px-3" [innerHtml]=" 'fan_want_sub' | translate "></h3>
+    </div>
+    <div>
+      <h2 class="text-fan-500" [innerHtml]=" 'fan_need_header' | translate "></h2>
+      <h3 class="sm:mt-10 mt-3 px-3" [innerHtml]=" 'fan_need_sub' | translate "></h3>
+    </div>
+  </div>
+</section>
+
+<section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
   <div class="card glass">
-    <h2 [innerHtml]=" 'ecosystem_home' | translate "></h2>
+    <h2 class="text-fan-500" [innerHtml]=" 'got_you_fan' | translate "></h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 content-center">
+      <div class="flex order-2 sm:order-1">
+        <h3 class="mt-10" [innerHtml]=" 'got_you_fan_sub' | translate"></h3>
+    </div>
+      <img width="512" height="495" loading="lazy" class="mt-8 sm:mt-0 sm:order-2 px-3 max-w-[38rem] mx-auto w-full hover-up" src="./assets/images/home/creator_promise.png"  alt="reward system info graphic" />
+
+    </div>
+
+  </div>
+</section>
+
+<section class="mt-10 w-full md:max-w-[96rem]  px-5 mx-auto">
+  <div class="card glass">
+    <h2 class="text-fan-500" [innerHtml]=" 'ecosystem_home' | translate "></h2>
     <h4 [innerHtml]=" 'ecosystem_token_home' | translate "></h4>
     <img width="550" height="360" loading="lazy" class="mt-8 w-full max-w-[55rem] mx-auto hover-up" src="./assets/images/infos/ecosystem.png"  alt="aboat ecosystem info graphic" />
     <div class="grid mt-3 text-left grid-cols-3 gap-2">

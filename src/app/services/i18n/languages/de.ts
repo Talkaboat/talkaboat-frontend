@@ -168,8 +168,8 @@ export const de = {
   play_home_sub: "Steige im Level auf und bring deine NFTs mit, um unsere Spiele zu spielen, welche ebenfalls Teil des $ABOAT-Ökosystems sind.",
   gamefi_home: "GameFi",
   gamefi_home_sub: "Handel deine NFTs auf unserem Marktplatz oder verwende sie in unseren Spielen. Außerdem kannst du auch an unseren DeFi-Funktionen wie Staking teilnehmen um mehr Vorteile zu erhalten.",
-  home_fan: 'Ich bin Fan',
-  home_creator: 'Ich bin Ersteller',
+  home_fan: 'Ich will entdecken!',
+  home_creator: 'Ich will erstellen!',
   desc_home: "Aboat Entertainment",
 
   desc_home_sub: "Talkaboat ist eine Podcast-Plattform und das erste Produkt von Aboat Entertainment. Jedes Produkt wird Teil des Aboat-Ökosystems auf Blockchain sein und durch das hausgemachte Token gesteuert werden: $ABOAT. Eine weitere Sache, die alle Produkte gemeinsam haben, ist der starke Fokus auf Gamification, um einen nahtlosen Übergang in das Entertainment Metaverse zu gewährleisten.",
@@ -187,7 +187,7 @@ export const de = {
   need_header: 'Aber brauchst hilfe bei...',
   need_sub: '<ul><li>... <span class="text-main-300">Aufbau</span> deiner Community?</li><li>... der <span class="text-main-300">Monetarisierung</span> deiner Inhalte?</li><li>... deine Community zu <span class="text-main-300">aktivieren</span>?</li></ul>',
   got_you_creator: 'Wir unterstützen dich mit...',
-  got_you_creator_sub: '<ul><li>... <span class="text-main-300">kostenloser aggregation und hosting</span>!</li><li>... unserem <span class="text-main-300">Blockchain-basiertem Ökosystem</span>!</li><li>... <span class="text-main-300">neuen Monetarisierungsmethoden</span>!</li><li>... <span class="text-main-300">Gleichberechtiger Monetarisierung für <u>alle</u></span>!</li><li>... <span class="text-main-300">Ansporn für aktivere Communities</span>!</li>',
+  got_you_creator_sub: '<ul><li>... <span class="text-main-300">kostenloser aggregation und hosting</span>!</li><li>... unserem <span class="text-main-300">Blockchain-basiertem Ökosystem</span>!</li><li>... <span class="text-main-300">neuen Monetarisierungsmethoden</span>!</li><li>... <span class="text-main-300">Gleichberechtiger Monetarisierung für <u>alle</u></span>!</li><li>... <span class="text-main-300">Ansporn für aktivere Communities</span>!</li></ul>',
   login_welcome: 'Willkommen an Bord!',
   login_info: 'Wenn du bereits registriert bist, musst du dich nur mit deiner Krypto-Brieftasche verbinden',
   not_registered: 'Noch nicht an Bord?',
@@ -195,6 +195,12 @@ export const de = {
   invalid_email: 'Bitte gib eine gültige E-Mail an.',
   invalid_username: 'Bitte gib einen Alphanumerischen Benutzernamen mit min. 3 und max. 16 Zeichen an.',
   already_registered: 'Bereits an Bord?',
-  how_to_register: 'Wie registriere ich mich?'
+  how_to_register: 'Wie registriere ich mich?',
+  fan_want_header: 'Du möchtest...',
+  fan_want_sub: '<ul><li>... spaß beim <span class="text-main-300">Entdecken</span>.</li><li>... beteiligung am <span class="text-main-300">Erfolg</span>.</li><li>... eine aktive <span class="text-main-300">Community</span>.</li></ul>',
+  fan_need_header: 'Und willst eine Plattform die...',
+  fan_need_sub: '<ul><li>... <span class="text-main-300">Community Feedback</span> ernst nimmt?</li><li>... dich für die Benutzung <span class="text-main-300">belohnt</span>?</li><li>... <span class="text-main-300">Entdeckung</span> unterhaltsam macht?</li></ul>',
+  got_you_fan: 'Dann bist du bei uns richtig! Wir bieten...',
+  got_you_fan_sub: '<ul><li>... <span class="text-main-300">Belohnungen</span> für die <span class="text-main-300">Benutzung</span> unserer Plattform!</li><li>... <span class="text-main-300">Gamification</span> für <span class="text-main-300">spaß</span> bei der Benutzung!</li><li>... unser <span class="text-main-300">Blockchain-basiertes Ökosystem</span>!</li><li>... einfache und schnelle <span class="text-main-300">Unterstützung</span> deiner Lieblingskünstler!</li><li>... <span class="text-main-300">Gleichberechtige Monetarisierung/Einnahmen für <u>alle</u></span>!</li></ul>',
 }
 

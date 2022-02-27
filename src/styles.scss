@@ -30,7 +30,7 @@ a, button, input {
 }
 
 .btn {
-  @apply rounded ring-shadow-500 ring-1;
+  @apply hover:outline-none w-full rounded-[1rem] bg-shadow-700 text-main-300 font-semibold text-center;
 }
 
 .img-placeholder {

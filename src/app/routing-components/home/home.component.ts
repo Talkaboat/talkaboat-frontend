@@ -110,7 +110,7 @@ export class HomeComponent implements OnInit {
     },
   ];
 
-  isCreator: boolean = true;
+  isCreator: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
