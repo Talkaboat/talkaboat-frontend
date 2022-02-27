@@ -1,5 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { VgCoreModule } from '@videogular/ngx-videogular/core'
+import { VgControlsModule } from '@videogular/ngx-videogular/controls';
+import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
+import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -35,7 +38,10 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
     FormsModule,
     PipeModule,
     ReactiveFormsModule,
-    VgCoreModule
+    VgCoreModule,
+    VgControlsModule,
+    VgBufferingModule,
+    VgOverlayPlayModule,
   ],
   exports: [
     ProfileSidebarComponent,
