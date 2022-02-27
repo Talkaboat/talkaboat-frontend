@@ -4,9 +4,62 @@
 .sidebar-open {
   @apply md:left-[26rem];
 }
+.clearfix:before,
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+.clearfix:after { clear: both; }
+
+@mixin svg-style {
+  svg {
+    @apply fill-main-200 md:scale-100 md:duration-150 md:transition;
+  }
+  &:hover {
+    svg {
+      @apply md:scale-105 md:duration-150 md:transition md:-translate-y-1;
+    }
+  }
+  &:active {
+    svg {
+      @apply md:scale-95 md:duration-150 md:transition;
+    }
+  }
+}
+
+.track-cover {
+  img {
+    @apply scale-100 duration-150 transition;
+  }
+  &:hover {
+    img {
+      @apply scale-[1.025] duration-150 transition;
+    }
+  }
+}
+
+.scrub-button {
+  @apply rounded-full w-10 md:w-12 h-10 md:h-12 px-2 place-self-center transition-none;
+  @include svg-style();
+  &:focus {
+    @apply ring-0;
+  }
+}
+
+
+.play-pause-button {
+  @apply rounded-full w-16 md:w-20 h-16 md:h-20 px-3 place-self-center transition-none;
+  @include svg-style();
+  &:focus {
+    @apply ring-0;
+  }
+}
+
 
 .minimized {
-  @apply h-[4rem] md:h-[6rem];
+  @apply h-14 md:h-24 rounded-lg;
   .hide-minimized {
     @apply hidden;
   }

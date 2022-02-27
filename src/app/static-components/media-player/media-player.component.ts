@@ -11,6 +11,7 @@ import { MediaPlayerState } from './mediaplayer-state';
 })
 export class MediaPlayerComponent implements OnInit {
 
+  currentTrack: any;
   track = new BehaviorSubject<any>({
     aboat_id: 445,
     id: 'd59cca11590d4c4a96bb136bb1d70ad8',
@@ -43,13 +44,14 @@ export class MediaPlayerComponent implements OnInit {
     audio: 'https://www.listennotes.com/e/p/dedb98be11f34a489010ec88ee40cc1d/',
     image: 'https://cdn-images-1.listennotes.com/podcasts/legal-speak-alm-staff-6ZPcY87ITrq-tUocpFnG31O.300x300.jpg',
     title: 'Test',
+    title_original: "Test",
     podcast: {
       aboat_id: 759,
       id: '27c2735fad5a4746b7b557143b59c432',
       image: 'https://cdn-images-1.listennotes.com/podcasts/legal-speak-alm-staff-6ZPcY87ITrq-tUocpFnG31O.300x300.jpg',
       genre_ids: [67, 93, 95, 127],
       thumbnail: 'https://cdn-images-1.listennotes.com/podcasts/legal-speak-alm-staff-6ZPcY87ITrq-tUocpFnG31O.300x300.jpg',
-      title_original: null,
+      title_original: 'Test Episode',
       listennotes_url: 'https://www.listennotes.com/c/27c2735fad5a4746b7b557143b59c432/',
       title_highlighted: null,
       publisher_original: null,
@@ -92,6 +94,7 @@ export class MediaPlayerComponent implements OnInit {
   public readyToPlay: boolean = false;
   public audio: string | undefined;
   public initialized = false;
+  public isPlaying = false;
 
   constructor(
     private readonly websiteStateService: WebsiteStateService) { }
@@ -99,6 +102,11 @@ export class MediaPlayerComponent implements OnInit {
   ngOnInit(): void {
     this.websiteStateService.onMediaPlayerStateChanged.subscribe((state: MediaPlayerState) => {
 
+    });
+    this.track.subscribe(value => {
+      this.pause();
+      this.audio = value.audio;
+      this.currentTrack = value;
     });
   }
 
@@ -108,10 +116,6 @@ export class MediaPlayerComponent implements OnInit {
 
   onPlayerReady(api: VgApiService) {
     this.api = api;
-    this.track.subscribe(value => {
-      this.pause();
-      this.audio = value.audio;
-    });
     this.api.getDefaultMedia().subscriptions.ended.subscribe(
       () => {
         // Set the video to the beginning
@@ -125,11 +129,14 @@ export class MediaPlayerComponent implements OnInit {
         // do smth on progress, timestamp provided under timeUpdate.timeStamp
       });
     this.api.getDefaultMedia().subscriptions.playing.subscribe(
-      // do smth whenever play() is fired, timestamp provided under timeUpdate.timeStamp
+      () => {
+        this.isPlaying = true;
+      }
     )
     this.api.getDefaultMedia().subscriptions.pause.subscribe(
-      // do smth whenever pause() is fired, timestamp provided under timeUpdate.timeStamp
-      console.log
+      () => {
+        this.isPlaying = false;
+      }
     )
     this.api.getDefaultMedia().subscriptions.stalled.subscribe(
       // Fired when the browser is trying to get media data but the data is not available.
@@ -156,13 +163,13 @@ export class MediaPlayerComponent implements OnInit {
     this.api?.pause();
   }
 
-  skip() {
+  forward() {
     if (this.api) {
       this.api.getDefaultMedia().currentTime += 15;
     }
   }
 
-  back() {
+  backward() {
     if (this.api) {
       this.api.getDefaultMedia().currentTime -= 15;
     }

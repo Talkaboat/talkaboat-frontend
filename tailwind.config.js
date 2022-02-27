@@ -2,10 +2,7 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   mode: 'jit',
-  purge: {
-    enabled: true,
-    content: ['./src/**/*.{html,ts}']
-  },
+  content: ['./src/**/*.{html,ts}'],
   plugins: [
     require('@tailwindcss/line-clamp'),
   ],
@@ -61,7 +58,7 @@ module.exports = {
       'floating': 'floating 3s ease-in-out infinite',
     },
     fontFamily: {
-      sans: [ 'Raleway', 'Segoe UI', 'sans-serif' ]
+      sans: ['Raleway', 'Segoe UI', 'sans-serif']
     }
   }
- }
+}
