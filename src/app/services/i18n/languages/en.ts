@@ -183,7 +183,7 @@ export const en = {
   need_header: 'But need help to...',
   need_sub: '<ul><li>... <span class="text-main-300">kickstart</span> your community?</li><li>... <span class="text-main-300">monetize</span> your content?</li><li>... <span class="text-main-300">engage</span> with community?</li></ul>',
   got_you_creator: 'We assist you...',
-  got_you_creator_sub: '<ul><li>... <span class="text-main-300">free content aggregation and hosting</span></li><li>... <span class="text-main-300">blockchain-based ecosystem</span></li><li>... <span class="text-main-300">bust common monetization models</span></li><li>... <span class="text-main-300">bring fair monetization for everyone</span></li><li>... <span class="text-main-300">incentivizing the engagement</span></li>',
+  got_you_creator_sub: '<ul><li>... <span class="text-main-300">free content aggregation and hosting</span>!</li><li>... <span class="text-main-300">blockchain-based ecosystem</span>!</li><li>... <span class="text-main-300">bust common monetization models</span>!</li><li>... <span class="text-main-300">bring fair monetization for everyone</span>!</li><li>... <span class="text-main-300">incentivizing the engagement</span>!</li></ul>',
   login_welcome: 'Welcome on board!',
   login_info: 'You only have to connect your wallet if you are already registered.',
   not_registered: 'Not yet on board?',
