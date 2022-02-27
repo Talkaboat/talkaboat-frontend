@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { PipeModule } from 'src/app/pipes/pipe.module';
 import { InfoRoutingModule } from './info-routing.module';
 import { InfoComponent } from './info.component';
 
@@ -11,7 +12,8 @@ import { InfoComponent } from './info.component';
   ],
   imports: [
     CommonModule,
-    InfoRoutingModule
+    InfoRoutingModule,
+    PipeModule
   ],
   exports: [
     InfoComponent
