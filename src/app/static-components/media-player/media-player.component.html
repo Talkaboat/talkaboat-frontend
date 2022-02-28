@@ -1,9 +1,9 @@
-<vg-player class="font-sans" (onPlayerReady)="onPlayerReady($event)">
+<vg-player class="font-sans z-30" (onPlayerReady)="onPlayerReady($event)">
   <vg-controls>
 
     <div [class.minimized]="mediaPlayerState == 'MINIMIZED'"
-      class="z-30 fixed overflow-hidden rounded-2xl shadow-shadow-500 shadow-md inset-x-5 m-[0%_auto] bottom-[1rem] max-w-[500px] md:max-w-screen-sm h-20 md:h-[12rem] transition-all ease-in-out duration-500">
-      <div tab-index="0" class="grid grid-cols-4 place-items-center overflow-hidden h-full bg-main-700 ">
+      class="z-30 fixed overflow-hidden rounded-2xl shadow-shadow-500 shadow-md inset-x-5 m-[0%_auto] bottom-[1rem] max-w-[500px] md:max-w-screen-sm h-20 md:h-[10rem] transition-all ease-in-out duration-500">
+      <div tab-index="0" class="grid grid-cols-4 place-items-center overflow-hidden h-full bg-shadow-700 ">
         <vg-scrub-bar class="col-span-4 absolute scrub-bar-height place-items-start">
           <vg-scrub-bar-current-time class="bg-[#333]"></vg-scrub-bar-current-time>
           <vg-scrub-bar-buffering-time class=""></vg-scrub-bar-buffering-time>
@@ -39,7 +39,7 @@
           <div id="track-area" class="col-span-2">
             <div class="flex justify-between">
               <div tab-index="0" class="track-cover hidden md:block mr-4 rounded-lg overflow-hidden">
-                <img class="object-cover object-center aspect-square w-36"
+                <img class="object-cover object-center aspect-square w-[8rem]"
                   [alt]="currentTrack.title_original + ' portrait'" [src]="currentTrack.image" />
               </div>
               <div class="track-meta item-body">
