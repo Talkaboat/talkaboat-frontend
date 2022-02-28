@@ -1,12 +1,11 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { LoaderService } from '../loader/loader.service';
 import { AuthorizationResponse } from '../repository/user-repository/models/authorization-response.model';
 import { UserAuthorizationRequestResponse } from '../repository/user-repository/models/user-authorization-request.response.model';
 import { UserProfileData } from '../repository/user-repository/models/user-profile-data.model';
 import { UserRepositoryService } from '../repository/user-repository/user-repository.service';
 import { Web3Service } from '../web3/web3.service';
-import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })

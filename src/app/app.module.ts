@@ -1,23 +1,23 @@
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { getAnalytics, provideAnalytics, ScreenTrackingService } from '@angular/fire/analytics';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFunctions, provideFunctions } from '@angular/fire/functions';
+import { getMessaging, provideMessaging } from '@angular/fire/messaging';
+import { getPerformance, providePerformance } from '@angular/fire/performance';
+import { getRemoteConfig, provideRemoteConfig } from '@angular/fire/remote-config';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { ToastrModule } from 'ngx-toastr';
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideAnalytics,getAnalytics,ScreenTrackingService } from '@angular/fire/analytics';
-import { provideFunctions,getFunctions } from '@angular/fire/functions';
-import { provideMessaging,getMessaging } from '@angular/fire/messaging';
-import { providePerformance,getPerformance } from '@angular/fire/performance';
-import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
+import { PipeModule } from './pipes/pipe.module';
 import { LoginComponent } from './routing-components/login/login.component';
 import { RegisterComponent } from './routing-components/register/register.component';
-import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PipeModule } from './pipes/pipe.module';
+import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
 import { SharedModule } from './static-components/shared.module';
 
 @NgModule({

@@ -2,7 +2,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { slider } from './animations';
 import { UserService } from './services/user/user.service';
-import { Web3Service } from './services/web3/web3.service';
 import { WebsiteStateService } from './services/website-state/website-state.service';
 
 

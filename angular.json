@@ -20,6 +20,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "buildOptimizer": true,
+            "aot": true,
             "outputPath": "dist/talkaboat",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -40,6 +42,7 @@
             "production": {
               "buildOptimizer": true,
               "optimization": true,
+              "aot": true,
               "budgets": [
                 {
                   "type": "initial",
