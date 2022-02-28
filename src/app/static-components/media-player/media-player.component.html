@@ -44,11 +44,11 @@
             <div class="flex justify-between">
               <div tab-index="0" class="track-cover hidden md:block mr-4 rounded-lg overflow-hidden">
                 <img class="object-cover object-center aspect-square w-[8rem]"
-                  [alt]="currentTrack.title_original + ' portrait'" [src]="currentTrack.image" />
+                  [alt]="currentTrack.title + ' portrait'" [src]="currentTrack.image" />
               </div>
               <div class="track-meta item-body">
                 <div class="track-title ">
-                  <a class="font-semibold" tabindex="0">{{ currentTrack.title_original }}</a>
+                  <a class="font-semibold" tabindex="0">{{ currentTrack.title }}</a>
                 </div>
                 <div class="track-podcast hide-minimized">
                   <a class="" tabindex="0">{{ currentTrack.podcast.title_original }}</a>

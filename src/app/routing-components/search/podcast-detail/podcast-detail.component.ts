@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MediaHelperService } from 'src/app/services/media/media-helper.service';
-import { Episode } from 'src/app/services/repository/search-repository/models/episode.model';
+import { MediaHelperService } from 'src/app/services/media-helper/media-helper.service';
 import { Podcast } from 'src/app/services/repository/search-repository/models/podcast.model';
 import { WebsiteStateService } from 'src/app/services/website-state/website-state.service';
 import { PODCAST_DETAIL_MOCK } from 'src/constants/mocks/podcast-detail.mock.constants';

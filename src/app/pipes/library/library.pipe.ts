@@ -1,6 +1,6 @@
 import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MediaHelperService } from '../../services/media/media-helper.service';
+import { MediaHelperService } from '../../services/media-helper/media-helper.service';
 
 @Pipe({
   name: 'library',

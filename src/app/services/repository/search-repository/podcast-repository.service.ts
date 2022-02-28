@@ -1,11 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Web3Service } from '../../web3/web3.service';
 import { RepositoryService } from '../repository.service';
 import { Episode } from './models/episode.model';
 import { PodcastSearchResponse } from './models/podcast-search-response.model';
-import { PodcastSearchResult } from './models/podcast-search-result.model';
 import { PodcastSearch } from './models/podcast-search.model';
 import { Podcast } from './models/podcast.model';
 import { PODCAST_API } from './podcast-urls.const';

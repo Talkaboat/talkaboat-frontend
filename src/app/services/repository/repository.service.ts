@@ -17,7 +17,7 @@ export class RepositoryService {
 
   protected url = RepositoryService.repository_dev + RepositoryService.version;
 
-  constructor(private readonly http: HttpClient,  protected readonly web3Service: Web3Service) {
+  constructor(protected readonly http: HttpClient,  protected readonly web3Service: Web3Service) {
     if (!isDevMode() || !this.use_dev_repository) {
       this.url = RepositoryService.repository_prod + RepositoryService.version;
     }
