@@ -27,6 +27,8 @@ export class MediaPlayerComponent implements OnInit {
   public initialized = false;
   public isPlaying = false;
   public rewards: Reward = { total: 0, vested: 0, unvested: 0 };
+  public currentTime: any;
+  public totalTime: any;
 
   private readonly updatesBetweenHeartbeat = 10;
   private updates: number = 0;
@@ -37,7 +39,7 @@ export class MediaPlayerComponent implements OnInit {
     private readonly userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.onRewardsChanged.subscribe(rewards => {
+    this.userService.onRewardsChanged.subscribe((rewards: Reward) => {
       this.rewards = rewards;
     })
     this.mediaPlayerService.changedPlayState.subscribe(state => {
@@ -99,9 +101,6 @@ export class MediaPlayerComponent implements OnInit {
         this.isPlaying = false;
       }
     )
-    this.api.getDefaultMedia().subscriptions.stalled.subscribe(
-      // Fired when the browser is trying to get media data but the data is not available.
-    )
     this.api.getDefaultMedia().subscriptions.seeking.subscribe(
       // Fired when a seek operation begins.
     )
@@ -134,6 +133,10 @@ export class MediaPlayerComponent implements OnInit {
     if (this.api) {
       this.api.getDefaultMedia().currentTime -= 15;
     }
+  }
+
+  getRoundedTotalReward(): number {
+    return Math.round(this.rewards.total);
   }
 
   changeSource(nextTrack: Episode) {

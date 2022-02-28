@@ -6,16 +6,21 @@
     [attr.autoplay]="initialized ? '' : null">
   </audio>
     <div [class.minimized]="mediaPlayerState == 'MINIMIZED'"
-      class="z-30 fixed overflow-hidden rounded-2xl shadow-shadow-500 shadow-md inset-x-5 m-[0%_auto] bottom-[1rem] max-w-[500px] md:max-w-screen-sm h-20 md:h-[10rem] transition-all ease-in-out duration-500">
+      class="z-30 fixed overflow-hidden rounded-2xl shadow-shadow-500 shadow-md inset-x-5 m-[0%_auto] bottom-8 md:bottom-4 max-w-[500px] md:max-w-screen-sm h-20 md:h-[10rem] transition-all ease-in-out duration-500">
       <div tab-index="0" class="grid grid-cols-4 place-items-center overflow-hidden h-full bg-shadow-700 ">
-        <vg-scrub-bar class="col-span-4 absolute scrub-bar-height place-items-start">
+        <vg-scrub-bar class="col-span-4 scrub-bar-height place-items-start">
           <vg-scrub-bar-current-time class="bg-[#333] h-full"></vg-scrub-bar-current-time>
-          <vg-scrub-bar-buffering-time class=""></vg-scrub-bar-buffering-time>
+          <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
         </vg-scrub-bar>
         <div id="media-player-body" class="col-span-4 grid grid-cols-4 h-full place-items-center pt-2">
           <div id="play-area"
-            class="w-full max-w-[160px] place-self-start self-center grid grid-cols-3 place-items-center pl-5">
-            <button class="scrub-button hide-minimized " aria-label="backward" (click)="backward()">
+            class="w-full max-w-[160px] place-self-center md:place-self-start grid grid-cols-3 place-items-center md:pl-5 pl-2">
+            <div id="time-area" class="hidden col-span-4 place-self-start mt-3 md:flex md:items-center mb-2 justify-start">
+              <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+              <span class="w-fit px-1 md:text-xl">/</span>
+              <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+            </div>
+            <button class="scrub-button" aria-label="backward" (click)="backward()">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path
                   d="M77.25 256l137.4-137.4c12.5-12.5 12.5-32.75 0-45.25s-32.75-12.5-45.25 0l-160 160c-12.5 12.5-12.5 32.75 0 45.25l160 160C175.6 444.9 183.8 448 192 448s16.38-3.125 22.62-9.375c12.5-12.5 12.5-32.75 0-45.25L77.25 256zM269.3 256l137.4-137.4c12.5-12.5 12.5-32.75 0-45.25s-32.75-12.5-45.25 0l-160 160c-12.5 12.5-12.5 32.75 0 45.25l160 160C367.6 444.9 375.8 448 384 448s16.38-3.125 22.62-9.375c12.5-12.5 12.5-32.75 0-45.25L269.3 256z" />
@@ -33,7 +38,7 @@
                   d="M272 63.1l-32 0c-26.51 0-48 21.49-48 47.1v288c0 26.51 21.49 48 48 48L272 448c26.51 0 48-21.49 48-48v-288C320 85.49 298.5 63.1 272 63.1zM80 63.1l-32 0c-26.51 0-48 21.49-48 48v288C0 426.5 21.49 448 48 448l32 0c26.51 0 48-21.49 48-48v-288C128 85.49 106.5 63.1 80 63.1z" />
               </svg>
             </button>
-            <button class="scrub-button hide-minimized" aria-label="forward" (click)="forward()">
+            <button class="scrub-button" aria-label="forward" (click)="forward()">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path
                   d="M246.6 233.4l-160-160c-12.5-12.5-32.75-12.5-45.25 0s-12.5 32.75 0 45.25L178.8 256l-137.4 137.4c-12.5 12.5-12.5 32.75 0 45.25C47.63 444.9 55.81 448 64 448s16.38-3.125 22.62-9.375l160-160C259.1 266.1 259.1 245.9 246.6 233.4zM438.6 233.4l-160-160c-12.5-12.5-32.75-12.5-45.25 0s-12.5 32.75 0 45.25L370.8 256l-137.4 137.4c-12.5 12.5-12.5 32.75 0 45.25C239.6 444.9 247.8 448 256 448s16.38-3.125 22.62-9.375l160-160C451.1 266.1 451.1 245.9 438.6 233.4z" />
@@ -56,9 +61,20 @@
               </div>
             </div>
           </div>
-          <div id="controls-area" class="grid grid-cols-1 place-self-end self-start pr-5">
+          <div id="controls-area" class="grid grid-cols-1 place-self-end self-center w-full md:self-start md:pr-5 pt-1 md:pt-5 pr-2">
             <div>
-              <vg-volume class="hidden md:flex"></vg-volume>
+              <div id="time-area" class="md:hidden col-span-4 place-self-start flex justify-end">
+                <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+                <span class="w-fit px-1 text-sm">/</span>
+                <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+              </div>
+              <div id="token-area" class="flex items-center justify-end pt-1">
+                <span>{{getRoundedTotalReward()}}</span><img src="../../../assets/images/aboat.png" class="w-8 md:w-12 ml-2">
+              </div>
+              <div id="volume-area" class="hidden md:flex justify-end pt-8">
+                <svg class="w-10 mr-3 fill-main-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M412.6 182c-10.28-8.334-25.41-6.867-33.75 3.402c-8.406 10.24-6.906 25.35 3.375 33.74C393.5 228.4 400 241.8 400 255.1c0 14.17-6.5 27.59-17.81 36.83c-10.28 8.396-11.78 23.5-3.375 33.74c4.719 5.806 11.62 8.802 18.56 8.802c5.344 0 10.75-1.779 15.19-5.399C435.1 311.5 448 284.6 448 255.1S435.1 200.4 412.6 182zM473.1 108.2c-10.22-8.334-25.34-6.898-33.78 3.34c-8.406 10.24-6.906 25.35 3.344 33.74C476.6 172.1 496 213.3 496 255.1s-19.44 82.1-53.31 110.7c-10.25 8.396-11.75 23.5-3.344 33.74c4.75 5.775 11.62 8.771 18.56 8.771c5.375 0 10.75-1.779 15.22-5.431C518.2 366.9 544 313 544 255.1S518.2 145 473.1 108.2zM534.4 33.4c-10.22-8.334-25.34-6.867-33.78 3.34c-8.406 10.24-6.906 25.35 3.344 33.74C559.9 116.3 592 183.9 592 255.1s-32.09 139.7-88.06 185.5c-10.25 8.396-11.75 23.5-3.344 33.74C505.3 481 512.2 484 519.2 484c5.375 0 10.75-1.779 15.22-5.431C601.5 423.6 640 342.5 640 255.1S601.5 88.34 534.4 33.4zM301.2 34.98c-11.5-5.181-25.01-3.076-34.43 5.29L131.8 160.1H48c-26.51 0-48 21.48-48 47.96v95.92c0 26.48 21.49 47.96 48 47.96h83.84l134.9 119.8C272.7 477 280.3 479.8 288 479.8c4.438 0 8.959-.9314 13.16-2.835C312.7 471.8 320 460.4 320 447.9V64.12C320 51.55 312.7 40.13 301.2 34.98z"/></svg>
+                <vg-volume class="h-10"></vg-volume>
+              </div>
             </div>
           </div>
         </div>
