@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { TranslatePipe } from "../services/i18n/translate.pipe";
-import { LibraryPipe } from "../services/media/library/library.pipe";
+import { TranslatePipe } from "./translate/translate.pipe";
+import { LibraryPipe } from "./library/library.pipe";
 
 @NgModule({
   declarations: [

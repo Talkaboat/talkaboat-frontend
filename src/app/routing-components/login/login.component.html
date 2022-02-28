@@ -1,8 +1,9 @@
 <div class="mx-auto max-w-[66rem]  pb-[15rem] text-center ">
   <div class="content pt-6 pb-6 bg-shadow-700 rounded-[1rem] mx-3 px-6">
-    <h1>Welcome on board!</h1>
-    <h4>If you are already registered you only have to connect your wallet.</h4>
+    <h1>{{ 'login_welcome' | translate }}</h1> <!--Welcome on Board-->
+    <h4>{{ 'login_info' | translate }}</h4><!--If you are already registered you only have to connect your wallet.-->
     <button aria-label="connect wallet" class="mt-10 mx-auto text-[2rem] py-5 w-[28rem] font-semibold bg-main-500 rounded ring-1 ring-shadow-500" (click)="connect()">{{ 'connect_wallet' | translate }}</button>
-    <p class="mt-10">Not on board yet? <a class="underline font-semibold" [routerLink]="['/register']">Register</a></p>
+    <p class="mt-10">{{ 'not_registered' | translate }} <a class="underline font-semibold" [routerLink]="['/register']">{{ 'register' | translate}}</a></p><!--Not on board yet? -->
   </div>
 </div>
+

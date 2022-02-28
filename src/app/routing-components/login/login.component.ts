@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AuthorizationResponse } from 'src/app/services/repository/user-repository/models/authorization-response.model';
-import { UserAuthorizationRequestResponse } from 'src/app/services/repository/user-repository/models/user-authorization-request.response.model';
 import { UserService as UserService } from 'src/app/services/user/user.service';
 
 @Component({

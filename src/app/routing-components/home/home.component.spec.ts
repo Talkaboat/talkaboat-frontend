@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TranslatePipe } from 'src/app/services/i18n/translate.pipe';
+import { TranslatePipe } from 'src/app/pipes/translate/translate.pipe';
 
 import { HomeComponent } from './home.component';
 
@@ -11,7 +12,7 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HomeComponent, TranslatePipe],
-      imports: [RouterTestingModule]
+      imports: [RouterTestingModule, BrowserAnimationsModule]
     })
     .compileComponents();
   });

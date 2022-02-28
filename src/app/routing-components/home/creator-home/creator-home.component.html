@@ -1,45 +1,41 @@
-<section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
-  <div class="card glass">
-    <h2 [innerHtml]=" 'equality_home' | translate "></h2>
-    <h4 [innerHtml]=" 'equality_home_benefit' | translate"></h4>
-    <img width="910" height="295" loading="lazy" class="mt-8 w-full hover-up" src="./assets/images/infos/reward_system.png"  alt="reward system info graphic" />
-  </div>
-</section>
-
-<section class="mt-10 w-full md:max-w-[96rem]  px-5 mx-auto">
-  <div class="card glass">
-    <h2 [innerHtml]=" 'ecosystem_home' | translate "></h2>
-    <h4 [innerHtml]=" 'ecosystem_token_home' | translate "></h4>
-    <img width="550" height="360" loading="lazy" class="mt-8 w-full max-w-[55rem] mx-auto hover-up" src="./assets/images/infos/ecosystem.png"  alt="aboat ecosystem info graphic" />
-    <div class="grid mt-3 text-left grid-cols-3 gap-2">
-      <div class="-mt-[6rem] h-[fit-content] hover-up bg-shadow-700 bg-opacity-75  p-3 rounded-[1rem]">
-        <h4 class="text-main-300">{{ 'play_home' | translate }}</h4>
-        <p class="">{{ 'play_home_sub' | translate }}</p>
-      </div>
-      <div class=" bg-shadow-700 hover-up  h-[fit-content] bg-opacity-75  p-3 rounded-[1rem]">
-        <h4 class="text-main-300">{{ 'consume_home' | translate }}</h4>
-        <p class="">{{ 'consume_home_sub' | translate }}</p>
-      </div>
-      <div class="-mt-[6rem] hover-up  h-[fit-content] bg-shadow-700 bg-opacity-7 p-3 rounded-[1rem]">
-        <h4 class="text-main-300">{{ 'gamefi_home' | translate }}</h4>
-        <p class="">{{ 'gamefi_home_sub' | translate }}</p>
-      </div>
+<section class="mt-10 w-full md:max-w-[96rem]  px-5 mx-auto ">
+  <div class="card glass grid sm:grid-cols-2 grid-cols-1  gap-y-10 ">
+    <div>
+      <h2 class="text-creator-500" [innerHtml]=" 'want_header' | translate "></h2>
+      <h3 class="sm:mt-10 mt-3 px-3" [innerHtml]=" 'want_sub' | translate "></h3>
+    </div>
+    <div>
+      <h2 class="text-creator-500" [innerHtml]=" 'need_header' | translate "></h2>
+      <h3 class="sm:mt-10 mt-3 px-3" [innerHtml]=" 'need_sub' | translate "></h3>
     </div>
   </div>
 </section>
 
 <section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
   <div class="card glass">
-    <h2 [innerHtml]=" 'content_home' | translate "></h2>
+    <h2 class="text-creator-500" [innerHtml]=" 'got_you_creator' | translate "></h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 content-center">
+      <div class="flex order-2 sm:order-1">
+        <h3 class="mt-10" [innerHtml]=" 'got_you_creator_sub' | translate"></h3>
+    </div>
+      <img width="512" height="495" loading="lazy" class="mt-8 sm:mt-0 sm:order-2 px-3 max-w-[38rem] mx-auto w-full hover-up" src="./assets/images/home/creator_promise.png"  alt="reward system info graphic" />
+
+    </div>
+
+  </div>
+</section>
+
+<section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
+  <div class="card glass">
+    <h2 class="text-creator-500" [innerHtml]=" 'content_home' | translate "></h2>
     <h4 [innerHtml]=" 'content_support_home' | translate "></h4>
     <div class="grid grid-cols-1 md:grid-cols-2 mt-8 gap-3">
       <div>
         <img width="550" height="254" loading="lazy" class="w-full hover-up max-w-[50rem]" src="./assets/images/infos/hosting.png"  alt="hosting info graphic" />
       </div>
-      <div class="flex items-center mx-auto">
+      <div class="flex items-center mx-auto px-3">
         <a tabindex="0" href="" target="_blank"
-          class="text-center text-[2rem] my-auto py-3 px-5 flex items-center font-semibold rounded-[1rem] bg-shadow-500  ring-1 ring-main-500">Become
-          an ambassador now!</a>
+          class="text-center mt-10 text-[2rem] md:my-auto py-3 px-5 flex items-center font-semibold rounded-[1rem] bg-shadow-500  ring-1 ring-creator-500">{{ 'creator_ambassador' | translate}}</a>
       </div>
     </div>
   </div>

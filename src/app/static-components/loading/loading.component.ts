@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LoaderService } from 'src/app/services/loader/loader.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-loading',
@@ -10,19 +11,25 @@ import { LoaderService } from 'src/app/services/loader/loader.service';
 export class LoadingComponent implements OnInit, OnDestroy {
 
   show = false;
-  private subscription: Subscription = new Subscription();
+  isSignRequest = false;
+  private subscriptions: Subscription[] = [];
 
-  constructor(private readonly loaderService: LoaderService) { }
+  constructor(private readonly loaderService: LoaderService, private readonly userService: UserService) { }
 
   ngOnInit() {
-    this.subscription = this.loaderService.onLoadingStateChanged
+    this.subscriptions.push(this.loaderService.onLoadingStateChanged
       .subscribe((state: boolean) => {
         this.show = state;
-      });
+      }));
+    this.subscriptions.push(this.userService.onSignMessageRequested.subscribe(state => this.isSignRequest = state));
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
+
+  cancelSignRequest() {
+    this.userService.cancelSign();
   }
 
 }

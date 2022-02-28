@@ -1,6 +1,6 @@
 import { OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { TranslateService } from './translate.service';
+import { TranslateService } from '../../services/i18n/translate.service';
 
 @Pipe({
   name: 'translate',

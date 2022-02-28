@@ -1,8 +1,8 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import Web3 from "web3";
-import Web3Modal from "web3modal";
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import { BLOCKCHAIN } from 'src/constants/blockchain.constants';
+import Web3 from "web3";
+import Web3Modal from "web3modal";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,7 @@ export class Web3Service {
       walletconnect: {
         package: WalletConnectProvider, //required
         options: {
+
           bridge: 'https://bridge.walletconnect.org',
           rpc: {
             1: "https://bsc-dataseed.binance.org/",
@@ -32,11 +33,10 @@ export class Web3Service {
           },
           chainId: 56
         }
-      }
+      },
     };
 
     this.web3Modal = new Web3Modal({
-      cacheProvider: true, // optional
       providerOptions, // required
       network: "binance",
       theme: {
@@ -81,7 +81,7 @@ export class Web3Service {
 
   async connect(clearCached = false) {
     if (clearCached) {
-        await this.web3Modal.clearCachedProvider();
+      await this.web3Modal.clearCachedProvider();
     }
     this.provider = await this.web3Modal.connect();
     if (this.provider) {
@@ -105,6 +105,11 @@ export class Web3Service {
   async disconnect() {
     this.web3Modal.clearCachedProvider();
     this.web3 = undefined;
+    try {
+      this.provider.disconnect();
+    } catch (error) {
+      //Can't disconnect
+    }
     this.provider = undefined;
     await this.defaultLogin();
   }
