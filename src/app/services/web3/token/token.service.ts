@@ -139,9 +139,9 @@ export class TokenService {
     if (!owner || owner == '') {
       owner = this.web3Service.accounts && this.web3Service.accounts?.length > 0 ? this.web3Service.accounts[0] : "";
     }
-    const contract = this.contractService.getTokenContract(tokenAddress)?.methods;
     const method = this.contractService.getTokenContract(tokenAddress)?.methods.approve(spender, BLOCKCHAIN.MaxUint256.toFixed(0, RoundingMode.RoundDown));
-    const gas = this.web3Service.getEstimatedGas(method, owner)
+    const gas = await this.web3Service.getEstimatedGas(method, owner);
+    console.log(gas);
     return method.send({ from: owner, gas: gas }).then((_: any) => {
       return Promise.resolve(true);
     });

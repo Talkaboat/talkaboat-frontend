@@ -20,12 +20,12 @@
     <div id="search-slot-area" class="sm:pl-[4rem] md:pl-0 md:pr-[6rem] my-auto h-fit">
       <app-search-slot></app-search-slot>
     </div>
-    <div id="profile-icon-area" class="my-auto w-[7rem] md:w-[8rem] md:max-w-[8rem] max-w-[7rem] flex justify-end text-center">
+    <div id="profile-icon-area" class="my-auto w-[9rem] md:w-[10rem] md:max-w-[10rem] max-w-[9rem] flex justify-end text-center">
       <a *ngIf="!userData.userName" [routerLink]="['/login']"
         class="btn hover:outline-none w-full rounded-[1rem] md:py-[1.2rem]  px-[0.6rem] py-[0.8rem] bg-shadow-700 font-semibold">Login</a>
       <button aria-label="toggle profile sidebar" *ngIf="userData.userName" (click)="isProfileSidebarOpen = !isProfileSidebarOpen"
         class="btn hover:outline-none rounded-[1rem] md:py-[1.2rem]  px-[0.6rem] py-[0.8rem] flex w-full justify-end ring-main-700 bg-shadow-700 ring-1 overflow-hidden text-ellipsis font-semibold">
-        {{ userData.userName }}
+        <p class="text-ellipsis overflow-hidden w-full">{{ userData.userName }}</p>
         <svg *ngIf="!isProfileSidebarOpen" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down"
           class="w-5 h-5 my-auto ml-2 rounded-[1rem]" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
           <path fill="currentColor"

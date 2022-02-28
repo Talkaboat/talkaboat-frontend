@@ -41,7 +41,7 @@ export class LoungeService {
     return Promise.resolve(Big(0));
   }
 
-  public getUserInfo(index: number): Promise<Big> {
+  public getUserInfo(index: number): Promise<any> {
     if (this.web3Service.accounts && this.web3Service.accounts.length > 0) {
       return this.contractService.getMasterEntertainerContract()?.methods.userInfos(index, this.web3Service.accounts[0]).call();
     }
@@ -65,10 +65,16 @@ export class LoungeService {
   private async setupStandardPoolVariables(poolInfo: PoolInfo, gotAccountWallet: boolean): Promise<any> {
     var processes = [];
     if (gotAccountWallet) {
-      processes.push(this.getPendingCoin(poolInfo.id).then(rawPending => poolInfo.rawPending = rawPending))
-      processes.push(this.getUserInfo(poolInfo.id).then(userInfo => poolInfo.userInfo = userInfo));
+      processes.push(this.getPendingCoin(poolInfo.id).then((rawPending: Big) => {
+        poolInfo.rawPending = Big(rawPending);
+      }));
+      processes.push(this.getUserInfo(poolInfo.id).then(userInfo => {
+        poolInfo.userInfo = userInfo;
+      }));
       processes.push(this.tokenService.getAllowance(this.web3Service.accounts[0], this.contractService.getMasterEntertainerContractAddress(), poolInfo.lpToken)
-        .then(allowance => poolInfo.allowance = allowance));
+        .then(allowance => {
+          poolInfo.allowance = Big(allowance);
+        }));
     }else {
       poolInfo.userInfo = { amount: Big(0), rewardDebt: Big(0), lastDeposit: Big(0) };
       poolInfo.allowance = Big(0);
@@ -101,6 +107,7 @@ export class LoungeService {
     poolInfo.yearlyTokenReward = new Big(rewardPerAllocation).mul(poolInfo.allocPoint).mul(BLOCKCHAIN.BLOCKS_PER_DAY).mul(360);
     const aboatToken = await this.tokenService.getAboatToken();
     if (aboatToken) {
+
       const priceInBusd = new Big(aboatToken.priceInBusd!);
       const yearlyTokenRewardInBusd = poolInfo.yearlyTokenReward.times(priceInBusd);
       poolInfo.apr = yearlyTokenRewardInBusd.div((poolInfo.totalLiquidity?.gt(1) ? poolInfo.totalLiquidity : new Big(1))).times(new Big(100)).round(2);

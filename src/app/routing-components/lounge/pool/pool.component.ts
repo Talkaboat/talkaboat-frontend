@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PoolInfo } from 'src/app/services/repository/smart-contract-repository/models/pool-info.model';
 import { LoungeService } from 'src/app/services/web3/lounge/lounge.service';
+import { Web3Service } from 'src/app/services/web3/web3.service';
 
 @Component({
   selector: 'app-pool',
@@ -9,16 +10,25 @@ import { LoungeService } from 'src/app/services/web3/lounge/lounge.service';
 })
 export class PoolComponent implements OnInit {
   @Input() poolInfo?: PoolInfo;
+  @Input() gotWallet: boolean = false;
   isOpen = false;
   approving = false;
-  constructor(private readonly loungeService: LoungeService) { }
+  constructor(private readonly loungeService: LoungeService, private readonly web3Service: Web3Service) { }
 
   ngOnInit(): void {
-    console.log(this.poolInfo);
+
   }
 
   getTokenIcon(symbol: string) {
     return "./assets/images/coins/0.png".replace("0", symbol.toLowerCase());
+  }
+
+  toggleState() {
+    if (this.gotWallet) {
+      this.isOpen = !this.isOpen;
+    } else {
+      this.web3Service.connect(true);
+    }
   }
 
   approve() {
