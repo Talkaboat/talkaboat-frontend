@@ -14,6 +14,14 @@ export class LoungeService {
 
   constructor(private readonly contractService: ContractService, private readonly web3Service: Web3Service, private readonly tokenService: TokenService) { }
 
+  approve(poolInfo: PoolInfo): Promise<boolean> {
+    return this.tokenService.approveContract(this.contractService.getMasterEntertainerContractAddress(), poolInfo.lpToken);
+  }
+
+  getAllowance(poolInfo: PoolInfo) {
+    return this.tokenService.getAllowance('', this.contractService.getMasterEntertainerContractAddress(), poolInfo.lpToken);
+  }
+
   getReserves(address: string): Promise<any> {
     return this.contractService.getLpContract(address)?.methods?.getReserves().call();
   }

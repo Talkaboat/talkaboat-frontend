@@ -203,5 +203,6 @@ export const de = {
   got_you_fan: 'Dann bist du bei uns richtig! Wir bieten...',
   got_you_fan_sub: '<ul><li>... <span class="text-main-300">Belohnungen</span> für die <span class="text-main-300">Benutzung</span> unserer Plattform!</li><li>... <span class="text-main-300">Gamification</span> für <span class="text-main-300">Spaß</span> bei der Benutzung!</li><li>... unser <span class="text-main-300">Blockchain-basiertes Ökosystem</span>!</li><li>... einfache und schnelle <span class="text-main-300">Unterstützung</span> deiner Lieblingskünstler!</li><li>... <span class="text-main-300">gleichberechtige Monetarisierung/Einnahmen für <u>alle</u></span>!</li></ul>',
   whitepaper_url: 'https://drive.google.com/file/d/1XOblscYmjDA6yTrfPoiveMuxf5TgLFp4/view?usp=sharing',
+  days: 'Tage'
 }
 
