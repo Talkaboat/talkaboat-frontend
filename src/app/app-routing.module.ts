@@ -7,6 +7,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent, data: { animation: "isRight"} },
   { path: 'register', component: RegisterComponent, data: { animation: 'isBottom' } },
   { path: 'search', loadChildren: () => import('./routing-components/search/search.module').then(m => m.SearchModule) },
+  { path: 'lounge', loadChildren: () => import('./routing-components/lounge/lounge.module').then(m => m.LoungeModule) },
   { path: 'info', loadChildren: () => import('./routing-components/info/info.module').then(m => m.InfoModule) },
   { path: '**', loadChildren: () => import('./routing-components/home/home.module').then(m => m.HomeModule),  data: { animation: "home"} }
 ];

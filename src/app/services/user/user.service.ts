@@ -41,6 +41,8 @@ export class UserService {
         this.loaderService.show();
         await this.getUserProfile();
       }
+    } else {
+      this.web3Service.defaultLogin();
     }
     this.loaderService.hide();
   }

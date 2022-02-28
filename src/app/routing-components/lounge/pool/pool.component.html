@@ -1,0 +1,20 @@
+<div >
+  <button *ngIf="poolInfo" class="w-full h-full p-5 btn" (click)="isOpen = !isOpen">
+    <h4 class="text-center flex justify-start gap-5">
+      <div class="flex justify-start h-full">
+        <img class="h-full max-w-[2.4rem]" [src]="getTokenIcon(poolInfo.tokenA?.symbol)">
+        <img *ngIf="poolInfo.tokenB" class="h-full max-w-[2.4rem]" [src]="getTokenIcon(poolInfo.tokenB?.symbol)">
+      </div>
+      <div>
+        <span *ngFor="let symbol of this.poolInfo.symbols; let i = index">{{symbol}}<span
+          *ngIf="this.poolInfo.symbols?.length == 2 && i == 0">-</span></span>
+        <span *ngIf="this.poolInfo.symbols?.length == 2"> LP</span>
+      </div>
+
+    </h4>
+  </button>
+
+  <div [class.open]="isOpen" class="overflow-hidden h-0 transition-all duration-500 rounded-[1rem] bg-shadow-600">
+
+  </div>
+</div>
