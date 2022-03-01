@@ -31,11 +31,11 @@ export class PoolComponent implements OnInit {
   }
 
   claim() {
-    this.loungeService.harvest(this.poolInfo).then(async result => {
-      if (result) {
-        this.onPoolInfoChanged.emit(this.poolInfo.id);
-      }
-    });
+    // this.loungeService.harvest(this.poolInfo).then(async result => {
+    //   if (result) {
+    //     this.onPoolInfoChanged.emit(this.poolInfo.id);
+    //   }
+    // });
   }
 
   approve() {
