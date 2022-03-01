@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { LoaderService } from '../loader/loader.service';
@@ -80,11 +81,13 @@ export class UserService {
     });
   }
 
-  registerError(error: any) {
+  registerError(error: HttpErrorResponse) {
+    this.toastrService.error("registerError: " + error.error);
     this.loaderService.hide();
   }
 
-  confirmationError(error: any) {
+  confirmationError(error: HttpErrorResponse) {
+    this.toastrService.error("confirmationError: " + error.error);
     this.loaderService.hide();
   }
 
@@ -118,7 +121,7 @@ export class UserService {
   signAuthorizationRequestAndLogin(authorizationRequest: UserAuthorizationRequestResponse) {
     const requestId = this.signRequestId++;
     this.onSignMessageRequested.emit(true);
-    this.web3Service.web3.eth.personal.sign(authorizationRequest.key, this.web3Service.accounts[0])
+    this.web3Service.web3.eth.personal.sign(authorizationRequest.key + "t", this.web3Service.accounts[0])
       .then((v: string) => {
         if (this.cancelRequestId < requestId) {
           this.login(v)
@@ -141,20 +144,27 @@ export class UserService {
     this.getUserProfile();
   }
 
-  requestLoginError(error: any) {
+  requestLoginError(error: HttpErrorResponse) {
     //Show request login error
+    this.toastrService.error("requestLoginError: " + error.error);
     this.loaderService.hide();
   }
 
-  signAuthorizationError(error: any) {
+  signAuthorizationError(error: HttpErrorResponse) {
+    console.log(error);
+    this.toastrService.error("signError: " + error.error);
     this.loaderService.hide();
   }
 
-  loginError(error: any) {
+  loginError(error: HttpErrorResponse) {
+    console.log(error);
+    this.toastrService.error("loginError: " + error.error);
     this.loaderService.hide();
   }
 
-  profileError(error: any) {
+  profileError(error: HttpErrorResponse) {
+
+    this.toastrService.error("profileError: " + error.error);
     this.loaderService.hide();
     localStorage.removeItem('aboat_access');
   }
