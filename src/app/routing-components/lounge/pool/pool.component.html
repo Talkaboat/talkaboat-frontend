@@ -46,7 +46,9 @@
     </h4>
   </button>
 
+  <!-- Collapsable Area -->
   <div [class.open]="isOpen" class="overflow-hidden h-0 transition-all duration-500 rounded-[1rem] bg-shadow-600">
+    <!-- Stake/Unstake -->
     <div class="flex justify-between m-5 p-5 bg-shadow-700">
       <div>
         <h6>
@@ -69,5 +71,21 @@
         </ng-template>
       </div>
     </div>
+    <div class="flex justify-between m-5 p-5 bg-shadow-700">
+      <div>
+        <h6>
+          <span>ABOAT {{ 'earned'  | translate }}</span>
+        </h6>
+        <p>
+          {{ poolInfo.pending }}
+        </p>
+      </div>
+
+      <div class="flex justify-between w-full max-w-[7rem]">
+        <button [class.hidden]="!poolInfo.pending || (poolInfo.pending | bigEqualizer: 0 : 'lte')"
+          class="rounded-[1rem] px-4 bg-shadow-300" (click)="claim()"> {{ 'claim' | translate }}</button>
+      </div>
+    </div>
   </div>
+
 </div>

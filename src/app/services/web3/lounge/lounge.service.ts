@@ -18,6 +18,13 @@ export class LoungeService {
     return this.tokenService.approveContract(this.contractService.getMasterEntertainerContractAddress(), poolInfo.lpToken);
   }
 
+  async harvest(poolInfo: PoolInfo): Promise<any> {
+    const method = this.contractService.getMasterEntertainerContract()?.methods.claim(poolInfo.id);
+    const from = this.web3Service.accounts[0];
+    const gas = await this.web3Service.getEstimatedGas(method, from);
+    return method.send({ from: this.web3Service.accounts[0], gas: gas });
+  }
+
   getAllowance(poolInfo: PoolInfo) {
     return this.tokenService.getAllowance('', this.contractService.getMasterEntertainerContractAddress(), poolInfo.lpToken);
   }

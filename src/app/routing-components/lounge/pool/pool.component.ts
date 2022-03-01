@@ -16,7 +16,6 @@ export class PoolComponent implements OnInit {
   constructor(private readonly loungeService: LoungeService, private readonly web3Service: Web3Service) { }
 
   ngOnInit(): void {
-
   }
 
   getTokenIcon(symbol: string) {
@@ -29,6 +28,14 @@ export class PoolComponent implements OnInit {
     } else {
       this.web3Service.connect(true);
     }
+  }
+
+  claim() {
+    this.loungeService.harvest(this.poolInfo).then(async result => {
+      if (result) {
+        this.onPoolInfoChanged.emit(this.poolInfo.id);
+      }
+    });
   }
 
   approve() {

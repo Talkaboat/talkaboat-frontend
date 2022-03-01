@@ -108,6 +108,13 @@ export class HomeComponent implements OnInit {
       image: './assets/images/team/joscha.png',
       isLoading: false
     },
+    {
+      name: 'David Merbitz',
+      role: 'Social Media Marketing',
+      linkedin: 'https://www.linkedin.com/in/david-merbitz-6b8836232/',
+      image: './assets/images/team/david.png',
+      isLoading: false
+    },
   ];
 
   isCreator: boolean = false;
