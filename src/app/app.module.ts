@@ -15,7 +15,10 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PipeModule } from './pipes/pipe.module';
+import { GeneralTermsComponent } from './routing-components/general-terms/general-terms.component';
+import { ImprintComponent } from './routing-components/imprint/imprint.component';
 import { LoginComponent } from './routing-components/login/login.component';
+import { PrivacyComponent } from './routing-components/privacy/privacy.component';
 import { RegisterComponent } from './routing-components/register/register.component';
 import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
 import { SharedModule } from './static-components/shared.module';
@@ -25,6 +28,9 @@ import { SharedModule } from './static-components/shared.module';
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    ImprintComponent,
+    GeneralTermsComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
