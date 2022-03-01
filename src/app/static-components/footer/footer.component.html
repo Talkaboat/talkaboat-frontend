@@ -7,13 +7,17 @@
     </path>
   </svg>
 
-  <footer class="relative -top-[10rem] md:-top-[15rem] pl-[1rem] mx-auto max-w-[40rem] flex justify-between">
-    <a [routerLink]="['/general-terms']" queryParamsHandling="merge" tabindex="0"
-    class="my-auto cursor-pointer mx-auto px-5 py-3 bg-shadow-700 rounded-[1rem] text-main-500 font-semibold ring-1 ring-main-500">{{ 'general_terms' | translate}}</a>
-    <a [routerLink]="['/privacy']" queryParamsHandling="merge" tabindex="0"
-    class="my-auto cursor-pointer mx-auto px-5 py-3 bg-shadow-700 rounded-[1rem] text-main-500 font-semibold ring-1 ring-main-500">{{ 'privacy' | translate}}</a>
-    <a [routerLink]="['/imprint']" queryParamsHandling="merge" tabindex="0"
-    class="my-auto cursor-pointer mx-auto px-5 py-3 bg-shadow-700 rounded-[1rem] text-main-500 font-semibold ring-1 ring-main-500">{{ 'imprint' | translate}}</a>
+  <footer class="relative -top-[10rem] md:-top-[15rem] pl-[1rem] mx-auto max-w-[40rem]">
+
+    <div class="flex justify-between">
+      <a [routerLink]="['/general-terms']" queryParamsHandling="merge" tabindex="0"
+      class="my-auto cursor-pointer mx-auto px-5 py-3 bg-shadow-700 rounded-[1rem] text-main-500 font-semibold ring-1 ring-main-500">{{ 'general_terms' | translate}}</a>
+      <a [routerLink]="['/privacy']" queryParamsHandling="merge" tabindex="0"
+      class="my-auto cursor-pointer mx-auto px-5 py-3 bg-shadow-700 rounded-[1rem] text-main-500 font-semibold ring-1 ring-main-500">{{ 'privacy' | translate}}</a>
+      <a [routerLink]="['/imprint']" queryParamsHandling="merge" tabindex="0"
+      class="my-auto cursor-pointer mx-auto px-5 py-3 bg-shadow-700 rounded-[1rem] text-main-500 font-semibold ring-1 ring-main-500">{{ 'imprint' | translate}}</a>
+    </div>
+
 
   </footer>
   <svg class="fixed bottom-[0] z-10 pointer-events-none text-main-700 left-0 right-0 w-full h-[10rem] md:h-[10rem]" preserveAspectRatio="none"

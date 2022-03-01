@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import WalletConnectProvider from '@walletconnect/web3-provider';
+import Big from "big.js";
 import { BLOCKCHAIN } from 'src/constants/blockchain.constants';
 import Web3 from "web3";
 import Web3Modal from "web3modal";
@@ -95,7 +96,7 @@ export class Web3Service {
   }
 
   async defaultLogin() {
-    this.web3 = new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
+    this.web3 = new Web3("https://bsc-dataseed.binance.org/");
     this.chainId = await this.web3.eth.net.getId();
     this.accounts = undefined;
     this.accountsObservable.emit([]);
@@ -120,6 +121,16 @@ export class Web3Service {
       await this.switchNetwork();
     }
   }
+
+  public async getEstimatedGas(method: any, from: string, bnbAmount = "0"): Promise<Big> {
+    try {
+
+        const gas = Big(await method.estimateGas({ from, value: bnbAmount }));
+        return gas.mul(1.1);
+    } catch(error) {
+        return Promise.resolve(BLOCKCHAIN.GAS_PRICE);
+    }
+}
 
   configListeners() {
     this.provider.on("accountsChanged", (accounts: string[]) => {

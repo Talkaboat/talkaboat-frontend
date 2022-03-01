@@ -205,7 +205,8 @@ export const de = {
   whitepaper_url: 'https://drive.google.com/file/d/1XOblscYmjDA6yTrfPoiveMuxf5TgLFp4/view?usp=sharing',
   //#region Login/Logout
   new_address_detected: 'Deine verbundene Krypto-Addresse hat sich geändert.',
-  sign_out_address_mismatch: 'Die neue Addresse ist nicht mit deinem Account verbunden!'
+  sign_out_address_mismatch: 'Die neue Addresse ist nicht mit deinem Account verbunden!',
   //#endregion
+  days: 'Tage'
 }
 
