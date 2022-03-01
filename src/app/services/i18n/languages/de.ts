@@ -207,6 +207,7 @@ export const de = {
   new_address_detected: 'Deine verbundene Krypto-Addresse hat sich geändert.',
   sign_out_address_mismatch: 'Die neue Addresse ist nicht mit deinem Account verbunden!',
   //#endregion
-  days: 'Tage'
+  days: 'Tage',
+  social_header: 'Come on board and be social!'
 }
 

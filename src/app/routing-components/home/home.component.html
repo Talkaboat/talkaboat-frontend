@@ -2,7 +2,7 @@
   <div class="flex w-full">
     <div class=" pr-5 max-w-[56rem] w-fit flex-auto">
       <h1 class="intro-header text-left text-[5rem] md:text-[8rem]" [innerHtml]="'talkaboat_intro' | translate"></h1>
-      <div class="flex justify-between max-w-[45rem]">
+      <div class="flex justify-between max-w-[45rem] mt-[1rem]">
         <h3 [innerHtml]="'talkaboat_sub' | translate" class="mt-10 px-3 w-full flex justify-between"></h3>
       </div>
 
@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <h4 [innerHtml]="'info_description' | translate" class="px-3 mb-10 max-w-[60rem]"></h4>
+
   <div class="flex  justify-start mt-10 px-3">
     <a tabindex="0" [routerLink]="['/register']"
       class="text-center text-[2rem] mr-3 md:mr-10 flex items-center w-[16rem] py-3 md:w-[24rem] rounded-[1rem] font-semibold bg-main-500 ring-1 ring-shadow-700"><span
@@ -23,9 +23,10 @@
       class="text-center text-[2rem] w-[16rem] py-3 flex items-center md:w-[24rem] font-semibold rounded-[1rem] bg-shadow-500  ring-1 ring-main-500"><span
         class="mx-auto">Pitch Deck</span></a>
   </div>
-  <div class="mt-[3rem] px-5">
-    <h3 class="text-center md:text-left">Come on board of our social media!</h3>
-    <div class="bg-shadow-300 rounded-[1rem] flex justify-between p-3 md:px-8 max-w-[50rem]">
+  <h4 [innerHtml]="'info_description' | translate" class="px-3 max-w-[60rem] mt-[2rem]"></h4>
+  <div class="mt-[3rem] px-5  max-w-[50rem]">
+    <h2 class="text-center md:text-left">{{ 'social_header' | translate }}</h2>
+    <div class="bg-shadow-300 rounded-[1rem] flex justify-between p-3 md:px-8 max-w-[50rem] mt-[1rem]">
       <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://twitter.com/talkaboat" target="_blank" rel="noopener noreferrer nofollow">
         <div class="w-[3rem] h-[3rem] sm:w-[4rem] sm:h-[4rem] mx-auto my-auto">
           <img class="w-full h-full" width="30px" height="30px" src="./assets/images/social/twitter.png" />
@@ -134,8 +135,8 @@
 </section>
 
 <div class="mt-[3rem] px-5 mx-auto w-fit max-w-[50rem]">
-  <h3 class="text-center md:text-left">Come on board of our social media!</h3>
-  <div class="bg-shadow-300 rounded-[1rem] flex justify-between p-3 md:px-8 max-w-[50rem]">
+  <h2 class="text-center">{{ 'social_header' | translate }}</h2>
+  <div class="bg-shadow-300 rounded-[1rem] flex justify-between p-3 md:px-8 max-w-[50rem] mt-[1rem]">
     <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://twitter.com/talkaboat" target="_blank" rel="noopener noreferrer nofollow">
       <div class="w-[3rem] h-[3rem] sm:w-[4rem] sm:h-[4rem] mx-auto my-auto">
         <img class="w-full h-full" width="30px" height="30px" src="./assets/images/social/twitter.png" />
