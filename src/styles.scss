@@ -20,6 +20,7 @@
 }
 html, body {
   overflow-x: hidden;
+  overscroll-behavior-y: none;
   scroll-behavior: smooth !important;
   @apply ease-in-out duration-500 transition-all;
 }
