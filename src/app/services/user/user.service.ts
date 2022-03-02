@@ -40,7 +40,7 @@ export class UserService {
   }
 
   updateRewards(rewards: Reward, reset: boolean = false) {
-    if (rewards && rewards.total > 0 || reset) {
+    if (rewards && rewards.total > 0 && rewards.total > this.currentRewards.total || reset) {
       this.currentRewards = rewards;
       this.onRewardsChanged.emit(rewards);
     }

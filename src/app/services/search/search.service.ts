@@ -1,6 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
 import { LoaderService } from '../loader/loader.service';
 import { PodcastSearchResponse } from '../repository/search-repository/models/podcast-search-response.model';
 import { PodcastSearch } from '../repository/search-repository/models/podcast-search.model';
@@ -171,9 +170,9 @@ export class SearchService {
 
   executeSearch(searchTerm: string) {
     if (this.isSearchEqualToLastSearch()) {
+      this.loaderService.hide();
       return;
     }
-    return;
     this.lastSearch = this.getSearchQuery();
     this.loaderService.show();
     this.podcastRepositoryService.search(this.lastSearch).subscribe({
