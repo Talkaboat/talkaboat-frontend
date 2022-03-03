@@ -3,6 +3,33 @@
 @import 'tailwindcss/utilities';
 @import '~ngx-toastr/toastr';
 
+.dropdown-list {
+  background:  #0E1825 !important;
+  .filter-textbox {
+    input {
+      @apply bg-shadow-500 h-[3rem];
+    }
+  }
+  li {
+    div {
+      color: whitesmoke !important;
+
+    }
+  }
+}
+
+ng-multiselect-dropdown {
+  .multiselect-dropdown {
+    .dropdown-btn, .dropdown-list, li {
+      border-color: #A4CAFE !important;
+    }
+    li.multiselect-item-checkbox:hover {
+      background-color: #304F79;
+    }
+  }
+}
+
+
 ::-webkit-scrollbar {
   width: 7.5px;
   background-color: #64A4FD;

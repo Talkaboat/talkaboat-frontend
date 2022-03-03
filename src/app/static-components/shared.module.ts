@@ -2,16 +2,17 @@ import { CommonModule } from "@angular/common";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { PipeModule } from "../pipes/pipe.module";
 import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
 import { ProfileSidebarComponent } from "./header/profile-sidebar/profile-sidebar.component";
+import { FilterComponent } from './header/search-slot/filter/filter.component';
 import { SearchSlotComponent } from "./header/search-slot/search-slot.component";
 import { LoadingAnimationComponent } from "./loading/loading-animation/loading-animation.component";
 import { LoadingComponent } from "./loading/loading.component";
 import { MediaPlayerComponent } from "./media-player/media-player.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
-import { FilterComponent } from './header/search-slot/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FilterComponent } from './header/search-slot/filter/filter.component';
     CommonModule,
     RouterModule,
     FormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
     PipeModule,
     ReactiveFormsModule
   ],

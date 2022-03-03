@@ -1,5 +1,14 @@
-<div [class.open]="isFilterOpen" class="absolute px-3 w-full h-0 overflow-hidden transition-all duration-500">
-  <div class="bg-shadow-600">
-    <p>filter works!</p>
+<div [class.open]="isFilterOpen" class="absolute px-3 rounded-[1rem] bg-shadow-600 w-full h-0 overflow-hidden transition-all duration-500">
+  <div class="py-5">
+    <div class="language mx-auto dropdown">
+      <p class="filter-title mb-3">{{ 'language' | translate }}</p>
+          <ng-multiselect-dropdown class="bg-shadow-700"
+          [settings]="dropdownSettings"
+          [data]="languages"
+          [(ngModel)]="languageDataModel"
+          ngDefaultControl
+          (onSelect)="apply()">
+      </ng-multiselect-dropdown>
+    </div>
   </div>
 </div>
