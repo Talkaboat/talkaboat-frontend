@@ -7,6 +7,7 @@ import { PodcastSearchResponse } from 'src/app/services/repository/search-reposi
 import { PodcastSearchResult } from 'src/app/services/repository/search-repository/models/podcast-search-result.model';
 import { SearchService } from 'src/app/services/search/search.service';
 
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -40,7 +41,6 @@ export class SearchComponent implements OnInit {
 
   add(track: PodcastSearchResult) {
     if (!track.podcast) {
-      console.log("remove")
       this.mediaHelper.addOrRemoveBookmark(track.aboat_id);
     }
   }

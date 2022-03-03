@@ -6,10 +6,12 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgCoreModule } from '@videogular/ngx-videogular/core';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
+import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { PipeModule } from "../pipes/pipe.module";
 import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
 import { ProfileSidebarComponent } from "./header/profile-sidebar/profile-sidebar.component";
+import { FilterComponent } from './header/search-slot/filter/filter.component';
 import { SearchSlotComponent } from "./header/search-slot/search-slot.component";
 import { LoadingAnimationComponent } from "./loading/loading-animation/loading-animation.component";
 import { LoadingComponent } from "./loading/loading.component";
@@ -25,13 +27,15 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
     LoadingComponent,
     MediaPlayerComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    FilterComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
     PipeModule,
     ReactiveFormsModule,
     VgCoreModule,

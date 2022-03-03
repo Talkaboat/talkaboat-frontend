@@ -147,7 +147,7 @@ export class SearchService {
     if (navigate) {
       this.router.navigate(['/search'], {
         queryParams: {
-          'q': searchTerm, 'view': 'viewer', 'qtype': this.searchType, 'qlang': this.searchLanguages, 'qgenre': this.searchGenres, 'qminlen': this.searchLengthMin, 'qmaxlen': this.searchLengthMax
+          'q': searchTerm, 'view': 'viewer', 'qtype': this.searchType, 'qlang': this.rawSearchLanguages, 'qgenre': this.rawSearchGenres, 'qminlen': this.searchLengthMin, 'qmaxlen': this.searchLengthMax
         }, queryParamsHandling: 'merge'
       }).then(v => {
         this.executeSearch(searchTerm)
@@ -163,6 +163,7 @@ export class SearchService {
       && searchQuery.searchTerm == this.lastSearch.searchTerm
       && searchQuery.language == this.lastSearch.language
       && searchQuery.minLength == this.lastSearch.minLength
+      && searchQuery.type == this.lastSearch.type
       && searchQuery.maxLength == this.lastSearch.maxLength
       && searchQuery.minEpisodes == this.lastSearch.minEpisodes
       && searchQuery.maxEpisodes == this.lastSearch.maxEpisodes;
