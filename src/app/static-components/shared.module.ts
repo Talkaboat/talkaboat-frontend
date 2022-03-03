@@ -11,6 +11,7 @@ import { LoadingAnimationComponent } from "./loading/loading-animation/loading-a
 import { LoadingComponent } from "./loading/loading.component";
 import { MediaPlayerComponent } from "./media-player/media-player.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
+import { FilterComponent } from './header/search-slot/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
     LoadingComponent,
     MediaPlayerComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    FilterComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [

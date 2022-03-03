@@ -8,7 +8,7 @@ import { SearchService } from 'src/app/services/search/search.service';
   styleUrls: ['./search-slot.component.scss']
 })
 export class SearchSlotComponent implements OnInit, OnDestroy {
-
+  isFilterOpen = false;
   searchTerm = new FormControl('', [Validators.required]);
 
   constructor(private readonly searchService: SearchService) { }
