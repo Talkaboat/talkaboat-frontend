@@ -1,6 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
 import { LoaderService } from '../loader/loader.service';
 import { PodcastSearchResponse } from '../repository/search-repository/models/podcast-search-response.model';
 import { PodcastSearch } from '../repository/search-repository/models/podcast-search.model';
@@ -148,7 +147,7 @@ export class SearchService {
     if (navigate) {
       this.router.navigate(['/search'], {
         queryParams: {
-          'q': searchTerm, 'view': 'viewer', 'qtype': this.searchType, 'qlang': this.searchLanguages, 'qgenre': this.searchGenres, 'qminlen': this.searchLengthMin, 'qmaxlen': this.searchLengthMax
+          'q': searchTerm, 'view': 'viewer', 'qtype': this.searchType, 'qlang': this.rawSearchLanguages, 'qgenre': this.rawSearchGenres, 'qminlen': this.searchLengthMin, 'qmaxlen': this.searchLengthMax
         }, queryParamsHandling: 'merge'
       }).then(v => {
         this.executeSearch(searchTerm)
@@ -164,6 +163,7 @@ export class SearchService {
       && searchQuery.searchTerm == this.lastSearch.searchTerm
       && searchQuery.language == this.lastSearch.language
       && searchQuery.minLength == this.lastSearch.minLength
+      && searchQuery.type == this.lastSearch.type
       && searchQuery.maxLength == this.lastSearch.maxLength
       && searchQuery.minEpisodes == this.lastSearch.minEpisodes
       && searchQuery.maxEpisodes == this.lastSearch.maxEpisodes;
@@ -173,8 +173,9 @@ export class SearchService {
     if (this.isSearchEqualToLastSearch()) {
       return;
     }
-    return;
     this.lastSearch = this.getSearchQuery();
+    console.log(this.lastSearch);
+    return;
     this.loaderService.show();
     this.podcastRepositoryService.search(this.lastSearch).subscribe({
       next: result => {

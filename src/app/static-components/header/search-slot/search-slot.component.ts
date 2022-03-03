@@ -22,7 +22,8 @@ export class SearchSlotComponent implements OnInit, OnDestroy {
   }
 
   search() {
-    if(this.searchTerm.valid) {
+    if (this.searchTerm.valid) {
+      this.isFilterOpen = false;
       this.searchService.search(this.searchTerm.value, true);
     }
   }

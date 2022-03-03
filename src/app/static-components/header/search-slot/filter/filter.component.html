@@ -1,14 +1,30 @@
-<div [class.open]="isFilterOpen" class="absolute px-3 rounded-[1rem] bg-shadow-600 w-full h-0 overflow-hidden transition-all duration-500">
+<div [class.open]="isFilterOpen" class="absolute px-3 mt-3 rounded-[1rem] bg-shadow-600 md:left-0 md:right-0 -left-[2rem] -right-[2rem] h-0 overflow-hidden transition-all duration-500">
   <div class="py-5">
     <div class="language mx-auto dropdown">
       <p class="filter-title mb-3">{{ 'language' | translate }}</p>
           <ng-multiselect-dropdown class="bg-shadow-700"
           [settings]="dropdownSettings"
           [data]="languages"
+          (onSelect)="apply()"
+          (onDeSelect)="apply()"
           [(ngModel)]="languageDataModel"
-          ngDefaultControl
-          (onSelect)="apply()">
+          ngDefaultControl>
       </ng-multiselect-dropdown>
     </div>
+    <div class="genre mx-auto dropdown mt-[2rem]">
+      <p class="genre-title mb-3">{{ 'genre' | translate }}</p>
+          <ng-multiselect-dropdown class="bg-shadow-700"
+          [settings]="dropdownSettings"
+          [data]="genres"
+          [(ngModel)]="genreDataModel"
+          (onSelect)="apply()"
+          (onDeSelect)="apply()"
+          ngDefaultControl>
+      </ng-multiselect-dropdown>
+    </div>
+    <div class="flex justify-between mt-[3rem]">
+      <button class="btn bg-shadow-400 py-3 max-w-[10rem]" (click)="setSearchType('episode')" [class.btn-primary]="searchType == 'Episode'">Episode</button>
+      <button class="btn bg-shadow-400 py-3 max-w-[10rem]" (click)="setSearchType('podcast')" [class.btn-primary]="searchType == 'Podcast'">Podcast</button>
+  </div>
   </div>
 </div>

@@ -79,8 +79,31 @@ export class FilterComponent implements OnInit {
     this.languageDataModel = verifiedLanguages;
   }
 
+  setSearchType(searchType: string) {
+    this.searchService.changeSearchType(searchType);
+  }
+
   apply() {
-    console.log(this.languageDataModel);
+    var selectedGenres = "";
+    console.log(this.genreDataModel);
+    for (var index = 0; index < this.genreDataModel.length; index++) {
+
+      selectedGenres += this.genres.filter(genre => genre.name === this.genreDataModel[index].name)[0].id + (index == this.genreDataModel.length - 1 ? "" : ",");
+    }
+    if (selectedGenres.length == 0) {
+      selectedGenres = "-1";
+    }
+    var selectedLanguages = "";
+    if (this.languageDataModel.length == 0) {
+      selectedLanguages = "all";
+    }
+    else {
+      for (var index = 0; index < this.languageDataModel.length; index++) {
+        selectedLanguages += this.languageDataModel[index] + (index == this.languageDataModel.length - 1 ? "" : ",");
+      }
+    }
+    this.searchService.changeGenres(selectedGenres);
+    this.searchService.changeLanguage(selectedLanguages);
   }
 
 }

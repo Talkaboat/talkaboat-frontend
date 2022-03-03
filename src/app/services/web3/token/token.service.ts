@@ -141,7 +141,6 @@ export class TokenService {
     }
     const method = this.contractService.getTokenContract(tokenAddress)?.methods.approve(spender, BLOCKCHAIN.MaxUint256.toFixed(0, RoundingMode.RoundDown));
     const gas = await this.web3Service.getEstimatedGas(method, owner);
-    console.log(gas);
     return method.send({ from: owner, gas: gas }).then((_: any) => {
       return Promise.resolve(true);
     });

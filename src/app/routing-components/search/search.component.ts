@@ -5,7 +5,6 @@ import { MediaHelperService } from 'src/app/services/media/media-helper.service'
 import { PodcastSearchResponse } from 'src/app/services/repository/search-repository/models/podcast-search-response.model';
 import { PodcastSearchResult } from 'src/app/services/repository/search-repository/models/podcast-search-result.model';
 import { SearchService } from 'src/app/services/search/search.service';
-import { EPISODE_SEARCH_RESULT_MOCK } from 'src/constants/mocks/episode-search-result.mock.constants';
 import { PODCAST_SEARCH_RESULT_MOCK } from 'src/constants/mocks/podcast-search-result.mock.constants';
 
 @Component({
@@ -43,7 +42,6 @@ export class SearchComponent implements OnInit {
 
   add(track: PodcastSearchResult) {
     if (!track.podcast) {
-      console.log("remove")
       this.mediaHelper.addOrRemoveBookmark(track.aboat_id);
     }
   }

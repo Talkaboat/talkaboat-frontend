@@ -20,6 +20,9 @@
 
 ng-multiselect-dropdown {
   .multiselect-dropdown {
+    .dropdown-btn {
+      padding-right: 20px !important;
+    }
     .dropdown-btn, .dropdown-list, li {
       border-color: #A4CAFE !important;
     }

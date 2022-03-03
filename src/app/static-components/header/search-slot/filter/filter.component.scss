@@ -1,3 +1,7 @@
 .open {
-  @apply  h-[48rem];
+  @apply h-[48rem];
+}
+
+.btn-primary {
+  @apply bg-shadow-300;
 }
