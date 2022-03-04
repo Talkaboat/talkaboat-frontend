@@ -101,6 +101,9 @@ export class SearchService {
       } else {
         languages.push(language);
       }
+    }else {
+      this.searchLanguages = [];
+      this.rawSearchLanguages = '';
     }
 
     this.searchLanguages = languages;
@@ -118,8 +121,10 @@ export class SearchService {
         genres.push(genre);
       }
       this.searchGenres = genres;
+    } else {
+      this.searchGenres = [];
+      this.rawSearchGenres = '';
     }
-
 
     this.onChangedGenres.emit(this.searchGenres);
   }

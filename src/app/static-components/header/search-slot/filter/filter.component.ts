@@ -89,18 +89,13 @@ export class FilterComponent implements OnInit {
 
       selectedGenres += this.genres.filter(genre => genre.name === this.genreDataModel[index].name)[0].id + (index == this.genreDataModel.length - 1 ? "" : ",");
     }
-    if (selectedGenres.length == 0) {
-      selectedGenres = "-1";
-    }
+
     var selectedLanguages = "";
-    if (this.languageDataModel.length == 0) {
-      selectedLanguages = "all";
+
+    for (var index = 0; index < this.languageDataModel.length; index++) {
+      selectedLanguages += this.languageDataModel[index] + (index == this.languageDataModel.length - 1 ? "" : ",");
     }
-    else {
-      for (var index = 0; index < this.languageDataModel.length; index++) {
-        selectedLanguages += this.languageDataModel[index] + (index == this.languageDataModel.length - 1 ? "" : ",");
-      }
-    }
+
     this.searchService.changeGenres(selectedGenres);
     this.searchService.changeLanguage(selectedLanguages);
   }
