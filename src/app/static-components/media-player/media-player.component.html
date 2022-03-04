@@ -51,12 +51,16 @@
                 <img class="object-cover object-center aspect-square w-[8rem]"
                   [alt]="currentTrack.title + ' portrait'" [src]="currentTrack.image" />
               </div>
-              <div class="track-meta item-body">
-                <div class="track-title ">
-                  <a class="font-semibold" tabindex="0">{{ currentTrack.title }}</a>
+              <div id="track-meta">
+                <div id="track-title">
+                  <a class="font-semibold text-ellipsis-1" tabindex="0">
+                    {{ currentTrack.title }}
+                  </a>
                 </div>
-                <div class="track-podcast hide-minimized">
-                  <a class="" tabindex="0">{{ currentTrack.podcast.title_original }}</a>
+                <div id="track-podcast">
+                  <a class="text-ellipsis-1" tabindex="0">
+                      {{ currentTrack.podcast.title_original }}
+                  </a>
                 </div>
               </div>
             </div>

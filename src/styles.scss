@@ -3,6 +3,22 @@
 @import 'tailwindcss/utilities';
 @import '~ngx-toastr/toastr';
 
+@mixin ellipsis-text-to-lines($line-count) {
+  @apply overflow-hidden line-clamp-1 text-ellipsis;
+}
+
+.text-ellipsis-1 {
+  @include ellipsis-text-to-lines(1);
+}
+
+.text-ellipsis-2 {
+  @include ellipsis-text-to-lines(2);
+}
+
+.text-ellipsis-3 {
+  @include ellipsis-text-to-lines(3);
+}
+
 .dropdown-list {
   background:  #0E1825 !important;
   .filter-textbox {
