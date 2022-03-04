@@ -5,16 +5,15 @@
     <audio #myMedia [vgMedia]="$any(myMedia)" id="audio" src="{{currentTrack.audio}}" type="audio/mp3"
     [attr.autoplay]="initialized ? '' : null">
   </audio>
-    <div [class.minimized]="mediaPlayerState == 'MINIMIZED'"
-      class="z-30 fixed overflow-hidden rounded-2xl shadow-shadow-500 shadow-md inset-x-5 m-[0%_auto] bottom-8 md:bottom-4 max-w-[500px] md:max-w-screen-sm h-20 md:h-[10rem] transition-all ease-in-out duration-500">
-      <div tab-index="0" class="grid grid-cols-4 place-items-center overflow-hidden h-full bg-shadow-700 ">
-        <vg-scrub-bar class="col-span-4 scrub-bar-height place-items-start">
-          <vg-scrub-bar-current-time class="bg-[#333] h-full"></vg-scrub-bar-current-time>
-          <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-        </vg-scrub-bar>
-        <div id="media-player-body" class="col-span-4 grid grid-cols-4 h-full place-items-center pt-2">
+    <div class="z-30 fixed rounded-full shadow-shadow-500 shadow-md inset-x-5 m-[0%_auto] bottom-8 md:bottom-4 max-w-[500px] md:max-w-screen-sm h-28 md:h-[10rem] transition-all ease-in-out duration-500">
+      <vg-scrub-bar class="w-full scrub-bar-height place-items-start overflow-hidden">
+        <vg-scrub-bar-current-time class="bg-[#333] h-full rounded-t-full overflow-hidden"></vg-scrub-bar-current-time>
+        <vg-scrub-bar-buffering-time class="rounded-t-full overflow-hidden"></vg-scrub-bar-buffering-time>
+      </vg-scrub-bar>
+      <div tab-index="0" class="grid grid-cols-4 overflow-hidden rounded-b-2xl place-items-center h-full bg-shadow-700 ">
+        <div id="media-player-body" class="col-span-4 grid grid-cols-4 h-full place-items-center">
           <div id="play-area"
-            class="w-full max-w-[160px] place-self-center md:place-self-start grid grid-cols-3 place-items-center md:pl-5 pl-2">
+            class="w-full max-w-[160px] place-self-center md:place-self-start grid grid-cols-3 place-items-center md:pl-5 pl-4">
             <div id="time-area" class="hidden col-span-4 place-self-start mt-3 md:flex md:items-center mb-2 justify-start">
               <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
               <span class="w-fit px-1 md:text-xl">/</span>
@@ -77,9 +76,9 @@
               </div>
             </div>
           </div>
-          <div id="controls-area" class="grid grid-cols-1 place-self-end self-center w-full md:self-start md:pr-5 pt-1 md:pt-5 pr-2">
+          <div id="controls-area" class="grid grid-cols-1 place-self-end self-start w-full md:self-start md:pr-5 md:pt-5 pr-3">
             <div>
-              <div id="time-area" class="md:hidden col-span-4 place-self-start flex justify-end">
+              <div id="time-area" class="md:hidden col-span-4 mt-2 mb-4 place-self-start flex justify-end">
                 <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
                 <span class="w-fit px-1 text-sm">/</span>
                 <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>

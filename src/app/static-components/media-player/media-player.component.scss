@@ -1,8 +1,13 @@
 .scrub-bar-height {
-  @apply h-3 top-0;
+  @apply h-9 top-0 bg-opacity-0;
   vg-scrub-bar-current-time, vg-scrub-bar-buffering-time {
-    @apply h-3 top-0;
+    @apply h-3;
   }
+}
+vg-scrub-bar {
+  background-color: unset;
+  position: absolute;
+  margin-top: -15px;
 }
 vg-time-display {
   @apply h-5 w-fit text-sm md:text-xl;
