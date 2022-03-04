@@ -1,6 +1,6 @@
 import { Volume } from '../../../constants/media/enums/volume.enum';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { VgApiService } from '@videogular/ngx-videogular/core';
+import { VgApiService, VgUtilsService } from '@videogular/ngx-videogular/core';
 import { BehaviorSubject } from 'rxjs';
 import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
 import { MediaRepositoryService } from 'src/app/services/repository/media-repository/media-repository.service';
@@ -32,6 +32,7 @@ export class MediaPlayerComponent implements OnInit {
   public rewards: Reward = { total: 0, vested: 0, unvested: 0 };
   public currentTime: any;
   public totalTime: any;
+  public isMobile: any;
   @ViewChild('volume') volumeComponent: VgMuteComponent | undefined;
 
   private readonly updatesBetweenHeartbeat = 10;
@@ -43,6 +44,7 @@ export class MediaPlayerComponent implements OnInit {
     private readonly userService: UserService) { }
 
   ngOnInit(): void {
+    this.isMobile = VgUtilsService.isMobileDevice() || VgUtilsService.isiOSDevice();
     this.userService.onRewardsChanged.subscribe((rewards: Reward) => {
       this.rewards = rewards;
     })
