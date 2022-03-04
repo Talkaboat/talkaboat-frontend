@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Volume } from '../../../constants/media/enums/volume.enum';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { VgApiService } from '@videogular/ngx-videogular/core';
 import { BehaviorSubject } from 'rxjs';
 import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
@@ -8,6 +9,7 @@ import { Reward } from 'src/app/services/repository/user-repository/models/rewar
 import { UserService } from 'src/app/services/user/user.service';
 import { DefaultEpisode } from 'src/constants/mocks/episode-default.mock.constants';
 import { MediaPlayerState } from './mediaplayer-state';
+import { VgMuteComponent } from '@videogular/ngx-videogular/controls';
 
 @Component({
   selector: 'app-media-player',
@@ -18,6 +20,7 @@ export class MediaPlayerComponent implements OnInit {
 
   currentTrack: any;
   track = new BehaviorSubject<Episode>(DefaultEpisode);
+  currentVolume: Volume = Volume.Loud;
 
   public mediaPlayerState: MediaPlayerState = MediaPlayerState.MAXIMIZED;
   public preload: string = 'auto';
@@ -29,6 +32,7 @@ export class MediaPlayerComponent implements OnInit {
   public rewards: Reward = { total: 0, vested: 0, unvested: 0 };
   public currentTime: any;
   public totalTime: any;
+  @ViewChild('volume') volumeComponent: VgMuteComponent | undefined;
 
   private readonly updatesBetweenHeartbeat = 10;
   private updates: number = 0;
@@ -102,6 +106,19 @@ export class MediaPlayerComponent implements OnInit {
         this.isPlaying = false;
       }
     )
+    this.api.getDefaultMedia().subscriptions.volumeChange.subscribe(
+      () => {
+        if (this.api?.volume === 0) {
+          this.currentVolume = Volume.Muted
+        } else if (this.api?.volume < 0.33) {
+          this.currentVolume = Volume.Reduced
+        } else if (this.api?.volume > 0.66) {
+          this.currentVolume = Volume.Loud
+        } else {
+          this.currentVolume = Volume.Normal
+        }
+      }
+    )
     this.api.getDefaultMedia().subscriptions.seeking.subscribe(
       // Fired when a seek operation begins.
     )
@@ -115,6 +132,7 @@ export class MediaPlayerComponent implements OnInit {
       }
     );
   }
+
 
   play() {
     this.api?.play();
@@ -134,6 +152,10 @@ export class MediaPlayerComponent implements OnInit {
     if (this.api) {
       this.api.getDefaultMedia().currentTime -= 15;
     }
+  }
+
+  toggleMute() {
+    this.volumeComponent?.changeMuteState();
   }
 
   getRoundedTotalReward(): number {
