@@ -1,21 +1,19 @@
-<vg-player class="font-sans z-30" (onPlayerReady)="onPlayerReady($event)">
+<vg-player class="font-sans z-30 touch-manipulation" (onPlayerReady)="onPlayerReady($event)">
   <vg-controls>
 
   </vg-controls>
     <audio #myMedia [vgMedia]="$any(myMedia)" id="audio" src="{{currentTrack.audio}}" type="audio/mp3"
     [attr.autoplay]="initialized ? '' : null">
   </audio>
-    <div [class.minimized]="mediaPlayerState == 'MINIMIZED'"
-      class="z-30 fixed overflow-hidden rounded-2xl shadow-shadow-500 shadow-md inset-x-5 m-[0%_auto] bottom-8 md:bottom-4 max-w-[500px] md:max-w-screen-sm h-20 md:h-[10rem] transition-all ease-in-out duration-500">
-      <div tab-index="0" class="grid grid-cols-4 place-items-center overflow-hidden h-full bg-shadow-700 ">
-        <vg-scrub-bar class="col-span-4 scrub-bar-height place-items-start">
-          <vg-scrub-bar-current-time class="bg-[#333] h-full"></vg-scrub-bar-current-time>
-          <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-        </vg-scrub-bar>
-        <div id="media-player-body" class="col-span-4 grid grid-cols-4 h-full place-items-center pt-2">
-          <div id="play-area"
-            class="w-full max-w-[160px] place-self-center md:place-self-start grid grid-cols-3 place-items-center md:pl-5 pl-2">
-            <div id="time-area" class="hidden col-span-4 place-self-start mt-3 md:flex md:items-center mb-2 justify-start">
+    <div class="z-30 fixed rounded-full shadow-shadow-500 shadow-md inset-x-5 m-[0%_auto] bottom-8 md:bottom-4 max-w-[500px] md:max-w-screen-sm h-28 md:h-[10rem] transition-all ease-in-out duration-500">
+      <vg-scrub-bar class="w-full scrub-bar-height place-items-start overflow-hidden">
+        <vg-scrub-bar-current-time class="bg-[#333] h-full rounded-t-full overflow-hidden"></vg-scrub-bar-current-time>
+        <vg-scrub-bar-buffering-time class="rounded-t-full overflow-hidden"></vg-scrub-bar-buffering-time>
+      </vg-scrub-bar>
+      <div tab-index="0" class="grid grid-cols-4 overflow-hidden rounded-b-2xl place-items-center h-full bg-shadow-700 ">
+        <div id="media-player-body" class="col-span-4 grid grid-cols-10 md:grid-cols-4 h-full place-items-center">
+          <div id="play-area" class="w-full col-span-3 md:col-span-1 max-w-[160px] place-self-center md:place-self-start grid grid-cols-3 place-items-center md:pl-5 pl-3">
+            <div id="time-area" class="hidden md:col-span-4 place-self-start mt-3 md:flex md:items-center mb-2 justify-start">
               <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
               <span class="w-fit px-1 md:text-xl">/</span>
               <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
@@ -45,35 +43,57 @@
               </svg>
             </button>
           </div>
-          <div id="track-area" class="col-span-2">
+          <div id="track-area" class="col-span-5 md:col-span-2 place-self-start self-center pl-2">
             <div class="flex justify-between">
-              <div tab-index="0" class="track-cover hidden md:block mr-4 rounded-lg overflow-hidden">
+              <a tab-index="0" class="track-cover hidden md:block mr-4 rounded-lg overflow-hidden cursor-pointer"
+                [routerLink]="['./search/podcast' + (currentTrack.podcast ? '/episode' : '')]"
+                [queryParams]="currentTrack.podcast ? { 'ep': currentTrack.id, 'pd': null} : { 'pd': currentTrack.id, 'ep': null }"
+                queryParamsHandling="merge"
+              >
                 <img class="object-cover object-center aspect-square w-[8rem]"
                   [alt]="currentTrack.title + ' portrait'" [src]="currentTrack.image" />
-              </div>
-              <div class="track-meta item-body">
-                <div class="track-title ">
-                  <a class="font-semibold" tabindex="0">{{ currentTrack.title }}</a>
+            </a>
+              <div id="track-meta">
+                <div id="track-title">
+                  <a class="font-semibold text-ellipsis-1" tabindex="0"
+                    [routerLink]="['./search/podcast' + (currentTrack.podcast ? '/episode' : '')]"
+                    [queryParams]="currentTrack.podcast ? { 'ep': currentTrack.id, 'pd': null} : { 'pd': currentTrack.id, 'ep': null }"
+                    queryParamsHandling="merge"
+                  >
+                      {{ currentTrack.title }}
+                  </a>
                 </div>
-                <div class="track-podcast hide-minimized">
-                  <a class="" tabindex="0">{{ currentTrack.podcast.title_original }}</a>
+                <div id="track-podcast">
+                  <a class="text-ellipsis-1"
+                    [routerLink]="['./search/podcast']"
+                    [queryParams]="{ 'pd': currentTrack.podcast.id, 'ep': '' }"
+                    queryParamsHandling="merge" tabindex="0"
+                  >
+                      {{ currentTrack.podcast.title_original }}
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-          <div id="controls-area" class="grid grid-cols-1 place-self-end self-center w-full md:self-start md:pr-5 pt-1 md:pt-5 pr-2">
+          <div id="controls-area" class="col-span-2 md:col-span-1 grid grid-cols-1 place-self-end self-start w-full md:self-start md:pr-5 md:pt-5 pr-3">
             <div>
-              <div id="time-area" class="md:hidden col-span-4 place-self-start flex justify-end">
+              <div id="time-area" class="md:hidden col-span-4 mt-2 mb-4 place-self-start flex items-center justify-end">
                 <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
-                <span class="w-fit px-1 text-sm">/</span>
+                <span class="w-fit px-1 text-lg">/</span>
                 <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
               </div>
               <div id="token-area" class="flex items-center justify-end pt-1">
                 <span>{{getRoundedTotalReward()}}</span><img src="../../../assets/images/aboat.png" [class.playing]="isPlaying" class="w-8 md:w-12 ml-2">
               </div>
-              <div id="volume-area" class="hidden md:flex justify-end pt-8">
-                <svg class="w-10 mr-3 fill-main-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M412.6 182c-10.28-8.334-25.41-6.867-33.75 3.402c-8.406 10.24-6.906 25.35 3.375 33.74C393.5 228.4 400 241.8 400 255.1c0 14.17-6.5 27.59-17.81 36.83c-10.28 8.396-11.78 23.5-3.375 33.74c4.719 5.806 11.62 8.802 18.56 8.802c5.344 0 10.75-1.779 15.19-5.399C435.1 311.5 448 284.6 448 255.1S435.1 200.4 412.6 182zM473.1 108.2c-10.22-8.334-25.34-6.898-33.78 3.34c-8.406 10.24-6.906 25.35 3.344 33.74C476.6 172.1 496 213.3 496 255.1s-19.44 82.1-53.31 110.7c-10.25 8.396-11.75 23.5-3.344 33.74c4.75 5.775 11.62 8.771 18.56 8.771c5.375 0 10.75-1.779 15.22-5.431C518.2 366.9 544 313 544 255.1S518.2 145 473.1 108.2zM534.4 33.4c-10.22-8.334-25.34-6.867-33.78 3.34c-8.406 10.24-6.906 25.35 3.344 33.74C559.9 116.3 592 183.9 592 255.1s-32.09 139.7-88.06 185.5c-10.25 8.396-11.75 23.5-3.344 33.74C505.3 481 512.2 484 519.2 484c5.375 0 10.75-1.779 15.22-5.431C601.5 423.6 640 342.5 640 255.1S601.5 88.34 534.4 33.4zM301.2 34.98c-11.5-5.181-25.01-3.076-34.43 5.29L131.8 160.1H48c-26.51 0-48 21.48-48 47.96v95.92c0 26.48 21.49 47.96 48 47.96h83.84l134.9 119.8C272.7 477 280.3 479.8 288 479.8c4.438 0 8.959-.9314 13.16-2.835C312.7 471.8 320 460.4 320 447.9V64.12C320 51.55 312.7 40.13 301.2 34.98z"/></svg>
+              <div id="volume-area" [hidden]="isMobile" class="hidden md:flex justify-end items-center pt-8">
+                <div (click)="toggleMute()">
+                  <svg *ngIf="currentVolume === 3" class="w-10 mr-3 fill-main-50" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M412.6 182c-10.28-8.334-25.41-6.867-33.75 3.402c-8.406 10.24-6.906 25.35 3.375 33.74C393.5 228.4 400 241.8 400 255.1c0 14.17-6.5 27.59-17.81 36.83c-10.28 8.396-11.78 23.5-3.375 33.74c4.719 5.806 11.62 8.802 18.56 8.802c5.344 0 10.75-1.779 15.19-5.399C435.1 311.5 448 284.6 448 255.1S435.1 200.4 412.6 182zM473.1 108.2c-10.22-8.334-25.34-6.898-33.78 3.34c-8.406 10.24-6.906 25.35 3.344 33.74C476.6 172.1 496 213.3 496 255.1s-19.44 82.1-53.31 110.7c-10.25 8.396-11.75 23.5-3.344 33.74c4.75 5.775 11.62 8.771 18.56 8.771c5.375 0 10.75-1.779 15.22-5.431C518.2 366.9 544 313 544 255.1S518.2 145 473.1 108.2zM534.4 33.4c-10.22-8.334-25.34-6.867-33.78 3.34c-8.406 10.24-6.906 25.35 3.344 33.74C559.9 116.3 592 183.9 592 255.1s-32.09 139.7-88.06 185.5c-10.25 8.396-11.75 23.5-3.344 33.74C505.3 481 512.2 484 519.2 484c5.375 0 10.75-1.779 15.22-5.431C601.5 423.6 640 342.5 640 255.1S601.5 88.34 534.4 33.4zM301.2 34.98c-11.5-5.181-25.01-3.076-34.43 5.29L131.8 160.1H48c-26.51 0-48 21.48-48 47.96v95.92c0 26.48 21.49 47.96 48 47.96h83.84l134.9 119.8C272.7 477 280.3 479.8 288 479.8c4.438 0 8.959-.9314 13.16-2.835C312.7 471.8 320 460.4 320 447.9V64.12C320 51.55 312.7 40.13 301.2 34.98z"/></svg>
+                  <svg *ngIf="currentVolume === 2" class="w-10 mr-3 fill-main-50" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m412.6,182c-10.28,-8.334 -25.41,-6.867 -33.75,3.402c-8.406,10.24 -6.906,25.35 3.375,33.74c11.275,9.258 17.775,22.658 17.775,35.958c0,14.17 -6.5,27.59 -17.81,36.83c-10.28,8.396 -11.78,23.5 -3.375,33.74c4.719,5.806 11.62,8.802 18.56,8.802c5.344,0 10.75,-1.779 15.19,-5.399c22.535,-17.573 35.435,-44.473 35.435,-73.973s-12.9,-54.7 -35.4,-73.1zm60.5,-73.8c-10.22,-8.334 -25.34,-6.898 -33.78,3.34c-8.406,10.24 -6.906,25.35 3.344,33.74c33.936,26.82 53.336,68.02 53.336,109.82s-19.44,82.1 -53.31,110.7c-10.25,8.396 -11.75,23.5 -3.344,33.74c4.75,5.775 11.62,8.771 18.56,8.771c5.375,0 10.75,-1.779 15.22,-5.431c45.074,-35.98 70.874,-89.88 70.874,-147.78s-25.8,-110.1 -70.9,-146.9zm-171.9,-73.22c-11.5,-5.181 -25.01,-3.076 -34.43,5.29l-134.97,119.83l-83.8,0c-26.51,0 -48,21.48 -48,47.96l0,95.92c0,26.48 21.49,47.96 48,47.96l83.84,0l134.9,119.8c5.96,5.26 13.56,8.06 21.26,8.06c4.438,0 8.959,-0.9314 13.16,-2.835c11.54,-5.165 18.84,-16.565 18.84,-29.065l0,-383.78c0,-12.57 -7.3,-23.99 -18.8,-29.14z"/></svg>
+                  <svg *ngIf="currentVolume === 1" class="w-10 mr-3 fill-main-50" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M412.6 181.9c-10.28-8.344-25.41-6.875-33.75 3.406c-8.406 10.25-6.906 25.37 3.375 33.78C393.5 228.4 400 241.8 400 256c0 14.19-6.5 27.62-17.81 36.87c-10.28 8.406-11.78 23.53-3.375 33.78c4.719 5.812 11.62 8.812 18.56 8.812c5.344 0 10.75-1.781 15.19-5.406C435.1 311.6 448 284.7 448 256S435.1 200.4 412.6 181.9zM301.2 34.84c-11.5-5.187-25.01-3.116-34.43 5.259L131.8 160H48c-26.51 0-48 21.49-48 47.1v95.1c0 26.51 21.49 47.1 48 47.1h83.84l134.9 119.9C272.7 477.2 280.3 480 288 480c4.438 0 8.959-.9313 13.16-2.837C312.7 472 320 460.6 320 448V64C320 51.41 312.7 39.1 301.2 34.84z"/></svg>
+                  <svg *ngIf="currentVolume === 0" class="w-10 mr-3 fill-main-50" viewBox="0 0 640 512"  xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M301.2 34.85c-11.5-5.188-25.02-3.122-34.44 5.253L131.8 160H48c-26.51 0-48 21.49-48 47.1v95.1c0 26.51 21.49 47.1 48 47.1h83.84l134.9 119.9c5.984 5.312 13.58 8.094 21.26 8.094c4.438 0 8.972-.9375 13.17-2.844c11.5-5.156 18.82-16.56 18.82-29.16V64C319.1 51.41 312.7 40 301.2 34.85zM513.9 255.1l47.03-47.03c9.375-9.375 9.375-24.56 0-33.94s-24.56-9.375-33.94 0L480 222.1L432.1 175c-9.375-9.375-24.56-9.375-33.94 0s-9.375 24.56 0 33.94l47.03 47.03l-47.03 47.03c-9.375 9.375-9.375 24.56 0 33.94c9.373 9.373 24.56 9.381 33.94 0L480 289.9l47.03 47.03c9.373 9.373 24.56 9.381 33.94 0c9.375-9.375 9.375-24.56 0-33.94L513.9 255.1z"/></svg>
+                </div>
                 <vg-volume class="h-10"></vg-volume>
+                <vg-mute #volume class="hidden"></vg-mute>
               </div>
             </div>
           </div>
