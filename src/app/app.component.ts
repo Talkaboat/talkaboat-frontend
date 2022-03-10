@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { slider } from './animations';
 import { UserService } from './services/user/user.service';
 import { WebsiteStateService } from './services/website-state/website-state.service';
@@ -14,7 +15,7 @@ import { WebsiteStateService } from './services/website-state/website-state.serv
 export class AppComponent implements OnInit {
 
   isSidebarOpen = true;
-  constructor(private readonly userService: UserService, private readonly websiteStateService: WebsiteStateService) {
+  constructor(private readonly userService: UserService, private readonly toastr: ToastrService, private readonly websiteStateService: WebsiteStateService) {
 
   }
 
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
     this.isSidebarOpen = this.websiteStateService.isSidebarOpen;
     this.websiteStateService.onSidebarStateChanged.subscribe(state => this.isSidebarOpen = state);
     this.websiteStateService.closeSidebarIfSmallerThanDefinedPixel();
-    await this.userService.autoConnect();
+    this.userService.autoConnect();
   }
 
   @HostListener('window:resize', ['$event'])

@@ -5,9 +5,9 @@ export interface PodcastSearchResult {
     id: string;
     rss: string;
     link?: string;
-    audio: string;
+    audio?: string;
     image: string;
-    podcast: Podcast;
+    podcast?: Podcast;
     itunes_id?: number;
     thumbnail?: string;
     pub_date_ms: any;

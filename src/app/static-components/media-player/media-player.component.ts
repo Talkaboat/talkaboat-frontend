@@ -1,6 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { WebsiteStateService } from 'src/app/services/website-state/website-state.service';
+import { Volume } from '../../../constants/media/enums/volume.enum';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { VgApiService, VgUtilsService } from '@videogular/ngx-videogular/core';
+import { BehaviorSubject } from 'rxjs';
+import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
+import { MediaRepositoryService } from 'src/app/services/repository/media-repository/media-repository.service';
+import { Episode } from 'src/app/services/repository/search-repository/models/episode.model';
+import { Reward } from 'src/app/services/repository/user-repository/models/reward.model';
+import { UserService } from 'src/app/services/user/user.service';
+import { DefaultEpisode } from 'src/constants/mocks/episode-default.mock.constants';
 import { MediaPlayerState } from './mediaplayer-state';
+import { VgMuteComponent } from '@videogular/ngx-videogular/controls';
 
 @Component({
   selector: 'app-media-player',
@@ -9,45 +18,154 @@ import { MediaPlayerState } from './mediaplayer-state';
 })
 export class MediaPlayerComponent implements OnInit {
 
-  track: any = {
-    aboat_id: 445,
-    id: 'd59cca11590d4c4a96bb136bb1d70ad8',
-    audio: "https://hwcdn.libsyn.com/p/8/7/4/8746ca78e209687e/Best_Time_Before_Rally_Bitcoin_Surging_To_100k_Double_Bubble.m4a?c_id=109667018&cs_id=109667018&destination_id=2621528&expiration=1629633095&hwt=f5aef0fd81f692a9a34d60565422e078",
-    audio_length_sec: 2279,
-    pub_date_ms: 1629430183887,
-    link: "",
-    description_original: "Around the Blockchain is your favorite Cryptocurrency show discussing Bitcoin, Ethereum, Cardano, and the top altcoins. Our four crypto experts include Crypto Face, CryptoJebb, Ian Balina, and Ben Armstrong. Tune in for their insightful crypto analysis! Today we are discussing how the institutions are trying to dominate Bitcoin in the future. Will they be able to? Also, we have seen some CRAZY Ethereum gas fees. We explore why that is. Finally, is Bitcoin in a double bubble? Basically, is the bull run over? Stay tuned to find out!",
-
-    rss: "https://bitboycrypto.libsyn.com/rss",
-    title_highlighted: "Best Time Before Rally",
-    title_original: "Best Time Before Rally",
-    image: "https://production.listennotes.com/podcasts/the-bitboy-crypto-podcast-i9-731d2hAs-hdbAUcOjGzE.1400x1400.jpg",
-    itunes_id: 1554097435,
-    podcast: {
-      aboat_id: 91,
-      id: 'eb4fcc627e514645a5dc7d8c6d584685',
-      image: "https://production.listennotes.com/podcasts/the-bitboy-crypto-podcast-i9-731d2hAs-hdbAUcOjGzE.1400x1400.jpg",
-      genre_ids: [],
-      thumbnail: "https://production.listennotes.com/podcasts/the-bitboy-crypto-podcast-i9-731d2hAs-hdbAUcOjGzE.1400x1400.jpg",
-      title_original: "The Bitboy Crypto Podcast",
-      title_highlighted: "The Bitboy Crypto Podcast",
-      publisher_original: "Bitboy Crypto"
-    }
-
-  }
+  currentTrack: any;
+  track = new BehaviorSubject<Episode>(DefaultEpisode);
+  currentVolume: Volume = Volume.Loud;
 
   public mediaPlayerState: MediaPlayerState = MediaPlayerState.MAXIMIZED;
+  public preload: string = 'auto';
+  public api: VgApiService | undefined;
+  public readyToPlay: boolean = false;
+  public audio: string | undefined;
+  public initialized = false;
+  public isPlaying = false;
+  public rewards: Reward = { total: 0, vested: 0, unvested: 0 };
+  public currentTime: any;
+  public totalTime: any;
+  public isMobile: any;
+  @ViewChild('volume') volumeComponent: VgMuteComponent | undefined;
 
-  constructor(private readonly websiteStateService: WebsiteStateService) { }
+  private readonly updatesBetweenHeartbeat = 10;
+  private updates: number = 0;
+
+  constructor(
+    private readonly mediaPlayerService: MediaPlayerService,
+    private readonly mediaRepositoryService: MediaRepositoryService,
+    private readonly userService: UserService) { }
 
   ngOnInit(): void {
-    this.websiteStateService.onMediaPlayerStateChanged.subscribe((state: MediaPlayerState) => {
-
+    this.isMobile = VgUtilsService.isMobileDevice() || VgUtilsService.isiOSDevice();
+    this.userService.onRewardsChanged.subscribe((rewards: Reward) => {
+      this.rewards = rewards;
     })
+    this.mediaPlayerService.changedPlayState.subscribe(state => {
+      if (state) {
+        this.play();
+      } else {
+        this.pause();
+      }
+    });
+
+    this.mediaPlayerService.onTrackChanged.subscribe(nextTrack => {
+      console.log(nextTrack);
+      this.changeSource(nextTrack);
+    })
+
+    this.track.subscribe(value => {
+      this.pause();
+      this.audio = value.audio;
+      this.currentTrack = value;
+    });
   }
 
   togglePlayer() {
     this.mediaPlayerState = this.mediaPlayerState == MediaPlayerState.MAXIMIZED || this.mediaPlayerState == MediaPlayerState.OPEN ? MediaPlayerState.MINIMIZED : MediaPlayerState.MAXIMIZED;
+  }
+
+  onPlayerReady(api: VgApiService) {
+    this.api = api;
+    this.api.getDefaultMedia().subscriptions.ended.subscribe(
+      () => {
+        // Set the video to the beginning
+        if (this.api) {
+          this.mediaRepositoryService.stop(this.track.value.podcast_id, this.track.value.aboat_id).subscribe(
+            rewards => this.userService.updateRewards(rewards)
+          );
+          this.api.getDefaultMedia().currentTime = 0;
+        }
+      }
+    );
+    this.api.getDefaultMedia().subscriptions.timeUpdate.subscribe(
+      (timeUpdate: any) => {
+        this.updates++;
+        if (this.updates > this.updatesBetweenHeartbeat) {
+          this.updates = 0;
+          this.mediaRepositoryService.heartbeat(this.track.value.podcast_id, this.track.value.aboat_id).subscribe(
+            rewards => this.userService.updateRewards(rewards)
+          );
+        }
+      });
+    this.api.getDefaultMedia().subscriptions.playing.subscribe(
+      () => {
+        this.isPlaying = true;
+      }
+    )
+    this.api.getDefaultMedia().subscriptions.pause.subscribe(
+      () => {
+        this.mediaRepositoryService.pause(this.track.value.podcast_id, this.track.value.aboat_id).subscribe(
+          result => this.userService.updateRewards(result)
+        );
+        this.isPlaying = false;
+      }
+    )
+    this.api.getDefaultMedia().subscriptions.volumeChange.subscribe(
+      () => {
+        if (this.api?.volume === 0) {
+          this.currentVolume = Volume.Muted
+        } else if (this.api?.volume < 0.33) {
+          this.currentVolume = Volume.Reduced
+        } else if (this.api?.volume > 0.66) {
+          this.currentVolume = Volume.Loud
+        } else {
+          this.currentVolume = Volume.Normal
+        }
+      }
+    )
+    this.api.getDefaultMedia().subscriptions.seeking.subscribe(
+      // Fired when a seek operation begins.
+    )
+    this.api.getDefaultMedia().subscriptions.seeked.subscribe(
+      // Fired when a seek operation completes.
+    )
+    this.api.getDefaultMedia().subscriptions.canPlay.subscribe(
+      () => {
+        // sets autoplay attribute to only autoplay on changed source, not on initialization
+        this.initialized = true;
+      }
+    );
+  }
+
+
+  play() {
+    this.api?.play();
+  }
+
+  pause() {
+    this.api?.pause();
+  }
+
+  forward() {
+    if (this.api) {
+      this.api.getDefaultMedia().currentTime += 15;
+    }
+  }
+
+  backward() {
+    if (this.api) {
+      this.api.getDefaultMedia().currentTime -= 15;
+    }
+  }
+
+  toggleMute() {
+    this.volumeComponent?.changeMuteState();
+  }
+
+  getRoundedTotalReward(): number {
+    return Math.round(this.rewards.total);
+  }
+
+  changeSource(nextTrack: Episode) {
+    this.track.next(nextTrack);
   }
 
 }

@@ -2,6 +2,10 @@ import { CommonModule } from "@angular/common";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
+import { VgControlsModule } from '@videogular/ngx-videogular/controls';
+import { VgCoreModule } from '@videogular/ngx-videogular/core';
+import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { PipeModule } from "../pipes/pipe.module";
 import { FooterComponent } from "./footer/footer.component";
@@ -33,7 +37,11 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
     FormsModule,
     NgMultiSelectDropDownModule.forRoot(),
     PipeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgBufferingModule,
+    VgOverlayPlayModule,
   ],
   exports: [
     ProfileSidebarComponent,

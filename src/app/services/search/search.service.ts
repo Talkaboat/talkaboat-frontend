@@ -101,6 +101,9 @@ export class SearchService {
       } else {
         languages.push(language);
       }
+    }else {
+      this.searchLanguages = [];
+      this.rawSearchLanguages = '';
     }
 
     this.searchLanguages = languages;
@@ -118,8 +121,10 @@ export class SearchService {
         genres.push(genre);
       }
       this.searchGenres = genres;
+    } else {
+      this.searchGenres = [];
+      this.rawSearchGenres = '';
     }
-
 
     this.onChangedGenres.emit(this.searchGenres);
   }
@@ -171,11 +176,10 @@ export class SearchService {
 
   executeSearch(searchTerm: string) {
     if (this.isSearchEqualToLastSearch()) {
+      this.loaderService.hide();
       return;
     }
     this.lastSearch = this.getSearchQuery();
-    console.log(this.lastSearch);
-    return;
     this.loaderService.show();
     this.podcastRepositoryService.search(this.lastSearch).subscribe({
       next: result => {

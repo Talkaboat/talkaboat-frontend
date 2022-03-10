@@ -24,6 +24,14 @@ module.exports = {
             transform: 'translateY(0px)'
           },
         },
+        'vertical-spin': {
+          "0%": {
+            transform: "rotateY(0)"
+          },
+          "100%": {
+            transform: 'rotateY(360deg)'
+          }
+        }
       },
     },
     colors: {
@@ -81,6 +89,10 @@ module.exports = {
       'spin-slow': 'spin 3s ease-in-out infinite',
 
       'bounce-slow': 'bounce 3s ease-in-out infinite',
+
+      'spin-alt': 'spin 3s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite',
+
+      'vertical-spin': 'vertical-spin 3s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both',
 
       'floating': 'floating 3s ease-in-out infinite',
     },

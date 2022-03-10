@@ -1,11 +1,11 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { UserService } from './services/user/user.service';
 import { Web3Service } from './services/web3/web3.service';
 import { WebsiteStateService } from './services/website-state/website-state.service';
-import { ToastrModule } from 'ngx-toastr';
 describe('AppComponent', () => {
 
   let userService: jasmine.SpyObj<UserService>;
@@ -23,7 +23,8 @@ describe('AppComponent', () => {
       ],
       providers: [
         { provide: Web3Service, useValue: userService },
-        WebsiteStateService
+        WebsiteStateService,
+        Web3Service
       ]
     }).compileComponents();
   });
@@ -32,11 +33,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'talkaboat'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('talkaboat');
   });
 });
