@@ -1,5 +1,5 @@
-import { Volume } from '../../../constants/media/enums/volume.enum';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { VgMuteComponent } from '@videogular/ngx-videogular/controls';
 import { VgApiService, VgUtilsService } from '@videogular/ngx-videogular/core';
 import { BehaviorSubject } from 'rxjs';
 import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
@@ -8,8 +8,8 @@ import { Episode } from 'src/app/services/repository/search-repository/models/ep
 import { Reward } from 'src/app/services/repository/user-repository/models/reward.model';
 import { UserService } from 'src/app/services/user/user.service';
 import { DefaultEpisode } from 'src/constants/mocks/episode-default.mock.constants';
+import { Volume } from '../../../constants/media/enums/volume.enum';
 import { MediaPlayerState } from './mediaplayer-state';
-import { VgMuteComponent } from '@videogular/ngx-videogular/controls';
 
 @Component({
   selector: 'app-media-player',
@@ -57,7 +57,6 @@ export class MediaPlayerComponent implements OnInit {
     });
 
     this.mediaPlayerService.onTrackChanged.subscribe(nextTrack => {
-      console.log(nextTrack);
       this.changeSource(nextTrack);
     })
 

@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Episode } from '../repository/search-repository/models/episode.model';
 import { PodcastSearchResult } from '../repository/search-repository/models/podcast-search-result.model';
+import { Podcast } from '../repository/search-repository/models/podcast.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class MediaPlayerService {
 
   async setTrack(episodeData: Episode, autoplay: boolean, podcastData: any = null) {
     if (podcastData) {
-      episodeData.podcast = podcastData;
+      episodeData.podcast = this.podcastConverted(podcastData);
     }
     localStorage.setItem("last_track", JSON.stringify(episodeData));
     this.track = episodeData;
@@ -69,6 +70,23 @@ export class MediaPlayerService {
       pub_date_ms: podcastSearchResult.pub_date_ms,
       audio_length_sec: podcastSearchResult.audio_length_sec,
     }
+  }
+
+  public podcastConverted(podcast: Podcast): Podcast {
+    return {
+      aboat_id: podcast.aboat_id,
+      id: podcast.id,
+      image: podcast.image,
+      intro_audio: podcast.intro_audio,
+      genre_ids: podcast.genre_ids,
+      thumbnail: podcast.thumbnail,
+      listen_score: podcast.listen_score,
+      title_original: podcast.title_original ? podcast.title_original! : podcast.title!,
+      title: podcast.title,
+      listennotes_url: podcast.listennotes_url,
+      publisher_original: podcast.publisher_original,
+      description: podcast.description
+    };
   }
 
   //#endregion

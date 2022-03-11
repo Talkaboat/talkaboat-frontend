@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { listAnimation, listItemAnimation } from 'src/app/animations';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 import { MediaHelperService } from 'src/app/services/media-helper/media-helper.service';
+import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
+import { Episode } from 'src/app/services/repository/search-repository/models/episode.model';
 import { Podcast } from 'src/app/services/repository/search-repository/models/podcast.model';
 import { PodcastRepositoryService } from 'src/app/services/repository/search-repository/podcast-repository.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -12,7 +15,8 @@ import { PODCAST_DETAIL_MOCK } from 'src/constants/mocks/podcast-detail.mock.con
 @Component({
   selector: 'app-podcast-detail',
   templateUrl: './podcast-detail.component.html',
-  styleUrls: ['./podcast-detail.component.scss']
+  styleUrls: ['./podcast-detail.component.scss'],
+  animations: [listAnimation, listItemAnimation]
 })
 export class PodcastDetailComponent implements OnInit {
 
@@ -24,40 +28,55 @@ export class PodcastDetailComponent implements OnInit {
   isDescriptionOpen = false;
   genreNames: string[] = [];
   subscriptions: Subscription[] = [];
-  constructor(private readonly websiteStateService: WebsiteStateService, private readonly mediaService: MediaHelperService, private readonly podcastRepository: PodcastRepositoryService, private readonly userService: UserService, private readonly route: ActivatedRoute, private readonly loaderService: LoaderService) { }
+  constructor(private readonly websiteStateService: WebsiteStateService, private readonly mediaService: MediaHelperService, private readonly podcastRepository: PodcastRepositoryService, private readonly userService: UserService, private readonly route: ActivatedRoute, private readonly loaderService: LoaderService, private readonly mediaPlayerService: MediaPlayerService) { }
 
   ngOnInit(): void {
-    // this.subscriptions.push(this.route.queryParams.subscribe(params => {
-    //   if (params["pd"]) {
-    //     this.podcastId = params["pd"];
-    //     this.loaderService.show();
-    //     this.podcastRepository.getPodcast(this.podcastId).subscribe({
-    //       next: (responseData: Podcast) => {
-    //         this.podcastData = responseData;
-    //         this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData.genre_ids);
-    //       },
-    //       error: error => {
-    //         this.notFound = true;
-    //       },
-    //       complete: () => {
-    //         this.loaderService.hide();
-    //       }
-    //     });
-    //   }
-    // }));
+    this.subscriptions.push(this.route.queryParams.subscribe(params => {
+      if (params["pd"]) {
+        this.podcastId = params["pd"];
+        if (this.mediaService.lastPodcastDetail && this.mediaService.lastPodcastDetail.id === this.podcastId) {
+          this.podcastData = this.mediaService.lastPodcastDetail;
+          this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData.genre_ids);
+        } else {
+          // this.loaderService.show();
+          // this.podcastRepository.getPodcast(this.podcastId).subscribe({
+          //   next: (responseData: Podcast) => {
+          //     this.podcastData = responseData;
+          //     this.mediaService.lastPodcastDetail = this.podcastData;
+          //     this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData.genre_ids);
+          //   },
+          //   error: error => {
+          //     this.notFound = true;
+          //   },
+          //   complete: () => {
+          //     this.loaderService.hide();
+          //   }
+          // });
+        }
+      }
+    }));
     this.podcastData = JSON.parse(JSON.stringify(PODCAST_DETAIL_MOCK));
+    this.mediaService.lastPodcastDetail = this.podcastData;
     this.canNavigateBack = this.websiteStateService.canNavigateBack();
     this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData?.genre_ids);
-    console.log(this.podcastData?.episodes!);
   }
 
   backNavigation() {
     this.websiteStateService.backNavigation();
   }
 
-  play(episodeIndex: number) {
-    if (this.podcastData && this.podcastData.episodes && this.podcastData.episodes.length > 0) {
+  play(episode: Episode | undefined) {
+    if (!this.podcastData || !this.podcastData.episodes || this.podcastData.episodes.length <= 0) {
 
+    console.log("Not playing");
+      return;
+    }
+    console.log("Playing");
+    if (episode) {
+      this.mediaPlayerService.setTrack(episode, true, this.podcastData);
+    } else {
+
+      this.mediaPlayerService.setTrack(this.podcastData?.episodes[0], true, this.podcastData);
     }
   }
 
@@ -84,6 +103,10 @@ export class PodcastDetailComponent implements OnInit {
     });
   }
 
+  addToPlaylist(episode: Episode) {
+
+  }
+
   async bookmark() {
     if (!this.userService.isUserLoggedIn() || !this.podcastData) {
       return;
@@ -98,7 +121,4 @@ export class PodcastDetailComponent implements OnInit {
       });
     }
   }
-
-
-
 }

@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { BigEqualizerPipe } from './BigEqualizer/big-equalizer.pipe';
 import { LibraryPipe } from "./library/library.pipe";
 import { SanitizeUrlPipe } from "./Sanitizers/sanitize-html.pipe";
+import { TimePipe } from './time/time.pipe';
 import { TranslatePipe } from "./translate/translate.pipe";
 
 @NgModule({
@@ -10,11 +11,12 @@ import { TranslatePipe } from "./translate/translate.pipe";
     TranslatePipe,
     LibraryPipe,
     BigEqualizerPipe,
-    SanitizeUrlPipe
+    SanitizeUrlPipe,
+    TimePipe
   ],
   imports: [
     CommonModule
   ],
-  exports: [TranslatePipe, LibraryPipe, BigEqualizerPipe, SanitizeUrlPipe]
+  exports: [TranslatePipe, LibraryPipe, BigEqualizerPipe, SanitizeUrlPipe, TimePipe]
 })
 export class PipeModule { }

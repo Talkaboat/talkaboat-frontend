@@ -77,7 +77,7 @@ a, button, input {
 }
 
 .btn {
-  @apply hover:outline-none w-full rounded-[1rem] bg-shadow-700 text-main-300 font-semibold text-center;
+  @apply hover:outline-none w-full rounded-[1rem] font-semibold text-center;
 }
 
 .img-placeholder {

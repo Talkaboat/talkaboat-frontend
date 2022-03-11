@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import Big from 'big.js';
+import { MathUtils } from 'src/app/helpers/math/math-utils.helper';
 import { BLOCKCHAIN } from 'src/constants/blockchain.constants';
 import { PoolInfo } from '../../repository/smart-contract-repository/models/pool-info.model';
 import { ContractService } from '../contract/contract.service';
@@ -93,8 +94,8 @@ export class LoungeService {
     }
     poolInfo.rawAmount = Big(poolInfo.userInfo.amount);
     poolInfo.amount = poolInfo.rawAmount.div(10 ** poolInfo.decimals);
-    poolInfo.lastDeposit = this.timeConverter(Number(poolInfo.userInfo.lastDeposit));
-    poolInfo.withdrawalDate = poolInfo.userInfo.lastDeposit > 0 && poolInfo.lockPeriod > 0 ? this.timeConverter(Number(poolInfo.userInfo.lastDeposit), Number(poolInfo.lockPeriod)) : undefined;
+    poolInfo.lastDeposit = MathUtils.timeConverter(Number(poolInfo.userInfo.lastDeposit));
+    poolInfo.withdrawalDate = poolInfo.userInfo.lastDeposit > 0 && poolInfo.lockPeriod > 0 ? MathUtils.timeConverter(Number(poolInfo.userInfo.lastDeposit), Number(poolInfo.lockPeriod)) : undefined;
     if (poolInfo.withdrawalDate) {
       poolInfo.withdrawalTimestamp = poolInfo.userInfo.lastDeposit && poolInfo.lockPeriod > 0 ? new Date(poolInfo.withdrawalDate).getTime() : undefined;
     }
@@ -180,20 +181,6 @@ export class LoungeService {
     poolInfo.totalLiquidity = Big(poolInfo.liquidity).mul(poolToken.priceInBusd!);
     poolInfo.price = poolToken.priceInBusd;
     return poolInfo;
-  }
-
-  public timeConverter(timestamp: number, additionalDays: number = 0){
-    var a = new Date(timestamp * 1000);
-    a.setDate(a.getDate() + additionalDays);
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var year = a.getFullYear();
-    var month = months[a.getMonth()];
-    var date = a.getDate();
-    var hour = a.getHours();
-    var min = a.getMinutes();
-    var sec = a.getSeconds();
-    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-    return time;
   }
 
 }
