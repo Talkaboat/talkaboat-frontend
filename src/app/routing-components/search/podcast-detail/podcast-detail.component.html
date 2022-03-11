@@ -12,7 +12,7 @@
         <button aria-label="play track" [class.hidden]="isLoading"
           class="btn opacity-30 hover:opacity-75 hover:bg-main-800 focus-visible:bg-main-800 focus-visible:opacity-75 absolute w-full h-full top-0 right-0 left-0 bottom-0 bg-shadow-500 rounded-[1rem]"
           (click)="play(undefined)">
-          <img alt="play/pause" class="w-[5rem] h-[5rem] my-auto mx-auto img-placeholder rounded-[1rem]"
+          <img width="40" height="40" alt="play/pause" class="w-[66%] h-[66%] max-w-[5rem] max-h-[5rem] my-auto mx-auto img-placeholder rounded-[1rem]"
             src="./assets/images/player/play.png">
         </button>
       </div>
@@ -54,17 +54,17 @@
       <ul @list class="mt-3 sm:grid sm:grid-cols-4 lg:grid-cols-5 gap-4">
         <li @listItem class="mb-5 py-0 px-4 sm:p-0 flex flex-col bg-shadow-700 rounded-[1rem] shadow-lg"
           *ngFor="let episode of podcastData!.episodes">
-          <div class="mx-auto w-full h-auto flex sm:inline-block relative rounded-[1rem]">
+          <div class="mx-auto w-full h-full flex sm:grid relative rounded-[1rem]">
             <!-- Image -->
             <div
-              class="shadow-lg relative overflow-hidden rounded-[1rem] sm:max-w-none sm:max-h-full max-w-[4rem] max-h-[4rem] my-auto">
-              <img width="120" height="120" [alt]="episode.title + ' portrait'" (load)="episode.isLoading = false"
+              class="shadow-lg relative overflow-hidden rounded-[1rem] p-0 sm:min-w-none sm:max-w-none sm:max-h-full min-w-[4rem] max-w-[4rem] max-h-[4rem] my-auto sm:my-0">
+              <img width="40px" height="40px" [alt]="episode.title + ' portrait'" (load)="episode.isLoading = false"
                 class="w-full mx-auto h-full img-placeholder rounded-[1rem]" [src]="episode.image">
               <button aria-label="play track" *ngIf="episode.audio" [class.hidden]="episode.isLoading"
                 class="btn opacity-30 hover:opacity-75 hover:bg-main-800 focus-visible:bg-main-800 focus-visible:opacity-75 absolute w-full h-full top-0 right-0 left-0 bottom-0 bg-shadow-500 rounded-[1rem]"
                 (click)="play(episode)">
-                <img width="60" height="60" alt="play/pause"
-                  class="w-[5rem] h-[5rem] my-auto mx-auto img-placeholder rounded-[1rem]"
+                <img width="40" height="40" alt="play/pause"
+                  class="w-[66%] h-[66%] max-w-[5rem] max-h-[5rem] my-auto mx-auto img-placeholder rounded-[1rem]"
                   src="./assets/images/player/play.png">
               </button>
               <div *ngIf="episode.isLoading"
@@ -73,14 +73,14 @@
               </div>
             </div>
             <!-- Title -->
-            <div class="p-3">
-              <h6 class="line-clamp-2 overflow-hidden text-ellipsis"><a tabindex="0" [routerLink]="['./episode']"
+            <div class="px-3 grow w-full sm:mt-3 flex">
+              <h6 class="line-clamp-2 overflow-hidden my-auto sm:my-0 text-ellipsis"><a tabindex="0" [routerLink]="['./episode']"
                   [queryParams]="{ 'ep': episode.id, 'pd': null}" queryParamsHandling="merge">{{ episode.title }}</a>
               </h6>
             </div>
 
 
-            <div class="flex sm:inline-block flex-nowrap w-full">
+            <div class="flex sm:inline-block flex-nowrap w-full sm:mt-auto">
               <!-- Length -->
               <p class="px-3 text-base my-auto text-center sm:text-left">
                 {{ episode.audio_length_sec | time: 'hours' }}

@@ -1,40 +1,82 @@
-<ul *ngIf="searchResponse.results.length > 0" @list class="mx-auto max-w-[110rem] grid grid-cols-2  sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 px-[2rem] ">
-  <li @listItem *ngFor="let item of searchResponse.results" class="mb-5 flex flex-col bg-shadow-700 rounded-[1rem] shadow-lg">
-    <div class="mx-auto w-full h-auto relative rounded-[1rem]">
+<ul *ngIf="searchResponse.results.length > 0" @list
+  class="mx-auto max-w-[110rem] sm:grid sm:grid-cols-4 lg:grid-cols-5 gap-4 px-[2rem] ">
+  <li @listItem *ngFor="let item of searchResponse.results"
+    class="mb-5 py-0 px-4 sm:p-0 flex flex-col bg-shadow-700 rounded-[1rem] shadow-lg">
+    <div class="mx-auto w-full h-auto flex sm:grid relative rounded-[1rem]">
 
-      <div class="shadow-lg relative overflow-hidden rounded-[1rem]">
-        <img width="120" height="120" [alt]="item.title_original + ' portrait'" (load)="item.isLoading = false" class="w-full mx-auto h-full img-placeholder rounded-[1rem]" [src]="item.image">
-        <button aria-label="play track" *ngIf="item.podcast" [class.hidden]="item.isLoading" class="btn opacity-30 hover:opacity-75 hover:bg-main-800 focus-visible:bg-main-800 focus-visible:opacity-75 absolute w-full h-full top-0 right-0 left-0 bottom-0 bg-shadow-500 rounded-[1rem]" (click)="play(item)">
-          <img  width="60" height="60" alt="play/pause" class="w-[5rem] h-[5rem] my-auto mx-auto img-placeholder rounded-[1rem]" src="./assets/images/player/play.png">
+      <div
+        class="shadow-lg relative overflow-hidden rounded-[1rem] sm:min-w-none sm:max-w-none sm:max-h-full min-w-[4rem] max-w-[4rem] max-h-[4rem] my-auto">
+        <img width="40px" height="40px" [alt]="item.title_original + ' portrait'" (load)="item.isLoading = false"
+          class="w-full mx-auto h-full img-placeholder rounded-[1rem]" [src]="item.image">
+        <button aria-label="play track" *ngIf="item.podcast" [class.hidden]="item.isLoading"
+          class="btn opacity-30 hover:opacity-75 hover:bg-main-800 focus-visible:bg-main-800 focus-visible:opacity-75 absolute w-full h-full top-0 right-0 left-0 bottom-0 bg-shadow-500 rounded-[1rem]"
+          (click)="play(item)">
+          <img width="40" height="40" alt="play/pause"
+            class="w-[66%] h-[66%] max-w-[5rem] max-h-[5rem] my-auto mx-auto img-placeholder rounded-[1rem]"
+            src="./assets/images/player/play.png">
         </button>
-        <a *ngIf="!item.podcast" [routerLink]="['./podcast']"  [queryParams]="{ 'pd': item.id }" queryParamsHandling="merge" [class.hidden]="item.isLoading" class="absolute w-full opacity-0 hover:bg-main-800 hover:opacity-75 focus-visible:bg-main-800 focus-visible:opacity-75 h-full top-0 right-0 left-0 bottom-0 rounded-[1rem]" (click)="play(item)">
+        <a *ngIf="!item.podcast" [routerLink]="['./podcast']" [queryParams]="{ 'pd': item.id }"
+          queryParamsHandling="merge" [class.hidden]="item.isLoading"
+          class="absolute w-full opacity-0 hover:bg-main-800 hover:opacity-75 focus-visible:bg-main-800 focus-visible:opacity-75 h-full top-0 right-0 left-0 bottom-0 rounded-[1rem]"
+          (click)="play(item)">
         </a>
-        <div *ngIf="item.isLoading" class="w-full absolute left-0 right-0 top-0 bottom-0 mx-auto h-full img-placeholder rounded-[1rem]">
+        <div *ngIf="item.isLoading"
+          class="w-full absolute left-0 right-0 top-0 bottom-0 mx-auto h-full img-placeholder rounded-[1rem]">
           <app-loading-animation></app-loading-animation>
         </div>
       </div>
-      <div class="px-3 py-4">
-        <h3 class="truncate"><a tabindex="0" [routerLink]="['./podcast' + (item.podcast ? '/episode' : '')]" [queryParams]="item.podcast ? { 'ep': item.id, 'pd': null} : { 'pd': item.id, 'ep': null }"
-          queryParamsHandling="merge">{{ item.title_original }}</a></h3>
-        <h5 *ngIf="item.podcast" class="mt-3 truncate"><a [routerLink]="['./podcast']" [queryParams]="{ 'pd': item.podcast.id, 'ep': '' }"
-          queryParamsHandling="merge" tabindex="0">{{item.podcast.title_original}}</a></h5>
-        <p class="text-gray-700 line-clamp-3 max-h-[4.5rem] overflow-hidden text-ellipsis text-base mt-2" [innerHtml]="item.description_original ">
+      <div class="px-3 grow w-full sm:mt-3 flex">
+        <h5 class="line-clamp-1 overflow-hidden my-auto text-ellipsis"><a tabindex="0"
+            [routerLink]="['./podcast' + (item.podcast ? '/episode' : '')]"
+            [queryParams]="item.podcast ? { 'ep': item.id, 'pd': null} : { 'pd': item.id, 'ep': null }"
+            queryParamsHandling="merge">{{ item.title_original }}</a></h5>
+        <h6 *ngIf="item.podcast" class="mt-1 my-auto sm:mt-3 line-clamp-1 overflow-hidden text-ellipsis"><a [routerLink]="['./podcast']"
+            [queryParams]="{ 'pd': item.podcast.id, 'ep': '' }" queryParamsHandling="merge"
+            tabindex="0">{{item.podcast.title_original}}</a></h6>
+        <p *ngIf="!item.podcast"
+          class="text-gray-700 line-clamp-2 sm:line-clamp-3 max-h-[4.5rem] overflow-hidden text-ellipsis text-base mt-2"
+          [innerHtml]="item.description_original ">
         </p>
       </div>
+      <div class="flex shrink sm:inline-block sm:w-full">
+        <!-- Length -->
+        <div *ngIf="item.audio_length_sec" class="px-3 my-auto text-center sm:text-left flex justify-between">
+          <div class="hidden sm:inline-block">
+            {{ 'audio_time' | translate }}
+          </div>
+          <div>
+            {{ item.audio_length_sec | time: 'hours' }}
+          </div>
+        </div>
+        <!-- Published -->
+        <div *ngIf="item.pub_date_ms" class="px-3 text-base my-auto text-center sm:text-left flex justify-between">
+          <div class="hidden sm:inline-block">
+            {{ 'published' | translate }}
+          </div>
+          <div>
+            {{ item.pub_date_ms | time: 'date' }}
+          </div>
 
+        </div>
+        <div class="sm:pb-3 sm:flex sm:mx-auto my-auto sm:px-3 sm:mt-3">
+          <button aria-label="add to playlist or library"
+            class="btn rounded-[1rem] sm:mx-auto max-w-fit px-4 sm:px-8 py-3 text-main-300 border-main-300 border-1 font-semibold"
+            (click)="add(item)">
+            <span *ngIf="!item.podcast" class="max-w-fit">
+              <img *ngIf="!(item.aboat_id | library); else bookmarked" width="24" height="24"
+                class="h-full mx-auto min-h-[2.4rem] min-w-[2.4rem] max-h-[2.4rem]"
+                src="./assets/images/library/bookmark_add.png" />
+              <ng-template #bookmarked>
+                <img width="24" height="24" class="h-full max-h-[2.4rem]"
+                  src="./assets/images/library/bookmark_remove.png" />
+              </ng-template>
+            </span>
+            <span *ngIf="item.podcast">Add</span>
+          </button>
+        </div>
+      </div>
+    </div>
 
-    </div>
-    <div class="mt-auto pb-3 mx-auto">
-      <button aria-label="add to playlist or library" class="btn rounded-[1rem] px-8 py-3 bg-shadow-700 text-main-300 border-main-300 border-1 font-semibold" (click)="add(item)">
-        <span *ngIf="!item.podcast">
-          <img *ngIf="!(item.aboat_id | library); else bookmarked" width="24" height="24" class="h-full max-h-[2.4rem]" src="./assets/images/library/bookmark_add.png"/>
-          <ng-template #bookmarked>
-            <img width="24" height="24" class="h-full max-h-[2.4rem]" src="./assets/images/library/bookmark_remove.png"/>
-          </ng-template>
-        </span>
-        <span *ngIf="item.podcast">Add</span>
-      </button>
-    </div>
 
 
   </li>

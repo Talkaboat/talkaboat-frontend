@@ -208,6 +208,9 @@ export const de = {
   sign_out_address_mismatch: 'Die neue Addresse ist nicht mit deinem Account verbunden!',
   //#endregion
   days: 'Tage',
-  social_header: 'Come on board and be social!'
+  social_header: 'Come on board and be social!',
+  audio_time: 'Dauer',
+  published: 'Veröffentlicht',
+  episodes: 'Episoden'
 }
 
