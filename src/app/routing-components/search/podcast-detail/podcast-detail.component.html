@@ -1,6 +1,6 @@
 <div class="mx-auto max-w-[80rem] px-[1rem]">
   <button aria-label="back navigation" *ngIf="canNavigateBack"
-    class="btn rounded-[1rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
+    class="btn max-w-[24rem] rounded-[1rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
     (click)="backNavigation()">{{ 'back_nav' | translate}}</button>
 
   <div class="rounded-[1rem] mt-5 w-full flex bg-shadow-700 p-5 transition-all duration-500" *ngIf="podcastData">
@@ -47,6 +47,9 @@
     </div>
   </div>
 
+  <div class="mx-auto my-5 flex">
+    <button class="btn primary max-w-[24rem] py-3 mx-auto">Donate</button>
+  </div>
   <!-- Episodes -->
   <div *ngIf="podcastData && podcastData.episodes">
     <div class="card glass sm:p-5 p-0">

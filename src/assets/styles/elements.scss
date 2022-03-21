@@ -1,0 +1,32 @@
+
+.btn {
+  @apply hover:outline-none w-full rounded-[1rem] font-semibold text-center bg-shadow-600;
+  &.primary {
+    @apply border-solid border-[1px] border-shadow-400;
+    &:hover, :focus {
+      @apply border-shadow-200;
+    }
+  }
+  &.secondary {
+    @apply border-solid border-[1px] border-main-400;
+  }
+}
+
+.primary {
+  @apply bg-main-500;
+}
+
+.secondary {
+  @apply bg-main-900;
+}
+
+.base {
+  @apply bg-shadow-900;
+}
+
+.card {
+  @apply rounded-[1rem] w-full bg-shadow-400 p-5 bg-opacity-20;
+  &.glass {
+    @apply bg-opacity-10 backdrop-filter backdrop-blur-lg;
+  }
+}

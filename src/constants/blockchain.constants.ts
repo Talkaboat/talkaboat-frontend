@@ -22,16 +22,19 @@ export const BLOCKCHAIN = {
   ],
   NETWORK_DATA: [
     {
-      chainId: "0x38",//"0x61",
-      chainName: "Binance Smart Chain",
-      rpcUrls: ["https://bsc-dataseed1.binance.org"],//"https://data-seed-prebsc-1-s1.binance.org:8545/"],
+      chainId: "0xF2",//"0x38",//"0x61",
+      chainName: "Kardia Chain",//"Binance Smart Chain",
+      rpcUrls: ["https://dev.kardiachain.io"],//["https://bsc-dataseed1.binance.org"],//"https://data-seed-prebsc-1-s1.binance.org:8545/"],
       nativeCurrency: {
-        name: "Binance Coin",
-        symbol: "BNB",
+        name: "Kardia Coin",
+        symbol: "KAI",
         decimals: 18,
+        // name: "Binance Coin",
+        // symbol: "BNB",
+        // decimals: 18,
 
       },
-      blockExplorerUrls: ["https://bscscan.com/"],  //Remove testnet
+      blockExplorerUrls: [ "https://explorer-dev.kardiachain.io" ]//["https://bscscan.com/"],  //Remove testnet
     },
   ],
   ALLOWED_NETWORKS: [56, 97],

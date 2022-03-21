@@ -1,28 +1,28 @@
 <nav [class.open]="isSidebarOpen"
-  class="z-40 transition-all ease-in-out duration-500 fixed left-0 md:left-[1rem] top-[6.5rem] md:top-[8.5rem] md:rounded-[1rem] overflow-hidden rounded-r-[2rem] w-[0rem] md:w-[4.5rem] bottom-[1rem] text-[1.3rem] bg-shadow-700 font-semibold">
+  class="z-40 transition-all ease-in-out duration-500 fixed left-0 md:left-[1rem] top-[6.5rem] md:top-[8.5rem] md:rounded-[1rem] overflow-hidden rounded-r-[2rem] w-[0rem] md:w-[4.5rem] bottom-[1rem] text-[1.3rem] base font-semibold">
   <div>
     <ul [class.w-[26rem]]="isSidebarOpen" class="py-5">
       <li class="hover-up md:hidden"><a [routerLink]="['']" class="flex" [queryParams]="{ 'tokenA': null, 'tokenB': null }">
         <img src="./assets/images/sidebar/a.png"  alt="aboat logo"/>
-        <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
+        <span [class.hidden]="!isSidebarOpen">
           Talkaboat
         </span>
       </a></li>
-      <li class="hover-up"><a [routerLink]="['/shipyard']" class="flex" [queryParams]="{ 'tokenA': null, 'tokenB': null }">
+      <li class="hover-up"><a [routerLink]="['/shipyard']" class="flex w-fit" [queryParams]="{ 'tokenA': null, 'tokenB': null }">
           <img src="./assets/images/sidebar/home.png"  alt="shipyard"/>
-          <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
+          <span [class.hidden]="!isSidebarOpen" >
             {{ 'home' | translate}}
           </span>
         </a></li>
       <li class="hover-up"><a [routerLink]="['/swap']" class="flex" queryParamsHandling="">
           <img src="./assets/images/sidebar/swap.png"  alt="swap"/>
-          <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
+          <span [class.hidden]="!isSidebarOpen" >
             {{ 'swap' | translate}}
           </span>
         </a></li>
       <li class="hover-up"><a [routerLink]="['/lounge']" class="flex" queryParamsHandling="">
           <img src="./assets/images/sidebar/lounge.png" alt="lounge" />
-          <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
+          <span [class.hidden]="!isSidebarOpen" >
             {{ 'lounge' | translate}}
           </span>
         </a></li>
@@ -38,19 +38,19 @@
       </li>
       <li class="hover-up"><a [routerLink]="['/tasks']" class="flex" queryParamsHandling="">
           <img src="./assets/images/sidebar/tasks.png"  alt="tasks" />
-          <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
+          <span [class.hidden]="!isSidebarOpen" >
             {{ 'tasks' | translate}}
           </span>
         </a></li>
       <li class="hover-up"><a [routerLink]="['/gift']" class="flex" queryParamsHandling="">
           <img src="./assets/images/sidebar/gift.png"  alt="gift" />
-          <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
+          <span [class.hidden]="!isSidebarOpen" >
             {{ 'gift' | translate}}
           </span>
         </a></li>
       <li class="hover-up"><button aria-label="change language" (click)="toggleLang()" class="flex text-left font-semibold">
           <img src="./assets/images/sidebar/globe.png" alt="globe" />
-          <span [class.hidden]="!isSidebarOpen" class="min-w-[20rem]">
+          <span [class.hidden]="!isSidebarOpen" >
             {{ 'lang' | translate}}
           </span>
         </button></li>

@@ -16,6 +16,7 @@ export class Web3Service {
   web3Modal: Web3Modal = new Web3Modal();
   public chainIdObservable = new EventEmitter<number>();
   public accountsObservable = new EventEmitter<string[]>();
+  private readonly baseRPC = 'https://dev.kardiachain.io';
   constructor() {
     this.createModal();
   }
@@ -30,9 +31,10 @@ export class Web3Service {
           rpc: {
             1: "https://bsc-dataseed.binance.org/",
             56: "https://bsc-dataseed.binance.org/",
-            97: "https://data-seed-prebsc-1-s1.binance.org:8545/"
+            97: "https://data-seed-prebsc-1-s1.binance.org:8545/",
+            242: "https://dev.kardiachain.io"
           },
-          chainId: 56
+          chainId: 242
         }
       },
     };
@@ -63,7 +65,7 @@ export class Web3Service {
   }
 
   async switchNetwork() {
-      return window.ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x38' /*'0x61'*/}]});
+      return window.ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0xF2' /*'0x38'*/}]});
   }
 
   async isBraveBrowser() {
@@ -147,13 +149,13 @@ export class Web3Service {
   }
 
   async checkChain(chainId: number): Promise<boolean> {
-    if (!BLOCKCHAIN.ALLOWED_NETWORKS.includes(chainId)) {
-      // this.toast.error("This chain is not supported. Please use Binance Smart Chain.", "Network not allowed");
-      await this.disconnect();
-    } else {
+    // if (!BLOCKCHAIN.ALLOWED_NETWORKS.includes(chainId)) {
+    //   // this.toast.error("This chain is not supported. Please use Binance Smart Chain.", "Network not allowed");
+    //   await this.disconnect();
+    // } else {
       this.chainId = chainId
       this.chainIdObservable.emit(this.chainId);
-    }
+    // }
     return true;
   }
 

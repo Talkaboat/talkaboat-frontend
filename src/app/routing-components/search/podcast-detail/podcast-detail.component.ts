@@ -10,6 +10,7 @@ import { Podcast } from 'src/app/services/repository/search-repository/models/po
 import { PodcastRepositoryService } from 'src/app/services/repository/search-repository/podcast-repository.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { WebsiteStateService } from 'src/app/services/website-state/website-state.service';
+import { PODCAST_DETAIL_MOCK } from 'src/constants/mocks/podcast-detail.mock.constants';
 
 @Component({
   selector: 'app-podcast-detail',
@@ -37,24 +38,27 @@ export class PodcastDetailComponent implements OnInit {
           this.podcastData = this.mediaService.lastPodcastDetail;
           this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData.genre_ids);
         } else {
-          this.loaderService.show();
-          this.podcastRepository.getPodcast(this.podcastId).subscribe({
-            next: (responseData: Podcast) => {
-              this.podcastData = responseData;
-              this.mediaService.lastPodcastDetail = this.podcastData;
-              this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData.genre_ids);
-            },
-            error: error => {
-              this.notFound = true;
-            },
-            complete: () => {
-              this.loaderService.hide();
-            }
-          });
+          // this.loaderService.show();
+          // this.podcastRepository.getPodcast(this.podcastId).subscribe({
+          //   next: (responseData: Podcast) => {
+          //     this.podcastData = responseData;
+          //     this.mediaService.lastPodcastDetail = this.podcastData;
+          //     this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData.genre_ids);
+          //   },
+          //   error: error => {
+          //     this.notFound = true;
+          //   },
+          //   complete: () => {
+          //     this.loaderService.hide();
+          //   }
+          // });
         }
       }
     }));
+    this.podcastData = JSON.parse(JSON.stringify(PODCAST_DETAIL_MOCK));
+    this.mediaService.lastPodcastDetail = this.podcastData;
     this.canNavigateBack = this.websiteStateService.canNavigateBack();
+    this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData?.genre_ids);
   }
 
   backNavigation() {

@@ -2,12 +2,16 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import '~ngx-toastr/toastr';
+@import './assets/styles/default.scss';
+@import './assets/styles/elements.scss';
 
 .gradient-background {
   background: linear-gradient(0deg,#011e47,#0e1825,#0a111a,#011e47);
   background-size: 240% 240%;
   animation: gradient-animation 4s ease infinite;
 }
+
+
 
 @keyframes gradient-animation {
   0% {
@@ -66,38 +70,6 @@ ng-multiselect-dropdown {
   }
 }
 
-
-::-webkit-scrollbar {
-  width: 7.5px;
-  background-color: #64A4FD;
-}
-::-webkit-scrollbar-track {
-  background-color: #13252570;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #64A4FD;
-  border: 1px solid transparent;
-  background-clip: content-box;
-  padding-left: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: #4b79a194;
-}
-html, body {
-  overflow-x: hidden;
-  overscroll-behavior-y: none;
-  scroll-behavior: smooth !important;
-  @apply ease-in-out duration-500 transition-all;
-}
-
-a, button, input {
-  @apply hover:outline-none hover:ring-0 focus-visible:outline-none focus:ring-main-300 focus:ring-1 ease-in-out duration-500 transition-all;
-}
-
-.btn {
-  @apply hover:outline-none w-full rounded-[1rem] font-semibold text-center;
-}
-
 .img-placeholder {
   background:
     url(./assets/gifs/loading.gif)
@@ -105,44 +77,6 @@ a, button, input {
     left center;
 }
 
-.card {
-  @apply rounded-[1rem] w-full bg-shadow-700 p-5 bg-opacity-20;
-  &.glass {
-    @apply bg-opacity-10 backdrop-filter backdrop-blur-lg;
-  }
-}
-
-.hover-up {
-  @apply relative top-0 hover:top-[-0.3rem] transition-all duration-700;
-}
-
-body {
-  @apply text-[1.2rem] md:text-[1.4rem];
-}
-
-h1 {
-  @apply font-semibold text-[2.8rem] md:text-[3.4rem];
-}
-
-h2 {
-  @apply font-semibold text-[2.3rem] md:text-[2.6rem];
-}
-
-h3 {
-  @apply font-semibold text-[1.672rem] md:text-[2.072rem];
-}
-
-h4 {
-  @apply font-semibold text-[1.4rem] md:text-[1.8rem];
-}
-
-h5 {
-  @apply font-semibold text-[1.328rem] md:text-[1.528rem];
-}
-
-h6 {
-  @apply font-semibold text-[1.272rem] md:text-[1.472rem];
-}
 
 .web3modal-modal-lightbox {
   z-index: 60 !important;

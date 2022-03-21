@@ -7,14 +7,14 @@ li {
 }
 
 a, button {
-  @apply flex h-full min-w-[3rem] min-h-[3rem] pl-5;
+  @apply flex h-full ml-5 w-fit;
   span {
-    @apply my-auto;
+    @apply ml-3 my-auto;
   }
 }
 
 img {
-  @apply my-auto w-8 h-8 mr-3;
+  @apply my-auto w-8 h-8;
 }
 
 li {

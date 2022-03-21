@@ -1,5 +1,5 @@
 <div [class.open]="isFilterOpen" class="absolute px-3 mt-3 rounded-[1rem] bg-shadow-600 md:left-0 md:right-0 -left-[2rem] -right-[2rem] h-0 overflow-hidden transition-all duration-500">
-  <div class="py-5">
+  <div class="py-5" *ngIf="isFilterOpen">
     <div class="language mx-auto dropdown">
       <p class="filter-title mb-3">{{ 'language' | translate }}</p>
           <ng-multiselect-dropdown class="bg-shadow-700"
