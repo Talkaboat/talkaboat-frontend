@@ -12,7 +12,7 @@ export class Web3Service {
   public web3: any;
   public provider: any;
   public accounts: any;
-  public chainId: number = 56;
+  public chainId: number = 242;
   web3Modal: Web3Modal = new Web3Modal();
   public chainIdObservable = new EventEmitter<number>();
   public accountsObservable = new EventEmitter<string[]>();
@@ -98,7 +98,7 @@ export class Web3Service {
   }
 
   async defaultLogin() {
-    this.web3 = new Web3("https://bsc-dataseed.binance.org/");
+    this.web3 = new Web3(this.baseRPC);//"https://bsc-dataseed.binance.org/");
     this.chainId = await this.web3.eth.net.getId();
     this.accounts = undefined;
     this.accountsObservable.emit([]);

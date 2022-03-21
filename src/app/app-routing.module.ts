@@ -12,6 +12,7 @@ export const routes: Routes = [
   { path: 'search', loadChildren: () => import('./routing-components/search/search.module').then(m => m.SearchModule) },
   { path: 'lounge', loadChildren: () => import('./routing-components/lounge/lounge.module').then(m => m.LoungeModule) },
   { path: 'info', loadChildren: () => import('./routing-components/info/info.module').then(m => m.InfoModule) },
+  { path: 'profile', loadChildren: () => import('./routing-components/profile/profile.module').then(m => m.ProfileModule) },
   { path: 'general-terms', component: GeneralTermsComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: 'imprint', component: ImprintComponent },

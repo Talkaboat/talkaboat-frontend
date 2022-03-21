@@ -37,7 +37,7 @@ export const BLOCKCHAIN = {
       blockExplorerUrls: [ "https://explorer-dev.kardiachain.io" ]//["https://bscscan.com/"],  //Remove testnet
     },
   ],
-  ALLOWED_NETWORKS: [56, 97],
+  ALLOWED_NETWORKS: [56, 97, 242],
   RPC_URLS: {
     BSC: 'https://bsc-dataseed.binance.org/',
     BSC_TEST: 'https://data-seed-prebsc-1-s1.binance.org:8545/'

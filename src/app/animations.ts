@@ -1,13 +1,8 @@
 import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-  animateChild,
+  animate, animateChild,
   group,
   query,
-  stagger,
+  stagger, style, transition, trigger
 } from '@angular/animations';
 
 export const listAnimation =
@@ -41,11 +36,10 @@ export const slider =
     transition('home => *', fadeTo()),
     transition('isRight => home', slideTo('left')),
     transition('isLeft => home', slideTo('right')),
-    transition('* => home', slideTo('left')),
-    transition('* => isBottom', fadeTo()),
     transition('isBottom => *', fadeTo()),
     transition('isRight => isLeft', slideTo('left')),
     transition('isLeft => isRight', slideTo('right')),
+    transition('isRight => isBottom', fadeTo())
   ]);
 
 

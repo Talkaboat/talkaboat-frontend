@@ -74,6 +74,7 @@ export class WebsiteStateService {
   }
 
   public canNavigateBack(): boolean {
+    console.log(this.navigationHistory.length);
     return this.navigationHistory.length > 1;
   }
 
