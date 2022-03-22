@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '../i18n/translate.service';
 import { LoaderService } from '../loader/loader.service';
 import { AuthorizationResponse } from '../repository/user-repository/models/authorization-response.model';
+import { RewardDetail } from '../repository/user-repository/models/reward-detail.model';
 import { Reward } from '../repository/user-repository/models/reward.model';
 import { UserAuthorizationRequestResponse } from '../repository/user-repository/models/user-authorization-request.response.model';
 import { UserProfileData } from '../repository/user-repository/models/user-profile-data.model';
@@ -13,10 +14,11 @@ import { Web3Service } from '../web3/web3.service';
   providedIn: 'root'
 })
 export class UserService {
-
   userData: UserProfileData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
   currentRewards: Reward = { total: 0, vested: 0, unvested: 0 };
+  rewardDetails: RewardDetail[] = [];
   onRewardsChanged = new EventEmitter<Reward>();
+  onRewardDetailsChanged = new EventEmitter<RewardDetail[]>();
   onUserStateChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
   onSignMessageRequested: EventEmitter<boolean> = new EventEmitter<boolean>();
   signRequestId = 0;
@@ -46,9 +48,18 @@ export class UserService {
     }
   }
 
+  getUserRewardDetails() {
+    this.userRepositoryService.getRewardDetails().subscribe((rewards: RewardDetail[]) => {
+      this.rewardDetails = rewards;
+      this.onRewardDetailsChanged.emit(rewards);
+    })
+  }
+
   async logout() {
     localStorage.removeItem('aboat_access');
     this.userData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
+    this.rewardDetails = [];
+    this.onRewardDetailsChanged.emit([]);
     this.updateRewards({ total: 0, vested: 0, unvested: 0 }, true);
     this.onUserStateChanged.emit(false);
     await this.web3Service.disconnect();
@@ -133,7 +144,7 @@ export class UserService {
       next: (profileData) => {
         this.userData = profileData;
         this.onUserStateChanged.emit(true);
-        this.userRepositoryService.getRewards(this.userData.userName).subscribe(rewards => {
+        this.userRepositoryService.getRewards().subscribe(rewards => {
           this.updateRewards(rewards, true);
         });
       },
@@ -197,5 +208,9 @@ export class UserService {
     localStorage.removeItem('aboat_access');
     this.cancelRequestId = this.signRequestId - 1;
     this.loaderService.hide();
+  }
+
+  isMe(expectedUser: string) {
+    return this.isUserLoggedIn() && this.userData.userName.toLowerCase() === expectedUser.toLowerCase();
   }
 }

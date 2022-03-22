@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { RepositoryService } from '../repository.service';
-import { AuthorizationResponse as AuthorizationResponse } from './models/authorization-response.model';
-import { UserProfileData } from './models/user-profile-data.model';
-import { UserAuthorizationRequestResponse } from './models/user-authorization-request.response.model';
-import { USER_API } from './user-urls.const';
 import { Observable, of } from 'rxjs';
+import { RepositoryService } from '../repository.service';
+import { AuthorizationResponse } from './models/authorization-response.model';
+import { RewardDetail } from './models/reward-detail.model';
 import { Reward } from './models/reward.model';
+import { UserAuthorizationRequestResponse } from './models/user-authorization-request.response.model';
+import { UserProfileData } from './models/user-profile-data.model';
+import { USER_API } from './user-urls.const';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserRepositoryService  extends RepositoryService {
-
     //Which information do we need?
   public register(mailAdress: string, userName: string, address: string): Observable<UserAuthorizationRequestResponse> {
     if (!this.web3Service.accounts) {
@@ -45,8 +45,13 @@ export class UserRepositoryService  extends RepositoryService {
     return this.post(api, signature);
   }
 
-  public getRewards(username: string): Observable<Reward> {
-    const api = USER_API.URL + USER_API.REWARD_URL + username;
+  public getRewards(): Observable<Reward> {
+    const api = USER_API.URL + USER_API.REWARD_URL;
+    return this.get(api);
+  }
+
+  public getRewardDetails(): Observable<RewardDetail[]> {
+    const api = USER_API.URL + USER_API.REWARD_DETAILS_URL;
     return this.get(api);
   }
 

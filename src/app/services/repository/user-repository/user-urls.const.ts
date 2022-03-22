@@ -18,5 +18,6 @@ export const USER_API = {
     REQUEST_REFERAL_AMOUNT: "/referal/{campaign}/{wallet}/amount",
     CONFIRM_EMAIL: "/email/{email}/confirm/{code}",
     RESEND_EMAIL: "/email/{email}/resend",
-    REWARD_URL: "/reward/"
+    REWARD_URL: "/reward",
+    REWARD_DETAILS_URL: "/reward/detail"
 }
