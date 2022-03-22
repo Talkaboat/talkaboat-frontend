@@ -13,6 +13,7 @@ export const routes: Routes = [
   { path: 'lounge', loadChildren: () => import('./routing-components/lounge/lounge.module').then(m => m.LoungeModule) },
   { path: 'info', loadChildren: () => import('./routing-components/info/info.module').then(m => m.InfoModule) },
   { path: 'profile', loadChildren: () => import('./routing-components/profile/profile.module').then(m => m.ProfileModule) },
+  { path: 'mediacenter', loadChildren: () => import('./routing-components/mediacenter/mediacenter.module').then(m => m.MediacenterModule) },
   { path: 'general-terms', component: GeneralTermsComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: 'imprint', component: ImprintComponent },
