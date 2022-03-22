@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MediacenterRoutingModule } from './mediacenter-routing.module';
 import { MediacenterComponent } from './mediacenter.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { MediacenterComponent } from './mediacenter.component';
   ],
   imports: [
     CommonModule,
-    MediacenterRoutingModule
-  ]
+    MediacenterRoutingModule,
+    RouterModule
+  ],
+  exports: [MediacenterComponent]
 })
 export class MediacenterModule { }
