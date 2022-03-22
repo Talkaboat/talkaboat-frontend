@@ -30,19 +30,31 @@ export const PLAYLIST_ARRAY_MOCK: Playlist[] = [
     },
     {
         name: "Totally valid playlist name aswell",
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/180/270",
         playlist_id: 2,
         tracks : tracks
     },
     {
         name: "This is a name",
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/170/265",
         playlist_id: 3,
         tracks : tracks
     },
     {
-        name: "shoirty",
-        image: "https://picsum.photos/200/300",
+        name: "shorty",
+        image: "https://picsum.photos/190/285",
+        playlist_id: 4,
+        tracks : tracks
+    },
+    {
+        name: "short",
+        image: "https://picsum.photos/190/285",
+        playlist_id: 4,
+        tracks : tracks
+    },
+    {
+        name: "sh",
+        image: "https://picsum.photos/150/225",
         playlist_id: 4,
         tracks : tracks
     },

@@ -21,7 +21,7 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
     this.playlistSubscription = this.podcastService.getPlaylists().subscribe((data) => {
       console.log(data);
     }, (error) => {
-      // local fallback playlist?
+      // local fallback playlist with recommendations?
       // mock for now
       console.error(error);
       this.playlists = PLAYLIST_ARRAY_MOCK;
@@ -31,7 +31,4 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.playlistSubscription.unsubscribe();
   }
-
-
-
 }
