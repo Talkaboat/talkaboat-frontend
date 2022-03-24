@@ -26,6 +26,12 @@
             {{ 'lounge' | translate}}
           </span>
         </a></li>
+        <li class="hover-up"><a [routerLink]="['/mediacenter']" class="flex" queryParamsHandling="">
+          <img src="./assets/images/sidebar/lounge.png" alt="lounge" />
+          <span [class.hidden]="!isSidebarOpen" >
+            {{ 'mediacenter' | translate}}
+          </span>
+        </a></li>
     </ul>
     <!-- BOTTOM AREA -->
     <ul [class.min-w-[20rem]]="isSidebarOpen" class="absolute  bottom-0 py-5">
