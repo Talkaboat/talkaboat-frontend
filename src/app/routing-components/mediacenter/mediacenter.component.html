@@ -1,7 +1,7 @@
 <div class="max-w-[84rem] mx-auto">
-    <nav>
-        <button [routerLink]="['/mediacenter/favourites']" routerLinkActive="active-link">favourites</button>
-        <button [routerLink]="['/mediacenter/playlists']" routerLinkActive="active-link">playlists</button>
+    <nav class="mb-4">
+        <a class="btn px-8 py-4" [routerLink]="['/mediacenter/favourites']" routerLinkActive="active-link">Favourites</a>
+        <a class="btn px-8 py-4" [routerLink]="['/mediacenter/playlists']" routerLinkActive="active-link">Playlists</a>
     </nav>
     <router-outlet></router-outlet>
 </div>
