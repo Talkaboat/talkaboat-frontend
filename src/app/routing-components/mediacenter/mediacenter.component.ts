@@ -9,8 +9,6 @@ export class MediacenterComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log("loaded");
-  }
+  ngOnInit(): void {}
 
 }

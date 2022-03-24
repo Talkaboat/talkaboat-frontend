@@ -12,19 +12,23 @@ import { PLAYLIST_ARRAY_MOCK } from 'src/constants/mocks/playlist.mock.constants
 export class PlaylistsComponent implements OnInit, OnDestroy {
 
   playlistSubscription! : Subscription;
-
-  playlists : Playlist[] | null = null;
-
-  constructor(private podcastService : PodcastRepositoryService) {}
+  isLoggedIn: boolean | null = null;
+  userPlaylists : Playlist[] | null = null;
+  recommendationPlaylists : Playlist[] | null = null;
+  
+  constructor(private podcastService : PodcastRepositoryService) {
+    this.recommendationPlaylists = PLAYLIST_ARRAY_MOCK;
+  }
 
   ngOnInit(): void {
     this.playlistSubscription = this.podcastService.getPlaylists().subscribe((data) => {
-      console.log(data);
+      this.isLoggedIn = true;
+      if (data.length > 0) {
+        this.userPlaylists = data;
+      }
     }, (error) => {
-      // local fallback playlist with recommendations?
-      // mock for now
       console.error(error);
-      this.playlists = PLAYLIST_ARRAY_MOCK;
+      this.isLoggedIn = false;
     });
   }
 
