@@ -1,20 +1,23 @@
-<section *ngIf="isLoggedIn else showLoginSection">
-    <h2>Your Playlists</h2>
-    <app-playlist-list [playlists]="userPlaylists" *ngIf="userPlaylists && userPlaylists.length > 0"></app-playlist-list>
-    <p *ngIf="userPlaylists == null">It looks like you dont have any playlists yet.</p>
-    <button class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">Add playlist</button>
-</section>
+<ng-container *ngIf="loggedIn then loggedInSection else showLoginSection"></ng-container>
 <ng-container *ngIf="recommendationPlaylists && recommendationPlaylists.length > 0">
     <section>
         <h2>Community recommendations</h2>
         <app-playlist-list [playlists]="recommendationPlaylists" *ngIf="recommendationPlaylists"></app-playlist-list>
     </section>
+    <!-- playlist(s) nach themen? -->
+    <!-- playlist(s) von freunden? -->
 </ng-container>
+<ng-template #loggedInSection>
+    <section>
+        <h2>Your Playlists</h2>
+        <app-playlist-list [playlists]="userPlaylists" *ngIf="userPlaylists && userPlaylists.length > 0"></app-playlist-list>
+        <p *ngIf="userPlaylists == null">It looks like you dont have any playlists yet.</p>
+        <button class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">Add playlist</button>
+    </section>
+</ng-template>
 <ng-template #showLoginSection>
     <section>
         <h2>Playlists</h2>
         <p>Please login to create a playlist</p>
     </section>
 </ng-template>
-<!-- playlist(s) nach themen? -->
-<!-- playlist(s) von freunden? -->
