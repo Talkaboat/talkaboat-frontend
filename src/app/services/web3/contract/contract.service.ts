@@ -25,6 +25,7 @@ export class ContractService {
   private readonly faucetTestnetContractAddress = '0x173248954B79BB666F6F88C8947eD7B2C2fc3714';
   private readonly rewardTestnetContractAddress = '0x52CA0D372a8897Fc00D14555Be962B1f4223790B';
   private readonly privateSaleTestnetContractAddress = '0xaC8227fA38E0fb3d10bAa32B077B6125E7ae4F2c';
+  private readonly masterEntertainerKAIContractAddress = '0x319Cbc449E622Ef53b06dD1b720649207e5D13B4';
   constructor(private readonly web3Service: Web3Service) { }
 
   private getStandardTokenAbi(): any {
@@ -43,6 +44,8 @@ export class ContractService {
     switch (this.web3Service.chainId) {
       case 97: return this.masterEntertainerTestnetContractAddress;
       case 56: return this.masterEntertainerAddress;
+      case 242: return this.masterEntertainerKAIContractAddress;
+      case 69: return this.masterEntertainerKAIContractAddress;
     }
     return "";
   }

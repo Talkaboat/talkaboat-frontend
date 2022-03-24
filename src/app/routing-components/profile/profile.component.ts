@@ -47,7 +47,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }));
     this.subscriptions.push(this.userService.onRewardDetailsChanged.subscribe((details: RewardDetail[]) => {
       this.rewardDetails = details;
-      console.log(details);
     }))
     this.subscriptions.push(this.userService.onUserStateChanged.subscribe(() => {
       if (this.isMe()) {

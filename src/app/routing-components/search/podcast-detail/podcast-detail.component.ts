@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { listAnimation, listItemAnimation } from 'src/app/animations';
+import { TranslateService } from 'src/app/services/i18n/translate.service';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 import { MediaHelperService } from 'src/app/services/media-helper/media-helper.service';
 import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
@@ -10,7 +12,6 @@ import { Podcast } from 'src/app/services/repository/search-repository/models/po
 import { PodcastRepositoryService } from 'src/app/services/repository/search-repository/podcast-repository.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { WebsiteStateService } from 'src/app/services/website-state/website-state.service';
-import { PODCAST_DETAIL_MOCK } from 'src/constants/mocks/podcast-detail.mock.constants';
 
 @Component({
   selector: 'app-podcast-detail',
@@ -28,7 +29,13 @@ export class PodcastDetailComponent implements OnInit {
   isDescriptionOpen = false;
   genreNames: string[] = [];
   subscriptions: Subscription[] = [];
-  constructor(private readonly websiteStateService: WebsiteStateService, private readonly mediaService: MediaHelperService, private readonly podcastRepository: PodcastRepositoryService, private readonly userService: UserService, private readonly route: ActivatedRoute, private readonly loaderService: LoaderService, private readonly mediaPlayerService: MediaPlayerService) { }
+  constructor(private readonly websiteStateService: WebsiteStateService, private readonly mediaService: MediaHelperService,
+    private readonly podcastRepository: PodcastRepositoryService,
+    private readonly userService: UserService,
+    private readonly route: ActivatedRoute, private readonly loaderService: LoaderService,
+    private readonly mediaPlayerService: MediaPlayerService,
+    private readonly toastr: ToastrService,
+  private readonly translateService: TranslateService) { }
 
   ngOnInit(): void {
     this.subscriptions.push(this.route.queryParams.subscribe(params => {
@@ -38,27 +45,28 @@ export class PodcastDetailComponent implements OnInit {
           this.podcastData = this.mediaService.lastPodcastDetail;
           this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData.genre_ids);
         } else {
-          // this.loaderService.show();
-          // this.podcastRepository.getPodcast(this.podcastId).subscribe({
-          //   next: (responseData: Podcast) => {
-          //     this.podcastData = responseData;
-          //     this.mediaService.lastPodcastDetail = this.podcastData;
-          //     this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData.genre_ids);
-          //   },
-          //   error: error => {
-          //     this.notFound = true;
-          //   },
-          //   complete: () => {
-          //     this.loaderService.hide();
-          //   }
-          // });
+          this.loaderService.show();
+          this.podcastRepository.getPodcast(this.podcastId).subscribe({
+            next: (responseData: Podcast) => {
+              this.podcastData = responseData;
+              this.mediaService.lastPodcastDetail = this.podcastData;
+              this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData.genre_ids);
+            },
+            error: error => {
+              this.notFound = true;
+            },
+            complete: () => {
+              this.loaderService.hide();
+            }
+          });
         }
       }
     }));
-    this.podcastData = JSON.parse(JSON.stringify(PODCAST_DETAIL_MOCK));
-    this.mediaService.lastPodcastDetail = this.podcastData;
+    // this.podcastData = JSON.parse(JSON.stringify(PODCAST_DETAIL_MOCK));
+    // this.mediaService.lastPodcastDetail = this.podcastData;
+    // this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData?.genre_ids);
+
     this.canNavigateBack = this.websiteStateService.canNavigateBack();
-    this.genreNames = this.mediaService.getGenreNamesFromIds(this.podcastData?.genre_ids);
   }
 
   backNavigation() {
@@ -102,6 +110,10 @@ export class PodcastDetailComponent implements OnInit {
 
   addToPlaylist(episode: Episode) {
 
+  }
+
+  donate() {
+    this.toastr.info(this.translateService.transform('currently_deactivated'));
   }
 
   async bookmark() {

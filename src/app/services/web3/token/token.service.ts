@@ -11,9 +11,10 @@ export class TokenService {
 
   tokens: TokenModel[] = [];
   readonly wbnbContract = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c".toLowerCase();
-  readonly aboatContract = "0x50Fa913d111099C78Ec25c1e0B1D98566C80886C".toLowerCase();
+  readonly aboatContract = "0x013b705e27F21EdC2040465841439bb65575b2DC";//"0x50Fa913d111099C78Ec25c1e0B1D98566C80886C".toLowerCase();
   readonly stableCoins = [
-    "0x97731fCA94A1a3d0392f9Be6ff030f8047669ae0".toLowerCase()
+    "0xB20A3ae67b8C32782eDcc73611Fc2273BF8017a3".toLowerCase()
+    //"0x97731fCA94A1a3d0392f9Be6ff030f8047669ae0".toLowerCase()
   ]
   public BUSD: TokenModel = { name: "USDT Token", symbol: "USDT", decimals: 18, balance: Big(0), address: "0x97731fCA94A1a3d0392f9Be6ff030f8047669ae0", priceInBusd: 1, swapAmount: Big(0) };
   constructor(private readonly contractService: ContractService, private readonly web3Service: Web3Service, private readonly http: HttpClient) { }

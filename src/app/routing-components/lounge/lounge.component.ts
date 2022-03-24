@@ -24,6 +24,7 @@ export class LoungeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.gotWallet = this.web3Service.accounts?.length > 0;
     this.subscriptions.push(this.web3Service.accountsObservable.subscribe(() => {
       this.gotWallet = this.web3Service.accounts?.length > 0;
       this.initPools(this.pools);

@@ -48,7 +48,7 @@
   </div>
 
   <div class="mx-auto my-5 flex">
-    <button class="btn primary max-w-[24rem] py-3 mx-auto">Donate</button>
+    <button (click)="donate()" class="btn primary max-w-[24rem] py-3 mx-auto">Donate</button>
   </div>
   <!-- Episodes -->
   <div *ngIf="podcastData && podcastData.episodes">
@@ -110,7 +110,7 @@
       </ul>
 
       <div class="mx-auto w-full max-w-[40rem]">
-        <button aria-label="Load more episodes" class="btn rounded-[1rem] px-4 sm:px-8 py-3 bg-main-500 text-shadow-700 border-shadow-300 border-1 font-semibold w-full" (click)="loadMoreEpisodes()">{{ 'load_more' | translate }}</button>
+        <button aria-label="Load more episodes" class="btn rounded-[1rem] px-4 sm:px-8 py-3 border-shadow-300 border-1 font-semibold w-full" (click)="loadMoreEpisodes()">{{ 'load_more' | translate }}</button>
       </div>
     </div>
   </div>
