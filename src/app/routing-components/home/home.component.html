@@ -23,7 +23,11 @@
       class="text-center text-[2rem] w-[16rem] py-3 flex items-center md:w-[24rem] font-semibold rounded-[1rem] btn secondary ring-1 ring-main-500"><span
         class="mx-auto">Pitch Deck</span></a>
   </div>
-  <h4 [innerHtml]="'info_description' | translate" class="px-3 max-w-[60rem] mt-[2rem]"></h4>
+  <div class="grid md:grid-cols-2 grid-cols-1 gap-3 mt-[2rem] px-3">
+    <h4 [innerHtml]="'info_description' | translate" class="max-w-[60rem] mt-[2rem]"></h4>
+    <app-youtube [videoId]=" 'home_title_video_id' | translate"></app-youtube>
+  </div>
+
   <div class="mt-[3rem] px-5  max-w-[50rem]">
     <h2 class="text-center md:text-left">{{ 'social_header' | translate }}</h2>
     <div class="bg-shadow-300 rounded-[1rem] flex justify-between p-3 md:px-8 max-w-[50rem] mt-[1rem]">

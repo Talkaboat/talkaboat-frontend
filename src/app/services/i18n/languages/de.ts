@@ -211,6 +211,10 @@ export const de = {
   social_header: 'Come on board and be social!',
   audio_time: 'Dauer',
   published: 'Veröffentlicht',
-  episodes: 'Episoden'
+  episodes: 'Episoden',
+
+  //#region Videos
+  home_title_video_id: '0BxxZejdu9s'
+  //#endregion
 }
 

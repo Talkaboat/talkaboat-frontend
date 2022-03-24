@@ -205,5 +205,9 @@ export const en = {
   social_header: 'Come on board and be social!',
   audio_time: 'Duration',
   published: 'Published',
-  episodes: 'Episodes'
+  episodes: 'Episodes',
+
+  //#region Videos
+  home_title_video_id: 'LAWSfzjPk28'
+  //#endregion
 }

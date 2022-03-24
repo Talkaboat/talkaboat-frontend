@@ -17,6 +17,7 @@ import { LoadingAnimationComponent } from "./loading/loading-animation/loading-a
 import { LoadingComponent } from "./loading/loading.component";
 import { MediaPlayerComponent } from "./media-player/media-player.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
+import { YoutubeComponent } from './youtube/youtube.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
     MediaPlayerComponent,
     SidebarComponent,
     FooterComponent,
-    FilterComponent
+    FilterComponent,
+    YoutubeComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
@@ -51,7 +53,8 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
     LoadingComponent,
     MediaPlayerComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    YoutubeComponent
   ],
 })
 export class SharedModule { }
