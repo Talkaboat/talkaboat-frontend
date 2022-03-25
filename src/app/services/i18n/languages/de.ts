@@ -64,6 +64,8 @@ export const de = {
   liquidity: 'Liquidität',
   lounge: 'Lounge',
   mediacenter: 'Mediacenter',
+  favourites: 'Favoriten',
+  playlists: 'Playlists',
   audit: 'Audit',
   git: 'Gitlab',
   gift: 'Geschenke',

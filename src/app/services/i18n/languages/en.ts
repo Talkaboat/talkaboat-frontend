@@ -62,6 +62,8 @@ export const en = {
   liquidity: 'Liquidity',
   lounge: 'Lounge',
   mediacenter: 'Mediacenter',
+  favourites: 'Favoriten',
+  playlists: 'Playlists',
   audit: 'Audit',
   git: 'Gitlab',
   gift: 'Gifts',

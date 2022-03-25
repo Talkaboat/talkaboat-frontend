@@ -26,10 +26,16 @@
             {{ 'lounge' | translate}}
           </span>
         </a></li>
-        <li class="hover-up"><a [routerLink]="['/mediacenter']" class="flex" queryParamsHandling="">
-          <img src="./assets/images/sidebar/lounge.png" alt="lounge" />
+        <li class="hover-up"><a [routerLink]="['/mediacenter/favourites']" class="flex" queryParamsHandling="">
+          <img src="./assets/images/sidebar/lounge.png" alt="favourites" />
           <span [class.hidden]="!isSidebarOpen" >
-            {{ 'mediacenter' | translate}}
+            {{ 'favourites' | translate}}
+          </span>
+        </a></li>
+        <li class="hover-up"><a [routerLink]="['/mediacenter/playlists']" class="flex" queryParamsHandling="">
+          <img src="./assets/images/sidebar/lounge.png" alt="playlists" />
+          <span [class.hidden]="!isSidebarOpen" >
+            {{ 'playlists' | translate}}
           </span>
         </a></li>
     </ul>
