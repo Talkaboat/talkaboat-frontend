@@ -128,6 +128,7 @@ export const en = {
   login: "Login",
   register: "Register",
   register_now: "Join now!",
+  join_seed: "Join Pre-Sale",
   agree_terms: "Accept the",
   terms_of_service: "Terms",
   search_type: "Search Type",

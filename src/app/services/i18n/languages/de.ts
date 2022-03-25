@@ -128,6 +128,7 @@ export const de = {
   login: "Anmelden",
   register: "Registrieren",
   register_now: "Jetzt mitmachen!",
+  join_seed: "Vorverkauf",
   agree_terms: "Einverstanden mit den",
   terms_of_service: "Geschäftsbedingungen",
   search_type: "Art der Suche",
