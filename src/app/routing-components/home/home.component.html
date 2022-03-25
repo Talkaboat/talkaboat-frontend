@@ -101,6 +101,13 @@
   <app-fan-home></app-fan-home>
 </div>
 
+<section class="mt-10 w-full md:max-w-[48rem] flex  px-5 mx-auto">
+  <div class="mx-auto w-full">
+
+    <app-youtube [videoId]="'0BxxZejdu9s' | translate"></app-youtube>
+  </div>
+</section>
+
 <section class="mt-10 w-full md:max-w-[96rem]  mx-auto px-5">
   <div class="card glass">
     <h2 [class.creator]="isCreator" [class.fan]="!isCreator" [innerHtml]=" 'equality_home' | translate "></h2>

@@ -214,7 +214,9 @@ export const de = {
   episodes: 'Episoden',
 
   //#region Videos
-  home_title_video_id: '0BxxZejdu9s'
+  home_title_video_id: 'eCryl3DhEtk',
+  consumer_explainer_video_id: 'ro6BKVtsmsQ',
+  aboat_token_usecase_video_id: '0BxxZejdu9s'
   //#endregion
 }
 

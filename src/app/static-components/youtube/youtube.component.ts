@@ -9,6 +9,7 @@ export class YoutubeComponent implements OnInit {
   @Input() videoId: string = '';
 
   isLoading = true;
+  isLoadingVideo = true;
   videoEnabled = false;
   constructor() { }
 

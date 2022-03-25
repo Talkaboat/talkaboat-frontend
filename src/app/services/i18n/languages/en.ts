@@ -208,6 +208,8 @@ export const en = {
   episodes: 'Episodes',
 
   //#region Videos
-  home_title_video_id: 'LAWSfzjPk28'
+  home_title_video_id: 'RTFh5OKEUaM',
+  consumer_explainer_video_id: 'ZEnAbSL3R18',
+  aboat_token_usecase_video_id: 'LAWSfzjPk28'
   //#endregion
 }
