@@ -211,6 +211,7 @@ export const en = {
   //#region Videos
   home_title_video_id: 'RTFh5OKEUaM',
   consumer_explainer_video_id: 'ZEnAbSL3R18',
-  aboat_token_usecase_video_id: 'LAWSfzjPk28'
+  aboat_token_usecase_video_id: 'LAWSfzjPk28',
+  creator_explainer_video_id: 'mtIaI40jWXc'
   //#endregion
 }
