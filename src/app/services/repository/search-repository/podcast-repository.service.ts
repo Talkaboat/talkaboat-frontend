@@ -66,7 +66,7 @@ export class PodcastRepositoryService extends RepositoryService {
     return this.get(api);
   }
 
-  public getDetails(): Observable<[Podcast]> {
+  public getLibraryDetails(): Observable<[Podcast]> {
     const api = PODCAST_API.URL + PODCAST_API.LIBRARY_DETAIL_URL;
     return this.get(api);
   }

@@ -31,6 +31,7 @@ export class FavouritesComponent implements OnInit {
       if (data.length > 0) {
         this.userLibrary = data;
         // TODO: FETCH THE ACTUAL EPISODE DATA FOR EACH NUMBER -> CHECKOUT API?!
+        // TODO: USE PODCAST DETAIL CALL INSTEAD
       }
     }, (error) => {
       console.error(error);
