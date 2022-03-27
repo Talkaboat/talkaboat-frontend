@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
@@ -23,6 +24,7 @@ export class UserService {
   onSignMessageRequested: EventEmitter<boolean> = new EventEmitter<boolean>();
   signRequestId = 0;
   cancelRequestId = -1;
+  userLoggedIn = new BehaviorSubject<boolean>(false);
   constructor(
     private readonly userRepositoryService: UserRepositoryService,
     private readonly web3Service: Web3Service,
@@ -58,6 +60,7 @@ export class UserService {
   async logout() {
     localStorage.removeItem('aboat_access');
     this.userData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
+    this.userLoggedIn.next(false);
     this.rewardDetails = [];
     this.onRewardDetailsChanged.emit([]);
     this.updateRewards({ total: 0, vested: 0, unvested: 0 }, true);
@@ -143,6 +146,7 @@ export class UserService {
     this.userRepositoryService.getProfile().subscribe({
       next: (profileData) => {
         this.userData = profileData;
+        this.userLoggedIn.next(true);
         this.onUserStateChanged.emit(true);
         this.userRepositoryService.getRewards().subscribe(rewards => {
           this.updateRewards(rewards, true);
