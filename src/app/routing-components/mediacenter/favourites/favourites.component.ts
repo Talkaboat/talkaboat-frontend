@@ -42,4 +42,8 @@ export class FavouritesComponent implements OnInit {
   ngOnDestroy(): void {
     this.subscriptions.forEach(item => item.unsubscribe());
   }
+
+  handleEpisodePlayClicked(clickedEpisode : Episode) {
+    console.log("EPISODE PLAY CLICKED", clickedEpisode);
+  }
 }

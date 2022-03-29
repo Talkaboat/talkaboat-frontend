@@ -38,4 +38,14 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.playlistSubscription.unsubscribe();
   }
+
+  handlePlayPlaylist(playlist : Playlist) : void {
+    // TODO ACTUALLY START PLAYLIING THE SELECTED PLAYLIST
+    console.log("try to play playlist", playlist);
+  }
+
+  handleViewPlaylist(playlist : Playlist) : void {
+    // TODO ACTUALLY VIEW PLAYLIST
+    console.log("try to view playlist", playlist);
+  }
 }

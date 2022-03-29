@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Playlist } from 'src/app/services/repository/search-repository/models/playlist/playlist.model.dto';
 
 @Component({
@@ -9,7 +9,20 @@ import { Playlist } from 'src/app/services/repository/search-repository/models/p
 export class PlaylistListComponent implements OnInit {
 
   @Input()
-  playlists! : Playlist[]
+  playlists! : Playlist[];
+
+  @Output() playPlaylistEvent = new EventEmitter<Playlist>();
+  @Output() viewPlaylistEvent = new EventEmitter<Playlist>();
+
+  playlistPlayClicked(clickedPlaylist: Playlist, event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.playPlaylistEvent.emit(clickedPlaylist);
+  }
+
+  playlistViewClicked(clickedPlaylist: Playlist) {
+    this.viewPlaylistEvent.emit(clickedPlaylist);
+  }
 
   constructor() { }
 

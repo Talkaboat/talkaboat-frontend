@@ -5,7 +5,7 @@
             <h3 class="whitespace-nowrap text-ellipsis overflow-hidden mt-4" [innerText]="item.title"></h3>
             <p class="opacity-25 mt-4">Created: 22.03.2022</p>
             <p class="opacity-25">Length: x minutes</p>
-            <button class="btn rounded-full px-8 py-4 mt-4">Play</button>
+            <button (click)="episodePlayClicked(item, $event)" class="btn rounded-full px-8 py-4 mt-4">Play</button>
         </div>
     </li>
 </ul>

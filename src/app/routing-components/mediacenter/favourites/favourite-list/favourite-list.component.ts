@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Episode } from 'src/app/services/repository/search-repository/models/episode.model';
 
 @Component({
@@ -9,11 +9,19 @@ import { Episode } from 'src/app/services/repository/search-repository/models/ep
 export class FavouriteListComponent implements OnInit {
 
   @Input()
-  episodes! : Episode[]
+  episodes! : Episode[];
+
+  @Output() playEpisodeEvent = new EventEmitter<Episode>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  episodePlayClicked(clickedEpisode: Episode, event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.playEpisodeEvent.emit(clickedEpisode);
   }
 
 }
