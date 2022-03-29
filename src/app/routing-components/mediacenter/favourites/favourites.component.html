@@ -5,19 +5,19 @@
 <ng-container *ngIf="recommendationEpisodes && recommendationEpisodes.length > 0">
     <section>
         <h2>Community episode recommendations</h2>
-        <app-favourite-list (playEpisodeEvent)="handleEpisodePlayClicked($event)" [episodes]="recommendationEpisodes"></app-favourite-list>
+        <app-favourite-list [activeEpisodeId]="currentlyPlayingEpisode ? currentlyPlayingEpisode.aboat_id : null" (playEpisodeEvent)="handleEpisodePlayClicked($event)" [episodes]="recommendationEpisodes"></app-favourite-list>
     </section>
 </ng-container>
 <ng-container *ngIf="brandnewEpisodes && brandnewEpisodes.length > 0">
     <section>
         <h2>Brandnew episodes</h2>
-        <app-favourite-list (playEpisodeEvent)="handleEpisodePlayClicked($event)" [episodes]="brandnewEpisodes"></app-favourite-list>
+        <app-favourite-list [activeEpisodeId]="currentlyPlayingEpisode ? currentlyPlayingEpisode.aboat_id : null" (playEpisodeEvent)="handleEpisodePlayClicked($event)" [episodes]="brandnewEpisodes"></app-favourite-list>
     </section>
 </ng-container>
 <ng-template #loggedInSection>
     <section>
         <h2>Favourites</h2>
-        <app-favourite-list (playEpisodeEvent)="handleEpisodePlayClicked($event)" [episodes]="userLibraryEpisodes" *ngIf="userLibraryEpisodes"></app-favourite-list>
+        <app-favourite-list [activeEpisodeId]="currentlyPlayingEpisode ? currentlyPlayingEpisode.aboat_id : null" (playEpisodeEvent)="handleEpisodePlayClicked($event)" [episodes]="userLibraryEpisodes" *ngIf="userLibraryEpisodes"></app-favourite-list>
         <p *ngIf="userLibraryEpisodes == null">It looks like you dont have any favourites yet.</p>
         <button class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">Explore episodes</button>
     </section>

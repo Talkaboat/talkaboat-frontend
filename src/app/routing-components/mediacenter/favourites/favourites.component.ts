@@ -4,6 +4,7 @@ import { Episode } from 'src/app/services/repository/search-repository/models/ep
 import { PodcastRepositoryService } from 'src/app/services/repository/search-repository/podcast-repository.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { DEFAULT_EPISODES } from 'src/constants/mocks/episode-default.mock.constants';
+import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
 
 @Component({
   selector: 'app-favourites',
@@ -12,6 +13,7 @@ import { DEFAULT_EPISODES } from 'src/constants/mocks/episode-default.mock.const
 })
 export class FavouritesComponent implements OnInit {
 
+  currentlyPlayingEpisode : Episode | null = null;
   subscriptions : Subscription[] = [];
   userLibrary : number[] | null = null;
   userLibraryEpisodes : Episode[] | null = null;
@@ -20,7 +22,7 @@ export class FavouritesComponent implements OnInit {
   brandnewEpisodes : Episode[] | null = null;
   recommendationEpisodes : Episode[] | null = null;
 
-  constructor(private podcastService : PodcastRepositoryService, private readonly userService: UserService) { }
+  constructor(private readonly podcastService : PodcastRepositoryService, private readonly userService: UserService, private readonly mediaPlayer : MediaPlayerService) { }
 
   ngOnInit(): void {
     this.brandnewEpisodes = DEFAULT_EPISODES;
@@ -37,6 +39,11 @@ export class FavouritesComponent implements OnInit {
       console.error(error);
       this.fetchedLibrary = false;
     }));
+    this.subscriptions.push(this.mediaPlayer
+      .onTrackChanged
+      .subscribe(episode => {
+        this.currentlyPlayingEpisode = episode;
+      }));
   }
 
   ngOnDestroy(): void {
@@ -44,6 +51,6 @@ export class FavouritesComponent implements OnInit {
   }
 
   handleEpisodePlayClicked(clickedEpisode : Episode) {
-    console.log("EPISODE PLAY CLICKED", clickedEpisode);
+    this.mediaPlayer.setTrack(clickedEpisode, true);
   }
 }

@@ -9,6 +9,9 @@ import { Episode } from 'src/app/services/repository/search-repository/models/ep
 export class FavouriteListComponent implements OnInit {
 
   @Input()
+  activeEpisodeId: number | null = null;
+
+  @Input()
   episodes! : Episode[];
 
   @Output() playEpisodeEvent = new EventEmitter<Episode>();
