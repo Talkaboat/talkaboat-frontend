@@ -14,9 +14,9 @@
         <div id="media-player-body" class="col-span-4 grid grid-cols-10 md:grid-cols-4 h-full place-items-center">
           <div id="play-area" class="w-full col-span-3 md:col-span-1 max-w-[160px] place-self-center md:place-self-start grid grid-cols-3 place-items-center md:pl-5 pl-3">
             <div id="time-area" class="hidden md:col-span-4 place-self-start mt-3 md:flex md:items-center mb-2 justify-start">
-              <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+              <vg-time-display vgProperty="current" vgFormat="hh:mm:ss"></vg-time-display>
               <span class="w-fit px-1 md:text-xl">/</span>
-              <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+              <vg-time-display vgProperty="total" vgFormat="hh:mm:ss"></vg-time-display>
             </div>
             <button class="scrub-button" aria-label="backward" (click)="backward()">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -77,12 +77,12 @@
           </div>
           <div id="controls-area" class="col-span-2 md:col-span-1 grid grid-cols-1 place-self-end self-start w-full md:self-start md:pr-5 md:pt-5 pr-3">
             <div>
-              <div id="time-area" class="md:hidden col-span-4 mt-2 mb-4 place-self-start flex items-center justify-end">
-                <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+              <div id="time-area" class="md:hidden col-span-4 mb-4 place-self-start flex items-center justify-end">
+                <vg-time-display vgProperty="current" vgFormat="hh:mm:ss"></vg-time-display>
                 <span class="w-fit px-1 text-lg">/</span>
-                <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+                <vg-time-display vgProperty="total" vgFormat="hh:mm:ss"></vg-time-display>
               </div>
-              <div id="token-area" class="flex items-center justify-end pt-1">
+              <div *ngIf="isLoggedIn" id="token-area" class="flex items-center justify-end pt-1">
                 <span>{{getRoundedTotalReward()}}</span><img src="../../../assets/images/aboat.png" [class.playing]="isPlaying" class="w-8 md:w-12 ml-2">
               </div>
               <div id="volume-area" [hidden]="isMobile" class="hidden md:flex justify-end items-center pt-8">

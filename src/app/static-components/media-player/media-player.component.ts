@@ -33,6 +33,7 @@ export class MediaPlayerComponent implements OnInit {
   public currentTime: any;
   public totalTime: any;
   public isMobile: any;
+  public isLoggedIn = false;
   @ViewChild('volume') volumeComponent: VgMuteComponent | undefined;
 
   private readonly updatesBetweenHeartbeat = 10;
@@ -45,6 +46,7 @@ export class MediaPlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.isMobile = VgUtilsService.isMobileDevice() || VgUtilsService.isiOSDevice();
+    this.userService.userLoggedIn.subscribe(value => this.isLoggedIn = value);
     this.userService.onRewardsChanged.subscribe((rewards: Reward) => {
       this.rewards = rewards;
     })
