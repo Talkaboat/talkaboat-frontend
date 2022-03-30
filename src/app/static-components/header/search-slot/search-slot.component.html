@@ -1,6 +1,6 @@
 <button *ngIf="isFilterOpen" class="fixed bottom-0 top-0 left-0 right-0 -z-1 secondary opacity-30" (click)="isFilterOpen = false"></button>
 <div class="relative">
-  <button aria-label="toggle filter-menu" (click)="isFilterOpen = !isFilterOpen" class="flex absolute inset-y-0 left-0 items-center rounded-[1rem] w-[3rem] md:w-[4rem]">
+  <button disabled aria-label="toggle filter-menu" (click)="isFilterOpen = !isFilterOpen" class="flex absolute inset-y-0 left-0 items-center rounded-[1rem] w-[3rem] md:w-[4rem]">
     <img height="17.5" width="17.5" alt="filter" class="w-4 h-4 md:h-7 md:w-7 mx-auto rounded-[1rem] text-main-500" src="./assets/images/header/filter.svg" />
   </button>
   <form>
