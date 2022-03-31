@@ -2,7 +2,7 @@ export const PODCAST_API = {
   URL: "podcast",
   SEARCH_URL: "/search",
   EPISODE_DETAILS: "/episodes/{id}",
-  PODCAST_DETAILS: "/podcasts/{id}/{sort}/{pubdate}",    //sort: 'asc', 'desc'
+  PODCAST_DETAILS: "/podcasts/{id}/{sort}/{pubdate}/{amount}",    //sort: 'asc', 'desc'
   LIBRARY_URL: "/library",
   LIBRARY_DETAIL_URL: "/library/detail",
   LIBRARY_ADD_URL: "/library/add/{id}",

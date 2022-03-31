@@ -131,6 +131,7 @@ export const de = {
   login: "Anmelden",
   register: "Registrieren",
   register_now: "Jetzt mitmachen!",
+  join_seed: "Vorverkauf",
   agree_terms: "Einverstanden mit den",
   terms_of_service: "Geschäftsbedingungen",
   search_type: "Art der Suche",
@@ -217,7 +218,10 @@ export const de = {
   episodes: 'Episoden',
 
   //#region Videos
-  home_title_video_id: '0BxxZejdu9s'
+  home_title_video_id: 'RTFh5OKEUaM',
+  consumer_explainer_video_id: 'ZEnAbSL3R18',
+  aboat_token_usecase_video_id: '0BxxZejdu9s',
+  creator_explainer_video_id: 'hHiSTOerdRc'
   //#endregion
 }
 

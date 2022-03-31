@@ -97,7 +97,7 @@ export class PodcastDetailComponent implements OnInit {
     if (!this.podcastData || !this.podcastData.episodes || !this.podcastData.total_episodes || this.podcastData.episodes.length >= this.podcastData.total_episodes) {
       return;
     }
-    this.podcastRepository.getPodcast(this.podcastId, "asc", this.podcastData.episodes[this.podcastData.episodes.length - 1].pub_date_ms).subscribe((result: Podcast) => {
+    this.podcastRepository.getPodcast(this.podcastId, "desc", this.podcastData.episodes[this.podcastData.episodes.length - 1].pub_date_ms).subscribe((result: Podcast) => {
       if (result && result.episodes) {
         result.episodes.forEach(element => {
           if (this.podcastData && this.podcastData.episodes) {

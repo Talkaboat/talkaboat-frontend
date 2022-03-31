@@ -131,6 +131,7 @@ export const en = {
   login: "Login",
   register: "Register",
   register_now: "Join now!",
+  join_seed: "Join Pre-Sale",
   agree_terms: "Accept the",
   terms_of_service: "Terms",
   search_type: "Search Type",
@@ -211,6 +212,9 @@ export const en = {
   episodes: 'Episodes',
 
   //#region Videos
-  home_title_video_id: 'LAWSfzjPk28'
+  home_title_video_id: 'eCryl3DhEtk',
+  consumer_explainer_video_id: 'ro6BKVtsmsQ',
+  aboat_token_usecase_video_id: 'LAWSfzjPk28',
+  creator_explainer_video_id: 'mtIaI40jWXc'
   //#endregion
 }

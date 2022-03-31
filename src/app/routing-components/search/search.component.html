@@ -15,7 +15,7 @@
             class="w-[66%] h-[66%] max-w-[5rem] max-h-[5rem] my-auto mx-auto img-placeholder rounded-[1rem]"
             src="./assets/images/player/play.png">
         </button>
-        <a *ngIf="!item.podcast" [routerLink]="['./podcast']" [queryParams]="{ 'pd': item.id }"
+        <a *ngIf="!item.podcast" [routerLink]="['./podcast']" [queryParams]="{ 'pd': item.aboat_id }"
           queryParamsHandling="merge" [class.hidden]="item.isLoading"
           class="absolute w-full opacity-0 hover:bg-main-800 hover:opacity-75 focus-visible:bg-main-800 focus-visible:opacity-75 h-full top-0 right-0 left-0 bottom-0 rounded-[1rem]"
           (click)="play(item)">
@@ -28,7 +28,7 @@
       <div class="px-3 grow w-full sm:mt-3 grid">
         <h5 class="line-clamp-1 overflow-hidden my-auto text-ellipsis"><a tabindex="0"
             [routerLink]="['./podcast' + (item.podcast ? '/episode' : '')]"
-            [queryParams]="item.podcast ? { 'ep': item.id, 'pd': null} : { 'pd': item.id, 'ep': null }"
+            [queryParams]="item.podcast ? { 'ep': item.aboat_id, 'pd': null} : { 'pd': item.aboat_id, 'ep': null }"
             queryParamsHandling="merge">{{ item.title_original }}</a></h5>
         <h6 *ngIf="item.podcast" class="mt-1 my-auto sm:mt-2 line-clamp-1 overflow-hidden text-ellipsis"><a [routerLink]="['./podcast']"
             [queryParams]="{ 'pd': item.podcast.id, 'ep': '' }" queryParamsHandling="merge"
