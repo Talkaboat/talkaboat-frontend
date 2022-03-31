@@ -18,6 +18,8 @@ import { LoadingComponent } from "./loading/loading.component";
 import { MediaPlayerComponent } from "./media-player/media-player.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { YoutubeComponent } from './youtube/youtube.component';
+import { PodcastListViewItemComponent } from './podcast/podcast-list-view-item/podcast-list-view-item.component';
+import { PodcastListComponent } from './podcast/podcast-list/podcast-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { YoutubeComponent } from './youtube/youtube.component';
     SidebarComponent,
     FooterComponent,
     FilterComponent,
-    YoutubeComponent
+    YoutubeComponent,
+    PodcastListViewItemComponent,
+    PodcastListComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
@@ -54,7 +58,9 @@ import { YoutubeComponent } from './youtube/youtube.component';
     MediaPlayerComponent,
     SidebarComponent,
     FooterComponent,
-    YoutubeComponent
+    YoutubeComponent,
+    PodcastListViewItemComponent,
+    PodcastListComponent
   ],
 })
 export class SharedModule { }

@@ -5,6 +5,8 @@ import { PodcastRepositoryService } from 'src/app/services/repository/search-rep
 import { UserService } from 'src/app/services/user/user.service';
 import { DEFAULT_EPISODES } from 'src/constants/mocks/episode-default.mock.constants';
 import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
+import { Podcast } from 'src/app/services/repository/search-repository/models/podcast.model';
+import { PODCAST_MOCK } from 'src/constants/mocks/podcast-detail.mock.constants';
 
 @Component({
   selector: 'app-favourites',
@@ -16,29 +18,29 @@ export class FavouritesComponent implements OnInit {
   currentlyPlayingEpisode : Episode | null = null;
   subscriptions : Subscription[] = [];
   userLibrary : number[] | null = null;
-  userLibraryEpisodes : Episode[] | null = null;
+  userLibraryEpisodes : Podcast[] | null = null;
+  
   loggedIn : boolean | null = null;
   fetchedLibrary : boolean | null = null;
   brandnewEpisodes : Episode[] | null = null;
-  recommendationEpisodes : Episode[] | null = null;
+  recommendationPodcasts : Podcast[] | null = null;
 
   constructor(private readonly podcastService : PodcastRepositoryService, private readonly userService: UserService, private readonly mediaPlayer : MediaPlayerService) { }
 
   ngOnInit(): void {
+    this.recommendationPodcasts = [PODCAST_MOCK, PODCAST_MOCK];
     this.brandnewEpisodes = DEFAULT_EPISODES;
-    this.recommendationEpisodes = DEFAULT_EPISODES;
     this.loggedIn = this.userService.isUserLoggedIn();
-    this.subscriptions.push(this.podcastService.getLibrary().subscribe((data) => {
+    // fetch user library
+    this.subscriptions.push(this.podcastService.getLibraryDetails().subscribe((data) => {
       this.fetchedLibrary = true;
       if (data.length > 0) {
-        this.userLibrary = data;
-        // TODO: FETCH THE ACTUAL EPISODE DATA FOR EACH NUMBER -> CHECKOUT API?!
-        // TODO: USE PODCAST DETAIL CALL INSTEAD
+        this.userLibraryEpisodes = data;
       }
     }, (error) => {
-      console.error(error);
       this.fetchedLibrary = false;
     }));
+    // keep track of currently played episode
     this.subscriptions.push(this.mediaPlayer
       .onTrackChanged
       .subscribe(episode => {
