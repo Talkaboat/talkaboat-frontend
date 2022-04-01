@@ -5,6 +5,7 @@ import { AuthorizationResponse } from './models/authorization-response.model';
 import { RewardDetail } from './models/reward-detail.model';
 import { Reward } from './models/reward.model';
 import { UserAuthorizationRequestResponse } from './models/user-authorization-request.response.model';
+import { UserData } from './models/user-data.model';
 import { UserProfileData } from './models/user-profile-data.model';
 import { USER_API } from './user-urls.const';
 
@@ -12,6 +13,7 @@ import { USER_API } from './user-urls.const';
   providedIn: 'root'
 })
 export class UserRepositoryService  extends RepositoryService {
+
     //Which information do we need?
   public register(mailAdress: string, userName: string, address: string): Observable<UserAuthorizationRequestResponse> {
     if (!this.web3Service.accounts) {
@@ -77,8 +79,13 @@ export class UserRepositoryService  extends RepositoryService {
     return this.post<AuthorizationResponse>(api, body);
   }
 
-  getProfile(): Observable<UserProfileData> {
+  getUser(): Observable<UserData> {
     const api = USER_API.URL + USER_API.PROFILE_URL;
+    return this.get<UserData>(api);
+  }
+
+  getProfile(username: string): Observable<UserProfileData> {
+    const api = USER_API.URL + USER_API.PROFILE_DETAILS_URL.replace("{username}", username);
     return this.get<UserProfileData>(api);
   }
 

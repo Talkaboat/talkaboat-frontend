@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserProfileData } from 'src/app/services/repository/user-repository/models/user-profile-data.model';
+import { UserData } from 'src/app/services/repository/user-repository/models/user-data.model';
 import { UserRepositoryService } from 'src/app/services/repository/user-repository/user-repository.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -14,7 +14,7 @@ export class ProfileSidebarComponent implements OnInit {
 
 
   @Input() isProfileSidebarOpen: boolean = false;
-  @Input() userData: UserProfileData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
+  @Input() userData: UserData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
   isSendingMail: boolean = false;
   isUserKyced = true;
   constructor(private readonly userService: UserService, private readonly userRepositoryService: UserRepositoryService) { }

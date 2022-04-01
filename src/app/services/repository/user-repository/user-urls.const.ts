@@ -6,6 +6,7 @@ export const USER_API = {
     LOGIN_URL: "/login",
     REQUEST_LOGIN_URL: "/login/{wallet}",
     PROFILE_URL: "/profile",
+    PROFILE_DETAILS_URL: "/profile/{username}",
     CHECK_PASSWORD_URL: "/password/",
     KYC_URL: "/kyc",
     VERIFY_TWITTER: "/twitter/{campaign}/{name}",
