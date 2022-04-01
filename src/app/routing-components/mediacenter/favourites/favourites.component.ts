@@ -31,7 +31,31 @@ export class FavouritesComponent implements OnInit {
     this.recommendationPodcasts = [PODCAST_MOCK, PODCAST_MOCK];
     this.brandnewEpisodes = DEFAULT_EPISODES;
     this.loggedIn = this.userService.isUserLoggedIn();
-    // fetch user library
+    if (this.loggedIn) {
+      this.fetchUserLibrary();
+    }
+    
+    // keep track of currently played episode
+    this.subscriptions.push(this.mediaPlayer
+      .onTrackChanged
+      .subscribe(episode => {
+        this.currentlyPlayingEpisode = episode;
+      }));
+
+    // watch user status
+    this.subscriptions.push(this.userService.onUserStateChanged.subscribe((data) => {
+      console.log(data);
+      if (data) {
+        this.fetchUserLibrary();
+        this.loggedIn = true;
+      } else {
+        this.userLibraryEpisodes = null;
+        this.loggedIn = false;
+      }
+    }));
+  }
+
+  fetchUserLibrary(): void {
     this.subscriptions.push(this.podcastService.getLibraryDetails().subscribe((data) => {
       this.fetchedLibrary = true;
       if (data.length > 0) {
@@ -40,16 +64,21 @@ export class FavouritesComponent implements OnInit {
     }, (error) => {
       this.fetchedLibrary = false;
     }));
-    // keep track of currently played episode
-    this.subscriptions.push(this.mediaPlayer
-      .onTrackChanged
-      .subscribe(episode => {
-        this.currentlyPlayingEpisode = episode;
-      }));
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(item => item.unsubscribe());
+  }
+
+  handleLibraryPodcastRemoved(removedItem : Podcast) {
+    if(this.userLibraryEpisodes) {
+      for(let i = 0; i < this.userLibraryEpisodes.length; i++) {
+        if (this.userLibraryEpisodes[i].aboat_id === removedItem.aboat_id) {
+            this.userLibraryEpisodes.splice(i,1);
+            break;
+        }
+      }
+    }
   }
 
   handleEpisodePlayClicked(clickedEpisode : Episode) {

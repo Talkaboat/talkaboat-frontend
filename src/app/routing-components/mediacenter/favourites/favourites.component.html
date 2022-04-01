@@ -33,7 +33,7 @@
     </section>
 </ng-template>
 <ng-template #userContent>
-    <app-podcast-list *ngIf="userLibraryEpisodes" [items]="userLibraryEpisodes"></app-podcast-list>
+    <app-podcast-list (removedFromLibrary)="handleLibraryPodcastRemoved($event)" *ngIf="userLibraryEpisodes" [items]="userLibraryEpisodes"></app-podcast-list>
 </ng-template>
 <ng-template #userNoContent>
     <p>It looks like you dont have any favourites yet.</p>
