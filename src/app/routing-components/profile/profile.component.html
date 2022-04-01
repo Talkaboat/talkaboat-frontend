@@ -43,7 +43,7 @@
                 <div class="relative -top-[7rem] ">
                   <img
                     alt="..."
-                    src="./assets/images/team/fabi.jpg"
+                    src="https://avataaars.io/?avatarStyle=Transparent&topType=LongHairCurvy&accessoriesType=Prescription01&hairColor=Brown&facialHairType=BeardMajestic&facialHairColor=Blonde&clotheType=ShirtScoopNeck&clotheColor=Gray01&eyeType=Wink&eyebrowType=AngryNatural&mouthType=Disbelief&skinColor=Light"
                     class="shadow-xl rounded-full h-auto align-middle border-none absolute -ml-[7rem]"
                     style="max-width: 150px;"
                   />
@@ -78,19 +78,19 @@
                   <div class="mr-4 p-3 text-center">
                     <span
                       class="text-xl font-bold block uppercase tracking-wide text-gray-700"
-                      >22</span
+                      >{{ userProfileData.friends }}</span
                     ><span class="text-sm text-gray-500">Friends</span>
                   </div>
                   <div class="mr-4 p-3 text-center">
                     <span
                       class="text-xl font-bold block uppercase tracking-wide text-gray-700"
-                      >10</span
+                      >{{ userProfileData.photos }}</span
                     ><span class="text-sm text-gray-500">Photos</span>
                   </div>
                   <div class="lg:mr-4 p-3 text-center">
                     <span
                       class="text-xl font-bold block uppercase tracking-wide text-gray-700"
-                      >89</span
+                      >{{ userProfileData.posts }}</span
                     ><span class="text-sm text-gray-500">Posts</span>
                   </div>
                 </div>
@@ -100,7 +100,7 @@
               <h3
                 class="text-4xl font-semibold leading-normal mb-2 text-gray-800 mb-2"
               >
-                Fabian Reichenberg
+              {{ userProfileData.fullname }}
               </h3>
               <div
                 class="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase"
@@ -108,22 +108,22 @@
                 <i
                   class="fas fa-map-marker-alt mr-2 text-lg text-gray-500"
                 ></i>
-                Bayern, Deutschland
+                @{{ userName }}
               </div>
               <div class="mb-2 text-gray-700 mt-10">
                 <i class="fas fa-briefcase mr-2 text-lg text-gray-500"></i
-                >Chief Executive Officer
+                >{{ userProfileData.role }}
               </div>
               <div class="mb-2 text-gray-700">
                 <i class="fas fa-university mr-2 text-lg text-gray-500"></i
-                >Aboat Entertainment
+                >{{ userProfileData.company }}
               </div>
             </div>
             <div class="mt-10 py-10 border-t border-gray-300 text-center">
               <div class="flex flex-wrap justify-center">
                 <div class="w-full lg:w-9/12 px-4">
                   <p class="mb-4 text-lg leading-relaxed text-gray-800">
-                    He simply loves coding and content creation!
+                    {{ userProfileData.description }}
                   </p>
                 </div>
               </div>

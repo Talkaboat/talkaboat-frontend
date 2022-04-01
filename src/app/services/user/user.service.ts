@@ -1,13 +1,14 @@
-import { BehaviorSubject } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
 import { TranslateService } from '../i18n/translate.service';
 import { LoaderService } from '../loader/loader.service';
 import { AuthorizationResponse } from '../repository/user-repository/models/authorization-response.model';
 import { RewardDetail } from '../repository/user-repository/models/reward-detail.model';
 import { Reward } from '../repository/user-repository/models/reward.model';
 import { UserAuthorizationRequestResponse } from '../repository/user-repository/models/user-authorization-request.response.model';
+import { UserData } from '../repository/user-repository/models/user-data.model';
 import { UserProfileData } from '../repository/user-repository/models/user-profile-data.model';
 import { UserRepositoryService } from '../repository/user-repository/user-repository.service';
 import { Web3Service } from '../web3/web3.service';
@@ -15,10 +16,11 @@ import { Web3Service } from '../web3/web3.service';
   providedIn: 'root'
 })
 export class UserService {
-  userData: UserProfileData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
+  userData: UserData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
   currentRewards: Reward = { total: 0, vested: 0, unvested: 0 };
   rewardDetails: RewardDetail[] = [];
   onRewardsChanged = new EventEmitter<Reward>();
+  onReceiveProfileData = new EventEmitter<UserProfileData>();
   onRewardDetailsChanged = new EventEmitter<RewardDetail[]>();
   onUserStateChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
   onSignMessageRequested: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -57,6 +59,36 @@ export class UserService {
     })
   }
 
+
+  async getUserData() {
+    this.userRepositoryService.getUser().subscribe({
+      next: (userData) => {
+        this.userData = userData;
+        this.userLoggedIn.next(true);
+        this.onUserStateChanged.emit(true);
+        this.userRepositoryService.getRewards().subscribe(rewards => {
+          this.updateRewards(rewards, true);
+        });
+      },
+      error: (e) => this.profileError(e)
+    })
+  }
+
+  getUserProfile(username: string = ""): boolean {
+    if (!username && !this.userData.userName) {
+      return false;
+    }
+    this.loaderService.show();
+    this.userRepositoryService.getProfile(username ? username : this.userData.userName).subscribe({
+      next: (profileData) => {
+        this.onReceiveProfileData.emit(profileData);
+      },
+      error: (e) => this.profileError(e),
+      complete: () => this.loaderService.hide()
+    });
+    return true;
+  }
+
   async logout() {
     localStorage.removeItem('aboat_access');
     this.userData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
@@ -75,7 +107,7 @@ export class UserService {
       if (this.web3Service.accounts) {
 
         this.loaderService.show();
-        await this.getUserProfile();
+        await this.getUserData();
       }
     }
     this.loaderService.hide();
@@ -131,7 +163,7 @@ export class UserService {
     if (this.web3Service.accounts) {
       this.loaderService.show();
       if (localStorage.getItem('aboat_access')) {
-        await this.getUserProfile();
+        await this.getUserData();
         this.loaderService.hide();
       } else {
         this.userRepositoryService.requestLogin(this.web3Service.accounts[0]).subscribe({
@@ -140,20 +172,6 @@ export class UserService {
         });
       }
     }
-  }
-
-  async getUserProfile() {
-    this.userRepositoryService.getProfile().subscribe({
-      next: (profileData) => {
-        this.userData = profileData;
-        this.userLoggedIn.next(true);
-        this.onUserStateChanged.emit(true);
-        this.userRepositoryService.getRewards().subscribe(rewards => {
-          this.updateRewards(rewards, true);
-        });
-      },
-      error: (e) => this.profileError(e)
-    })
   }
 
   signAuthorizationRequestAndLogin(authorizationRequest: UserAuthorizationRequestResponse) {
@@ -179,7 +197,7 @@ export class UserService {
   successfullyLogin(authorization: AuthorizationResponse) {
     this.loaderService.hide();
     localStorage.setItem('aboat_access', authorization.token);
-    this.getUserProfile();
+    this.getUserData();
   }
 
   requestLoginError(error: HttpErrorResponse) {

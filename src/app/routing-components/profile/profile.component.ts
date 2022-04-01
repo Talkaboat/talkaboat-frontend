@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { TranslateService } from 'src/app/services/i18n/translate.service';
 import { RewardDetail } from 'src/app/services/repository/user-repository/models/reward-detail.model';
+import { UserProfileData } from 'src/app/services/repository/user-repository/models/user-profile-data.model';
 import { UserService } from 'src/app/services/user/user.service';
 import { PROFILE_POST_MOCK } from 'src/constants/mocks/profile-post.mock.constant';
 
@@ -16,6 +17,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   userName = "";
   subscriptions: Subscription[] = [];
   rewardDetails: RewardDetail[] = [];
+  userProfileData: UserProfileData = { id: 0 };
   mockPost = PROFILE_POST_MOCK;
   posts: any[] = [
     this.mockPost,
@@ -33,15 +35,21 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
-
   }
 
   ngOnInit(): void {
+    this.subscriptions.push(this.userService.onReceiveProfileData.subscribe((userProfileData: UserProfileData) => {
+      this.userProfileData = userProfileData;
+    }));
     this.subscriptions.push(this.activatedRoute.queryParams.subscribe((queryParams: Params) => {
       this.userName = queryParams['user'];
-      if (this.isMe()) {
-        this.rewardDetails = this.userService.rewardDetails;
-        this.userService.getUserRewardDetails();
+      if (this.userService.getUserProfile(this.userName)) {
+        if (this.isMe()) {
+          this.rewardDetails = this.userService.rewardDetails;
+          this.userService.getUserRewardDetails();
+        }
+      } else {
+        //Fehlerseite ausgeben?
       }
 
     }));
