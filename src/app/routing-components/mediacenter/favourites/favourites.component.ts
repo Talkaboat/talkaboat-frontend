@@ -7,6 +7,7 @@ import { DEFAULT_EPISODES } from 'src/constants/mocks/episode-default.mock.const
 import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
 import { Podcast } from 'src/app/services/repository/search-repository/models/podcast.model';
 import { PODCAST_MOCK } from 'src/constants/mocks/podcast-detail.mock.constants';
+import { TranslateService } from 'src/app/services/i18n/translate.service';
 
 @Component({
   selector: 'app-favourites',
@@ -25,7 +26,7 @@ export class FavouritesComponent implements OnInit {
   brandnewEpisodes : Episode[] | null = null;
   recommendationPodcasts : Podcast[] | null = null;
 
-  constructor(private readonly podcastService : PodcastRepositoryService, private readonly userService: UserService, private readonly mediaPlayer : MediaPlayerService) { }
+  constructor(private readonly translateService: TranslateService, private readonly podcastService : PodcastRepositoryService, private readonly userService: UserService, private readonly mediaPlayer : MediaPlayerService) { }
 
   ngOnInit(): void {
     this.recommendationPodcasts = [PODCAST_MOCK, PODCAST_MOCK];

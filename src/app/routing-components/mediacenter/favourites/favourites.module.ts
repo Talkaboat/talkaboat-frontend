@@ -5,6 +5,7 @@ import { FavouritesRoutingModule } from './favourites-routing.module';
 import { FavouritesComponent } from './favourites.component';
 import { FavouriteListComponent } from './favourite-list/favourite-list.component';
 import { SharedModule } from 'src/app/static-components/shared.module';
+import { PipeModule } from 'src/app/pipes/pipe.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SharedModule } from 'src/app/static-components/shared.module';
   imports: [
     CommonModule,
     FavouritesRoutingModule,
-    SharedModule
+    SharedModule,
+    PipeModule
   ]
 })
 export class FavouritesModule { }
