@@ -1,3 +1,4 @@
+import { DirectivesModule } from "./directives/directives.module";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { getAnalytics, provideAnalytics, ScreenTrackingService } from '@angular/fire/analytics';
@@ -30,11 +31,12 @@ import { SharedModule } from './static-components/shared.module';
     RegisterComponent,
     ImprintComponent,
     GeneralTermsComponent,
-    PrivacyComponent
+    PrivacyComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DirectivesModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

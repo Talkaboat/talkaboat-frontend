@@ -1,3 +1,4 @@
+import { DirectivesModule } from '../directives/directives.module';
 import { CommonModule } from "@angular/common";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -39,6 +40,7 @@ import { YoutubeComponent } from './youtube/youtube.component';
     FormsModule,
     NgMultiSelectDropDownModule.forRoot(),
     PipeModule,
+    DirectivesModule,
     ReactiveFormsModule,
     VgCoreModule,
     VgControlsModule,
