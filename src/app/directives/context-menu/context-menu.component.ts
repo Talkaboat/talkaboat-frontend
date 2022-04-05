@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContextMenuService } from './context-menu.service';
 
 @Component({
   selector: 'app-context-menu',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContextMenuComponent implements OnInit {
 
-  constructor() { }
+  offsetLeft: number = 0;
+  offsetTop: number = 0;
+
+  constructor(
+    private readonly contextMenuService: ContextMenuService
+  ) { }
 
   ngOnInit(): void {
+    this.contextMenuService.mousePos.subscribe((value: {x: number, y: number}) => {
+      this.offsetLeft = value.x;
+      this.offsetTop = value.y;
+    })
   }
 
 }

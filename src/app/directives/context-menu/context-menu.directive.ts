@@ -1,3 +1,4 @@
+import { ContextMenuService } from './context-menu.service';
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
@@ -5,14 +6,15 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 })
 export class ContextMenuDirective {
   mousePos: {x: number, y: number} = {x: 0, y: 0};
-  constructor(private el: ElementRef) {
+  constructor(
+    private el: ElementRef,
+    private readonly contextMenuService: ContextMenuService) {
  }
 
  @HostListener('mouseup', ['$event'])
  onMouseClick(event: MouseEvent) {
   this.mousePos.x = event.pageX;
   this.mousePos.y = event.pageY;
-  console.log(this.mousePos, event.pageX)
+  this.contextMenuService.activateContextMenu(this.mousePos);
  }
-
 }
