@@ -1,1 +1,1 @@
-<div [class.hidden]="false" [style.top.px]="offsetTop" [style.left.px]="offsetLeft" class="absolute bottom-auto right-auto z-50 bg-fan-700">test</div>
+<div (clickOutside)="deactivateContextMenu()" [class.hidden]="!contextMenuActive" [style.top.px]="offsetTop" [style.left.px]="offsetLeft" class="absolute bottom-auto right-auto z-50 bg-fan-700">test</div>

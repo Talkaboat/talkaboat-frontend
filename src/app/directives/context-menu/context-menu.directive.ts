@@ -17,4 +17,14 @@ export class ContextMenuDirective {
   this.mousePos.y = event.pageY;
   this.contextMenuService.activateContextMenu(this.mousePos);
  }
+
+ @HostListener('mouseleave')
+ onMouseLeave() {
+  this.contextMenuService.mouseLeft = true;
+ }
+
+ @HostListener('mouseenter')
+ onMouseEnter() {
+  this.contextMenuService.mouseLeft = false;
+ }
 }
