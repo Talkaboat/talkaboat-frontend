@@ -1,0 +1,12 @@
+.btn {
+    background: transparent;
+    transition: 100ms background-color;
+}
+
+.btn:hover {
+    background-color: #131f30;
+}
+
+.active-link {
+    background-color: #131f30;
+}
