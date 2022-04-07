@@ -1,3 +1,4 @@
+import { ContextMenuComponent } from './context-menu/context-menu.component';
 import { DirectivesModule } from '../directives/directives.module';
 import { CommonModule } from "@angular/common";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
@@ -31,7 +32,8 @@ import { YoutubeComponent } from './youtube/youtube.component';
     SidebarComponent,
     FooterComponent,
     FilterComponent,
-    YoutubeComponent
+    YoutubeComponent,
+    ContextMenuComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
@@ -56,7 +58,8 @@ import { YoutubeComponent } from './youtube/youtube.component';
     MediaPlayerComponent,
     SidebarComponent,
     FooterComponent,
-    YoutubeComponent
+    YoutubeComponent,
+    ContextMenuComponent
   ],
 })
 export class SharedModule { }

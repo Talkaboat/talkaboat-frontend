@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ContextMenuService } from './context-menu.service';
+import { ContextMenuService } from 'src/app/directives/context-menu/context-menu.service';
 
 @Component({
   selector: 'app-context-menu',
