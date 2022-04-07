@@ -20,6 +20,7 @@ import { LoadingComponent } from "./loading/loading.component";
 import { MediaPlayerComponent } from "./media-player/media-player.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { YoutubeComponent } from './youtube/youtube.component';
+import { ContextMenuContentComponent } from './context-menu/context-menu-content/context-menu-content.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { YoutubeComponent } from './youtube/youtube.component';
     FooterComponent,
     FilterComponent,
     YoutubeComponent,
-    ContextMenuComponent
+    ContextMenuComponent,
+    ContextMenuContentComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
