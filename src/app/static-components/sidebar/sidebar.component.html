@@ -26,20 +26,24 @@
             {{ 'lounge' | translate}}
           </span>
         </a></li>
+        <li class="hover-up"><a [routerLink]="['/mediacenter']" class="flex" queryParamsHandling="">
+          <img src="./assets/images/sidebar/bookmarks.svg" alt="playlists" />
+          <span [class.hidden]="!isSidebarOpen" >
+            {{ 'mediacenter' | translate}}
+          </span>
+        </a></li>
         <li class="hover-up"><a [routerLink]="['/mediacenter/favourites']" class="flex" queryParamsHandling="">
           <img src="./assets/images/sidebar/heart.png" alt="favourites" />
           <span [class.hidden]="!isSidebarOpen" >
             {{ 'favourites' | translate}}
           </span>
         </a></li>
-        <!-- 
         <li class="hover-up"><a [routerLink]="['/mediacenter/playlists']" class="flex" queryParamsHandling="">
-          <img src="./assets/images/sidebar/lounge.png" alt="playlists" />
+          <img src="./assets/images/sidebar/headphones.svg" alt="playlists" />
           <span [class.hidden]="!isSidebarOpen" >
             {{ 'playlists' | translate}}
           </span>
         </a></li>
-        -->
     </ul>
     <!-- BOTTOM AREA -->
     <ul [class.min-w-[20rem]]="isSidebarOpen" class="absolute  bottom-0 py-5">

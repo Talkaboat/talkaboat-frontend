@@ -45,7 +45,6 @@ export class FavouritesComponent implements OnInit {
 
     // watch user status
     this.subscriptions.push(this.userService.onUserStateChanged.subscribe((data) => {
-      console.log(data);
       if (data) {
         this.fetchUserLibrary();
         this.loggedIn = true;
