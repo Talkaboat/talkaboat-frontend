@@ -45,7 +45,7 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
   }
 
   handleViewPlaylist(playlist : Playlist) : void {
-    // TODO ACTUALLY VIEW PLAYLIST
+    // TODO ACTUALLY VIEW PLAYLIST -> navigate to detail view of playlist
     console.log("try to view playlist", playlist);
   }
 }

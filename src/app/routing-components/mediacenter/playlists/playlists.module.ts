@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PlaylistsRoutingModule } from './playlists-routing.module';
 import { PlaylistsComponent } from './playlists.component';
 import { PlaylistListComponent } from './playlist-list/playlist-list.component';
+import { PipeModule } from 'src/app/pipes/pipe.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { PlaylistListComponent } from './playlist-list/playlist-list.component';
   ],
   imports: [
     CommonModule,
-    PlaylistsRoutingModule
+    PlaylistsRoutingModule,
+    PipeModule
   ]
 })
 export class PlaylistsModule { }

@@ -21,23 +21,23 @@
 -->
 <ng-template #loggedInSection>
     <section>
-        <h2>{{ 'favourite_podcasts_heading' | translate}}</h2>
+        <h2>{{'favourite_podcasts_heading' | translate}}</h2>
         <ng-container *ngIf="userLibraryEpisodes != null && userLibraryEpisodes.length > 0 then userContent else userNoContent"></ng-container>
     </section>
 </ng-template>
 <ng-template #showLoginSection>
     <section>
-        <h2>{{ 'favourite_podcasts_heading' | translate}}</h2>
-        <p>{{ 'favourite_podcasts_login_hint' | translate}}</p>
-        <button [routerLink]="['/login']" class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">Login</button>
+        <h2>{{'favourite_podcasts_heading' | translate}}</h2>
+        <p>{{'favourite_podcasts_login_hint' | translate}}</p>
+        <button [routerLink]="['/login']" class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">{{'favourite_podcasts_showlogin_button_text' | translate}}</button>
     </section>
 </ng-template>
 <ng-template #userContent>
     <app-podcast-list (removedFromLibrary)="handleLibraryPodcastRemoved($event)" *ngIf="userLibraryEpisodes" [items]="userLibraryEpisodes"></app-podcast-list>
 </ng-template>
 <ng-template #userNoContent>
-    <p>{{ 'favourite_podcasts_no_favourites_text_1' | translate}}</p>
-    <p>{{ 'favourite_podcasts_no_favourites_text_2' | translate}}</p>
+    <p>{{'favourite_podcasts_no_favourites_text_1' | translate}}</p>
+    <p>{{'favourite_podcasts_no_favourites_text_2' | translate}}</p>
         <!-- TODO: link search somehow - we dont have search page?!
         <button class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">Explore episodes</button>
         -->

@@ -1,7 +1,7 @@
 <ng-container *ngIf="loggedIn then loggedInSection else showLoginSection"></ng-container>
 <ng-container *ngIf="recommendationPlaylists && recommendationPlaylists.length > 0">
     <section>
-        <h2>Community recommendations</h2>
+        <h2>{{ 'mediacenter_playlist_recommendation_heading' | translate}}</h2>
         <app-playlist-list (viewPlaylistEvent)="handleViewPlaylist($event)" (playPlaylistEvent)="handlePlayPlaylist($event)" [playlists]="recommendationPlaylists" *ngIf="recommendationPlaylists"></app-playlist-list>
     </section>
     <!-- playlist(s) nach themen? -->
@@ -9,16 +9,15 @@
 </ng-container>
 <ng-template #loggedInSection>
     <section>
-        <h2>Your playlists</h2>
+        <h2>{{'mediacenter_playlist_loggedinsection_heading' | translate}}</h2>
         <app-playlist-list (viewPlaylistEvent)="handleViewPlaylist($event)" (playPlaylistEvent)="handlePlayPlaylist($event)" [playlists]="userPlaylists" *ngIf="userPlaylists && userPlaylists.length > 0"></app-playlist-list>
-        <p *ngIf="userPlaylists == null">It looks like you dont have any playlists yet.</p>
-        <button class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">Add playlist</button>
+        <p *ngIf="userPlaylists == null">{{'mediacenter_playlist_loggedinsection_emptytext' | translate}}</p>
     </section>
 </ng-template>
 <ng-template #showLoginSection>
     <section>
-        <h2>Playlists</h2>
-        <p>Please login to create a playlist</p>
-        <button [routerLink]="['/login']" class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">Login</button>
+        <h2>{{'mediacenter_playlist_showloginsection_heading' | translate}}</h2>
+        <p>{{'mediacenter_playlist_showloginsection_text' | translate}}</p>
+        <button [routerLink]="['/login']" class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">{{'mediacenter_playlist_showloginsection_loginbutton_text' | translate}}</button>
     </section>
 </ng-template>
