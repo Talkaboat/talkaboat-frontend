@@ -1,24 +1,5 @@
 
 <ng-container *ngIf="loggedIn then loggedInSection else showLoginSection"></ng-container>
-<!--
- page content ideas:
- episoden nach themen? 
- aktuell aktiv gehörte episoden - andere hören aktuell...? 
- von freunden?
-<ng-container *ngIf="recommendationPodcasts && recommendationPodcasts.length > 0">
-    <section>
-        <h2>Community podcast recommendations</h2>
-        <app-podcast-list *ngIf="recommendationPodcasts" [items]="recommendationPodcasts"></app-podcast-list>
-        <p>Missing something? Let us know what you would recommend!</p>
-    </section>
-</ng-container>
-<ng-container *ngIf="brandnewEpisodes && brandnewEpisodes.length > 0">
-    <section>
-        <h2>Brandnew episodes</h2>
-        <app-favourite-list [activeEpisodeId]="currentlyPlayingEpisode ? currentlyPlayingEpisode.aboat_id : null" (playEpisodeEvent)="handleEpisodePlayClicked($event)" [episodes]="brandnewEpisodes"></app-favourite-list>
-    </section>
-</ng-container>
--->
 <ng-template #loggedInSection>
     <section>
         <h2>{{'favourite_podcasts_heading' | translate}}</h2>
@@ -38,8 +19,5 @@
 <ng-template #userNoContent>
     <p>{{'favourite_podcasts_no_favourites_text_1' | translate}}</p>
     <p>{{'favourite_podcasts_no_favourites_text_2' | translate}}</p>
-        <!-- TODO: link search somehow - we dont have search page?!
-        <button class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">Explore episodes</button>
-        -->
 </ng-template>
 

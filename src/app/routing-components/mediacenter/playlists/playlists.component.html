@@ -4,8 +4,6 @@
         <h2>{{ 'mediacenter_playlist_recommendation_heading' | translate}}</h2>
         <app-playlist-list (viewPlaylistEvent)="handleViewPlaylist($event)" (playPlaylistEvent)="handlePlayPlaylist($event)" [playlists]="recommendationPlaylists" *ngIf="recommendationPlaylists"></app-playlist-list>
     </section>
-    <!-- playlist(s) nach themen? -->
-    <!-- playlist(s) von freunden? -->
 </ng-container>
 <ng-template #loggedInSection>
     <section>
