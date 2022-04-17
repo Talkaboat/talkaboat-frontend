@@ -1,43 +1,15 @@
-import { ContextMenuItems } from "./models/context-menu-content.model";
+import { ContextMenuTask } from "./enums/context-menu-task";
+import { ContextMenuItem } from "./models/context-menu-content.model";
 
-export const MENU_ITEMS: ContextMenuItems[] = [
+export const MENU_ITEMS: ContextMenuItem[] = [
   {
-    name: 'item1',
-    submenuAvailable: true,
+    name: 'Add to Playlist',
+    task: ContextMenuTask.OpenSubmenu,
     submenu: [
       {
-        name: 'subitem1-1',
+        task: ContextMenuTask.CreateNewPlaylist,
+        name: 'create new playlist',
       },
-      {
-        name: 'subitem1-2',
-      },
-      {
-        name: 'subitem1-3',
-      },
-      {
-        name: 'subitem1-4',
-      }
     ]
-  },
-  {
-    name: 'item2',
-  },
-  {
-    name: 'item3',
-    submenuAvailable: true,
-    submenu: [
-      {
-        name: 'subitem3-1',
-      },
-      {
-        name: 'subitem3-2',
-      }
-    ]
-  },
-  {
-    name: 'item4',
-  },
-  {
-    name: 'item5',
   },
 ]

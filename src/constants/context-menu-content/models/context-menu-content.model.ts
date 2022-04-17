@@ -1,5 +1,6 @@
-export interface ContextMenuItems {
+import { ContextMenuTask } from './../enums/context-menu-task';
+export interface ContextMenuItem {
+  task: ContextMenuTask
   name: string;
-  submenuAvailable?: boolean;
-  submenu?: ContextMenuItems[];
+  submenu?: ContextMenuItem[];
 }

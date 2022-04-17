@@ -1,12 +1,16 @@
 <div>
   <ul class="list-none">
     <ng-container *ngFor="let menuItem of menuItems, let i = index">
-      <li (click)="clickedItem(i)" class="cursor-pointer whitespace-nowrap hover:bg-creator-500 bg-creator-600 active:bg-fan-400">
-        <span>{{menuItem.name}}</span><span *ngIf="menuItem.submenuAvailable">></span>
+      <li (click)="clickedItem(i, menuItem)" class="cursor-pointer whitespace-nowrap hover:bg-creator-500 bg-creator-600 active:bg-fan-400">
+        <span>{{menuItem.name}}</span>
+        <span [ngSwitch]="menuItem.task">
+          <span *ngSwitchCase="ContextMenuTask.OpenSubmenu">></span>
+        </span>
       </li>
-      <div *ngIf="menuItem.submenuAvailable && submenuOpened && submenuOpenedIndex === i"
-      class="absolute left-full top-0 ml-1 bg-fan-900">
-        <app-context-menu-content [menuItems]="$any(menuItem.submenu)"></app-context-menu-content>
+      <div [ngSwitch]="menuItem.task">
+        <div *ngSwitchCase="ContextMenuTask.OpenSubmenu" class="absolute left-full top-0 ml-1 bg-fan-900">
+          <app-context-menu-content *ngIf="submenuOpened && submenuOpenedIndex === i" [menuItems]="$any(menuItem.submenu)"></app-context-menu-content>
+        </div>
       </div>
     </ng-container>
 

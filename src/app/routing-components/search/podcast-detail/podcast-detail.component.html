@@ -96,7 +96,7 @@
               <div class="sm:ml-none sm:pb-3 ml-auto sm:mx-auto my-auto sm:px-3 sm:mt-3">
                 <button aria-label="add to playlist or library"
                   class="btn rounded-[1rem] px-4 sm:px-8 py-3 bg-shadow-500 text-main-300 border-main-300 border-1 font-semibold"
-                  (click)="addToPlaylist(episode)">
+                  appContextMenu [podcastId]="episode.aboat_id">
                   <span>Add</span>
                 </button>
               </div>

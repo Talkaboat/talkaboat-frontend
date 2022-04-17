@@ -19,7 +19,7 @@ export class ContextMenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.contextMenuService.mousePos.subscribe((value: {x: number, y: number}) => {
+    this.contextMenuService.mousePos$.subscribe((value: {x: number, y: number}) => {
       if (this.noSpaceToTheRight(value.x)) {
         this.offsetLeft = value.x - this.contextMenuElementRef?.nativeElement.offsetWidth;
       } else {
@@ -27,7 +27,7 @@ export class ContextMenuComponent implements OnInit {
       }
       this.offsetTop = value.y;
     });
-    this.contextMenuService.contextMenuActive.subscribe(value => this.contextMenuActive = value);
+    this.contextMenuService.contextMenuActive$.subscribe(value => this.contextMenuActive = value);
   }
 
   deactivateContextMenu() {

@@ -1,3 +1,4 @@
+import { DirectivesModule } from './../../directives/directives.module';
 import { CommonModule } from "@angular/common";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { PipeModule } from "src/app/pipes/pipe.module";
@@ -17,7 +18,8 @@ import { SearchComponent } from "./search.component";
     CommonModule,
     PipeModule,
     SharedModule,
-    SearchRoutingModule
+    SearchRoutingModule,
+    DirectivesModule
   ], exports: [
     SearchComponent,
     PodcastDetailComponent,
