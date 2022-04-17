@@ -20,12 +20,9 @@ import { LoadingComponent } from "./loading/loading.component";
 import { MediaPlayerComponent } from "./media-player/media-player.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { YoutubeComponent } from './youtube/youtube.component';
-<<<<<<< HEAD
 import { ContextMenuContentComponent } from './context-menu/context-menu-content/context-menu-content.component';
-=======
 import { PodcastListViewItemComponent } from './podcast/podcast-list-view-item/podcast-list-view-item.component';
 import { PodcastListComponent } from './podcast/podcast-list/podcast-list.component';
->>>>>>> 0884e06f23b9731dfa946e7bf6075ad007d22ac6
 
 @NgModule({
   declarations: [
@@ -39,13 +36,10 @@ import { PodcastListComponent } from './podcast/podcast-list/podcast-list.compon
     FooterComponent,
     FilterComponent,
     YoutubeComponent,
-<<<<<<< HEAD
     ContextMenuComponent,
-    ContextMenuContentComponent
-=======
+    ContextMenuContentComponent,
     PodcastListViewItemComponent,
-    PodcastListComponent
->>>>>>> 0884e06f23b9731dfa946e7bf6075ad007d22ac6
+    PodcastListComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
@@ -71,12 +65,9 @@ import { PodcastListComponent } from './podcast/podcast-list/podcast-list.compon
     SidebarComponent,
     FooterComponent,
     YoutubeComponent,
-<<<<<<< HEAD
-    ContextMenuComponent
-=======
+    ContextMenuComponent,
     PodcastListViewItemComponent,
-    PodcastListComponent
->>>>>>> 0884e06f23b9731dfa946e7bf6075ad007d22ac6
+    PodcastListComponent,
   ],
 })
 export class SharedModule { }
