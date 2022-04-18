@@ -1,3 +1,38 @@
-<div class="mx-auto w-full bg-shadow-700">
-  <button aria-label="back navigation" *ngIf="canNavigateBack" (click)="backNavigation()">Back</button>
+<div class="w-full bg-shadow-400 flex-row overflow-hidden rounded-md">
+  <div class="playlist-header grid grid-cols-5 p-4">
+    <div class="col-span-1 mr-4 overflow-hidden rounded-md">
+      <img class="object-cover object-center aspect-square mw-[14rem]" src="https://source.unsplash.com/random/1600x900?dog" alt="playlist.image"/>
+    </div>
+    <div class="col-span-4">
+      <div class="flex-row">
+        <div>playlist</div>
+        <div>{{playlistMock.name}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-shadow-700 overflow-x-auto">
+    <table class="table-auto playlist-table w-full">
+      <thead class="text-left">
+        <th>#</th>
+        <th>Title</th>
+        <th>Podcast</th>
+        <th>Length</th>
+      </thead>
+      <tbody>
+        <!-- data properties
+        <tr class="odd:bg-shadow-500 even:bg-shadow-600">
+        </tr>
+        -->
+        <!-- row 2 -->
+        <tr *ngFor="let track of playlistMock.tracks, index as i" class="odd:bg-shadow-500 even:bg-shadow-600 hover:bg-shadow-400">
+          <ng-container *ngIf="track.episode">
+            <th>{{i+1}}</th>
+            <td>{{track.episode.title}}</td>
+            <td>{{track.episode.podcast.title}}</td>
+            <td>{{convertTime(track.episode.audio_length_sec)}}</td>
+          </ng-container>
+
+        </tr>
+    </table>
+  </div>
 </div>
