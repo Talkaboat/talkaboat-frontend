@@ -40,7 +40,7 @@ export class ContextMenuContentComponent implements OnInit {
     } else {
       switch (contextMenuItem.task) {
         case ContextMenuTask.CreateNewPlaylist:
-          this.contextMenuService.deactivateContextMenu();
+          this.contextMenuService.navigateToCreateNewPlaylist();
           break;
 
         default:

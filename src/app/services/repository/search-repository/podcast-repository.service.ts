@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { PLAYLIST_ARRAY_MOCK } from 'src/constants/mocks/playlist.mock.constants';
 import { RepositoryService } from '../repository.service';
 import { Episode } from './models/episode.model';
 import { PlaylistTrack } from './models/playlist/playlist-track.model.dto';
@@ -41,9 +42,9 @@ export class PodcastRepositoryService extends RepositoryService {
     return this.get(api);
   }
 
-  public addPlaylist(name: string, image: string = '', tracks: any[] = []): Observable<Playlist> {
-    const api = PODCAST_API.URL;
-    return this.post(api);
+  public addPlaylist(playlist: Playlist): Observable<Playlist> {
+    const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_ADD_URL;
+    return this.post(api, playlist);
   }
 
   public addEpisodeToPlaylist(playlist_id: number, episode_id: number): Observable<PlaylistTrack> {
