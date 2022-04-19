@@ -14,11 +14,14 @@ export class EpisodeDetailComponent implements OnInit {
 
   canNavigateBack: boolean = false;
   playlistMock: Playlist = PLAYLIST_ARRAY_MOCK[0]
+  playlistNameInputValue = '';
+  temporaryPlaylistName = '';
 
   constructor(private readonly websiteStateService: WebsiteStateService) { }
 
   ngOnInit(): void {
     this.canNavigateBack = this.websiteStateService.canNavigateBack();
+    this.playlistNameInputValue = this.playlistMock.name;
   }
 
   backNavigation() {
@@ -29,4 +32,16 @@ export class EpisodeDetailComponent implements OnInit {
     return new Date(seconds * 1000).toISOString().substr(11, 8)
   }
 
+  refreshCurrentPlaylistName(): void {
+    this.temporaryPlaylistName = this.playlistNameInputValue;
+  }
+
+  renamePlaylist(): void{
+    if (this.temporaryPlaylistName === this.playlistNameInputValue) {
+      console.log('no changes');
+      return;
+    }
+    console.log('changes!');
+    // do name change request here
+  }
 }

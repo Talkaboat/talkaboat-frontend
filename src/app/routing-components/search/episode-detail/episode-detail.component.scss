@@ -9,3 +9,17 @@
     @apply  cursor-pointer delay-75;
   }
 }
+
+@mixin button-style {
+    @apply md:scale-100 md:duration-150 md:transition;
+  &:hover {
+    @apply md:scale-105 md:duration-150 md:transition md:-translate-y-1;
+  }
+  &:active {
+    @apply md:scale-95 md:duration-150 md:transition;
+  }
+}
+
+.delete-button {
+  @include button-style();
+}

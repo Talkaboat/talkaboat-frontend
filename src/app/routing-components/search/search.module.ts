@@ -7,6 +7,7 @@ import { EpisodeDetailComponent } from "./episode-detail/episode-detail.componen
 import { PodcastDetailComponent } from "./podcast-detail/podcast-detail.component";
 import { SearchRoutingModule } from "./search-routing.module";
 import { SearchComponent } from "./search.component";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SearchComponent } from "./search.component";
     PipeModule,
     SharedModule,
     SearchRoutingModule,
-    DirectivesModule
+    DirectivesModule,
+    FormsModule
   ], exports: [
     SearchComponent,
     PodcastDetailComponent,
