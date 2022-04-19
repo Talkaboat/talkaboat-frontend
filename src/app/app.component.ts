@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { slider } from './animations';
+import { MediaHelperService } from './services/media-helper/media-helper.service';
 import { UserService } from './services/user/user.service';
 import { WebsiteStateService } from './services/website-state/website-state.service';
 
@@ -15,7 +16,7 @@ import { WebsiteStateService } from './services/website-state/website-state.serv
 export class AppComponent implements OnInit {
 
   isSidebarOpen = true;
-  constructor(private readonly userService: UserService, private readonly toastr: ToastrService, private readonly websiteStateService: WebsiteStateService) {
+  constructor(private readonly userService: UserService, private readonly toastr: ToastrService, private readonly websiteStateService: WebsiteStateService, private readonly mediaHelperService: MediaHelperService) {
 
   }
 

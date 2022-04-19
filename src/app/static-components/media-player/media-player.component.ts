@@ -60,7 +60,11 @@ export class MediaPlayerComponent implements OnInit {
 
     this.mediaPlayerService.onTrackChanged.subscribe(nextTrack => {
       this.changeSource(nextTrack);
-    })
+    });
+
+    if (this.mediaPlayerService.track) {
+      this.changeSource(this.mediaPlayerService.track);
+    }
 
     this.track.subscribe(value => {
       this.pause();
