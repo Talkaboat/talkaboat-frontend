@@ -12,11 +12,11 @@ import { PLAYLIST_ARRAY_MOCK } from 'src/constants/mocks/playlist.mock.constants
 })
 export class PlaylistsComponent implements OnInit, OnDestroy {
 
-  playlistSubscription! : Subscription;
   loggedIn : boolean | null = null;
   fetchedUserPlaylists: boolean | null = null;
   userPlaylists : Playlist[] | null = null;
   recommendationPlaylists : Playlist[] | null = null;
+  subscriptions: Subscription[] = [];
   
   constructor(private podcastService : PodcastRepositoryService, private readonly userService: UserService) {
     this.recommendationPlaylists = PLAYLIST_ARRAY_MOCK;
@@ -24,7 +24,7 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loggedIn = this.userService.isUserLoggedIn();
-    this.playlistSubscription = this.podcastService.getPlaylists().subscribe((data) => {
+    this.subscriptions.push(this.podcastService.getPlaylists().subscribe((data) => {
       this.fetchedUserPlaylists = true;
       if (data.length > 0) {
         this.userPlaylists = data;
@@ -32,11 +32,23 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
     }, (error) => {
       console.error(error);
       this.fetchedUserPlaylists = false;
-    });
+    }));
+
+    // watch user status
+    this.subscriptions.push(this.userService.onUserStateChanged.subscribe((data) => {
+      if (data) {
+        this.loggedIn = true;
+      } else {
+        this.loggedIn = false;
+      }
+    }));
+  }
+  fetchUserLibrary() {
+    throw new Error('Method not implemented.');
   }
 
   ngOnDestroy(): void {
-    this.playlistSubscription.unsubscribe();
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
   handlePlayPlaylist(playlist : Playlist) : void {
