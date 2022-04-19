@@ -45,12 +45,12 @@
           </div>
           <div id="track-area" class="col-span-5 md:col-span-2 place-self-start self-center pl-2">
             <div class="flex justify-between">
-              <a tab-index="0" class="track-cover hidden md:block mr-4 rounded-lg overflow-hidden cursor-pointer"
+              <a tab-index="0" class="track-cover hidden md:inline-table mr-4 rounded-lg overflow-hidden cursor-pointer"
                 [routerLink]="['./search/podcast' + (currentTrack.podcast ? '/episode' : '')]"
                 [queryParams]="currentTrack.podcast ? { 'ep': currentTrack.id, 'pd': null} : { 'pd': currentTrack.id, 'ep': null }"
                 queryParamsHandling="merge"
               >
-                <img class="object-cover object-center aspect-square w-[8rem]"
+                <img class="object-cover object-center aspect-square w-32 min-w-[8rem]"
                   [alt]="currentTrack.title + ' portrait'" [src]="currentTrack.image" />
             </a>
               <div id="track-meta">
