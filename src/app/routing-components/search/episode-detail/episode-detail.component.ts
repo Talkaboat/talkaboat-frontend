@@ -41,6 +41,11 @@ export class EpisodeDetailComponent implements OnInit {
       console.log('no changes');
       return;
     }
+    if (this.playlistNameInputValue === '') {
+      this.playlistNameInputValue = this.temporaryPlaylistName;
+      console.log('no changes');
+      return;
+    }
     console.log('changes!');
     // do name change request here
   }
