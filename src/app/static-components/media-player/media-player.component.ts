@@ -98,6 +98,9 @@ export class MediaPlayerComponent implements OnInit {
       });
     this.api.getDefaultMedia().subscriptions.playing.subscribe(
       () => {
+        this.mediaRepositoryService.play(this.track.value.podcast_id, this.track.value.aboat_id).subscribe(
+          result => this.userService.updateRewards(result)
+        );
         this.isPlaying = true;
       }
     )
