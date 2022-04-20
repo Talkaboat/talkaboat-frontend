@@ -34,10 +34,10 @@ export class UserService {
     private readonly translateService: TranslateService,
     private readonly toastrService: ToastrService) {
     this.web3Service.accountsObservable.subscribe(changed => {
-      if (this.userData.addresses && this.userData.addresses.length > 0 && !this.userData.addresses.includes(changed[0])) {
-        toastrService.info(translateService.transform('sign_out_address_mismatch'));
-        this.logout();
-      }
+      // if (this.userData.addresses && this.userData.addresses.length > 0 && !this.userData.addresses.includes(changed[0])) {
+      //   toastrService.info(translateService.transform('sign_out_address_mismatch'));
+      //   this.logout();
+      // }
     });
   }
 
@@ -113,12 +113,12 @@ export class UserService {
     this.loaderService.hide();
   }
 
-  async register(email: string, username: string) {
+  async register(email: string, username: string, referrer: string = "") {
 
     await this.web3Service.connect(true);
     if (this.web3Service.accounts) {
       this.loaderService.show();
-      this.userRepositoryService.register(email, username, this.web3Service.accounts[0]).subscribe({
+      this.userRepositoryService.register(email, username, this.web3Service.accounts[0], referrer).subscribe({
         next: v => {
           this.signAuthorizationRequestAndConfirmWallet(v);
         },

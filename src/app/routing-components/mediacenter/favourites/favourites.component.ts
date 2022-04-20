@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { TranslateService } from 'src/app/services/i18n/translate.service';
+import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
 import { Episode } from 'src/app/services/repository/search-repository/models/episode.model';
+import { Podcast } from 'src/app/services/repository/search-repository/models/podcast.model';
 import { PodcastRepositoryService } from 'src/app/services/repository/search-repository/podcast-repository.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { DEFAULT_EPISODES } from 'src/constants/mocks/episode-default.mock.constants';
-import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
-import { Podcast } from 'src/app/services/repository/search-repository/models/podcast.model';
 import { PODCAST_MOCK } from 'src/constants/mocks/podcast-detail.mock.constants';
-import { TranslateService } from 'src/app/services/i18n/translate.service';
 
 @Component({
   selector: 'app-favourites',
@@ -20,7 +20,7 @@ export class FavouritesComponent implements OnInit {
   subscriptions : Subscription[] = [];
   userLibrary : number[] | null = null;
   userLibraryEpisodes : Podcast[] | null = null;
-  
+
   loggedIn : boolean | null = null;
   fetchedLibrary : boolean | null = null;
   brandnewEpisodes : Episode[] | null = null;
@@ -35,7 +35,7 @@ export class FavouritesComponent implements OnInit {
     if (this.loggedIn) {
       this.fetchUserLibrary();
     }
-    
+
     // keep track of currently played episode
     this.subscriptions.push(this.mediaPlayer
       .onTrackChanged
@@ -45,7 +45,6 @@ export class FavouritesComponent implements OnInit {
 
     // watch user status
     this.subscriptions.push(this.userService.onUserStateChanged.subscribe((data) => {
-      console.log(data);
       if (data) {
         this.fetchUserLibrary();
         this.loggedIn = true;

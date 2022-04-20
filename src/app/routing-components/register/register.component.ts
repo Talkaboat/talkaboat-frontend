@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TranslateService } from 'src/app/services/i18n/translate.service';
@@ -67,9 +67,14 @@ export class RegisterComponent implements OnInit {
 
   async connect() {
     if (this.isEmailValid() && this.isUsernameValid()) {
+      var ref = "";
+      if (localStorage.getItem('tab_ref')) {
+        ref = localStorage.getItem('tab_ref')!;
+      }
       this.userService.register(
         this.registerForm.get('email')?.value,
         this.registerForm.get('username')?.value,
+        ref
       );
     }
   }

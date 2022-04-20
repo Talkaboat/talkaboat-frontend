@@ -68,6 +68,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.toastr.info(this.translate.transform('currently_deactivated'));
   }
 
+  copyReferal() {
+    navigator.clipboard.writeText("https://talkaboat.online?ref=" + this.userService.userData.userName);
+  }
+
   isMe(): boolean {
     return this.userService.isMe(this.userName);
   }

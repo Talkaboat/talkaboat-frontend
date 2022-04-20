@@ -219,6 +219,10 @@ export const en = {
   home_title_video_id: 'eCryl3DhEtk',
   consumer_explainer_video_id: 'ro6BKVtsmsQ',
   aboat_token_usecase_video_id: 'LAWSfzjPk28',
-  creator_explainer_video_id: 'mtIaI40jWXc'
+  creator_explainer_video_id: 'mtIaI40jWXc',
+  //#endregion
+
+  //#region Profile
+  copy_ref_button_text: 'Copy Ref-Link'
   //#endregion
 }

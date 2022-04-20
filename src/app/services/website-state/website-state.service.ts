@@ -18,6 +18,10 @@ export class WebsiteStateService {
   public onMediaPlayerStateChanged: EventEmitter<MediaPlayerState> = new EventEmitter<MediaPlayerState>();
   constructor(private readonly router: Router, private readonly loaderService: LoaderService, private readonly location: Location, private readonly titleService: Title, private readonly route: ActivatedRoute, private readonly userRepository: UserRepositoryService, private readonly toastr: ToastrService) {
     this.route.queryParams.subscribe((params: Params) => {
+      if (params['ref']) {
+        localStorage.setItem('tab_ref', params['ref']);
+        this.router.navigate([]);
+      }
       if (params['email']) {
         if (params['code']) {
           this.userRepository.confirmMail(params['email'], params['code']).subscribe(() => {

@@ -42,6 +42,7 @@ export class Web3Service {
     this.web3Modal = new Web3Modal({
       providerOptions, // required
       network: "binance",
+      cacheProvider: true,
       theme: {
         background: 'rgb(39, 49, 56)',
         main: 'rgb(199, 199, 199)',
@@ -76,13 +77,13 @@ export class Web3Service {
 
   async reConnect() {
     if (this.web3Modal.cachedProvider) {
-      await this.connect();
+      await this.connect(false, true);
     } else {
       await this.defaultLogin();
     }
   }
 
-  async connect(clearCached = false) {
+  async connect(clearCached = false, autoConnect = false) {
     if (clearCached) {
       await this.web3Modal.clearCachedProvider();
     }

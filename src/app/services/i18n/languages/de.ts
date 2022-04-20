@@ -225,7 +225,11 @@ export const de = {
   home_title_video_id: 'RTFh5OKEUaM',
   consumer_explainer_video_id: 'ZEnAbSL3R18',
   aboat_token_usecase_video_id: '0BxxZejdu9s',
-  creator_explainer_video_id: 'hHiSTOerdRc'
+  creator_explainer_video_id: 'hHiSTOerdRc',
+  //#endregion
+
+  //#region Profile
+  copy_ref_button_text: 'Ref-Link kopieren'
   //#endregion
 }
 
