@@ -101,7 +101,6 @@ export class UserService {
   }
 
   async autoConnect() {
-    this.web3Service.defaultLogin();
     if (localStorage.getItem('aboat_access')) {
       await this.web3Service.connect();
       if (this.web3Service.accounts) {
@@ -109,6 +108,8 @@ export class UserService {
         this.loaderService.show();
         await this.getUserData();
       }
+    } else {
+      this.web3Service.defaultLogin();
     }
     this.loaderService.hide();
   }
@@ -219,8 +220,8 @@ export class UserService {
   }
 
   profileError(error: HttpErrorResponse) {
-
-    this.toastrService.error("profileError: " + error.error);
+    console.log(error);
+    // this.toastrService.error("profileError: " + error.error);
     this.loaderService.hide();
     localStorage.removeItem('aboat_access');
   }
