@@ -1,5 +1,5 @@
 <div *ngIf="poolInfo">
-  <button class="w-full h-full p-5 btn bg-shadow-300" (click)="toggleState()">
+  <button class="w-full h-full p-5 btn bg-shadow-300" (click)="toggleState()" [class.open]="isOpen">
     <h4 class="flex justify-between gap-5 text-left">
       <div class="flex w-full">
         <div class="flex justify-start h-full mr-3">
@@ -47,7 +47,7 @@
   </button>
 
   <!-- Collapsable Area -->
-  <div [class.open]="isOpen" class="overflow-hidden h-0 transition-all duration-500 rounded-[1rem] bg-shadow-600">
+  <div [class.open]="isOpen" class="collapsable overflow-hidden h-0 transition-all duration-500 rounded-b-[1rem] bg-shadow-600">
     <!-- Stake/Unstake -->
     <div class="flex justify-between m-5 p-5 bg-shadow-700">
       <div>

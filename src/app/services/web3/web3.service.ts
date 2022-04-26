@@ -125,13 +125,13 @@ export class Web3Service {
     }
   }
 
-  public async getEstimatedGas(method: any, from: string, bnbAmount = "0"): Promise<Big> {
+  public async getEstimatedGas(method: any, from: string, bnbAmount = "0"): Promise<string> {
     try {
 
         const gas = Big(await method.estimateGas({ from, value: bnbAmount }));
-        return gas.mul(1.1);
+        return gas.mul(1.1).toFixed(0);
     } catch(error) {
-        return Promise.resolve(BLOCKCHAIN.GAS_PRICE);
+        return (await Promise.resolve(BLOCKCHAIN.GAS_PRICE)).toFixed(0);
     }
 }
 

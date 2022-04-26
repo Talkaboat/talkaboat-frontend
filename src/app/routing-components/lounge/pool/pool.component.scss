@@ -1,3 +1,8 @@
 .open {
-  @apply h-[30rem];
+  &.collapsable {
+    @apply h-[30rem];
+  }
+  &.btn {
+    @apply rounded-b-none;
+  }
 }
