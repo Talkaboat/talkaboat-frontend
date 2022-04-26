@@ -13,6 +13,8 @@ export class PoolComponent implements OnInit {
   @Input() gotWallet: boolean = false;
   isOpen = false;
   approving = false;
+  withdraw = false;
+  stake = false;
   constructor(private readonly loungeService: LoungeService, private readonly web3Service: Web3Service) { }
 
   ngOnInit(): void {
@@ -49,5 +51,11 @@ export class PoolComponent implements OnInit {
         this.poolInfo!.allowance = allowance;
       });
     });
+  }
+
+  closedModal(isFinished: boolean) {
+    this.stake = false;
+    this.withdraw = false;
+    console.log(isFinished);
   }
 }

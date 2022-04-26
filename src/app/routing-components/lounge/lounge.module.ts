@@ -7,13 +7,15 @@ import { TokenService } from 'src/app/services/web3/token/token.service';
 import { LoungeRoutingModule } from './lounge-routing.module';
 import { LoungeComponent } from './lounge.component';
 import { PoolComponent } from './pool/pool.component';
+import { StakeModalComponent } from './pool/stake-modal/stake-modal.component';
 
 
 
 @NgModule({
   declarations: [
     LoungeComponent,
-    PoolComponent
+    PoolComponent,
+    StakeModalComponent
   ],
   imports: [
     CommonModule,
