@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import Big from 'big.js';
 import { PoolInfo } from 'src/app/services/repository/smart-contract-repository/models/pool-info.model';
 import { LoungeService } from 'src/app/services/web3/lounge/lounge.service';
 import { Web3Service } from 'src/app/services/web3/web3.service';
@@ -18,6 +19,9 @@ export class PoolComponent implements OnInit {
   constructor(private readonly loungeService: LoungeService, private readonly web3Service: Web3Service) { }
 
   ngOnInit(): void {
+    if (this.poolInfo) {
+      this.poolInfo!.depositedCoins = Big(this.poolInfo!.depositedCoins);
+    }
   }
 
   getTokenIcon(symbol: string) {
