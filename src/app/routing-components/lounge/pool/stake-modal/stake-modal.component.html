@@ -1,0 +1,28 @@
+<div class="fixed left-0 top-0 right-0 min-h-screen flex items-center justify-center">
+
+  <button class="background fixed top-0 bottom-0 left-0 right-0 -z-10" (click)="close.emit(false)">
+
+  </button>
+  <div class="modal sm:w-[40rem] w-[90%] relative mx-auto bg-shadow-500 py-3 px-5 z-10 -mt-[25rem] rounded-[1rem]" *ngIf="poolInfo">
+    <button class="absolute -right-[1rem] -top-[1rem] w-[3rem] h-[3rem] rounded-full bg-shadow-600 border-shadow-400 border-2" (click)="close.emit(false)">X</button>
+    <h3 class="mb-3">{{ (isWithdrawal ? "withdrawal_modal" : "stake_modal") | translate }}</h3>
+    <b>
+      <span *ngFor="let symbol of this.poolInfo.symbols; let i = index">{{symbol}}<span
+      *ngIf="this.poolInfo.symbols?.length == 2 && i == 0">-</span></span>
+    <span *ngIf="this.poolInfo.symbols?.length == 2"> LP</span>
+  </b>
+
+    <br>
+    {{ "balance" | translate }} <button class="rounded-[1rem] mb-3 border-b-2 border-shadow-700 py-1 px-2">{{ walletBalance.formatted.toFixed(6) | number }}</button>
+    <form class="mt-3">
+      <label hidden for="amount">{{ "amount" | translate }}</label>
+      <input id="amount" name="amount" type="number" class="secondary py-2 w-full text-right rounded-[1rem] px-3 text-main-100">
+    </form>
+    <button>
+
+    </button>
+  </div>
+
+</div>
+
+
