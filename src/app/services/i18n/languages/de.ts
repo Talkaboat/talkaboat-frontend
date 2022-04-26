@@ -241,6 +241,7 @@ export const de = {
   stake_button: 'Anlegen',
   withdraw_modal: 'Token abheben',
   withdraw_button: 'Abheben',
+  liquidity_worth: 'Liquiditätswert'
   //#endregion
 }
 

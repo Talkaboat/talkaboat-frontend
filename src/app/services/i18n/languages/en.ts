@@ -236,5 +236,6 @@ export const en = {
     stake_button: 'Stake',
     withdraw_modal: 'Withdraw token',
     withdraw_button: 'Withdraw',
+    liquidity_worth: 'Liquidity worth'
     //#endregion
 }

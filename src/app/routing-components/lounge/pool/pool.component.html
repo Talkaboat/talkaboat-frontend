@@ -1,5 +1,5 @@
 <div *ngIf="poolInfo">
-  <button [class.staked]="poolInfo.depositedCoins && poolInfo.depositedCoins.gt(0)" class="w-full h-full p-5 btn bg-shadow-300" (click)="toggleState()" [class.open]="isOpen">
+  <button [class.staked]="poolInfo.amount && poolInfo.amount.gt(0)" class="w-full h-full p-5 btn bg-shadow-300" (click)="toggleState()" [class.open]="isOpen">
     <h4 class="flex justify-between gap-5 text-left">
       <div class="flex w-full">
         <div class="flex justify-start h-full mr-3">
@@ -50,7 +50,11 @@
   <div [class.open]="isOpen" class="collapsable overflow-hidden h-0 transition-all duration-500 rounded-b-[1rem] bg-shadow-600">
     <div class="justify-between m-5 px-5 w-full">
       <p class="mb-1">{{ 'entry_fee' | translate }}: <b>{{ poolInfo.depositFee / 100}}%</b></p>
-      <p class="mb-1">{{ 'liquidity' | translate }}: <b>{{ (poolInfo.totalLiquidity ? poolInfo.totalLiquidity.toFixed(2) : "0") | number}}$</b></p>
+      <p class="mb-1">{{ 'liquidity' | translate }}: <b>{{ (poolInfo.liquidity ? poolInfo.liquidity.toFixed(2) : "0")}}
+
+        {{this.poolInfo.symbols?.length == 2 ? "LP" : this.poolInfo.symbols[0] }}
+      </b></p>
+      <p class="mb-1">{{ 'liquidity_worth' | translate }}: <b>{{ (poolInfo.totalLiquidity ? poolInfo.totalLiquidity.toFixed(2) : "0") | number}}$</b></p>
       <p class="mb-1">{{ 'stake_worth' | translate }}: <b>{{ (poolInfo.amount ? poolInfo.amount.mul(poolInfo.price ? poolInfo.price : 0).toFixed(2) : "0") | number}}$</b></p>
       <p class="mb-1">{{ 'earning_worth' | translate }}: <b>{{ (poolInfo.pending ? poolInfo.pending.mul(poolInfo.price ? poolInfo.price : 0).toFixed(2) : "0") | number}}$</b></p>
     </div>
