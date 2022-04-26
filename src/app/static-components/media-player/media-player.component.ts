@@ -119,13 +119,26 @@ export class MediaPlayerComponent implements OnInit {
     this.api.getDefaultMedia().subscriptions.volumeChange.subscribe(
       () => {
         if (this.api?.volume === 0) {
+          if (this.currentVolume != Volume.Muted) {
+            this.mediaRepositoryService.mute(this.track.value.podcast_id, this.track.value.aboat_id).subscribe(
+              result => this.userService.updateRewards(result)
+            );
+          }
           this.currentVolume = Volume.Muted
-        } else if (this.api?.volume < 0.33) {
-          this.currentVolume = Volume.Reduced
-        } else if (this.api?.volume > 0.66) {
-          this.currentVolume = Volume.Loud
-        } else {
-          this.currentVolume = Volume.Normal
+
+        } else if (this.api?.volume > 0) {
+          if (this.currentVolume == Volume.Muted) {
+            this.mediaRepositoryService.unmute(this.track.value.podcast_id, this.track.value.aboat_id).subscribe(
+              result => this.userService.updateRewards(result)
+            );
+          }
+          if (this.api?.volume < 0.33) {
+            this.currentVolume = Volume.Reduced
+          } else if (this.api?.volume > 0.66) {
+            this.currentVolume = Volume.Loud
+          } else {
+            this.currentVolume = Volume.Normal
+          }
         }
       }
     )

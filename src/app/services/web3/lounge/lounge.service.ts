@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import Big from 'big.js';
+import Big, { RoundingMode } from 'big.js';
 import { MathUtils } from 'src/app/helpers/math/math-utils.helper';
 import { BLOCKCHAIN } from 'src/constants/blockchain.constants';
 import { PoolInfo } from '../../repository/smart-contract-repository/models/pool-info.model';
@@ -24,6 +24,28 @@ export class LoungeService {
     const from = this.web3Service.accounts[0];
     const gas = await this.web3Service.getEstimatedGas(method, from);
     return method.send({ from: this.web3Service.accounts[0], gas: gas });
+  }
+
+  async addLiquidity(poolInfo: PoolInfo, amount: Big): Promise<boolean> {
+    const method = this.contractService.getMasterEntertainerContract()?.methods.deposit(poolInfo.id, Big(amount).toFixed(0, RoundingMode.RoundDown));
+    const from = this.web3Service.accounts && this.web3Service.accounts?.length > 0 ? this.web3Service.accounts[0] : "";
+    const gas = (await this.web3Service.getEstimatedGas(method, from));
+    return method.send({ from, gas}).then(() => {
+      return Promise.resolve(true);
+    }).catch((error: any) => {
+      Promise.reject(error);
+    });
+  }
+
+  async removeLiquidity(poolInfo: PoolInfo, amount: Big): Promise<boolean> {
+    const method = this.contractService.getMasterEntertainerContract()?.methods.withdraw(poolInfo.id, Big(amount).toFixed(0, RoundingMode.RoundDown))
+    const from = this.web3Service.accounts && this.web3Service.accounts?.length > 0 ? this.web3Service.accounts[0] : "";
+    const gas = (await this.web3Service.getEstimatedGas(method, from));
+    return method.send({ from, gas}).then(() => {
+      return Promise.resolve(true);
+    }).catch((error: any) => {
+      Promise.reject(error);
+    });
   }
 
   getAllowance(poolInfo: PoolInfo) {
@@ -73,6 +95,9 @@ export class LoungeService {
   private async setupStandardPoolVariables(poolInfo: PoolInfo, gotAccountWallet: boolean): Promise<any> {
     var processes = [];
     if (gotAccountWallet) {
+      processes.push(this.getDepositedCoins(poolInfo.id).then((depositedCoins => {
+        poolInfo.depositedCoins = depositedCoins ? Big(depositedCoins) : Big(0);
+      })));
       processes.push(this.getPendingCoin(poolInfo.id).then((rawPending: Big) => {
         poolInfo.rawPending = Big(rawPending);
       }));
@@ -181,6 +206,10 @@ export class LoungeService {
     poolInfo.totalLiquidity = Big(poolInfo.liquidity).mul(poolToken.priceInBusd!);
     poolInfo.price = poolToken.priceInBusd;
     return poolInfo;
+  }
+
+  public async getDepositedCoins(index: number): Promise<any> {
+    return (await this.contractService.getMasterEntertainerContract()?.methods.poolInfos(index).call())?.depositedCoins;
   }
 
 }

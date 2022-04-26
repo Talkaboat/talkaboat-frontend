@@ -209,7 +209,7 @@ export const en = {
   got_you_fan: 'Then you\'ve come to the right place! We offer ... ',
   got_you_fan_sub: '<ul> <li> ... <span class = "text-main-300"> rewards </span> for <span class = "text-main-300"> usage </span> of our platform !</li> <li> ... <span class = "text-main-300">gamification </span> for <span class = "text-main-300">fun </span> while using! </li> <li> ... our <span class="text-main-300">blockchain-based ecosystem</span>! </li> <li> ... easy and fast <span class = " text-main-300 "> Support </span> of your favorite artist! </li> <li> ... <span class =" text-main-300 "> fair monetization</span> for <span class =" text-main-300 "><u>all</u> </span>! </li> </ul> ',
   whitepaper_url: 'https://drive.google.com/file/d/1ycDl5l6OcKLUllsKduApfR1Bw1xO5ULp/view?usp=sharing',
-  days: 'days',
+
   social_header: 'Come on board and be social!',
   audio_time: 'Duration',
   published: 'Published',
@@ -223,6 +223,18 @@ export const en = {
   //#endregion
 
   //#region Profile
-  copy_ref_button_text: 'Copy Ref-Link'
+  copy_ref_button_text: 'Copy Ref-Link',
   //#endregion
+
+    //#region Lounge
+    days: 'days',
+    stake_worth: 'Stake worth',
+    earning_worth: 'Earnings worth',
+    staked: 'Staked',
+    earned: 'Earned',
+    stake_modal: 'Stake token',
+    stake_button: 'Stake',
+    withdraw_modal: 'Withdraw token',
+    withdraw_button: 'Withdraw',
+    //#endregion
 }

@@ -33,11 +33,11 @@ export class PoolComponent implements OnInit {
   }
 
   claim() {
-    // this.loungeService.harvest(this.poolInfo).then(async result => {
-    //   if (result) {
-    //     this.onPoolInfoChanged.emit(this.poolInfo.id);
-    //   }
-    // });
+    this.loungeService.harvest(this.poolInfo!).then(async result => {
+      if (result) {
+        this.loungeService.setupPool(this.poolInfo!);
+      }
+    });
   }
 
   approve() {
@@ -56,6 +56,5 @@ export class PoolComponent implements OnInit {
   closedModal(isFinished: boolean) {
     this.stake = false;
     this.withdraw = false;
-    console.log(isFinished);
   }
 }

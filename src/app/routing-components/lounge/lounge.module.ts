@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { PipeModule } from 'src/app/pipes/pipe.module';
 import { ContractService } from 'src/app/services/web3/contract/contract.service';
 import { LoungeService } from 'src/app/services/web3/lounge/lounge.service';
@@ -20,7 +21,8 @@ import { StakeModalComponent } from './pool/stake-modal/stake-modal.component';
   imports: [
     CommonModule,
     LoungeRoutingModule,
-    PipeModule
+    PipeModule,
+    ReactiveFormsModule
   ],
   providers: [
     LoungeService,

@@ -7,7 +7,6 @@ import Big from 'big.js';
 export class BigEqualizerPipe implements PipeTransform {
   transform(value: Big, equals: number, equalized: string): boolean {
     if (value) {
-      console.log(value);
       switch (equalized) {
         case 'eq': return value.eq(equals);
         case 'lt': return value.lt(equals);

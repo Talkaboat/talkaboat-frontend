@@ -215,7 +215,6 @@ export const de = {
   new_address_detected: 'Deine verbundene Krypto-Addresse hat sich geändert.',
   sign_out_address_mismatch: 'Die neue Addresse ist nicht mit deinem Account verbunden!',
   //#endregion
-  days: 'Tage',
   social_header: 'Come on board and be social!',
   audio_time: 'Dauer',
   published: 'Veröffentlicht',
@@ -229,7 +228,19 @@ export const de = {
   //#endregion
 
   //#region Profile
-  copy_ref_button_text: 'Ref-Link kopieren'
+  copy_ref_button_text: 'Ref-Link kopieren',
+  //#endregion
+
+  //#region Lounge
+  days: 'Tage',
+  stake_worth: 'Anlagewert',
+  earning_worth: 'Verdienstwert',
+  staked: 'Angelegt',
+  earned: 'Verdient',
+  stake_modal: 'Token anlegen',
+  stake_button: 'Anlegen',
+  withdraw_modal: 'Token abheben',
+  withdraw_button: 'Abheben',
   //#endregion
 }
 

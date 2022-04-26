@@ -9,3 +9,9 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.disabled {
+  @apply bg-shadow-600 pointer-events-none;
+}
+
+

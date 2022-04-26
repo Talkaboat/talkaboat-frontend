@@ -17,10 +17,13 @@ export class LoungeComponent implements OnInit, OnDestroy {
   selectedPools: PoolInfo[] = [];
   onlyActive: boolean = false;
   gotWallet = false;
+  interval: any = undefined;
+  readonly updateTime = 15000;
   constructor(private readonly smartRepository: SmartContractRepositoryService, private readonly loungeService: LoungeService, private readonly web3Service: Web3Service) { }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
+    clearInterval(this.interval);
   }
 
   ngOnInit(): void {
@@ -35,9 +38,17 @@ export class LoungeComponent implements OnInit, OnDestroy {
   }
 
   async initPools(pools: PoolInfo[]) {
+
     this.pools = pools;
     this.selectedPools = this.pools;
     await this.loungeService.updatePools(pools);
+    if (!this.interval) {
+      this.interval = setInterval(async () => {
+        if (this.pools) {
+          this.loungeService.updatePools(this.pools);
+        }
+      }, this.updateTime);
+    }
   }
 
   getOnlyActivePools(active: boolean) {

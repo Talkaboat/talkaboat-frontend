@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Big, { RoundingMode } from 'big.js';
 import { PoolInfo } from 'src/app/services/repository/smart-contract-repository/models/pool-info.model';
 import { LoungeService } from 'src/app/services/web3/lounge/lounge.service';
@@ -15,8 +15,15 @@ export class StakeModalComponent implements OnInit {
   @Input() isWithdrawal: boolean = false;
   walletBalance = { raw: Big(0), formatted: Big(0) };
 
+  amount = "0";
+
+  modalForm: FormGroup = this.formBuilder.group({
+    amount: [this.amount, [Validators.required, Validators.min(0.000000000000000018)]]
+  })
+
+
   @Output() close = new EventEmitter<boolean>();
-  constructor(private readonly tokenService: TokenService, private readonly loungeService: LoungeService, formBuilder: FormBuilder) { }
+  constructor(private readonly tokenService: TokenService, private readonly loungeService: LoungeService, private readonly formBuilder: FormBuilder) { }
 
   async ngOnInit() {
     if (this.poolInfo) {
@@ -26,7 +33,45 @@ export class StakeModalComponent implements OnInit {
   }
 
   setAmountToBalance() {
-    //this.amount = Big(this.isWithdrawal ? this.poolInfo.amount : this.walletBalance?.formatted);
+    const update = { amount: parseFloat(Big(this.isWithdrawal ? this.poolInfo!.amount : this.walletBalance?.formatted).toFixed(18, RoundingMode.RoundDown)).toString() };
+    this.modalForm.setValue(update);
+  }
+
+  async stake() {
+    let liquidityAmount = Big(this.modalForm.get("amount")!.value).mul(10 ** this.poolInfo!.decimals);
+    console.log(liquidityAmount.toFixed(0));
+    if (liquidityAmount.gt(new Big(this.walletBalance.raw))) {
+      liquidityAmount = new Big(this.walletBalance.raw);
+    }
+    //Start Loading
+    this.loungeService.addLiquidity(this.poolInfo!, liquidityAmount).then(result => {
+      if (result) {
+        this.amount = "0";
+        //SUCCESS
+
+      this.close.emit(true);
+      }
+    }).finally(() => {
+      //End Loading
+    });
+  }
+
+  async withdraw() {
+    if (this.poolInfo) {
+      let liquidityAmount = Big(this.modalForm.get("amount")!.value).mul(10 ** this.poolInfo!.decimals);
+      if (liquidityAmount.gt(this.poolInfo.rawAmount)) {
+        liquidityAmount = Big(this.poolInfo.rawAmount);
+      }
+
+      let success = false;
+      this.loungeService.removeLiquidity(this.poolInfo, liquidityAmount).then(result => {
+        if (result) {
+          this.close.emit(true);
+        }
+      }).finally(() => {
+        //End Loading
+      });
+    }
   }
 
 }
