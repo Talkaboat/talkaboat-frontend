@@ -5,7 +5,13 @@
   class="mx-auto max-w-[110rem] sm:grid sm:grid-cols-4 lg:grid-cols-5 gap-4 px-[2rem] ">
   <li @listItem *ngFor="let item of searchResponse.results; "
     class="mb-5 py-0 px-4 sm:p-0 flex flex-col bg-shadow-700 rounded-[1rem] shadow-lg">
-    <div class="mx-auto w-full h-auto flex sm:grid relative rounded-[1rem]">
+    <div *ngIf="item.aboat_id == -1" class="my-auto">
+      <div [script]="'//p446211.clksite.com/adServe/banners?tid=446211_873780_4'">
+
+      </div>
+    </div>
+
+    <div class="mx-auto w-full h-auto flex sm:grid relative rounded-[1rem]" *ngIf="item.aboat_id >= 0">
 
       <div
         class="shadow-lg relative overflow-hidden rounded-[1rem] sm:min-w-none sm:max-w-none sm:max-h-full min-w-[4rem] max-w-[4rem] max-h-[4rem] my-auto">

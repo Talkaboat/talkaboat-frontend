@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
+import { ScriptDirective } from "src/app/directives/scripts.directive";
 import { PipeModule } from "src/app/pipes/pipe.module";
 import { SharedModule } from "src/app/static-components/shared.module";
 import { EpisodeDetailComponent } from "./episode-detail/episode-detail.component";
@@ -12,6 +13,7 @@ import { SearchComponent } from "./search.component";
     SearchComponent,
     PodcastDetailComponent,
     EpisodeDetailComponent,
+    ScriptDirective
   ],
   imports: [
     CommonModule,
