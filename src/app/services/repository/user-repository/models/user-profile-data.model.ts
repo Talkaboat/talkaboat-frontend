@@ -5,6 +5,8 @@ export interface UserProfileData {
   role?: string;
   company?: string;
   description?: string;
+  image?: string;
+  background?: string;
   friends?: number;
   photos?: number;
   postAmount?: number;

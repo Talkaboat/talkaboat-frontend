@@ -6,6 +6,9 @@
     &:hover, :focus {
       @apply border-shadow-200;
     }
+    &:disabled {
+      @apply bg-shadow-800 text-shadow-400;
+    }
   }
   &.secondary {
     @apply border-solid border-[1px] border-main-400;
@@ -14,6 +17,7 @@
 
 .primary {
   @apply bg-main-500;
+
 }
 
 .secondary {

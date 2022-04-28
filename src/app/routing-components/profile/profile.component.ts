@@ -18,7 +18,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   rewardDetails: RewardDetail[] = [];
   userProfileData: UserProfileData = { id: 0 };
+  userProfileEditData: UserProfileData = { id: 0 };
   mockPost = PROFILE_POST_MOCK;
+  editMode = false;
+  isProfileToggleOpen = false;
   posts: any[] = [
     this.mockPost,
     this.mockPost,
@@ -64,8 +67,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }))
   }
 
-  connect() {
-    this.toastr.info(this.translate.transform('currently_deactivated'));
+  async connect() {
+    await this.userService.connect();
   }
 
   copyReferal() {
@@ -74,6 +77,36 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   isMe(): boolean {
     return this.userService.isMe(this.userName);
+  }
+
+  isEditMode(): boolean {
+    return this.isMe() && this.editMode;
+  }
+
+  toggleMenu() {
+    this.isProfileToggleOpen = !this.isProfileToggleOpen;
+  }
+
+  changeProfileImage() {
+
+  }
+
+  changeBackgroundImage() {
+
+  }
+
+  enterEditMode() {
+    this.userProfileEditData.company = this.userProfileData.company;
+    this.userProfileEditData.fullname = this.userProfileData.fullname;
+    this.userProfileEditData.description = this.userProfileData.description;
+    this.userProfileEditData.role = this.userProfileData.role;
+    this.editMode = true;
+  }
+
+  updateProfile() {
+
+    this.userService.updateProfile(this.userProfileEditData);
+    this.editMode = false;
   }
 
 }

@@ -29,6 +29,10 @@ export class ProfileSidebarComponent implements OnInit {
     return this.userData.userName ? 'https://verify-with.blockpass.org/?clientId=aboat_entertainment_ps_kyc&serviceName=Aboat+Entertainment+Private+Sale+KYC&env=prod&refId=' + this.userData.userName : undefined;
   }
 
+  copyReferal() {
+    navigator.clipboard.writeText("https://talkaboat.online/#/?ref=" + this.userService.userData.userName);
+  }
+
   resendMail() {
     if (this.isSendingMail) {
       return;

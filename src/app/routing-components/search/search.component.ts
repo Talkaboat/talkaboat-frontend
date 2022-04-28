@@ -28,10 +28,10 @@ export class SearchComponent implements OnInit {
     if (!this.searchService.isSearching && this.searchService.searchTerm) {
       this.searchService.executeSearch(this.searchService.searchTerm);
     }
-    const container = document.getElementById("searchAd");
-    const scriptElement = document.createElement("script");
-    scriptElement.src = "//p446211.clksite.com/adServe/banners?tid=446211_873780_3";
-    container?.appendChild(scriptElement);
+    // const container = document.getElementById("searchAd");
+    // const scriptElement = document.createElement("script");
+    // scriptElement.src = "//p446211.clksite.com/adServe/banners?tid=446211_873780_3";
+    // container?.appendChild(scriptElement);
   }
 
   setSearchResponse(searchResponse: PodcastSearchResponse) {
@@ -44,7 +44,7 @@ export class SearchComponent implements OnInit {
       if((i+1) % n === 0) list.push(newElement);
       return list;
     }, []);
-    this.searchResponse.results = res;
+    // this.searchResponse.results = res;
   }
 
   play(track: PodcastSearchResult) {

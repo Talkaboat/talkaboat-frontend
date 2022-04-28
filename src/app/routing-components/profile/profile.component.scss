@@ -1,0 +1,11 @@
+.open {
+  transition: all 0.15s;
+  @apply w-[18rem] max-h-[500rem];
+}
+
+.profile-toggle-menu {
+  transition: all 0.15s;
+  .btn, button {
+    @apply md:py-[1.5rem] my-[0.5rem] px-[0.6rem] py-[0.75rem] bg-shadow-500;
+  }
+}
