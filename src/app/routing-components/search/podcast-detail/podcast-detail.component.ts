@@ -130,4 +130,8 @@ export class PodcastDetailComponent implements OnInit {
       });
     }
   }
+
+  windowSize() {
+    return window.innerWidth;
+  }
 }

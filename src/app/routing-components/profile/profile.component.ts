@@ -105,7 +105,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   updateProfile() {
 
-    this.userService.updateProfile(this.userProfileEditData);
+    //this.userService.updateProfile(this.userProfileEditData);
     this.editMode = false;
   }
 

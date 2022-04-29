@@ -37,14 +37,14 @@ export class SearchComponent implements OnInit {
   setSearchResponse(searchResponse: PodcastSearchResponse) {
     this.searchResponse = searchResponse;
     const newElement: PodcastSearchResult = { aboat_id: -1, id: "-1", rss: "ad", pub_date_ms: -1, image: "ad", title_original: "ad", audio_length_sec: -1, title_highlighted: "ad", description_original: "ad" }
-    const n = searchResponse.results.length / 2 + 1;
+    const n = searchResponse.count < 23 ? searchResponse.results.length / 2 + 1 : 11;
     this.searchResponse.results.forEach(entry => entry.isLoading = true);
     const res = this.searchResponse.results.reduce((list: any, elem, i) => {
       list.push(elem);
       if((i+1) % n === 0) list.push(newElement);
       return list;
     }, []);
-    // this.searchResponse.results = res;
+    this.searchResponse.results = res;
   }
 
   play(track: PodcastSearchResult) {
@@ -55,6 +55,10 @@ export class SearchComponent implements OnInit {
     if (!track.podcast) {
       this.mediaHelper.addOrRemoveBookmark(track.aboat_id);
     }
+  }
+
+  windowSize() {
+    return window.innerWidth;
   }
 
 }
