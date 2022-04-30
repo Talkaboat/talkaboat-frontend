@@ -89,6 +89,11 @@ export class UserRepositoryService  extends RepositoryService {
     return this.get<UserProfileData>(api);
   }
 
+  public updateProfile(updatedProfile: UserProfileData): Observable<UserProfileData> {
+    const api = USER_API.URL + USER_API.PROFILE_UPDATE_URL;
+    return this.post(api, updatedProfile);
+  }
+
   subscribeNewsletter(email: string, subscribe: number): Observable<any> {
     const shouldSubscribe = subscribe == 1;
     const api = USER_API.URL + (shouldSubscribe ? USER_API.SUBSCRIBE_URL : USER_API.UNSUBSCRIBE_URL).replace("{email}", email);

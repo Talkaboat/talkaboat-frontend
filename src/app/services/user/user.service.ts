@@ -89,6 +89,18 @@ export class UserService {
     return true;
   }
 
+  updateUserProfile(updatedUserProfile: UserProfileData) {
+    this.loaderService.show();
+    return this.userRepositoryService.updateProfile(updatedUserProfile).subscribe({
+      next: (profileData) => {
+        this.onReceiveProfileData.emit(profileData);
+      },
+      error: (e) => this.profileError(e),
+      complete: () => this.loaderService.hide()
+    });
+    return true;
+  }
+
   async logout() {
     localStorage.removeItem('aboat_access');
     this.userData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
