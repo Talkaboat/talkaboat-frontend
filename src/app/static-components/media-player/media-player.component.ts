@@ -88,6 +88,7 @@ export class MediaPlayerComponent implements OnInit {
           );
           this.api.getDefaultMedia().currentTime = 0;
         }
+        this.mediaPlayerService.nextTrack();
       }
     );
     this.api.getDefaultMedia().subscriptions.timeUpdate.subscribe(

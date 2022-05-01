@@ -167,7 +167,6 @@ export const de = {
   info_header_url: "https://forms.gle/naDTxxXvbxeLbvNA9",
   load_more: "Weitere anzeigen",
   website: "Webseite",
-  donate_aboat: "Aboat Spenden",
   privacy_policy_link: "https://www.iubenda.com/privacy-policy/88445411/full-legal",
   terms_of_use_link: "https://www.iubenda.com/nutzungsbedingungen/88445411",
   consume_home: "Verwenden und Verdienen",
@@ -216,9 +215,6 @@ export const de = {
   sign_out_address_mismatch: 'Die neue Addresse ist nicht mit deinem Account verbunden!',
   //#endregion
   social_header: 'Come on board and be social!',
-  audio_time: 'Dauer',
-  published: 'Veröffentlicht',
-  episodes: 'Episoden',
 
   //#region Videos
   home_title_video_id: 'RTFh5OKEUaM',
@@ -241,7 +237,17 @@ export const de = {
   stake_button: 'Anlegen',
   withdraw_modal: 'Token abheben',
   withdraw_button: 'Abheben',
-  liquidity_worth: 'Liquiditätswert'
+  liquidity_worth: 'Liquiditätswert',
+  //#endregion
+
+  //#region Podcast Detail
+  donate_aboat: "Aboat Spenden",
+  audio_time: 'Dauer',
+  published: 'Veröffentlicht',
+  episodes: 'Episoden',
+  sort: 'Sortierung',
+  asc_label: 'Aufsteigend',
+  desc_label: 'Absteigend'
   //#endregion
 }
 

@@ -166,7 +166,6 @@ export const en = {
   info_header_text: "The Aboat Entertainment fundraising process is currently active. To submit an application as a VC or Angel Investor, <u>click here.</u>",
   info_header_url: "https://forms.gle/naDTxxXvbxeLbvNA9",
   load_more: "Load more",
-  donate_aboat: "Donate Aboat",
   privacy_policy_link: "https://www.iubenda.com/privacy-policy/72909882/full-legal",
   terms_of_use_link: "https://www.iubenda.com/terms-and-conditions/72909882",
   consume_home: "Consume 2 Earn",
@@ -211,9 +210,7 @@ export const en = {
   whitepaper_url: 'https://drive.google.com/file/d/1ycDl5l6OcKLUllsKduApfR1Bw1xO5ULp/view?usp=sharing',
 
   social_header: 'Come on board and be social!',
-  audio_time: 'Duration',
-  published: 'Published',
-  episodes: 'Episodes',
+
 
   //#region Videos
   home_title_video_id: 'eCryl3DhEtk',
@@ -236,6 +233,16 @@ export const en = {
     stake_button: 'Stake',
     withdraw_modal: 'Withdraw token',
     withdraw_button: 'Withdraw',
-    liquidity_worth: 'Liquidity worth'
+    liquidity_worth: 'Liquidity worth',
     //#endregion
+
+      //#region Podcast Detail
+  donate_aboat: "Donate Aboat",
+  audio_time: 'Duration',
+  published: 'Published',
+  episodes: 'Episodes',
+  sort: 'Sortierung',
+  asc_label: 'Aufsteigend',
+  desc_label: 'Absteigend'
+  //#endregion
 }

@@ -20,6 +20,11 @@ export class PodcastRepositoryService extends RepositoryService {
     return this.post(api, null);
   }
 
+  public getEpisodes(podcastId: string, sort = "desc", amount = -1, pubdate = 0,): Observable<Episode[]> {
+    const api = PODCAST_API.URL + PODCAST_API.PODCAST_EPISODES.replace("{id}", podcastId).replace("{sort}", sort).replace("{amount}", amount.toString()).replace("{pubdate}", pubdate.toString());
+    return this.get(api);
+  }
+
   public getPodcast(id: string, sort = "desc", pubdate = 0, amount = 10): Observable<Podcast> {
     const api = PODCAST_API.URL + PODCAST_API.PODCAST_DETAILS.replace("{id}", id).replace("{sort}", sort).replace("{amount}", amount.toString()).replace("{pubdate}", pubdate.toString());
     return this.post(api, null);

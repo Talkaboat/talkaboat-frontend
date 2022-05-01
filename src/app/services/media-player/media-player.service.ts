@@ -7,10 +7,13 @@ import { Podcast } from '../repository/search-repository/models/podcast.model';
   providedIn: 'root'
 })
 export class MediaPlayerService {
+
   public rewardPerMin: number = 0;
   public time: number = 0;
   public isPlaying: boolean = false;
   public track?: Episode;
+  public playlist: Episode[] = [];
+  public currentTrackIndex = 0;
   public estimatedReward: number = 0;
   public onTrackChanged = new EventEmitter<Episode>();
   public changedPlayState = new EventEmitter<boolean>();
@@ -21,6 +24,10 @@ export class MediaPlayerService {
       this.track = JSON.parse(trackJson);
       this.onTrackChanged.emit(this.track);
     }
+    const playlistJson = localStorage.getItem("last_playlist");
+    if (playlistJson) {
+      this.playlist = JSON.parse(playlistJson);
+    }
   }
 
   async setTrackFromPodcastSearchResult(track: PodcastSearchResult, autoplay: boolean = false) {
@@ -30,15 +37,40 @@ export class MediaPlayerService {
     }
   }
 
-  async setTrack(episodeData: Episode, autoplay: boolean, podcastData: any = null) {
+  nextTrack() {
+
+    this.currentTrackIndex += 1;
+    if (this.playlist && this.playlist.length > 1 && this.currentTrackIndex < this.playlist.length) {
+      this.setTrack(this.playlist[this.currentTrackIndex], true)
+   }
+  }
+
+  async setTrack(episodeData: Episode, autoplay: boolean, podcastData: any = null, clearPlaylist?: boolean) {
     if (podcastData) {
       episodeData.podcast = this.podcastConverted(podcastData);
     }
+    if (clearPlaylist) {
+      this.playlist = [];
+      this.playlist.push(episodeData);
+      localStorage.setItem("last_playlist", JSON.stringify(this.playlist));
+    }
+
     localStorage.setItem("last_track", JSON.stringify(episodeData));
     this.track = episodeData;
     this.onTrackChanged.emit(this.track);
     await this.delay(500);
     this.setPlayState(autoplay);
+  }
+
+  async AddEpisodesToList(playlistEpisodes: Episode[], relyingEpisode?: Episode) {
+    if (relyingEpisode) {
+      if (this.track?.aboat_id != relyingEpisode.aboat_id) {
+        return;
+      }
+    }
+    playlistEpisodes.forEach(episode => {
+      this.playlist.push(episode);
+    });
   }
 
   async setPlayState(to: boolean) {

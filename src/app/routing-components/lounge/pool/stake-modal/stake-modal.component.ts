@@ -39,7 +39,6 @@ export class StakeModalComponent implements OnInit {
 
   async stake() {
     let liquidityAmount = Big(this.modalForm.get("amount")!.value).mul(10 ** this.poolInfo!.decimals);
-    console.log(liquidityAmount.toFixed(0));
     if (liquidityAmount.gt(new Big(this.walletBalance.raw))) {
       liquidityAmount = new Big(this.walletBalance.raw);
     }

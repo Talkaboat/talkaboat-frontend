@@ -22,6 +22,7 @@ import { WebsiteStateService } from 'src/app/services/website-state/website-stat
 export class PodcastDetailComponent implements OnInit {
 
   canNavigateBack: boolean = false;
+  sort: string = "desc";
   podcastId: string = '';
   podcastData?: Podcast;
   notFound: boolean = false;
@@ -77,12 +78,13 @@ export class PodcastDetailComponent implements OnInit {
     if (!this.podcastData || !this.podcastData.episodes || this.podcastData.episodes.length <= 0) {
       return;
     }
-    if (episode) {
-      this.mediaPlayerService.setTrack(episode, true, this.podcastData);
-    } else {
-
-      this.mediaPlayerService.setTrack(this.podcastData?.episodes[0], true, this.podcastData);
+    if (!episode) {
+      episode = this.podcastData.episodes[0];
     }
+    this.mediaPlayerService.setTrack(episode, true, this.podcastData, true);
+    this.podcastRepository.getEpisodes(this.podcastId, this.sort, 0, episode.pub_date_ms).subscribe(playlistEpisodes => {
+      this.mediaPlayerService.AddEpisodesToList(playlistEpisodes, episode);
+    });
   }
 
   getDate(date: number) {
@@ -97,7 +99,7 @@ export class PodcastDetailComponent implements OnInit {
     if (!this.podcastData || !this.podcastData.episodes || !this.podcastData.total_episodes || this.podcastData.episodes.length >= this.podcastData.total_episodes) {
       return;
     }
-    this.podcastRepository.getPodcast(this.podcastId, "desc", this.podcastData.episodes[this.podcastData.episodes.length - 1].pub_date_ms).subscribe((result: Podcast) => {
+    this.podcastRepository.getPodcast(this.podcastId, this.sort, this.podcastData.episodes[this.podcastData.episodes.length - 1].pub_date_ms).subscribe((result: Podcast) => {
       if (result && result.episodes) {
         result.episodes.forEach(element => {
           if (this.podcastData && this.podcastData.episodes) {
@@ -110,6 +112,18 @@ export class PodcastDetailComponent implements OnInit {
 
   addToPlaylist(episode: Episode) {
 
+  }
+
+  toggleSorting() {
+    this.sort = this.sort == 'desc' ? 'asc' : 'desc';
+    if (!this.podcastData || !this.podcastId) {
+      return;
+    }
+    this.podcastRepository.getEpisodes(this.podcastId, this.sort, 10).subscribe(episodes => {
+      if (this.podcastData) {
+        this.podcastData.episodes = episodes;
+      }
+    });
   }
 
   donate() {
