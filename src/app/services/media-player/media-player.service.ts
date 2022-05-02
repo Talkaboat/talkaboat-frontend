@@ -47,6 +47,7 @@ export class MediaPlayerService {
 
   async setTrack(episodeData: Episode, autoplay: boolean, podcastData: any = null, clearPlaylist?: boolean) {
     if (podcastData) {
+      console.log(podcastData);
       episodeData.podcast = this.podcastConverted(podcastData);
     }
     if (clearPlaylist) {
@@ -62,13 +63,19 @@ export class MediaPlayerService {
     this.setPlayState(autoplay);
   }
 
-  async AddEpisodesToList(playlistEpisodes: Episode[], relyingEpisode?: Episode) {
+  async AddEpisodesToList(playlistEpisodes: Episode[], podcastData: any = null, relyingEpisode?: Episode) {
+
     if (relyingEpisode) {
       if (this.track?.aboat_id != relyingEpisode.aboat_id) {
         return;
       }
     }
+    let podcast: any = null;
+    if (podcastData) {
+      podcast = this.podcastConverted(podcastData);
+    }
     playlistEpisodes.forEach(episode => {
+      episode.podcast = podcast;
       this.playlist.push(episode);
     });
   }
