@@ -1,13 +1,19 @@
 <div class="flex w-[33rem] md:w-full md:max-w-[76rem] max-h-[11rem] mx-auto justify-center mb-5">
 
-  <iframe class="w-full" [src]=" './assets/ads/search_adaptive.html' | sanitizeUrl"></iframe>
+  <iframe class="w-full" [src]=" (windowSize() >= 760 ? './assets/ads/728x90.html' : './assets/ads/320x50.html') | sanitizeUrl"></iframe>
 </div>
-<ul *ngIf="searchResponse.results.length > 0" @list
+<ng-template #noResults>
+  <div *ngIf="searchResponse.took >= 0 && !isSearching" class="flex justify-center">
+
+    <h3>Search had no results!</h3>
+  </div>
+</ng-template>
+<ul *ngIf="searchResponse.results && searchResponse.results.length > 0; else noResults" @list
   class="mx-auto max-w-[110rem] sm:grid sm:grid-cols-4 lg:grid-cols-5 gap-4 px-[2rem] ">
   <li @listItem *ngFor="let item of searchResponse.results; " [class.ad]="item.aboat_id == -1"
     class="mb-5 py-0 px-4 sm:p-0 flex flex-col bg-shadow-700 rounded-[1rem] shadow-lg">
     <div *ngIf="item.aboat_id == -1" class="flex justify-center my-auto mx-auto w-full sm:h-full h-[6.6rem]">
-      <iframe class="w-full h-full" [src]="'./assets/ads/search_adaptive.html' | sanitizeUrl"></iframe>
+      <iframe class="w-full h-full" [src]="(windowSize() > 860 ? './assets/ads/120x240.html' : './assets/ads/320x50.html') | sanitizeUrl"></iframe>
     </div>
 
     <div class="mx-auto w-full h-auto flex sm:grid relative rounded-[1rem]" *ngIf="item.aboat_id >= 0">

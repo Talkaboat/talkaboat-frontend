@@ -18,7 +18,8 @@ export class SearchComponent implements OnInit {
 
   subscriptions: Subscription[] = [];
 
-  searchResponse: PodcastSearchResponse = { took: 0, count: 0, total: 0, results: [], next_offset: 0}
+  isSearching = false;
+  searchResponse: PodcastSearchResponse = { took: -1, count: 0, total: 0, results: [], next_offset: 0}
   type = 0;
   constructor(private readonly searchService: SearchService, private readonly mediaHelper: MediaHelperService, private readonly mediaPlayerService: MediaPlayerService) { }
 
@@ -26,12 +27,17 @@ export class SearchComponent implements OnInit {
     this.searchService.onChangedSearchResponse.subscribe(searchResponse => this.setSearchResponse(searchResponse));
     this.setSearchResponse(this.searchService.searchResponse);
     if (!this.searchService.isSearching && this.searchService.searchTerm) {
+      this.isSearching = true;
       this.searchService.executeSearch(this.searchService.searchTerm);
     }
   }
 
   setSearchResponse(searchResponse: PodcastSearchResponse) {
     this.searchResponse = searchResponse;
+    this.isSearching = false;
+    if (searchResponse == null || searchResponse.count <= 0) {
+      return;
+    }
 
     this.searchResponse.results.forEach(entry => entry.isLoading = true);
     if (this.searchResponse.results.some(i => i.aboat_id <= -1)) {
