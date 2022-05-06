@@ -1,0 +1,19 @@
+<div class="mx-auto max-w-[80rem] px-[1rem]">
+  <button aria-label="back navigation" *ngIf="canNavigateBack"
+    class="btn max-w-[24rem] rounded-[1rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
+    (click)="backNavigation()">{{ 'back_nav' | translate}}</button>
+    <div *ngIf="!connected; else isConnected">
+      <div class="grid justify-center">
+        <h2 class="mb-3">{{ 'not_connected' | translate }}</h2>
+
+        <button aria-label="connect wallet"
+        class="btn max-w-[24rem] rounded-[1rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
+        (click)="connect()">{{ 'connect' | translate}}</button>
+      </div>
+    </div>
+    <ng-template #isConnected>
+      <div class="">
+        <h1>{{ 'investment_dashboard_header' | translate }}</h1>
+      </div>
+    </ng-template>
+</div>

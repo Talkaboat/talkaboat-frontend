@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { PipeModule } from 'src/app/pipes/pipe.module';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
+import { InvestmentDashboardComponent } from './investment-dashboard/investment-dashboard.component';
 
 
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    InvestmentDashboardComponent
   ],
   imports: [
     CommonModule,
