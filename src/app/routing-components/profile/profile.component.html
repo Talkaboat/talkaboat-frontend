@@ -53,6 +53,7 @@
                       <div class="p-5 min-w-[18rem] min-h-[5rem]">
                         <div *ngIf="isProfileToggleOpen" class="content">
                           <button aria-label="logout" class="btn" (click)="enterEditMode()">Edit Profile</button>
+                          <a [routerLink]="['/profile/invest']" [queryParams]="{ user: '' }"  class="btn w-full h-full inline-block cursor-pointer">Investment</a>
                         </div>
 
                       </div>

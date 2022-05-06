@@ -16,6 +16,9 @@ export class InvestmentDashboardComponent implements OnInit {
   subscriptions: Subscription[] = [];
   invests: Investment[] = [];
   connected: boolean = false;
+  investmentUsd = 0;
+  investmentToken = 0;
+  selectedType = "seed";
   constructor(private readonly websiteStateService: WebsiteStateService,
     private readonly route: ActivatedRoute,
     private readonly userService: UserService,
@@ -41,7 +44,19 @@ export class InvestmentDashboardComponent implements OnInit {
   requestInvests() {
     this.investmentRepository.getInvests().subscribe(invests => {
       this.invests = invests;
+      this.totalInvest();
     })
+  }
+
+  totalInvest() {
+    this.investmentUsd = 0;
+    this.investmentToken = 0;
+    this.invests.forEach(invest => {
+      if (invest.type == this.selectedType) {
+        this.investmentUsd += invest.usd;
+        this.investmentToken += invest.token;
+      }
+    });
   }
 
   backNavigation() {

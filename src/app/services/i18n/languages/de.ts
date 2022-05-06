@@ -66,10 +66,10 @@ export const de = {
   mediacenter: 'Mediacenter',
   favourites: 'Favoriten',
   playlists: 'Playlists',
-  favourite_podcasts_heading : 'Favorisierte Podcasts',
-  favourite_podcasts_login_hint : 'Bitte anmelden um deine Favoriten einzusehen',
-  favourite_podcasts_no_favourites_text_1 : 'Du hast noch keine Podcasts favorisiert.',
-  favourite_podcasts_no_favourites_text_2 : 'Verwende die Suchleiste, um Podcasts zu entdecken!',
+  favourite_podcasts_heading: 'Favorisierte Podcasts',
+  favourite_podcasts_login_hint: 'Bitte anmelden um deine Favoriten einzusehen',
+  favourite_podcasts_no_favourites_text_1: 'Du hast noch keine Podcasts favorisiert.',
+  favourite_podcasts_no_favourites_text_2: 'Verwende die Suchleiste, um Podcasts zu entdecken!',
   audit: 'Audit',
   git: 'Gitlab',
   gift: 'Geschenke',
@@ -247,7 +247,18 @@ export const de = {
   episodes: 'Episoden',
   sort: 'Sortierung',
   asc_label: 'Aufsteigend',
-  desc_label: 'Absteigend'
+  desc_label: 'Absteigend',
+  //#endregion
+
+
+  //#region Investment Dashboard
+  not_connected: 'Bitte melde dich an, um deine Investitionen einzusehen.',
+  investment_dashboard_header: 'Investitionsübersicht',
+  seed_sale: 'Seed Sale',
+  public_sale: 'Public Sale',
+  lucky_sale: 'Lucky Sale',
+  bought_token: 'Gekaufte Token',
+  bought_usd: 'Preis in USD',
   //#endregion
 }
 

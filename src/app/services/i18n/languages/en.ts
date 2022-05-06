@@ -64,10 +64,10 @@ export const en = {
   mediacenter: 'Mediacenter',
   favourites: 'Favourites',
   playlists: 'Playlists',
-  favourite_podcasts_heading : 'Favourite Podcasts',
-  favourite_podcasts_login_hint : 'Please login to view your favourite podcasts',
-  favourite_podcasts_no_favourites_text_1 : 'It looks like you dont have any favourites yet.',
-  favourite_podcasts_no_favourites_text_2 : 'Use the searchbar above to explore podcasts!',
+  favourite_podcasts_heading: 'Favourite Podcasts',
+  favourite_podcasts_login_hint: 'Please login to view your favourite podcasts',
+  favourite_podcasts_no_favourites_text_1: 'It looks like you dont have any favourites yet.',
+  favourite_podcasts_no_favourites_text_2: 'Use the searchbar above to explore podcasts!',
   audit: 'Audit',
   git: 'Gitlab',
   gift: 'Gifts',
@@ -202,7 +202,7 @@ export const en = {
   home_fan: 'I want to discover!',
   home_creator: 'I want to create!',
   fan_want_header: 'You want...',
-  fan_want_sub: '<ul> <li>... to enjoy <span class="text-main-300">discovery</span>. </li> <li> ... to be <span class = "text-main-300">part</span> of the <span class = "text-main-300 "> success </span>. </li> <li> ... an active <span class =" text-main-300 "> community </span>. </li> </ul> ' ,
+  fan_want_sub: '<ul> <li>... to enjoy <span class="text-main-300">discovery</span>. </li> <li> ... to be <span class = "text-main-300">part</span> of the <span class = "text-main-300 "> success </span>. </li> <li> ... an active <span class =" text-main-300 "> community </span>. </li> </ul> ',
   fan_need_header: 'And want a platform that...',
   fan_need_sub: '<ul> <li> ... takes <span class="text-main-300"> community feedback </span> seriously? </li> <li> ... rewards you for <span class="text-main-300">using</span>?</li> <li> ... makes <span class="text-main-300">discovery entertaining</span>?</li> </ul> ',
   got_you_fan: 'Then you\'ve come to the right place! We offer ... ',
@@ -223,26 +223,36 @@ export const en = {
   copy_ref_button_text: 'Copy Ref-Link',
   //#endregion
 
-    //#region Lounge
-    days: 'days',
-    stake_worth: 'Stake worth',
-    earning_worth: 'Earnings worth',
-    staked: 'Staked',
-    earned: 'Earned',
-    stake_modal: 'Stake token',
-    stake_button: 'Stake',
-    withdraw_modal: 'Withdraw token',
-    withdraw_button: 'Withdraw',
-    liquidity_worth: 'Liquidity worth',
-    //#endregion
+  //#region Lounge
+  days: 'days',
+  stake_worth: 'Stake worth',
+  earning_worth: 'Earnings worth',
+  staked: 'Staked',
+  earned: 'Earned',
+  stake_modal: 'Stake token',
+  stake_button: 'Stake',
+  withdraw_modal: 'Withdraw token',
+  withdraw_button: 'Withdraw',
+  liquidity_worth: 'Liquidity worth',
+  //#endregion
 
-      //#region Podcast Detail
+  //#region Podcast Detail
   donate_aboat: "Donate Aboat",
   audio_time: 'Duration',
   published: 'Published',
   episodes: 'Episodes',
   sort: 'Sortierung',
   asc_label: 'Aufsteigend',
-  desc_label: 'Absteigend'
+  desc_label: 'Absteigend',
+  //#endregion
+
+  //#region Investment Dashboard
+  not_connected: 'You need to be connected to view your investments.',
+  investment_dashboard_header: 'Investment overview',
+  seed_sale: 'Seed Sale',
+  public_sale: 'Public Sale',
+  lucky_sale: 'Lucky Sale',
+  bought_token: 'Bought Token',
+  bought_usd: 'Price in USD',
   //#endregion
 }

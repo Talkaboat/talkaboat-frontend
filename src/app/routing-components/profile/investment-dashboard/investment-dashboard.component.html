@@ -2,18 +2,51 @@
   <button aria-label="back navigation" *ngIf="canNavigateBack"
     class="btn max-w-[24rem] rounded-[1rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
     (click)="backNavigation()">{{ 'back_nav' | translate}}</button>
-    <div *ngIf="!connected; else isConnected">
-      <div class="grid justify-center">
-        <h2 class="mb-3">{{ 'not_connected' | translate }}</h2>
+  <div *ngIf="!connected; else isConnected">
+    <div class="grid justify-center">
+      <h2 class="mb-3">{{ 'not_connected' | translate }}</h2>
 
-        <button aria-label="connect wallet"
+      <button aria-label="connect wallet"
         class="btn max-w-[24rem] rounded-[1rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
         (click)="connect()">{{ 'connect' | translate}}</button>
+    </div>
+  </div>
+  <ng-template #isConnected>
+    <div class="">
+      <h1 class="mb-5">{{ 'investment_dashboard_header' | translate }}</h1>
+      <div class="w-full flex justify-start mb-[3rem]">
+        <div class="px-2 w-full">
+          <button aria-label="select seed sale"
+          [class.selected]="selectedType=='seed'"
+            class="btn max-w-[24rem] rounded-[1rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
+            (click)="selectedType='seed'; totalInvest()">{{ 'seed_sale' | translate}}</button>
+        </div>
+
+        <div class="px-2 w-full">
+          <button aria-label="select lucky sale"
+
+          [class.selected]="selectedType=='lucky'"
+            class="btn max-w-[24rem] rounded-[1rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
+            (click)="selectedType='lucky'; totalInvest()">{{ 'lucky_sale' | translate}}</button>
+        </div>
+
+        <div class="px-2 w-full">
+          <button aria-label="select public sale"
+          [class.selected]="selectedType=='public'"
+            class="btn max-w-[24rem] rounded-[1rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
+            (click)="selectedType='public'; totalInvest()">{{ 'public_sale' | translate}}</button>
+        </div>
       </div>
     </div>
-    <ng-template #isConnected>
-      <div class="">
-        <h1>{{ 'investment_dashboard_header' | translate }}</h1>
+    <div class="rounded-[1rem] p-5 bg-shadow-700 w-[50%] mx-auto">
+      <div class="flex justify-between w-full">
+        <p>{{ 'bought_token' | translate }}:</p>
+        <p>{{ investmentToken | number }} ABOAT</p>
       </div>
-    </ng-template>
+      <div class="flex justify-between w-full">
+        <p>{{ 'bought_usd' | translate }}:</p>
+        <p>{{ investmentUsd | number }}$</p>
+      </div>
+    </div>
+  </ng-template>
 </div>
