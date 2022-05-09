@@ -7,6 +7,7 @@ import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgCoreModule } from '@videogular/ngx-videogular/core';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { PipeModule } from "../pipes/pipe.module";
 import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
@@ -16,10 +17,11 @@ import { SearchSlotComponent } from "./header/search-slot/search-slot.component"
 import { LoadingAnimationComponent } from "./loading/loading-animation/loading-animation.component";
 import { LoadingComponent } from "./loading/loading.component";
 import { MediaPlayerComponent } from "./media-player/media-player.component";
-import { SidebarComponent } from "./sidebar/sidebar.component";
-import { YoutubeComponent } from './youtube/youtube.component';
+import { PodcastCarouselComponent } from './podcast-carousel/podcast-carousel.component';
 import { PodcastListViewItemComponent } from './podcast/podcast-list-view-item/podcast-list-view-item.component';
 import { PodcastListComponent } from './podcast/podcast-list/podcast-list.component';
+import { SidebarComponent } from "./sidebar/sidebar.component";
+import { YoutubeComponent } from './youtube/youtube.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { PodcastListComponent } from './podcast/podcast-list/podcast-list.compon
     FilterComponent,
     YoutubeComponent,
     PodcastListViewItemComponent,
-    PodcastListComponent
+    PodcastListComponent,
+    PodcastCarouselComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
@@ -48,6 +51,7 @@ import { PodcastListComponent } from './podcast/podcast-list/podcast-list.compon
     VgControlsModule,
     VgBufferingModule,
     VgOverlayPlayModule,
+    CarouselModule
   ],
   exports: [
     ProfileSidebarComponent,
@@ -60,7 +64,8 @@ import { PodcastListComponent } from './podcast/podcast-list/podcast-list.compon
     FooterComponent,
     YoutubeComponent,
     PodcastListViewItemComponent,
-    PodcastListComponent
+    PodcastListComponent,
+    PodcastCarouselComponent
   ],
 })
 export class SharedModule { }

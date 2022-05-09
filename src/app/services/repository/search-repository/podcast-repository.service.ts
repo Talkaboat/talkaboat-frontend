@@ -30,6 +30,11 @@ export class PodcastRepositoryService extends RepositoryService {
     return this.post(api, null);
   }
 
+  public getRandomPodcast(amount = 10): Observable<Podcast[]> {
+    const api = PODCAST_API.URL + PODCAST_API.PODCAST_RANDOM.replace("{amount}", amount.toString());
+    return this.get(api);
+  }
+
     //Which information do we need?
   public search(query: PodcastSearch): Observable<PodcastSearchResponse> {
     const api = PODCAST_API.URL + PODCAST_API.SEARCH_URL;

@@ -4,6 +4,8 @@
 @import '~ngx-toastr/toastr';
 @import './assets/styles/default.scss';
 @import './assets/styles/elements.scss';
+// @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+// @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 .gradient-background {
   background: linear-gradient(0deg,#011e47,#0e1825,#0a111a,#011e47);
@@ -11,6 +13,13 @@
   animation: gradient-animation 4s ease infinite;
 }
 
+.owl-theme .owl-nav [class*=owl-] {
+  min-width: 30px;
+  min-height: 30px;
+  margin: 10px !important;
+  font-size: 2rem !important;
+    background-color: #011e47 !important;
+}
 
 
 @keyframes gradient-animation {

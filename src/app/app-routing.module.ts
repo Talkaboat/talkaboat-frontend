@@ -23,7 +23,6 @@ export const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes,
     {
-      useHash: true,
       scrollPositionRestoration: 'top',
       anchorScrolling: 'enabled',
       scrollOffset: [0, 64],

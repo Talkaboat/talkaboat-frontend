@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { listAnimation, listItemAnimation } from 'src/app/animations';
+import { Podcast } from 'src/app/services/repository/search-repository/models/podcast.model';
+import { PodcastRepositoryService } from 'src/app/services/repository/search-repository/podcast-repository.service';
 
 @Component({
   selector: 'app-home',
@@ -118,9 +120,11 @@ export class HomeComponent implements OnInit {
   ];
 
   isCreator: boolean = false;
-  constructor() { }
+  items: Podcast[] = [];
+  constructor(private readonly podcastRepo: PodcastRepositoryService) { }
 
   ngOnInit(): void {
+    this.podcastRepo.getRandomPodcast().subscribe(result => this.items = result);
   }
 
 }
