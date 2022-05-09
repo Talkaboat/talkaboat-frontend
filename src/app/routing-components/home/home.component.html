@@ -92,17 +92,30 @@
   </div>
 
 </section>
-<section id="get-started" class="mt-[10rem] w-full md:max-w-[96rem]  mx-auto px-5 text-center">
+<section id="get-started" class="mt-[10rem] w-full md:max-w-[96rem] text-left  mx-auto px-5 ">
   <h2>{{ 'how_to_start_with_talkaboat' | translate }}</h2>
-  <ol>
-    <li [innerHtml]="'get_started_first' | translate"></li>
-    <li [innerHtml]="'get_started_second' | translate"></li>
-    <li [innerHtml]="'get_started_third' | translate"></li>
+  <ol class="mt-5 text-lg flex justify-between text-center h-[6.6rem]">
+    <li class="w-[40rem] px-1 h-full">
+      <a class="rounded-[1rem] h-full bg-shadow-600 flex w-full justify-center text-center px-3 py-4" [routerLink]="['./register']">
+        <h4 class="my-auto">{{ 'get_started_first' | translate }} ></h4>
+
+      </a>
+    </li>
+    <li class="w-[40rem]  h-full  px-1">
+      <a class="rounded-[1rem] h-full bg-shadow-400 flex justify-center w-full px-3 py-4" [routerLink]="['/']" fragment="discover">
+        <h4 class="my-auto">{{ 'get_started_second' | translate }} ></h4>
+      </a>
+    </li>
+    <li class="w-[40rem] h-full  px-1">
+      <a class="rounded-[1rem] h-full bg-shadow-200 text-shadow-800  flex justify-center w-full px-3 py-4" [routerLink]="['./register']">
+        <h4 class="my-auto"><strong>{{ 'get_started_third' | translate }}</strong></h4></a>
+    </li>
   </ol>
 </section>
 
-<section id="discover" class="mt-[10rem] w-full md:max-w-[96rem]  mx-auto px-5 text-center">
-  <div>
+<section id="discover" class="mt-[5rem] w-full md:max-w-[96rem] tex-left mx-auto px-5 ">
+  <h2>{{ 'discover_podcasts' | translate }}</h2>
+  <div class="mt-5">
     <app-podcast-carousel [items]="items"></app-podcast-carousel>
   </div>
 </section>

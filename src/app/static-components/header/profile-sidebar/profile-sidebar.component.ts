@@ -30,7 +30,7 @@ export class ProfileSidebarComponent implements OnInit {
   }
 
   copyReferal() {
-    navigator.clipboard.writeText("https://talkaboat.online/#/?ref=" + this.userService.userData.userName);
+    navigator.clipboard.writeText("https://talkaboat.online/?ref=" + this.userService.userData.userName);
   }
 
   resendMail() {

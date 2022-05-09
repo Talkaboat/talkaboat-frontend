@@ -24,6 +24,13 @@ export const en = {
   info_description: "Aboat Entertainment is a content aggregator with blockchain-based ecosystem to bust the common monetization and bring benefits for creators and consumers alike",
   guide_label: 'Guides',
   whitepaper: 'Whitepaper',
+  //#region Home
+  get_started: "Get Started",
+  how_to_start_with_talkaboat: "How to start with Talkaboat:",
+  get_started_first: 'Register',
+  get_started_second: 'Discover',
+  get_started_third: 'Earn',
+  discover_podcasts: "Discover Podcasts",
   usp_image: './assets/images/collection/community.jpg',
   usp_1_header: 'Free for everyone',
   usp_1: 'No matter which service you use or want to have from us, we make it available to you completely free of charge!',
@@ -52,6 +59,7 @@ export const en = {
   home_create: 'Podcaster',
   home_create_sub: 'Verify and administrate your podcasts',
   faqs: 'Frequently asked questions',
+  //#endregion
   followed_channels: 'Followed Channels',
   home: 'Dashboard',
   swap: 'Swap',

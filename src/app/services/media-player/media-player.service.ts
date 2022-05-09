@@ -47,7 +47,6 @@ export class MediaPlayerService {
 
   async setTrack(episodeData: Episode, autoplay: boolean, podcastData: any = null, clearPlaylist?: boolean) {
     if (podcastData) {
-      console.log(podcastData);
       episodeData.podcast = this.podcastConverted(podcastData);
     }
     if (clearPlaylist) {

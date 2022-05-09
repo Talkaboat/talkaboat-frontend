@@ -72,7 +72,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   copyReferal() {
-    navigator.clipboard.writeText("https://talkaboat.online/#/?ref=" + this.userService.userData.userName);
+    navigator.clipboard.writeText("https://talkaboat.online/?ref=" + this.userService.userData.userName);
   }
 
   isMe(): boolean {
