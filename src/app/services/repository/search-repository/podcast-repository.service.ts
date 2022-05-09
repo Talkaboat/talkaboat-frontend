@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Genre } from 'src/constants/media/models/genre.model.dto';
 import { RepositoryService } from '../repository.service';
 import { Episode } from './models/episode.model';
 import { PlaylistTrack } from './models/playlist/playlist-track.model.dto';
@@ -13,7 +14,6 @@ import { PODCAST_API } from './podcast-urls.const';
   providedIn: 'root'
 })
 export class PodcastRepositoryService extends RepositoryService {
-
 
   public getEpisode(id: string): Observable<Episode> {
     const api = PODCAST_API.URL + PODCAST_API.EPISODE_DETAILS.replace("{id}", id);
@@ -31,7 +31,16 @@ export class PodcastRepositoryService extends RepositoryService {
   }
 
   public getRandomPodcast(amount = 10): Observable<Podcast[]> {
-    const api = PODCAST_API.URL + PODCAST_API.PODCAST_RANDOM.replace("{amount}", amount.toString());
+    const api = PODCAST_API.URL + PODCAST_API.PODCAST_RANDOM_URL.replace("{amount}", amount.toString());
+    return this.get(api);
+  }
+
+  public getRandomPodcastWithGenre(genres: Genre[], amount = 10): Observable<Podcast[]> {
+    var genreIds: number[] = [];
+    genres.forEach(genre => {
+      genreIds.push(genre.id);
+    });
+    const api = PODCAST_API.URL + PODCAST_API.PODCAST_RANDOM_W_GENRES_URL.replace("{amount}", amount.toString()).replace("{genres}", genreIds.toString());
     return this.get(api);
   }
 
@@ -78,6 +87,11 @@ export class PodcastRepositoryService extends RepositoryService {
 
   public getLibraryDetails(): Observable<[Podcast]> {
     const api = PODCAST_API.URL + PODCAST_API.LIBRARY_DETAIL_URL;
+    return this.get(api);
+  }
+
+  getGenres() : Observable<Genre[]> {
+    const api = PODCAST_API.URL + PODCAST_API.GENRES_URL;
     return this.get(api);
   }
 }

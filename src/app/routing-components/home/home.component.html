@@ -115,8 +115,25 @@
 
 <section id="discover" class="mt-[5rem] w-full md:max-w-[96rem] tex-left mx-auto px-5 ">
   <h2>{{ 'discover_podcasts' | translate }}</h2>
-  <div class="mt-5">
-    <app-podcast-carousel [items]="items"></app-podcast-carousel>
+  <div class="w-[30rem] bg-shadow-700 mt-5">
+    <ng-multiselect-dropdown class=""
+    [settings]="dropdownSettings"
+    [data]="genres"
+    [(ngModel)]="selectedGenres"
+    (onSelect)="apply()"
+    (onDeSelect)="apply()"
+    ngDefaultControl>
+  </ng-multiselect-dropdown>
+  </div>
+
+  <div class="mt-5 relative w-full min-h-[30rem]">
+    <div *ngIf="podcastDiscoveryIsLoading"
+    class="w-full absolute left-0 right-0 top-0 bottom-0 mx-auto h-full rounded-[1rem] z-10">
+      <app-loading-animation></app-loading-animation>
+    </div>
+    <div *ngIf="items">
+      <app-podcast-carousel [items]="items"></app-podcast-carousel>
+    </div>
   </div>
 </section>
 

@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { GENRES } from 'src/constants/media/genres.constants';
+import { Genre } from 'src/constants/media/models/genre.model.dto';
 import { Podcast } from '../repository/search-repository/models/podcast.model';
 import { PodcastRepositoryService } from '../repository/search-repository/podcast-repository.service';
 import { UserService } from '../user/user.service';
@@ -8,12 +8,17 @@ import { UserService } from '../user/user.service';
   providedIn: 'root'
 })
 export class MediaHelperService {
-  genreData = GENRES;
+  genreData: Genre[] = [];
   library: number[] = [];
   isManipulating: number[] = [];
   lastPodcastDetail: Podcast | undefined = undefined;
+  onGenreDataChanged: EventEmitter<Genre[]> = new EventEmitter<Genre[]>();
   onLibraryChanged: EventEmitter<number[]> = new EventEmitter<number[]>();
   constructor(private readonly podcastRepositoryService: PodcastRepositoryService, private readonly userService: UserService) {
+    podcastRepositoryService.getGenres().subscribe((genres: Genre[]) => {
+      this.genreData = genres;
+      this.onGenreDataChanged.emit(this.genreData);
+    });
     userService.onUserStateChanged.subscribe(state => {
       if (state) {
         this.setup();

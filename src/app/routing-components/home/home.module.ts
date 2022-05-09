@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component'
-import { HomeRoutingModule } from './home-routing.module';
-import { PipeModule } from '../../pipes/pipe.module';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { SharedModule } from 'src/app/static-components/shared.module';
+import { PipeModule } from '../../pipes/pipe.module';
 import { CreatorHomeComponent } from './creator-home/creator-home.component';
 import { FanHomeComponent } from './fan-home/fan-home.component';
+import { HomeRoutingModule } from './home-routing.module';
+import { HomeComponent } from './home.component';
 
 @NgModule({
   declarations: [
@@ -14,10 +16,12 @@ import { FanHomeComponent } from './fan-home/fan-home.component';
     FanHomeComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     HomeRoutingModule,
     PipeModule,
-    SharedModule
+    SharedModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   exports: [
     HomeComponent

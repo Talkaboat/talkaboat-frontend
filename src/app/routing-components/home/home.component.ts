@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { Subscription } from 'rxjs';
 import { listAnimation, listItemAnimation } from 'src/app/animations';
+import { MediaHelperService } from 'src/app/services/media-helper/media-helper.service';
 import { Podcast } from 'src/app/services/repository/search-repository/models/podcast.model';
 import { PodcastRepositoryService } from 'src/app/services/repository/search-repository/podcast-repository.service';
+import { Genre } from 'src/constants/media/models/genre.model.dto';
 
 @Component({
   selector: 'app-home',
@@ -121,10 +125,41 @@ export class HomeComponent implements OnInit {
 
   isCreator: boolean = false;
   items: Podcast[] = [];
-  constructor(private readonly podcastRepo: PodcastRepositoryService) { }
+  genres: Genre[] = [];
+
+  selectedGenres: Genre[] = [];
+  subscription: Subscription[] = [];
+  podcastDiscoveryIsLoading = true;
+  dropdownSettings: IDropdownSettings = {
+    idField: 'id',
+    enableCheckAll: false,
+    allowSearchFilter: true,
+    textField: 'name',
+    limitSelection: 3
+  };
+  constructor(private readonly podcastRepo: PodcastRepositoryService, private readonly mediaHelperService: MediaHelperService) { }
 
   ngOnInit(): void {
-    this.podcastRepo.getRandomPodcast().subscribe(result => this.items = result);
+    this.genres = this.mediaHelperService.genreData;
+    this.subscription.push(this.mediaHelperService.onGenreDataChanged.subscribe(genres => {
+      this.genres = genres;
+    }));
+    this.apply();
+  }
+
+  apply() {
+    this.podcastDiscoveryIsLoading = true;
+    this.items = [];
+    if (this.selectedGenres && this.selectedGenres.length > 0) {
+      this.podcastRepo.getRandomPodcastWithGenre(this.selectedGenres).subscribe(result => this.applyResults(result));
+    } else {
+      this.podcastRepo.getRandomPodcast().subscribe(result => this.applyResults(result));
+    }
+  }
+
+  applyResults(podcasts: Podcast[]) {
+    this.items = podcasts;
+    this.podcastDiscoveryIsLoading = false;
   }
 
 }
