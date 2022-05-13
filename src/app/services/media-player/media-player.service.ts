@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Episode } from '../repository/search-repository/models/episode.model';
+import { Playlist } from '../repository/search-repository/models/playlist/playlist.model.dto';
 import { PodcastSearchResult } from '../repository/search-repository/models/podcast-search-result.model';
 import { Podcast } from '../repository/search-repository/models/podcast.model';
 
@@ -7,7 +8,6 @@ import { Podcast } from '../repository/search-repository/models/podcast.model';
   providedIn: 'root'
 })
 export class MediaPlayerService {
-
   public rewardPerMin: number = 0;
   public time: number = 0;
   public isPlaying: boolean = false;
@@ -60,6 +60,21 @@ export class MediaPlayerService {
     this.onTrackChanged.emit(this.track);
     await this.delay(500);
     this.setPlayState(autoplay);
+  }
+
+  SetPlaylist(playlist: Playlist, autoplay: boolean) {
+    var init = false;
+    if (playlist.tracks) {
+      for (var track of playlist.tracks) {
+        if (!track.episode) {
+          continue;
+        }
+        if (!init) {
+          this.setTrack(track.episode, autoplay, undefined, true);
+        }
+        this.AddEpisodesToList([track.episode]);
+      }
+    }
   }
 
   async AddEpisodesToList(playlistEpisodes: Episode[], podcastData: any = null, relyingEpisode?: Episode) {

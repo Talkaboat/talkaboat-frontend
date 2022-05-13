@@ -72,7 +72,7 @@ export const de = {
   liquidity: 'Liquidität',
   lounge: 'Lounge',
   mediacenter: 'Mediacenter',
-  favourites: 'Favoriten',
+  favorites: 'Favoriten',
   playlists: 'Playlists',
   favourite_podcasts_heading: 'Favorisierte Podcasts',
   favourite_podcasts_login_hint: 'Bitte anmelden um deine Favoriten einzusehen',

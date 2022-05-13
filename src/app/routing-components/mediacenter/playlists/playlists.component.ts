@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
 import { Playlist } from 'src/app/services/repository/search-repository/models/playlist/playlist.model.dto';
 import { PodcastRepositoryService } from 'src/app/services/repository/search-repository/podcast-repository.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -17,8 +18,8 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
   fetchedUserPlaylists: boolean | null = null;
   userPlaylists : Playlist[] | null = null;
   recommendationPlaylists : Playlist[] | null = null;
-  
-  constructor(private podcastService : PodcastRepositoryService, private readonly userService: UserService) {
+
+  constructor(private podcastService : PodcastRepositoryService, private readonly userService: UserService, private readonly mediaPlayer: MediaPlayerService) {
     this.recommendationPlaylists = PLAYLIST_ARRAY_MOCK;
   }
 
@@ -41,6 +42,7 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
 
   handlePlayPlaylist(playlist : Playlist) : void {
     // TODO ACTUALLY START PLAYLIING THE SELECTED PLAYLIST
+    this.mediaPlayer.SetPlaylist(playlist, true);
     console.log("try to play playlist", playlist);
   }
 
