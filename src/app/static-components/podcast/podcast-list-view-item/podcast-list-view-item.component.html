@@ -1,17 +1,17 @@
-<div class="mx-auto w-full h-auto flex sm:grid relative rounded-[1rem]">
-    <div class="shadow-lg relative overflow-hidden rounded-[1rem] sm:min-w-none sm:max-w-none sm:max-h-full min-w-[4rem] max-w-[4rem] max-h-[4rem] my-auto">
+<div class="mx-auto w-full h-auto flex sm:grid relative rounded-[0.625rem]">
+    <div class="shadow-lg relative overflow-hidden rounded-[0.625rem] sm:min-w-none sm:max-w-none sm:max-h-full min-w-[2.5rem] max-w-[2.5rem] max-h-[2.5rem] my-auto">
         <a [routerLink]="['/search/podcast']" [queryParams]="{ 'pd': item.aboat_id }"
-        queryParamsHandling="merge" class="w-full hover:bg-main-800 hover:opacity-75 focus-visible:bg-main-800 focus-visible:opacity-75 h-full top-0 right-0 left-0 bottom-0 rounded-[1rem]">
+        queryParamsHandling="merge" class="w-full hover:bg-main-800 hover:opacity-75 focus-visible:bg-main-800 focus-visible:opacity-75 h-full top-0 right-0 left-0 bottom-0 rounded-[0.625rem]">
             <img [src]="item.image" />
         </a>
     </div>
     <div class="px-3 grow w-full sm:mt-3 grid">
         <h5 [innerText]="item.title" class="line-clamp-1 overflow-hidden my-auto text-ellipsis cursor-pointer" [routerLink]="['/search/podcast']" [queryParams]="{ 'pd': item.aboat_id }"></h5>
-        <p [innerText]="item.description" class="text-gray-700 line-clamp-2 sm:line-clamp-3 max-h-[4.5rem] overflow-hidden text-ellipsis text-base mt-2"></p>
+        <p [innerText]="item.description" class="text-gray-700 line-clamp-2 sm:line-clamp-3 max-h-[2.8125rem] overflow-hidden text-ellipsis text-base mt-2"></p>
     </div>
     <div class="flex shrink sm:inline-block sm:w-full">
         <div class="sm:pb-3 sm:flex sm:mx-auto my-auto sm:px-3 sm:mt-3">
-          <button (click)="toggleLibraryClicked()" aria-label="add to playlist or library" class="btn rounded-[1rem] sm:mx-auto max-w-fit px-4 sm:px-8 py-3 text-main-300 border-main-300 border-1 font-semibold">
+          <button (click)="toggleLibraryClicked()" aria-label="add to playlist or library" class="btn rounded-[0.625rem] sm:mx-auto max-w-fit px-4 sm:px-8 py-3 text-main-300 border-main-300 border-1 font-semibold">
             <span class="max-w-fit">
               <img *ngIf="!(item.aboat_id | library); else bookmarked" width="24" height="24" class="h-full mx-auto min-h-[2.4rem] min-w-[2.4rem] max-h-[2.4rem]" src="./assets/images/library/bookmark_add.png" />
               <ng-template #bookmarked>

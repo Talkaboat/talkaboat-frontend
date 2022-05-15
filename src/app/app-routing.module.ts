@@ -17,7 +17,7 @@ export const routes: Routes = [
   { path: 'general-terms', component: GeneralTermsComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: 'imprint', component: ImprintComponent },
-  { path: '**', loadChildren: () => import('./routing-components/home/home.module').then(m => m.HomeModule),  data: { animation: "home"} }
+  { path: '**',redirectTo: '' }
 ];
 
 @NgModule({

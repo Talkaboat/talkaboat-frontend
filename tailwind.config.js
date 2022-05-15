@@ -1,15 +1,19 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
+
   mode: 'jit',
   purge: {
     enabled: true,
     content: ['./src/**/*.{html,ts}']
   },
   plugins: [
+    require("daisyui"),
     require('@tailwindcss/line-clamp'),
   ],
-
+  daisyui: {
+    themes: ["light", "night"]
+  },
   theme: {
     extend: {
       keyframes: {

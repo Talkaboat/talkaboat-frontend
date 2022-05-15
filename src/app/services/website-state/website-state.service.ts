@@ -13,8 +13,10 @@ import { UserRepositoryService } from '../repository/user-repository/user-reposi
 export class WebsiteStateService {
 
   isSidebarOpen = true;
+  headerState = 'home';
   navigationHistory: string[] = [];
   public onSidebarStateChanged = new EventEmitter<boolean>();
+  public onHeaderStateChanged = new EventEmitter<string>();
   public onMediaPlayerStateChanged: EventEmitter<MediaPlayerState> = new EventEmitter<MediaPlayerState>();
   constructor(private readonly router: Router, private readonly loaderService: LoaderService, private readonly location: Location, private readonly titleService: Title, private readonly route: ActivatedRoute, private readonly userRepository: UserRepositoryService, private readonly toastr: ToastrService) {
     this.route.queryParams.subscribe((params: Params) => {
@@ -44,12 +46,24 @@ export class WebsiteStateService {
     router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) {
         loaderService.hide();
-        let page = this.formatUrl(ev.url);
+        let page = this.formatUrl(ev.urlAfterRedirects);
         page = page ? page : 'Home';
+        console.log(page);
+        this.evaluateHeaderState(page);
         this.titleService.setTitle('Talkaboat - ' + page);
         this.navigationHistory.push(ev.urlAfterRedirects);
       }
     });
+  }
+
+  evaluateHeaderState(page: string) {
+    if (page) {
+      if (page == "Home") {
+        this.SetHeaderState("home");
+        return;
+      }
+    }
+    this.SetHeaderState("default");
   }
 
   formatUrl(url: any) {
@@ -59,6 +73,11 @@ export class WebsiteStateService {
     url = url.replaceAll('/', '');
     url = this.titleCaseWord(url);
     return url;
+  }
+
+  SetHeaderState(state: string) {
+    this.headerState = state;
+    this.onHeaderStateChanged.emit(this.headerState);
   }
 
   titleCaseWord(word: string) {

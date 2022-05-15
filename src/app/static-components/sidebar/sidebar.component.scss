@@ -1,22 +1,22 @@
 .open {
-  @apply w-[20rem] left-[1rem] md:left-[1rem] rounded-[2rem];
+  @apply w-[12.5rem] left-[0.625rem] md:left-[0.625rem] rounded-[1.25rem];
 }
 
 li {
-  @apply min-w-[3rem] min-h-[3rem];
+  @apply min-w-[1.875rem] min-h-[1.875rem];
 }
 
 a, button {
-  @apply flex h-full ml-5 w-fit;
+  @apply flex h-full ml-3 w-fit;
   span {
-    @apply ml-3 my-auto;
+    @apply ml-2 my-auto;
   }
 }
 
 img {
-  @apply my-auto w-8 h-8;
+  @apply my-auto w-5 h-5;
 }
 
 li {
-  @apply h-[2rem] mb-2;
+  @apply h-[1.25rem] mb-2;
 }

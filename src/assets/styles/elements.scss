@@ -1,6 +1,6 @@
 
 .btn {
-  @apply hover:outline-none w-full rounded-[1rem] font-semibold text-center bg-shadow-600;
+  @apply hover:outline-none w-full rounded-[0.625rem] font-semibold text-center bg-shadow-600;
   &.primary {
     @apply border-solid border-[1px] border-shadow-400;
     &:hover, :focus {
@@ -29,7 +29,7 @@
 }
 
 .card {
-  @apply rounded-[1rem] w-full bg-shadow-400 p-5 bg-opacity-20;
+  @apply rounded-[0.625rem] w-full bg-shadow-400 p-5 bg-opacity-20;
   &.glass {
     @apply bg-opacity-10 backdrop-filter backdrop-blur-lg;
   }

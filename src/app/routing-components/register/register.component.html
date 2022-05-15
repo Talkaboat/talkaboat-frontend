@@ -1,12 +1,12 @@
 <div class="mx-auto max-w-[66rem]  pb-[15rem] text-center ">
-  <div class="content pt-6 pb-6 bg-shadow-700 rounded-[1rem] mx-3 px-6">
+  <div class="content pt-6 pb-6 bg-shadow-700 rounded-[0.625rem] mx-3 px-6">
     <h1>{{ 'login_welcome' | translate }}</h1>
     <h4>{{ 'register_sub' | translate }}</h4>
     <form [formGroup]="registerForm" class="mt-5">
       <div>
         <label class="hidden" for="email">E-Mail</label>
         <input type="text"
-          class="bg-shadow-500 px-[1rem] rounded-[1rem] h-[4.5rem] w-[30rem]  text-main-100 font-semibold"
+          class="bg-shadow-500 px-[0.625rem] rounded-[0.625rem] h-[2.8125rem] w-[18.75rem]  text-main-100 font-semibold"
           formControlName="email" id="email" name="email" placeholder="E-Mail" required />
         <p id="register-email-error" class="mt-1 text-red-500" *ngIf="emailError">
           {{ 'invalid_email' | translate}}
@@ -15,14 +15,14 @@
       <div class="mt-3">
         <label class="hidden" for="username">{{ 'username' | translate}}</label>
         <input type="text"
-          class="bg-shadow-500 px-[1rem] rounded-[1rem] h-[4.5rem] w-[30rem]  text-main-100 font-semibold"
+          class="bg-shadow-500 px-[0.625rem] rounded-[0.625rem] h-[2.8125rem] w-[18.75rem]  text-main-100 font-semibold"
           formControlName="username" id="username" name="username" [placeholder]="'username' | translate" required />
         <p id="register-email-error" class="mt-1 text-red-500" *ngIf="usernameError">
           {{ 'invalid_username' | translate }}
         </p>
       </div>
       <button aria-label="connect wallet" (click)="connect()"
-        class="mt-10 mx-auto text-[2rem] py-5 w-[28rem] font-semibold bg-main-500 rounded ring-1 ring-shadow-500">{{
+        class="mt-10 mx-auto text-[1.25rem] py-5 w-[28rem] font-semibold bg-main-500 rounded ring-1 ring-shadow-500">{{
         'connect_wallet' | translate }}</button>
     </form>
 
@@ -32,7 +32,7 @@
     <div class="mt-10">
       <p class="md:space-x-1 space-y-1 md:space-y-0 mb-4">
         <button aria-label="toggle register video"
-          class="my-auto cursor-pointer mx-auto text-[2rem] px-5 py-3 bg-shadow-700 rounded-[1rem] text-main-500 font-semibold ring-1 ring-main-500"
+          class="my-auto cursor-pointer mx-auto text-[1.25rem] px-5 py-3 bg-shadow-700 rounded-[0.625rem] text-main-500 font-semibold ring-1 ring-main-500"
           type="button" (click)="isRegisterVideoOpen = !isRegisterVideoOpen">
           {{ 'how_to_register' | translate}}
         </button>

@@ -1,7 +1,7 @@
 <nav [class.open]="isSidebarOpen"
-  class="z-40 transition-all ease-in-out duration-500 fixed left-0 md:left-[1rem] top-[6.5rem] md:top-[8.5rem] md:rounded-[1rem] overflow-hidden rounded-r-[2rem] w-[0rem] md:w-[4.5rem] bottom-[1rem] text-[1.3rem] base font-semibold">
+  class="z-40 transition-all ease-in-out duration-500 fixed left-0 md:left-[0.625rem] top-[4.0625rem] md:top-[5.3125rem] md:rounded-[0.625rem] overflow-hidden rounded-r-[1.25rem] w-[0rem] md:w-[2.8125rem] bottom-[0.625rem] base font-semibold text-[0.875rem]">
   <div>
-    <ul [class.w-[26rem]]="isSidebarOpen" class="py-5">
+    <ul [class.w-[16.25rem]]="isSidebarOpen" class="py-5">
       <li class="hover-up md:hidden"><a [routerLink]="['']" class="flex" [queryParams]="{ 'tokenA': null, 'tokenB': null }">
         <img src="./assets/images/sidebar/a.png"  alt="aboat logo"/>
         <span [class.hidden]="!isSidebarOpen">
@@ -42,7 +42,7 @@
         -->
     </ul>
     <!-- BOTTOM AREA -->
-    <ul [class.min-w-[20rem]]="isSidebarOpen" class="absolute  bottom-0 py-5">
+    <ul [class.min-w-[12.5rem]]="isSidebarOpen" class="absolute  bottom-0 py-5">
       <li class="hover-up"><a [routerLink]="['/info']" class="flex" queryParamsHandling="">
           <img src="./assets/images/sidebar/info.png"  alt="info" />
           <span [class.hidden]="!isSidebarOpen">

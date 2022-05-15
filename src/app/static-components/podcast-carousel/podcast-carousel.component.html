@@ -1,5 +1,5 @@
 <!-- <div class="carousel relative">
-  <button #cell *ngFor="let item of items" class="w-[20rem] h-[30rem]">
+  <button #cell *ngFor="let item of items" class="w-[20rem] h-[18.75rem]">
     {{ item }}
   </button>
 </div> -->
@@ -7,21 +7,21 @@
   <ng-container *ngFor="let item of items">
     <ng-template carouselSlide [id]="'' + item.id">
       <div class="px-2">
-        <div class="bg-shadow-700 h-[30rem] sm:h-[30rem] md:h-[35rem] rounded-[1rem]">
-          <div class="py-0 p-0 flex flex-col bg-shadow-700 rounded-[1rem] shadow-lg h-full">
-            <div class="mx-auto w-full h-auto flex sm:grid relative rounded-[1rem]">
+        <div class="bg-shadow-700 h-[18.75rem] sm:h-[18.75rem] md:h-[35rem] rounded-[0.625rem]">
+          <div class="py-0 p-0 flex flex-col bg-shadow-700 rounded-[0.625rem] shadow-lg h-full">
+            <div class="mx-auto w-full h-auto flex sm:grid relative rounded-[0.625rem]">
               <div
-                class="shadow-lg relative overflow-hidden rounded-[1rem] sm:min-w-none sm:max-w-none sm:max-h-full mx-auto w-full h-[16.5rem] my-auto">
+                class="shadow-lg relative overflow-hidden rounded-[0.625rem] sm:min-w-none sm:max-w-none sm:max-h-full mx-auto w-full h-[16.5rem] my-auto">
                 <img width="40px" height="40px" [alt]="item.title_original + ' portrait'"
-                  (load)="item.isLoading = false" class="w-full mx-auto h-full img-placeholder rounded-[1rem]"
+                  (load)="item.isLoading = false" class="w-full mx-auto h-full img-placeholder rounded-[0.625rem]"
                   [src]="item.image">
 
                 <a [routerLink]="['/search/podcast']" [queryParams]="{ 'pd': item.aboat_id }"
                   queryParamsHandling="merge" [class.hidden]="item.isLoading"
-                  class="absolute w-full opacity-0 hover:bg-main-800 hover:opacity-75 focus-visible:bg-main-800 focus-visible:opacity-75 h-full top-0 right-0 left-0 bottom-0 rounded-[1rem]">
+                  class="absolute w-full opacity-0 hover:bg-main-800 hover:opacity-75 focus-visible:bg-main-800 focus-visible:opacity-75 h-full top-0 right-0 left-0 bottom-0 rounded-[0.625rem]">
                 </a>
                 <div *ngIf="item.isLoading"
-                  class="w-full absolute left-0 right-0 top-0 bottom-0 mx-auto h-full img-placeholder rounded-[1rem]">
+                  class="w-full absolute left-0 right-0 top-0 bottom-0 mx-auto h-full img-placeholder rounded-[0.625rem]">
                   <app-loading-animation></app-loading-animation>
                 </div>
               </div>
@@ -31,13 +31,13 @@
               <h5 class="line-clamp-1 overflow-hidden my-auto text-ellipsis"><a tabindex="0"
                   [routerLink]="['search/podcast']" [queryParams]="{ 'pd': item.aboat_id, 'ep': null }"
                   queryParamsHandling="merge">{{ item.title }}</a></h5>
-              <p class="text-gray-700 line-clamp-2 sm:line-clamp-3 max-h-[4.5rem] overflow-hidden text-ellipsis text-base mt-2"
+              <p class="text-gray-700 line-clamp-2 sm:line-clamp-3 max-h-[2.8125rem] overflow-hidden text-ellipsis text-base mt-2"
                 [innerHtml]="item.description ">
               </p>
             </div>
             <div class="sm:pb-3 sm:flex sm:mx-auto sm:px-3 mt-auto mb-3" *ngIf="isConnected">
               <button aria-label="add to playlist or library"
-                class="btn rounded-[1rem] sm:mx-auto max-w-fit px-4 sm:px-8 py-3 text-main-300 border-main-300 border-1 font-semibold"
+                class="btn rounded-[0.625rem] sm:mx-auto max-w-fit px-4 sm:px-8 py-3 text-main-300 border-main-300 border-1 font-semibold"
                 (click)="add(item)">
                 <span class="max-w-fit">
                   <img *ngIf="!(item.aboat_id | library); else bookmarked" width="24" height="24"

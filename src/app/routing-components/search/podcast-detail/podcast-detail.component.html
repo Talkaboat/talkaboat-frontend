@@ -1,24 +1,24 @@
-<div class="mx-auto max-w-[80rem] px-[1rem]">
+<div class="mx-auto max-w-[80rem] px-[0.625rem]">
   <button aria-label="back navigation" *ngIf="canNavigateBack"
-    class="btn max-w-[24rem] rounded-[1rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
+    class="btn max-w-[24rem] rounded-[0.625rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
     (click)="backNavigation()">{{ 'back_nav' | translate}}</button>
 
-  <div class="rounded-[1rem] mt-5 w-full flex bg-shadow-700 p-5 transition-all duration-500" *ngIf="podcastData">
+  <div class="rounded-[0.625rem] mt-5 w-full flex bg-shadow-700 p-5 transition-all duration-500" *ngIf="podcastData">
     <div
-      class="flex-none w-[8rem] h-[8rem] md:w-[12rem] md:h-[12rem] rounded-[1rem] text-center overflow-hidden relative">
+      class="flex-none w-[8rem] h-[8rem] md:w-[12rem] md:h-[12rem] rounded-[0.625rem] text-center overflow-hidden relative">
       <div class="relative overflow-hidden w-full h-full">
         <img [alt]="podcastData.title + ' portrait'" [class.hidden]="isLoading" (load)="isLoading = false"
-          class="w-full mx-auto h-full img-placeholder rounded-[1rem]" [src]="podcastData.image">
+          class="w-full mx-auto h-full img-placeholder rounded-[0.625rem]" [src]="podcastData.image">
         <button aria-label="play track" [class.hidden]="isLoading"
-          class="btn opacity-30 hover:opacity-75 hover:bg-main-800 focus-visible:bg-main-800 focus-visible:opacity-75 absolute w-full h-full top-0 right-0 left-0 bottom-0 bg-shadow-500 rounded-[1rem]"
+          class="btn opacity-30 hover:opacity-75 hover:bg-main-800 focus-visible:bg-main-800 focus-visible:opacity-75 absolute w-full h-full top-0 right-0 left-0 bottom-0 bg-shadow-500 rounded-[0.625rem]"
           (click)="play(undefined)">
-          <img width="40" height="40" alt="play/pause" class="w-[66%] h-[66%] max-w-[5rem] max-h-[5rem] my-auto mx-auto img-placeholder rounded-[1rem]"
+          <img width="40" height="40" alt="play/pause" class="w-[66%] h-[66%] max-w-[5rem] max-h-[5rem] my-auto mx-auto img-placeholder rounded-[0.625rem]"
             src="./assets/images/player/play.png">
         </button>
       </div>
 
       <div *ngIf="isLoading"
-        class="w-full absolute left-0 right-0 top-0 bottom-0 mx-auto h-full img-placeholder rounded-[1rem]">
+        class="w-full absolute left-0 right-0 top-0 bottom-0 mx-auto h-full img-placeholder rounded-[0.625rem]">
         <app-loading-animation></app-loading-animation>
       </div>
     </div>
@@ -40,7 +40,7 @@
         </button>
       </div>
       <div class="flex justify-start grid-cols-3 gap-3 mt-2">
-        <div class="text-sm px-5 py-3 bg-shadow-500 rounded-[1rem]" *ngFor="let genre of genreNames">
+        <div class="text-sm px-5 py-3 bg-shadow-500 rounded-[0.625rem]" *ngFor="let genre of genreNames">
           <p class="text-main-100 leading-none">{{ genre }}</p>
         </div>
       </div>
@@ -65,23 +65,23 @@
         </button>
       </div>
       <ul @list class="mt-3 sm:grid sm:grid-cols-4 lg:grid-cols-5 gap-4">
-        <li @listItem class="mb-5 py-0 px-4 sm:p-0 flex flex-col bg-shadow-700 rounded-[1rem] shadow-lg"
+        <li @listItem class="mb-5 py-0 px-4 sm:p-0 flex flex-col bg-shadow-700 rounded-[0.625rem] shadow-lg"
           *ngFor="let episode of podcastData!.episodes">
-          <div class="mx-auto w-full h-full flex sm:grid relative rounded-[1rem]">
+          <div class="mx-auto w-full h-full flex sm:grid relative rounded-[0.625rem]">
             <!-- Image -->
             <div
-              class="shadow-lg relative overflow-hidden rounded-[1rem] p-0 sm:min-w-none sm:max-w-none sm:max-h-full min-w-[4rem] max-w-[4rem] max-h-[4rem] my-auto sm:my-0">
+              class="shadow-lg relative overflow-hidden rounded-[0.625rem] p-0 sm:min-w-none sm:max-w-none sm:max-h-full min-w-[2.5rem] max-w-[2.5rem] max-h-[2.5rem] my-auto sm:my-0">
               <img width="40px" height="40px" [alt]="episode.title + ' portrait'" (load)="episode.isLoading = false"
-                class="w-full mx-auto h-full img-placeholder rounded-[1rem]" [src]="episode.image">
+                class="w-full mx-auto h-full img-placeholder rounded-[0.625rem]" [src]="episode.image">
               <button aria-label="play track" *ngIf="episode.audio" [class.hidden]="episode.isLoading"
-                class="btn opacity-30 hover:opacity-75 hover:bg-main-800 focus-visible:bg-main-800 focus-visible:opacity-75 absolute w-full h-full top-0 right-0 left-0 bottom-0 bg-shadow-500 rounded-[1rem]"
+                class="btn opacity-30 hover:opacity-75 hover:bg-main-800 focus-visible:bg-main-800 focus-visible:opacity-75 absolute w-full h-full top-0 right-0 left-0 bottom-0 bg-shadow-500 rounded-[0.625rem]"
                 (click)="play(episode)">
                 <img width="40" height="40" alt="play/pause"
-                  class="w-[66%] h-[66%] max-w-[5rem] max-h-[5rem] my-auto mx-auto img-placeholder rounded-[1rem]"
+                  class="w-[66%] h-[66%] max-w-[5rem] max-h-[5rem] my-auto mx-auto img-placeholder rounded-[0.625rem]"
                   src="./assets/images/player/play.png">
               </button>
               <div *ngIf="episode.isLoading"
-                class="w-full absolute left-0 right-0 top-0 bottom-0 mx-auto h-full img-placeholder rounded-[1rem]">
+                class="w-full absolute left-0 right-0 top-0 bottom-0 mx-auto h-full img-placeholder rounded-[0.625rem]">
                 <app-loading-animation></app-loading-animation>
               </div>
             </div>
@@ -105,7 +105,7 @@
               <!-- Add to Playlist -->
               <div class="sm:ml-none sm:pb-3 ml-auto sm:mx-auto my-auto sm:px-3 sm:mt-3">
                 <button aria-label="add to playlist or library"
-                  class="btn rounded-[1rem] px-4 sm:px-8 py-3 bg-shadow-500 text-main-300 border-main-300 border-1 font-semibold"
+                  class="btn rounded-[0.625rem] px-4 sm:px-8 py-3 bg-shadow-500 text-main-300 border-main-300 border-1 font-semibold"
                   (click)="addToPlaylist(episode)">
                   <span>Add</span>
                 </button>
@@ -120,7 +120,7 @@
       </ul>
 
       <div class="mx-auto w-full max-w-[40rem]">
-        <button aria-label="Load more episodes" class="btn rounded-[1rem] px-4 sm:px-8 py-3 border-shadow-300 border-1 font-semibold w-full" (click)="loadMoreEpisodes()">{{ 'load_more' | translate }}</button>
+        <button aria-label="Load more episodes" class="btn rounded-[0.625rem] px-4 sm:px-8 py-3 border-shadow-300 border-1 font-semibold w-full" (click)="loadMoreEpisodes()">{{ 'load_more' | translate }}</button>
       </div>
     </div>
   </div>

@@ -11,11 +11,14 @@ import { WebsiteStateService } from 'src/app/services/website-state/website-stat
 export class HeaderComponent implements OnInit {
 
   userData: UserData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
-
+  headerState: string = 'home';
   isProfileSidebarOpen: boolean = false;
   constructor(private readonly websiteStateService: WebsiteStateService, private readonly userService: UserService) { }
 
   ngOnInit(): void {
+    this.websiteStateService.onHeaderStateChanged.subscribe(state => {
+      this.headerState = state;
+    });
     this.userService.onUserStateChanged.subscribe(userState => {
       this.userData = this.userService.userData;
       if (!this.userData.userName) {
