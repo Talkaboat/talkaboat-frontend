@@ -10,7 +10,7 @@ vg-scrub-bar {
   margin-top: -15px;
 }
 vg-time-display {
-  @apply h-fit w-fit text-sm pt-1;
+  @apply h-fit w-fit text-xs pt-1;
 }
 .media-player-bg {
   @apply z-30 fixed overflow-hidden left-[0.625rem] md:left-[0.625rem] bottom-[0.625rem] h-[5rem] md:h-[7.5rem] right-[0.625rem] transition-all ease-in-out duration-500;

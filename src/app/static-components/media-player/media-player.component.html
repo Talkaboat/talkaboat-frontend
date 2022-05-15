@@ -5,7 +5,7 @@
     <audio #myMedia [vgMedia]="$any(myMedia)" id="audio" src="{{currentTrack.audio}}" type="audio/mp3"
     [attr.autoplay]="initialized ? '' : null">
   </audio>
-    <div class="z-30 fixed rounded-full shadow-shadow-500 shadow-md inset-x-5 m-[0%_auto] bottom-8 md:bottom-4 max-w-[500px] md:max-w-screen-sm h-28 md:h-[6.25rem] transition-all ease-in-out duration-500">
+    <div class="z-30 fixed rounded-full shadow-shadow-500 shadow-md inset-x-5 m-[0%_auto] bottom-8 md:bottom-4 max-w-[500px] md:max-w-screen-sm h-[4.375rem] md:h-[6.25rem] transition-all ease-in-out duration-500">
       <vg-scrub-bar class="w-full scrub-bar-height place-items-start overflow-hidden">
         <vg-scrub-bar-current-time class="bg-[#333] h-full rounded-t-full overflow-hidden"></vg-scrub-bar-current-time>
         <vg-scrub-bar-buffering-time class="rounded-t-full overflow-hidden"></vg-scrub-bar-buffering-time>
@@ -15,7 +15,7 @@
           <div id="play-area" class="w-full col-span-3 md:col-span-1 max-w-[160px] place-self-center md:place-self-start grid grid-cols-3 place-items-center md:pl-5 pl-3">
             <div id="time-area" class="hidden md:col-span-4 place-self-start mt-3 md:flex md:items-center mb-2 justify-center mx-auto text-center">
               <vg-time-display vgProperty="current" vgFormat="hh:mm:ss"></vg-time-display>
-              <span class="w-fit px-1 md:text-sm">/</span>
+              <span class="w-fit px-1 md:text-xs">/</span>
               <vg-time-display vgProperty="total" vgFormat="hh:mm:ss"></vg-time-display>
             </div>
             <button class="scrub-button" aria-label="backward" (click)="backward()">
@@ -53,7 +53,7 @@
                 <img class="object-cover object-center aspect-square w-32 min-w-[5rem]"
                   [alt]="currentTrack.title + ' portrait'" [src]="currentTrack.image" />
             </a>
-              <div id="track-meta" class="text-sm">
+              <div id="track-meta" class="text-xs">
                 <div id="track-title">
                   <a class="font-semibold text-ellipsis-1" tabindex="0"
                     [routerLink]="['./search/podcast' + (currentTrack.podcast ? '/episode' : '')]"
@@ -79,7 +79,7 @@
             <div>
               <div id="time-area" class="md:hidden col-span-4 mb-4 place-self-start flex items-center justify-end">
                 <vg-time-display vgProperty="current" vgFormat="hh:mm:ss"></vg-time-display>
-                <span class="w-fit px-1 text-sm">/</span>
+                <span class="w-fit px-1 text-xs">/</span>
                 <vg-time-display vgProperty="total" vgFormat="hh:mm:ss"></vg-time-display>
               </div>
               <div *ngIf="isLoggedIn" id="token-area" class="flex items-center justify-end pt-1">
