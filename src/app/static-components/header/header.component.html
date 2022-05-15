@@ -12,7 +12,7 @@
   <nav
     class="border-gray-200 flex justify-between font-semibold max-h-[2.8125rem] md:max-h-[3.4375rem] rounded-b-[1.25rem]">
     <div id="left-header-area" class="flex text-[1.5rem]">
-      <button aria-label="toggle sidebar" class="mr-1 toggle md:mr-5 w-[2.1875rem] md:w-[2.8125rem] md:h-[2.8125rem] h-[2.1875rem] my-auto btn secondary rounded-[0.625rem]" (click)="toggleSidebar()">
+      <button aria-label="toggle sidebar" class="mr-1 toggle md:mr-5 w-[2.1875rem] md:w-[2.8125rem] md:h-[2.8125rem] max-h-[2.1875rem] text-[0.825rem] my-auto secondary rounded-[0.625rem]" (click)="toggleSidebar()">
         &#9776;
       </button>
       <a class="my-auto h-fit hidden text-[1.875rem] md:block cursor-pointer" tabindex="0" [routerLink]="['']">Talkaboat</a>
@@ -22,9 +22,11 @@
     </div>
     <div id="profile-icon-area" class="my-auto w-[5.625rem] md:w-[6.25rem] md:max-w-[6.25rem] max-w-[5.625rem] flex justify-end text-center">
       <a *ngIf="!userData.userName" [routerLink]="['/login']"
-        class="btn hover:outline-none w-full rounded-[0.625rem] md:py-[0.625rem]  px-[0.6rem] py-[0.8rem] btn secondary font-semibold">Login</a>
+        class="h-[2.1875rem] hover:outline-none w-full rounded-[0.625rem] px-[0.6rem] flex  secondary font-semibold"><p class="m-auto">
+          Login
+        </p></a>
       <button aria-label="toggle profile sidebar" *ngIf="userData.userName" (click)="isProfileSidebarOpen = !isProfileSidebarOpen"
-        class="btn hover:outline-none rounded-[0.625rem] md:py-[1.2rem]  px-[0.6rem] py-[0.8rem] flex w-full justify-end ring-main-700 bg-shadow-700 ring-1 overflow-hidden text-ellipsis font-semibold">
+        class="h-[2.1875rem] hover:outline-none rounded-[0.625rem] md:py-[1.2rem]  px-[0.6rem] py-[0.8rem] flex w-full justify-end ring-main-700 bg-shadow-700 ring-1 overflow-hidden text-ellipsis font-semibold">
         <p class="text-ellipsis overflow-hidden w-full">{{ userData.userName }}</p>
         <svg *ngIf="!isProfileSidebarOpen" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down"
           class="w-5 h-5 my-auto ml-2 rounded-[0.625rem]" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
