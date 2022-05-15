@@ -26,7 +26,7 @@
           class="btn opacity-30 hover:opacity-75 hover:bg-main-800 focus-visible:bg-main-800 focus-visible:opacity-75 absolute w-full h-full top-0 right-0 left-0 bottom-0 bg-shadow-500 rounded-[0.625rem]"
           (click)="play(item)">
           <img width="40" height="40" alt="play/pause"
-            class="w-[66%] h-[66%] max-w-[5rem] max-h-[5rem] my-auto mx-auto img-placeholder rounded-[0.625rem]"
+            class="w-[66%] h-[66%] max-w-[3.125rem] max-h-[3.125rem] my-auto mx-auto img-placeholder rounded-[0.625rem]"
             src="./assets/images/player/play.png">
         </button>
         <a *ngIf="!item.podcast" [routerLink]="['./podcast']" [queryParams]="{ 'pd': item.aboat_id }"

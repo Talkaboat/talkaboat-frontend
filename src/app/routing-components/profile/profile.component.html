@@ -49,8 +49,8 @@
                     type="button" style="transition: all 0.15s ease 0s;">
                     ...
                     <div [class.open]="isProfileToggleOpen"
-                      class="profile-toggle-menu absolute max-h-0 rounded-[0.625rem] mx-auto -left-[8.5rem] top-[5rem]  bg-shadow-300 overflow-hidden">
-                      <div class="p-5 min-w-[18rem] min-h-[5rem]">
+                      class="profile-toggle-menu absolute max-h-0 rounded-[0.625rem] mx-auto -left-[8.5rem] top-[3.125rem]  bg-shadow-300 overflow-hidden">
+                      <div class="p-5 min-w-[18rem] min-h-[3.125rem]">
                         <div *ngIf="isProfileToggleOpen" class="content">
                           <button aria-label="logout" class="btn" (click)="enterEditMode()">Edit Profile</button>
                           <a [routerLink]="['/profile/invest']" [queryParams]="{ user: null }"  class="btn w-full h-full inline-block cursor-pointer normal-case">Investment</a>
