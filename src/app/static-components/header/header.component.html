@@ -17,7 +17,7 @@
       </button>
       <a class="my-auto h-fit hidden text-[1.875rem] md:block cursor-pointer" tabindex="0" [routerLink]="['']">Talkaboat</a>
     </div>
-    <div  id="search-slot-area" class="sm:pl-[2.5rem] md:pl-0 md:pr-[3.75rem] my-auto h-fit">
+    <div *ngIf="headerState != 'home'"  id="search-slot-area" class="sm:pl-[2.5rem] md:pl-0 md:pr-[3.75rem] my-auto h-fit">
       <app-search-slot></app-search-slot>
     </div>
     <div id="profile-icon-area" class="my-auto w-[5.625rem] md:w-[6.25rem] md:max-w-[6.25rem] max-w-[5.625rem] flex justify-end text-center">
