@@ -1,6 +1,6 @@
 <div class="w-auto md:max-w-[96rem]  pt-3 px-10 mx-auto rounded-[0.625rem]">
   <main class="profile-page" *ngIf="userName">
-    <section class="relative block h-[20rem]">
+    <section class="relative block h-[12.5rem]">
       <div class="absolute top-0 w-full h-full bg-center bg-cover"
         style='background-image: url("https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2710&amp;q=80");'>
         <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
@@ -124,7 +124,7 @@
                 </div>
               </div>
               <div *ngIf="isEditMode()" class="flex justify-center mb-4">
-                <button [disabled]="!editForm.valid" (click)="updateProfile()" type="submit" class="btn primary max-w-[20rem] py-4">Update Profile</button>
+                <button [disabled]="!editForm.valid" (click)="updateProfile()" type="submit" class="btn primary max-w-[12.5rem] py-4">Update Profile</button>
               </div>
             </form>
             <div class="mt-3 p-3" *ngIf="!isEditMode()">

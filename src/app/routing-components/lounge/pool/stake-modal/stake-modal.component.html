@@ -3,7 +3,7 @@
   <button class="background fixed top-0 bottom-0 left-0 right-0 -z-10" (click)="close.emit(false)">
 
   </button>
-  <div class="modal sm:w-[40rem] w-[90%] relative mx-auto bg-shadow-500 py-3 px-5 z-10 -mt-[15.625rem] rounded-[0.625rem]" *ngIf="poolInfo">
+  <div class="modal sm:w-[25rem] w-[90%] relative mx-auto bg-shadow-500 py-3 px-5 z-10 -mt-[15.625rem] rounded-[0.625rem]" *ngIf="poolInfo">
     <button class="absolute -right-[0.625rem] -top-[0.625rem] w-[1.875rem] h-[1.875rem] rounded-full bg-shadow-600 border-shadow-400 border-2" (click)="close.emit(false)">X</button>
     <h3 class="mb-3 mt-3">{{ (isWithdrawal ? "withdrawal_modal" : "stake_modal") | translate }}</h3>
     <b class="mb-2">

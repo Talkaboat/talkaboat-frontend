@@ -1,11 +1,11 @@
 <div data-theme="night" class="bg-transparent mt-[1.875rem]">
-  <section id="search" class=" mx-auto max-w-[40rem] justify-center">
+  <section id="search" class=" mx-auto max-w-[25rem] justify-center">
     <form class="w-full h-full relative">
       <input type="text" autofocus
       class="input input-bordered w-full input-info"
       [placeholder]="'search_podcast_placeholder' | translate" [formControl]="searchTerm" />
     <button aria-label="search" type="submit" (click)="search()" class="flex rounded-[0.625rem] absolute inset-y-0 right-0 items-center w-[1.875rem] md:w-[1.5625rem]">
-      <svg class="w-2 h-2 md:h-6 md:w-6 mx-auto text-info hover:border-info rounded-[0.625rem]" fill="currentColor" viewBox="0 0 20 20"
+      <svg class="h-6 w-6 mx-auto text-info hover:border-info rounded-[0.625rem]" fill="currentColor" viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd"
           d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
