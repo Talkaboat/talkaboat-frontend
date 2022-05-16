@@ -41,10 +41,10 @@
                 (click)="add(item)">
                 <span class="max-w-fit">
                   <img *ngIf="!(item.aboat_id | library); else bookmarked" width="24" height="24"
-                    class="h-full mx-auto min-h-[2.4rem] min-w-[2.4rem] max-h-[2.4rem]"
+                    class="h-full mx-auto min-h-[1.5rem] min-w-[1.5rem] max-h-[1.5rem]"
                     src="./assets/images/library/bookmark_add.png" />
                   <ng-template #bookmarked>
-                    <img width="24" height="24" class="h-full max-h-[2.4rem]"
+                    <img width="24" height="24" class="h-full max-h-[1.5rem]"
                       src="./assets/images/library/bookmark_remove.png" />
                   </ng-template>
                 </span>

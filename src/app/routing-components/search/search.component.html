@@ -1,4 +1,4 @@
-<div class="flex w-[33rem] md:w-full md:max-w-[76rem] max-h-[11rem] mx-auto justify-center mb-5">
+<div class="flex w-[20.625rem] md:w-full md:max-w-[47.5rem] max-h-[6.875rem] mx-auto justify-center mb-5">
 
   <iframe class="w-full" [src]=" (windowSize() >= 760 ? './assets/ads/728x90.html' : './assets/ads/320x50.html') | sanitizeUrl"></iframe>
 </div>
@@ -9,9 +9,9 @@
   </div>
 </ng-template>
 <ul *ngIf="searchResponse.results && searchResponse.results.length > 0; else noResults" @list
-  class="mx-auto max-w-[110rem] sm:grid sm:grid-cols-4 lg:grid-cols-5 gap-4 px-[1.25rem] ">
+  class="mx-auto max-w-[68.75rem] sm:grid sm:grid-cols-4 lg:grid-cols-5 gap-4 px-[1.25rem] ">
   <li @listItem *ngFor="let item of searchResponse.results; " [class.ad]="item.aboat_id == -1"
-    class="mb-5 py-0 px-4 sm:p-0 flex flex-col bg-shadow-700 rounded-[0.625rem] shadow-lg">
+    class="mb-5 py-0 px-3 sm:p-0 flex flex-col bg-shadow-700 rounded-[0.625rem] shadow-lg">
     <div *ngIf="item.aboat_id == -1" class="flex justify-center my-auto mx-auto w-full sm:h-full h-[6.6rem]">
       <iframe class="w-full h-full" [src]="(windowSize() > 860 ? './assets/ads/120x240.html' : './assets/ads/320x50.html') | sanitizeUrl"></iframe>
     </div>
@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="px-3 grow w-full sm:mt-3 grid">
-        <h5 class="line-clamp-1 overflow-hidden my-auto text-ellipsis"><a tabindex="0"
+        <h5 class="line-clamp-1 overflow-hidden my-auto text-ellipsis text-base text-info"><a tabindex="0"
             [routerLink]="['./podcast' + (item.podcast ? '/episode' : '')]"
             [queryParams]="item.podcast ? { 'ep': item.aboat_id, 'pd': null} : { 'pd': item.aboat_id, 'ep': null }"
             queryParamsHandling="merge">{{ item.title_original }}</a></h5>
@@ -48,13 +48,13 @@
             [queryParams]="{ 'pd': item.podcast.id, 'ep': '' }" queryParamsHandling="merge"
             tabindex="0">{{item.podcast.title_original}}</a></h6>
         <p *ngIf="!item.podcast"
-          class="text-gray-700 line-clamp-2 sm:line-clamp-3 max-h-[2.8125rem] overflow-hidden text-ellipsis text-base mt-2"
+          class="text-gray-700 line-clamp-2 sm:line-clamp-3 max-h-[2.8125rem] overflow-hidden text-ellipsis text-xs mt-1"
           [innerHtml]="item.description_original ">
         </p>
       </div>
-      <div class="flex shrink sm:inline-block sm:w-full">
+      <div class="flex sm:inline-block sm:w-full">
         <!-- Length -->
-        <div *ngIf="item.audio_length_sec" class="px-3 my-auto text-center sm:text-left flex justify-between">
+        <div *ngIf="item.audio_length_sec" class="px-2 my-auto text-center sm:text-left flex justify-between">
           <div class="hidden sm:inline-block">
             {{ 'audio_time' | translate }}
           </div>
@@ -63,7 +63,7 @@
           </div>
         </div>
         <!-- Published -->
-        <div *ngIf="item.pub_date_ms" class="px-3 text-base my-auto text-center sm:text-left flex justify-between">
+        <div *ngIf="item.pub_date_ms" class="px-2 text-xs my-auto text-center sm:text-left flex justify-between">
           <div class="hidden sm:inline-block">
             {{ 'published' | translate }}
           </div>
@@ -72,16 +72,16 @@
           </div>
 
         </div>
-        <div class="sm:pb-3 sm:flex sm:mx-auto my-auto sm:px-3 sm:mt-3">
+        <div class="sm:pb-3 sm:flex sm:mx-auto my-auto sm:p-3 sm:mt-auto">
           <button aria-label="add to playlist or library"
             class="btn rounded-[0.625rem] sm:mx-auto max-w-fit px-4 sm:px-8 py-3 text-main-300 border-main-300 border-1 font-semibold"
             (click)="add(item)">
             <span *ngIf="!item.podcast" class="max-w-fit">
               <img *ngIf="!(item.aboat_id | library); else bookmarked" width="24" height="24"
-                class="h-full mx-auto min-h-[2.4rem] min-w-[2.4rem] max-h-[2.4rem]"
+                class="h-full mx-auto min-h-[1.5rem] min-w-[1.5rem] max-h-[1.5rem]"
                 src="./assets/images/library/bookmark_add.png" />
               <ng-template #bookmarked>
-                <img width="24" height="24" class="h-full max-h-[2.4rem]"
+                <img width="24" height="24" class="h-full max-h-[1.5rem]"
                   src="./assets/images/library/bookmark_remove.png" />
               </ng-template>
             </span>
