@@ -12,7 +12,7 @@ export const de = {
   enter_presale: 'Am Presale Teilnehmen',
   further_information: 'Weitere Infos',
   estimated_reward_tooltip: 'Voraussichtliche Belohnung',
-  talkaboat_intro: '<p class="text-main-500">Unterhaltung</p><p class="text-main-700">trifft</p><p class="text-main-500">Krypto</p>',
+  talkaboat_intro: '<p class="text-main-500">Unterhaltung&nbsp;</p><p class="text-main-700">trifft &nbsp;</p> <p class="text-main-500">Krypto</p>',
   learn_more_token: "Let's Talkaboat!",
   presale_token_amount: "Insgesamt: ",
   bought: 'Gekauft',

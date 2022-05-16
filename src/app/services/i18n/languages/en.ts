@@ -16,7 +16,7 @@ export const en = {
   bought: 'Bought',
   resend_email: 'Resend email',
   aboat: './assets/images/aboat.png',
-  talkaboat_intro: '<p class="text-main-500">Entertainment</p><p class="text-main-700">Meets</p><p class="text-main-500">Crypto</p>',
+  talkaboat_intro: '<p class="text-main-500">Entertainment&nbsp;</p><p class="text-main-700">Meets &nbsp;</p><p class="text-main-500">Crypto</p>',
   learn_more_token: "Let's Talkaboat!",
   power_info_top: 'Full Control',
   power_info_bottom: 'Strong Connection',
