@@ -50,6 +50,11 @@ export class PodcastRepositoryService extends RepositoryService {
     return this.post(api, query);
   }
 
+  getTypeahead(term: any): Observable<string[]> {
+    const api = PODCAST_API.URL + PODCAST_API.TYPEAHEAD_DEFAULT_URL.replace("{queue}", term);
+    return this.get(api);
+  }
+
   public getPlaylists(): Observable<Playlist[]> {
     const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_GET_ALL_URL;
     return this.get(api);

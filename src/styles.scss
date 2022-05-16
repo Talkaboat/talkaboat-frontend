@@ -22,6 +22,7 @@
 }
 
 
+
 @keyframes gradient-animation {
   0% {
     background-position: 0% 50%;
@@ -68,13 +69,17 @@
 ng-multiselect-dropdown {
   .multiselect-dropdown {
     .dropdown-btn {
+      @apply border-info;
       padding-right: 20px !important;
     }
     .dropdown-btn, .dropdown-list, li {
-      border-color: #A4CAFE !important;
+      @apply border-info;
     }
     li.multiselect-item-checkbox:hover {
       background-color: #304F79;
+    }
+    .selected-item {
+      max-width: none !important;
     }
   }
 }

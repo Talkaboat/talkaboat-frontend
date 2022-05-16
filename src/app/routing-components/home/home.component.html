@@ -1,19 +1,64 @@
 <div data-theme="night" class="bg-transparent mt-[1.875rem]">
   <img class="mx-auto max-w-[20rem] px-10 mb-4" src="assets/images/talkaboat_light.png">
   <h3 class="flex mb-8 justify-center text-center intro-header" [innerHtml]="'talkaboat_intro' | translate"></h3>
-  <section id="search" class=" mx-auto max-w-[25rem] justify-center px-3">
+  <section id="search" class=" mx-auto max-w-[25rem] justify-center px-3 mb-10">
     <form class="w-full h-full relative">
-      <input type="text" autofocus
-      class="input input-bordered w-full input-info"
-      [placeholder]="'search_podcast_placeholder' | translate" [formControl]="searchTerm" />
-    <button aria-label="search" type="submit" (click)="search()" class="flex rounded-[0.625rem] absolute inset-y-0 right-1 items-center focus:border-info hover:border-info my-auto h-[1.875rem]  w-[1.875rem]">
-      <svg class="h-6 w-6 mx-auto text-info hover:border-info rounded-[0.625rem]" fill="currentColor" viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd"
-          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-          clip-rule="evenodd"></path>
-      </svg>
-    </button>
+      <input type="text"  list="SearchResults" autofocus class="input input-bordered w-full input-info"
+        [placeholder]="'search_podcast_placeholder' | translate" [formControl]="searchTerm" />
+        <datalist id="SearchResults">
+          <option *ngFor="let sr of typeAheadEntries" [value]="sr">{{sr}}</option>
+       </datalist>
+      <button aria-label="search" type="submit" (click)="search()"
+        class="flex rounded-[0.625rem] absolute inset-y-0 right-1 items-center focus:border-info hover:border-info my-auto h-[1.875rem]  w-[1.875rem]">
+        <svg class="h-6 w-6 mx-auto text-info hover:border-info rounded-[0.625rem]" fill="currentColor"
+          viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </button>
     </form>
+  </section>
+
+  <section id="info" class="mx-auto max-w-[50rem] justify-center px-3 mb-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+      <div class="card max-w-[20rem] px-3 mx-auto">
+        <div class="card-body p-0">
+          <h2 class="card-title">Let's Talkaboat</h2>
+          <p>What does Talkaboat do for you?</p>
+          <div class="card-actions justify-end">
+            <a class="btn btn-primary text-info">Learn now!</a>
+          </div>
+        </div>
+      </div>
+      <div class="card max-w-[20rem] px-3 mx-auto">
+        <div class="card-body p-0">
+          <h2 class="card-title">Get started</h2>
+          <p>How to get started?</p>
+          <div class="card-actions justify-end">
+            <a class="btn btn-secondary text-info">Start now!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <section id="discover" class="mx-auto max-w-[50rem] justify-center px-3 text-center">
+    <h2 class="hidden">{{ 'discover_podcasts' | translate }}</h2>
+    <div class="w-[18.75rem] mx-auto bg-shadow-700 mt-5">
+      <ng-multiselect-dropdown class="border-info" [settings]="dropdownSettings" [data]="genres"
+        [(ngModel)]="selectedGenres" (onSelect)="apply()" (onDeSelect)="apply()" ngDefaultControl>
+      </ng-multiselect-dropdown>
+    </div>
+
+    <div class="mt-5 relative w-full min-h-[18.75rem] text-left">
+      <div *ngIf="podcastDiscoveryIsLoading"
+        class="w-full absolute left-0 right-0 top-0 bottom-0 mx-auto h-full rounded-[0.625rem] z-10">
+        <app-loading-animation></app-loading-animation>
+      </div>
+      <div *ngIf="items">
+        <app-podcast-carousel [items]="items"></app-podcast-carousel>
+      </div>
+    </div>
   </section>
 </div>

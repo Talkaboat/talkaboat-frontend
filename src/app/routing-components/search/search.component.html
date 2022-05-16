@@ -39,6 +39,7 @@
           <app-loading-animation></app-loading-animation>
         </div>
       </div>
+      <!-- METADATA -->
       <div class="px-3 grow w-full sm:mt-3 grid">
         <h5 class="line-clamp-1 overflow-hidden my-auto text-ellipsis text-base text-info"><a tabindex="0"
             [routerLink]="['./podcast' + (item.podcast ? '/episode' : '')]"
@@ -52,26 +53,7 @@
           [innerHtml]="item.description_original ">
         </p>
       </div>
-      <div class="flex sm:inline-block sm:w-full">
-        <!-- Length -->
-        <div *ngIf="item.audio_length_sec" class="px-2 my-auto text-center sm:text-left flex justify-between">
-          <div class="hidden sm:inline-block">
-            {{ 'audio_time' | translate }}
-          </div>
-          <div>
-            {{ item.audio_length_sec | time: 'hours' }}
-          </div>
-        </div>
-        <!-- Published -->
-        <div *ngIf="item.pub_date_ms" class="px-2 text-xs my-auto text-center sm:text-left flex justify-between">
-          <div class="hidden sm:inline-block">
-            {{ 'published' | translate }}
-          </div>
-          <div>
-            {{ item.pub_date_ms | time: 'date' }}
-          </div>
-
-        </div>
+      <div class="sm:pb-3 sm:flex sm:mx-auto sm:px-3 mt-auto mb-3">
         <div class="sm:pb-3 sm:flex sm:mx-auto my-auto sm:p-3 sm:mt-auto">
           <button aria-label="add to playlist or library"
             class="btn rounded-[0.625rem] sm:mx-auto max-w-fit px-4 sm:px-8 py-3 text-main-300 border-main-300 border-1 font-semibold"

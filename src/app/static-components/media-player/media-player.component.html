@@ -50,10 +50,10 @@
                 [queryParams]="currentTrack.podcast ? { 'ep': currentTrack.id, 'pd': null} : { 'pd': currentTrack.id, 'ep': null }"
                 queryParamsHandling="merge"
               >
-                <img class="object-cover object-center aspect-square w-32 min-w-[5rem]"
+                <img class="object-cover object-center aspect-square max-w-[5rem] min-w-[5rem]"
                   [alt]="currentTrack.title + ' portrait'" [src]="currentTrack.image" />
             </a>
-              <div id="track-meta" class="text-xs">
+              <div id="track-meta" class="text-xs sm:text-sm">
                 <div id="track-title">
                   <a class="font-semibold text-ellipsis-1" tabindex="0"
                     [routerLink]="['./search/podcast' + (currentTrack.podcast ? '/episode' : '')]"

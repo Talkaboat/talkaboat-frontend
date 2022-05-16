@@ -1,6 +1,7 @@
 export const PODCAST_API = {
   URL: "podcast",
   SEARCH_URL: "/search",
+  TYPEAHEAD_DEFAULT_URL: "/search/typeahead/{queue}",
   EPISODE_DETAILS: "/episodes/{id}",
   PODCAST_DETAILS: "/{id}/{sort}/{pubdate}/{amount}",    //sort: 'asc', 'desc'
   PODCAST_EPISODES: "/{id}/episodes/{sort}/{pubdate}/{amount}",

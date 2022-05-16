@@ -12,7 +12,7 @@ export const de = {
   enter_presale: 'Am Presale Teilnehmen',
   further_information: 'Weitere Infos',
   estimated_reward_tooltip: 'Voraussichtliche Belohnung',
-  talkaboat_intro: '<p class="text-main-500">Unterhaltung&nbsp;</p><p class="text-main-700">trifft &nbsp;</p> <p class="text-main-500">Krypto</p>',
+  talkaboat_intro: '<p class="text-info">Podcast&nbsp;</p><p class="text-neutral-content">trifft&nbsp;</p> <p class="text-info">Krypto</p>',
   learn_more_token: "Let's Talkaboat!",
   presale_token_amount: "Insgesamt: ",
   bought: 'Gekauft',
@@ -29,6 +29,7 @@ export const de = {
   whitepaper: 'Whitepaper',
 
   //#region Home
+  or: "oder",
   get_started: "Durchstarten",
   how_to_start_with_talkaboat: "Wie du mit Talkaboat startest:",
   get_started_first: 'Registrieren',

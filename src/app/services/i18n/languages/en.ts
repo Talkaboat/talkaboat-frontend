@@ -16,7 +16,7 @@ export const en = {
   bought: 'Bought',
   resend_email: 'Resend email',
   aboat: './assets/images/aboat.png',
-  talkaboat_intro: '<p class="text-main-500">Entertainment&nbsp;</p><p class="text-main-700">Meets &nbsp;</p><p class="text-main-500">Crypto</p>',
+  talkaboat_intro: '<p class="text-main-500">Podcast&nbsp;</p><p class="text-main-700">Meets&nbsp;</p><p class="text-main-500">Crypto</p>',
   learn_more_token: "Let's Talkaboat!",
   power_info_top: 'Full Control',
   power_info_bottom: 'Strong Connection',
@@ -25,6 +25,7 @@ export const en = {
   guide_label: 'Guides',
   whitepaper: 'Whitepaper',
   //#region Home
+  or: "or",
   get_started: "Get Started",
   how_to_start_with_talkaboat: "How to start with Talkaboat:",
   get_started_first: 'Register',

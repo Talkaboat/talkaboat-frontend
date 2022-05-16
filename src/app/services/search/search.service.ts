@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { LoaderService } from '../loader/loader.service';
 import { PodcastSearchResponse } from '../repository/search-repository/models/podcast-search-response.model';
 import { PodcastSearch } from '../repository/search-repository/models/podcast-search.model';
@@ -70,6 +71,10 @@ export class SearchService {
       default: this.searchType = SEARCH_TYPE.EPISODE; break;
     }
     this.onChangedSearchType.emit(this.searchType);
+  }
+
+  getTypeahead(term: any): Observable<string[]> {
+    return this.podcastRepositoryService.getTypeahead(term);
   }
 
   getMoreResults(){
