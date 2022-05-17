@@ -20,21 +20,21 @@
     <div *ngIf="headerState != 'home'"  id="search-slot-area" class="sm:pl-[2.5rem] md:pl-0 md:pr-[3.75rem] my-auto h-fit">
       <app-search-slot></app-search-slot>
     </div>
-    <div id="profile-icon-area" class="my-auto w-[5.625rem] md:w-[6.25rem] md:max-w-[6.25rem] max-w-[5.625rem] flex justify-end text-center">
+    <div id="profile-icon-area" class="my-auto flex justify-end text-center">
       <a *ngIf="!userData.userName" [routerLink]="['/login']"
-        class="h-[2.1875rem] hover:outline-none w-full rounded-[0.625rem] px-[0.6rem] flex  secondary font-semibold"><p class="m-auto">
-          Login
-        </p></a>
-      <button aria-label="toggle profile sidebar" *ngIf="userData.userName" (click)="isProfileSidebarOpen = !isProfileSidebarOpen"
-        class="h-[2.1875rem] hover:outline-none rounded-[0.625rem] md:py-[1.2rem]  px-[0.6rem] py-[0.8rem] flex w-full justify-end ring-main-700 bg-shadow-700 ring-1 overflow-hidden text-ellipsis font-semibold">
-        <p class="text-ellipsis overflow-hidden w-full">{{ userData.userName }}</p>
+        class="h-[30px] mr-2">
+          <img class="h-full" src="/assets/images/header/login.png">
+       </a>
+      <button aria-label="toggle profile sidebar " *ngIf="userData.userName" (click)="isProfileSidebarOpen = !isProfileSidebarOpen"
+        class="h-[2.1875rem] rounded-[0.625rem] md:py-0  p-0  flex justify-end">
+        <img class="h-full" src="/assets/images/header/avatar.png">
         <svg *ngIf="!isProfileSidebarOpen" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-down"
-          class="w-5 h-5 my-auto ml-2 rounded-[0.625rem]" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+          class="w-5 h-5 my-auto rounded-[0.625rem] text-main-50" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
           <path fill="currentColor"
             d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z">
           </path>
         </svg>
-        <svg *ngIf="isProfileSidebarOpen" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-up" class="w-5 h-5 my-auto ml-2 rounded-[0.625rem]" role="img"
+        <svg *ngIf="isProfileSidebarOpen" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-up" class="w-5 h-5 my-auto rounded-[0.625rem] text-main-200" role="img"
           xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
           <path fill="currentColor"
             d="M288.662 352H31.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142z">

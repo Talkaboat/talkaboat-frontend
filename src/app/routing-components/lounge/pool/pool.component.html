@@ -72,7 +72,7 @@
         </p>
       </div>
 
-      <div class="flex justify-between w-full max-w-[7rem]">
+      <div class="flex justify-between w-full max-w-[4.375rem]">
         <button *ngIf="!poolInfo.allowance || (poolInfo.allowance | bigEqualizer: 0 : 'lte'); else hasAllowance"
           class="rounded-[0.625rem] px-4 bg-shadow-300" (click)="approve()"> {{ 'approve' | translate }}</button>
         <ng-template #hasAllowance>
@@ -91,7 +91,7 @@
         </p>
       </div>
 
-      <div class="flex justify-between w-full max-w-[7rem]">
+      <div class="flex justify-between w-full max-w-[4.375rem]">
         <button [class.hidden]="!poolInfo.pending || (poolInfo.pending | bigEqualizer: 0 : 'lte')"
           class="rounded-[0.625rem] px-4 bg-shadow-300" (click)="claim()"> {{ 'claim' | translate }}</button>
       </div>

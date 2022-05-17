@@ -29,7 +29,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ];
 
   constructor(private readonly toastr: ToastrService,
-    private readonly translate: TranslateService,
+    private readonly toastrService: ToastrService,
+    private readonly translationService: TranslateService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly userService: UserService
   ) {
@@ -73,6 +74,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   copyReferal() {
     navigator.clipboard.writeText("https://talkaboat.online/?ref=" + this.userService.userData.userName);
+    this.toastrService.info(this.translationService.transform('copy_referral_info'));
   }
 
   isMe(): boolean {
@@ -95,7 +97,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   }
 
-  enterEditMode() {
+  toggleEditMode() {
+    if (this.editMode) {
+      this.editMode = false;
+      return;
+    }
     this.userProfileEditData.company = this.userProfileData.company;
     this.userProfileEditData.fullname = this.userProfileData.fullname;
     this.userProfileEditData.description = this.userProfileData.description;

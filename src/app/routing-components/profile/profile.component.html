@@ -22,9 +22,9 @@
           <div class="px-6">
             <div class="flex flex-wrap justify-center">
               <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
-                <div class="relative -top-[7rem] rounded-full max-w-[9.375rem] ">
+                <div class="relative -top-[4.375rem] rounded-full max-w-[9.375rem] ">
                   <div
-                    class="shadow-xl rounded-full border-solid border-l-main-300 border-r-main-500 border-l-2 border-r-4 h-auto align-middle absolute -ml-[7rem] w-[9.375rem]">
+                    class="shadow-xl rounded-full border-solid border-l-main-300 border-r-main-500 border-l-2 border-r-4 h-auto align-middle absolute -ml-[4.375rem] w-[9.375rem]">
                     <img alt="..."
                       src="https://avataaars.io/?avatarStyle=Transparent&topType=LongHairCurvy&accessoriesType=Prescription01&hairColor=Brown&facialHairType=BeardMajestic&facialHairColor=Blonde&clotheType=ShirtScoopNeck&clotheColor=Gray01&eyeType=Wink&eyebrowType=AngryNatural&mouthType=Disbelief&skinColor=Light"
                       class="rounded-full h-auto" style="max-width: 150px;" />
@@ -52,8 +52,8 @@
                       class="profile-toggle-menu absolute max-h-0 rounded-[0.625rem] mx-auto -left-[8.5rem] top-[3.125rem]  bg-shadow-300 overflow-hidden">
                       <div class="p-5 min-w-[18rem] min-h-[3.125rem]">
                         <div *ngIf="isProfileToggleOpen" class="content">
-                          <button aria-label="logout" class="btn" (click)="enterEditMode()">Edit Profile</button>
-                          <a [routerLink]="['/profile/invest']" [queryParams]="{ user: null }"  class="btn w-full h-full inline-block cursor-pointer normal-case">Investment</a>
+                          <button aria-label="logout" class="btn" (click)="toggleEditMode()">{{ (isEditMode() ? 'cancel_edit_profile' : 'start_edit_profile') | translate}}</button>
+                          <a [routerLink]="['/profile/invest']" [queryParams]="{ user: null }"  class="btn">Investment</a>
                         </div>
 
                       </div>
@@ -91,7 +91,7 @@
                   @{{ userName }}
                 </div>
                 <button *ngIf="isMe()" (click)="copyReferal()"
-                  class="btn mx-auto secondary max-w-[6.25rem] py-4 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 rounded outline-none focus:outline-none mb-1"
+                  class="btn mx-auto max-w-[6.25rem] btn-outline hover:shadow-md shadow text-xs px-4 mb-1"
                   type="button" style="transition: all 0.15s ease 0s;">
                   {{ 'copy_ref_button_text' | translate }}
                 </button>

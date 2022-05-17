@@ -24,6 +24,7 @@ export const en = {
   info_description: "Aboat Entertainment is a content aggregator with blockchain-based ecosystem to bust the common monetization and bring benefits for creators and consumers alike",
   guide_label: 'Guides',
   whitepaper: 'Whitepaper',
+  copy_referral_info: "Copied invitation link!",
   //#region Home
   or: "or",
   get_started: "Get Started",
@@ -230,6 +231,8 @@ export const en = {
 
   //#region Profile
   copy_ref_button_text: 'Copy Ref-Link',
+  cancel_edit_profile: 'Cancel Edit',
+  start_edit_profile: 'Edit Profile',
   //#endregion
 
   //#region Lounge

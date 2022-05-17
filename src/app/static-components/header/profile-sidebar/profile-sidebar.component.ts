@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from 'src/app/services/i18n/translate.service';
 import { UserData } from 'src/app/services/repository/user-repository/models/user-data.model';
 import { UserRepositoryService } from 'src/app/services/repository/user-repository/user-repository.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -17,7 +19,7 @@ export class ProfileSidebarComponent implements OnInit {
   @Input() userData: UserData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
   isSendingMail: boolean = false;
   isUserKyced = true;
-  constructor(private readonly userService: UserService, private readonly userRepositoryService: UserRepositoryService) { }
+  constructor(private readonly userService: UserService, private readonly userRepositoryService: UserRepositoryService, private readonly toastrService: ToastrService, private readonly translationService: TranslateService) { }
 
   ngOnInit(): void {
     if (this.userData.userName) {
@@ -31,6 +33,7 @@ export class ProfileSidebarComponent implements OnInit {
 
   copyReferal() {
     navigator.clipboard.writeText("https://talkaboat.online/?ref=" + this.userService.userData.userName);
+    this.toastrService.info(this.translationService.transform('copy_referral_info'));
   }
 
   resendMail() {

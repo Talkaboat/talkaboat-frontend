@@ -27,7 +27,7 @@ export const de = {
   info_description: "Aboat Entertainment ist ein Content-Aggregator mit Blockchain-basiertem Ökosystem, um die bisherige Monetarisierung zu revolutionieren und sowohl Künstlern als auch Fans Vorteile zu bringen.",
   guide_label: 'Guides',
   whitepaper: 'Whitepaper',
-
+  copy_referral_info: "Einladungslink kopiert!",
   //#region Home
   or: "oder",
   get_started: "Durchstarten",
@@ -73,6 +73,7 @@ export const de = {
   liquidity: 'Liquidität',
   lounge: 'Lounge',
   mediacenter: 'Mediacenter',
+
   favorites: 'Favoriten',
   playlists: 'Playlists',
   favourite_podcasts_heading: 'Favorisierte Podcasts',
@@ -234,6 +235,8 @@ export const de = {
 
   //#region Profile
   copy_ref_button_text: 'Ref-Link kopieren',
+  cancel_edit_profile: 'Bearbeitung beenden',
+  start_edit_profile: 'Profil bearbeiten',
   //#endregion
 
   //#region Lounge

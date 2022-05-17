@@ -8,12 +8,16 @@ import { CreatorHomeComponent } from './creator-home/creator-home.component';
 import { FanHomeComponent } from './fan-home/fan-home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { IntroductionComponent } from './introduction/introduction.component';
+import { GetStartedComponent } from './get-started/get-started.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     CreatorHomeComponent,
-    FanHomeComponent
+    FanHomeComponent,
+    IntroductionComponent,
+    GetStartedComponent
   ],
   imports: [
     FormsModule,

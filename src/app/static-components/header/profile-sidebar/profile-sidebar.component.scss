@@ -1,7 +1,8 @@
 .open {
-  @apply w-[14rem] max-h-[500rem] right-[0.625rem];
+  @apply w-[8.75rem] max-h-[500rem] right-[0.625rem];
 }
 
-.btn, button {
-  @apply md:py-[1.5rem] my-[0.5rem] px-[0.6rem] py-[0.75rem] bg-shadow-500;
+.btn {
+  @apply my-2;
 }
+

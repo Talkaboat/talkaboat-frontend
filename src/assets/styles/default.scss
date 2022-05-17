@@ -57,3 +57,11 @@ h5 {
 h6 {
   @apply font-semibold text-[1rem] md:text-[1.1rem];
 }
+
+.center-section {
+  @apply max-w-[75rem] mx-auto;
+}
+
+.full-section {
+  @apply w-full;
+}
