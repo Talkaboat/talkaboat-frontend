@@ -2,13 +2,13 @@
   <img class="mx-auto max-w-[20rem] px-10 mb-4" src="assets/images/talkaboat_light.png">
   <h3 class="flex mb-8 justify-center text-center intro-header" [innerHtml]="'talkaboat_intro' | translate"></h3>
   <section id="search" class=" mx-auto max-w-[25rem] justify-center px-3 mb-10">
-    <form class="w-full h-full relative">
+    <form class="w-full h-full relative" (submit)="search()">
       <input type="text"  list="searchResults" autofocus class="input input-bordered w-full input-info"
         [placeholder]="'search_podcast_placeholder' | translate" [formControl]="searchTerm" />
         <datalist id="searchResults">
           <option *ngFor="let sr of typeAheadEntries" [value]="sr">{{sr}}</option>
        </datalist>
-      <button aria-label="search" type="submit" (click)="search()"
+      <button aria-label="search" type="submit"
         class="flex rounded-[0.625rem] absolute inset-y-0 right-1 items-center focus:border-info hover:border-info my-auto h-[1.875rem]  w-[1.875rem]">
         <svg class="h-6 w-6 mx-auto text-info hover:border-info rounded-[0.625rem]" fill="currentColor"
           viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

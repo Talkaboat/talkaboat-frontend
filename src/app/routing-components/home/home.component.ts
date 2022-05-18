@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { debounceTime, distinctUntilChanged, Subscription } from 'rxjs';
 import { listAnimation, listItemAnimation } from 'src/app/animations';
@@ -24,7 +25,6 @@ export class HomeComponent implements OnInit {
   genres: Genre[] = [];
 
   selectedGenres: Genre[] = [];
-  subscription: Subscription[] = [];
   podcastDiscoveryIsLoading = true;
   dropdownSettings: IDropdownSettings = {
     idField: 'id',
@@ -34,29 +34,33 @@ export class HomeComponent implements OnInit {
     limitSelection: 3
   };
   typeAheadEntries: string[] = [];
-  constructor(private readonly searchService: SearchService, private readonly podcastRepo: PodcastRepositoryService, private readonly mediaHelperService: MediaHelperService) { }
+  subscriptions: Subscription[] = [];
+  constructor(private readonly searchService: SearchService, private readonly podcastRepo: PodcastRepositoryService, private readonly mediaHelperService: MediaHelperService, private readonly router: Router) { }
 
   ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => {
+      sub.unsubscribe();
+    });
   }
 
   ngOnInit(): void {
-    this.searchTerm.valueChanges.pipe(debounceTime(400), distinctUntilChanged()).subscribe(term => {
+    this.subscriptions.push(this.searchTerm.valueChanges.pipe(debounceTime(400), distinctUntilChanged()).subscribe(term => {
       if (term) {
-        this.searchService.getTypeahead(term).subscribe((results: string[]) => {
-          console.log(results);
+        this.subscriptions.push(this.searchService.getTypeahead(term).subscribe((results: string[]) => {
           this.typeAheadEntries = results;
-        })
+        }));
       } else {
         this.typeAheadEntries = [];
       }
-    });
+    }));
     this.searchService.onChangedSearch.subscribe(term => this.searchTerm.setValue(term));
     this.searchTerm.setValue(this.searchService.searchTerm);
     this.genres = this.mediaHelperService.genreData;
-    this.subscription.push(this.mediaHelperService.onGenreDataChanged.subscribe(genres => {
+    this.subscriptions.push(this.mediaHelperService.onGenreDataChanged.subscribe(genres => {
       this.genres = genres;
     }));
     this.apply();
+
   }
 
   apply() {
@@ -65,7 +69,9 @@ export class HomeComponent implements OnInit {
     if (this.selectedGenres && this.selectedGenres.length > 0) {
       this.podcastRepo.getRandomPodcastWithGenre(this.selectedGenres).subscribe(result => this.applyResults(result));
     } else {
-      this.podcastRepo.getRandomPodcast().subscribe(result => this.applyResults(result));
+      this.podcastRepo.getRandomPodcast().subscribe(result => {
+        this.applyResults(result)
+      });
     }
   }
 
@@ -75,9 +81,7 @@ export class HomeComponent implements OnInit {
   }
 
   search() {
-    console.log(this.searchTerm);
     if (this.searchTerm.valid) {
-      this.isFilterOpen = false;
       this.searchService.search(this.searchTerm.value, true);
     }
   }
