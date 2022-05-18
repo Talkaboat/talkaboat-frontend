@@ -14,6 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DirectivesModule } from './directives/directives.module';
 import { PipeModule } from './pipes/pipe.module';
 import { GeneralTermsComponent } from './routing-components/general-terms/general-terms.component';
 import { ImprintComponent } from './routing-components/imprint/imprint.component';
@@ -39,6 +40,7 @@ import { SharedModule } from './static-components/shared.module';
     ReactiveFormsModule,
     HttpClientModule,
     PipeModule,
+    DirectivesModule,
     SharedModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({

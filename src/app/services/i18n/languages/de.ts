@@ -272,5 +272,9 @@ export const de = {
   bought_token: 'Gekaufte Token',
   bought_usd: 'Preis in USD',
   //#endregion
+
+  //#region Header
+  language_flag: "./assets/images/header/languages/de.png",
+  //#endregion
 }
 

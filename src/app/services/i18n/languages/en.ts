@@ -16,7 +16,7 @@ export const en = {
   bought: 'Bought',
   resend_email: 'Resend email',
   aboat: './assets/images/aboat.png',
-  talkaboat_intro: '<p class="text-main-500">Podcast&nbsp;</p><p class="text-main-700">Meets&nbsp;</p><p class="text-main-500">Crypto</p>',
+  talkaboat_intro: '<p class="text-info">Podcast&nbsp;</p><p class="text-neutral-content">Meets&nbsp;</p><p class="text-info">Crypto</p>',
   learn_more_token: "Let's Talkaboat!",
   power_info_top: 'Full Control',
   power_info_bottom: 'Strong Connection',
@@ -266,5 +266,9 @@ export const en = {
   lucky_sale: 'Lucky Sale',
   bought_token: 'Bought Token',
   bought_usd: 'Price in USD',
+  //#endregion
+
+  //#region Header
+  language_flag: "./assets/images/header/languages/en.png",
   //#endregion
 }

@@ -21,7 +21,6 @@ export class SearchSlotComponent implements OnInit, OnDestroy {
     this.searchTerm.valueChanges.pipe(debounceTime(400), distinctUntilChanged()).subscribe(term => {
       if (term) {
         this.searchService.getTypeahead(term).subscribe((results: string[]) => {
-          console.log(results);
           this.typeAheadEntries = results;
         })
       } else {

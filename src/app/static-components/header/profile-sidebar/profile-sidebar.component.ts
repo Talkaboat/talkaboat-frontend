@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from 'src/app/services/i18n/translate.service';
 import { UserData } from 'src/app/services/repository/user-repository/models/user-data.model';
@@ -17,6 +17,7 @@ export class ProfileSidebarComponent implements OnInit {
 
   @Input() isProfileSidebarOpen: boolean = false;
   @Input() userData: UserData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
+  @Output() onSidebarClosed: EventEmitter<boolean> = new EventEmitter<boolean>()
   isSendingMail: boolean = false;
   isUserKyced = true;
   constructor(private readonly userService: UserService, private readonly userRepositoryService: UserRepositoryService, private readonly toastrService: ToastrService, private readonly translationService: TranslateService) { }
@@ -48,6 +49,10 @@ export class ProfileSidebarComponent implements OnInit {
 
   logout() {
     this.userService.logout();
+  }
+
+  closeProfileSidebar() {
+    this.onSidebarClosed.emit(true);
   }
 
 }

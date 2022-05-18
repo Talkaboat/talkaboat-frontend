@@ -8,6 +8,7 @@ import { VgCoreModule } from '@videogular/ngx-videogular/core';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { DirectivesModule } from "../directives/directives.module";
 import { PipeModule } from "../pipes/pipe.module";
 import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
@@ -37,13 +38,15 @@ import { YoutubeComponent } from './youtube/youtube.component';
     YoutubeComponent,
     PodcastListViewItemComponent,
     PodcastListComponent,
-    PodcastCarouselComponent
+    PodcastCarouselComponent,
+
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    DirectivesModule,
     NgMultiSelectDropDownModule.forRoot(),
     PipeModule,
     ReactiveFormsModule,

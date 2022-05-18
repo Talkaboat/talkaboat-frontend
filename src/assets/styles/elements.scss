@@ -1,18 +1,6 @@
 
 .btn {
-  @apply hover:outline-none w-full rounded-[0.625rem] font-semibold text-center bg-shadow-600;
-  &.primary {
-    @apply border-solid border-[1px] border-shadow-400;
-    &:hover, :focus {
-      @apply border-shadow-200;
-    }
-    &:disabled {
-      @apply bg-shadow-800 text-shadow-400;
-    }
-  }
-  &.secondary {
-    @apply border-solid border-[1px] border-main-400;
-  }
+  @apply hover:outline-none w-full rounded-[0.625rem] font-semibold text-center ;
 }
 
 .primary {

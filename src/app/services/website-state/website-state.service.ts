@@ -48,7 +48,6 @@ export class WebsiteStateService {
         loaderService.hide();
         let page = this.formatUrl(ev.urlAfterRedirects);
         page = page ? page : 'Home';
-        console.log(page);
         this.evaluateHeaderState(page);
         this.titleService.setTitle('Talkaboat - ' + page);
         this.navigationHistory.push(ev.urlAfterRedirects);
