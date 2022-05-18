@@ -1,23 +1,33 @@
-<button *ngIf="isFilterOpen" class="fixed bottom-0 top-0 left-0 right-0 -z-1 secondary opacity-30" (click)="isFilterOpen = false"></button>
-<div class="relative">
-  <button disabled aria-label="toggle filter-menu" (click)="isFilterOpen = !isFilterOpen" class="flex absolute inset-y-0 left-0 items-center rounded-[0.625rem] w-[1.875rem] md:w-[2.5rem]">
-    <img height="17.5" width="17.5" alt="filter" class="h-4 w-4 mx-auto rounded-[0.625rem] text-main-500" src="./assets/images/header/filter.svg" />
-  </button>
-  <form>
-    <input type="text" list="searchResults"
-    class="input input-bordered input-info px-[2.1875rem] rounded-[0.625rem] md:px-[2.8125rem] h-[2.1875rem] md:h-[2.8125rem] w-[12.5rem] md:w-[18.75rem] lg:w-[25rem] font-semibold"
-    [placeholder]="'search_podcast_placeholder' | translate" [formControl]="searchTerm" />
-    <datalist id="searchResults">
-      <option *ngFor="let sr of typeAheadEntries" [value]="sr">{{sr}}</option>
-   </datalist>
-  <button aria-label="search" type="submit" (click)="search()" class="flex rounded-[0.625rem] absolute inset-y-0 right-1 items-center w-[1.875rem] md:w-[2.5rem]">
-    <svg class="h-6 w-6 mx-auto text-main-500 rounded-[0.625rem]" fill="currentColor" viewBox="0 0 20 20"
-      xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd"
-        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-        clip-rule="evenodd"></path>
-    </svg>
-  </button>
-  </form>
-  <app-filter [isFilterOpen]="isFilterOpen"></app-filter>
-</div>
+<input #modalToggle type="checkbox" id="search-modal" class="modal-toggle" />
+<label for="search-modal" class="modal cursor-pointer">
+  <label class="modal-box fixed top-20" for="">
+    <button *ngIf="isFilterOpen" class="fixed bottom-0 top-0 left-0 right-0 -z-1 secondary opacity-30"
+      (click)="isFilterOpen = false"></button>
+    <div class="relative">
+      <button disabled aria-label="toggle filter-menu" (click)="isFilterOpen = !isFilterOpen"
+        class="flex absolute inset-y-0 left-0 items-center rounded-[0.625rem] w-[1.875rem] md:w-[2.5rem]">
+        <img height="17.5" width="17.5" alt="filter" class="h-4 w-4 mx-auto rounded-[0.625rem] text-main-500"
+          src="./assets/images/header/filter.svg" />
+      </button>
+      <form>
+        <input type="text" list="searchResults"
+          class="input input-bordered input-info px-[2.1875rem] rounded-[0.625rem] md:px-[2.8125rem] h-[2.1875rem] md:h-[2.8125rem] w-[12.5rem] md:w-[18.75rem] lg:w-[25rem] font-semibold"
+          [placeholder]="'search_podcast_placeholder' | translate" [formControl]="searchTerm" />
+        <datalist id="searchResults">
+          <option *ngFor="let sr of typeAheadEntries" [value]="sr">{{sr}}</option>
+        </datalist>
+        <button aria-label="search" type="submit" (click)="search()"
+          class="flex rounded-[0.625rem] absolute inset-y-0 right-1 items-center w-[1.875rem] md:w-[2.5rem]">
+          <svg class="h-6 w-6 mx-auto text-main-500 rounded-[0.625rem]" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </form>
+      <app-filter [isFilterOpen]="isFilterOpen"></app-filter>
+    </div>
+
+  </label>
+</label>

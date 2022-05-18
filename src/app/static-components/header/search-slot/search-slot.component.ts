@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { SearchService } from 'src/app/services/search/search.service';
@@ -9,6 +9,7 @@ import { SearchService } from 'src/app/services/search/search.service';
   styleUrls: ['./search-slot.component.scss']
 })
 export class SearchSlotComponent implements OnInit, OnDestroy {
+  @ViewChild('modalToggle', { read: ElementRef, static:false }) modalToggle?: ElementRef;
   isFilterOpen = false;
   searchTerm = new FormControl('', [Validators.required]);
   typeAheadEntries: string[] = [];
@@ -33,6 +34,9 @@ export class SearchSlotComponent implements OnInit, OnDestroy {
 
   search() {
     if (this.searchTerm.valid) {
+      if (this.modalToggle) {
+        this.modalToggle.nativeElement.checked = false;
+      }
       this.isFilterOpen = false;
       this.searchService.search(this.searchTerm.value, true);
     }

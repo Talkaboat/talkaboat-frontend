@@ -17,8 +17,5 @@
 }
 
 .card {
-  @apply rounded-[0.625rem] w-full bg-shadow-400 p-5 bg-opacity-20;
-  &.glass {
-    @apply bg-opacity-10 backdrop-filter backdrop-blur-lg;
-  }
+  @apply rounded-[0.625rem] w-full  p-5;
 }
