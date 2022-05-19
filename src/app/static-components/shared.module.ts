@@ -19,10 +19,11 @@ import { LoadingAnimationComponent } from "./loading/loading-animation/loading-a
 import { LoadingComponent } from "./loading/loading.component";
 import { MediaPlayerComponent } from "./media-player/media-player.component";
 import { PodcastCarouselComponent } from './podcast-carousel/podcast-carousel.component';
-import { PodcastListViewItemComponent } from './podcast/podcast-list-view-item/podcast-list-view-item.component';
+import { PodcastListViewItemComponent } from "./podcast/podcast-list/podcast-list-view-item/podcast-list-view-item.component";
 import { PodcastListComponent } from './podcast/podcast-list/podcast-list.component';
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { YoutubeComponent } from './youtube/youtube.component';
+
 
 @NgModule({
   declarations: [

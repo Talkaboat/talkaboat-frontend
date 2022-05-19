@@ -70,9 +70,11 @@ export class MediaPlayerService {
           continue;
         }
         if (!init) {
-          this.setTrack(track.episode, autoplay, undefined, true);
+          init = true;
+          this.setTrack(track.episode, autoplay, track.episode.podcast, true);
+        } else {
+          this.AddEpisodesToList([track.episode], track.episode.podcast);
         }
-        this.AddEpisodesToList([track.episode]);
       }
     }
   }

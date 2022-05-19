@@ -69,7 +69,7 @@
                     [queryParams]="{ 'pd': currentTrack.podcast.id, 'ep': '' }"
                     queryParamsHandling="merge" tabindex="0"
                   >
-                      {{ currentTrack.podcast.title_original }}
+                      {{ currentTrack.podcast.title_original ? currentTrack.podcast.title_original : currentTrack.podcast.title }}
                   </a>
                 </div>
               </div>

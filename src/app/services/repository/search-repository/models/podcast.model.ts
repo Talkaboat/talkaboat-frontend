@@ -9,10 +9,10 @@ export interface Podcast {
   genre_ids: number[];
   thumbnail?: string;
   listen_score?: number;
-  title_original: string;
+  title_original?: string;
   listennotes_url?: string;
   title_highlighted?: string;
-  publisher_original: string;
+  publisher_original?: string;
   publisher_highlighted?: string;
   listen_score_global_rank?: string;
   email?: string;

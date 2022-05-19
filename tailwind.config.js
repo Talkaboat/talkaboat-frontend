@@ -12,7 +12,7 @@ module.exports = {
     require('@tailwindcss/line-clamp'),
   ],
   daisyui: {
-    themes: ["light", "night"]
+    themes: ["night"]
   },
   theme: {
     extend: {

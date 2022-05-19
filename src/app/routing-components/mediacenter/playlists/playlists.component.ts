@@ -4,7 +4,6 @@ import { MediaPlayerService } from 'src/app/services/media-player/media-player.s
 import { Playlist } from 'src/app/services/repository/search-repository/models/playlist/playlist.model.dto';
 import { PodcastRepositoryService } from 'src/app/services/repository/search-repository/podcast-repository.service';
 import { UserService } from 'src/app/services/user/user.service';
-import { PLAYLIST_ARRAY_MOCK } from 'src/constants/mocks/playlist.mock.constants';
 
 @Component({
   selector: 'app-playlists',
@@ -20,19 +19,28 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
   recommendationPlaylists : Playlist[] | null = null;
 
   constructor(private podcastService : PodcastRepositoryService, private readonly userService: UserService, private readonly mediaPlayer: MediaPlayerService) {
-    this.recommendationPlaylists = PLAYLIST_ARRAY_MOCK;
+    // this.recommendationPlaylists = PLAYLIST_ARRAY_MOCK;
   }
 
   ngOnInit(): void {
     this.loggedIn = this.userService.isUserLoggedIn();
+    this.userService.onUserStateChanged.subscribe(state => {
+      this.loggedIn = state;
+      this.getPlaylist();
+    });
+    this.getPlaylist();
+
+  }
+
+  getPlaylist() {
+    this.userPlaylists = [];
+    this.fetchedUserPlaylists = false;
+    if (!this.loggedIn) {
+      return;
+    }
     this.playlistSubscription = this.podcastService.getPlaylists().subscribe((data) => {
       this.fetchedUserPlaylists = true;
-      if (data.length > 0) {
-        this.userPlaylists = data;
-      }
-    }, (error) => {
-      console.error(error);
-      this.fetchedUserPlaylists = false;
+      this.userPlaylists = data;
     });
   }
 
@@ -41,13 +49,12 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
   }
 
   handlePlayPlaylist(playlist : Playlist) : void {
-    // TODO ACTUALLY START PLAYLIING THE SELECTED PLAYLIST
-    this.mediaPlayer.SetPlaylist(playlist, true);
-    console.log("try to play playlist", playlist);
+    if (playlist.tracks && playlist.tracks.length > 0) {
+      this.mediaPlayer.SetPlaylist(playlist, true);
+    }
   }
 
   handleViewPlaylist(playlist : Playlist) : void {
     // TODO ACTUALLY VIEW PLAYLIST
-    console.log("try to view playlist", playlist);
   }
 }
