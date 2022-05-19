@@ -9,11 +9,31 @@ import { WebsiteStateService } from 'src/app/services/website-state/website-stat
 export class SidebarComponent implements OnInit {
 
   isSidebarOpen = true;
+  isClickOutsideActive = false;
   constructor(private readonly websiteStateService: WebsiteStateService) { }
 
   ngOnInit(): void {
     this.isSidebarOpen = this.websiteStateService.isSidebarOpen;
-    this.websiteStateService.onSidebarStateChanged.subscribe(state => this.isSidebarOpen = state);
+    if (this.isSidebarOpen) {
+      this.activateClickOutsideDirective();
+    }
+    this.websiteStateService.onSidebarStateChanged.subscribe(state => {
+      this.isSidebarOpen = state
+      if (state) {
+        this.activateClickOutsideDirective();
+      }
+    });
+  }
+
+  activateClickOutsideDirective() {
+    setTimeout(() => {
+      this.isClickOutsideActive = true;
+    }, 500);
+  }
+
+  closeSidebar() {
+    this.isClickOutsideActive = false;
+    this.websiteStateService.toggleSidebar(true, false);
   }
 
 }

@@ -253,7 +253,7 @@ export const de = {
   //#endregion
 
   //#region Podcast Detail
-  donate_aboat: "Aboat Spenden",
+  donate_aboat: "Trinkgeld geben",
   audio_time: 'Dauer',
   published: 'Veröffentlicht',
   episodes: 'Episoden',

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 @Directive({
   selector: '[clickOutside]',
@@ -6,17 +6,19 @@ import { Directive, ElementRef, EventEmitter, HostListener, Output } from '@angu
 export class ClickOutsideDirective {
 
   isInit = false;
+  @Input() onlyMobile = false;
+  @Input() isActive = false;
   @Output() clickOutside = new EventEmitter<void>();
 
   constructor(private elementRef: ElementRef) {
     setTimeout(() => {
       this.isInit = true;
-    }, 500);
+    }, 1000);
    }
 
   @HostListener('document:click', ['$event.target'])
   public onClick(target: any) {
-    if (!this.isInit) {
+    if (!this.isActive || !this.isInit || (this.onlyMobile && window.innerWidth > 768)) {
       return;
     }
     const clickedInside = this.elementRef.nativeElement.contains(target);

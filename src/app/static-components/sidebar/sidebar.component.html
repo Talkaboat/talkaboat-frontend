@@ -1,5 +1,5 @@
 <nav [class.open]="isSidebarOpen"
-  class="z-40 transition-all ease-in-out duration-500 fixed left-0 md:left-[0.625rem] top-[4.0625rem] md:top-[5.3125rem] md:rounded-[0.625rem] overflow-hidden rounded-r-[1.25rem] w-[0rem] md:w-[2.8125rem] bottom-[0.625rem] base font-semibold text-[0.875rem]">
+  class="z-40 transition-all ease-in-out duration-500 fixed left-0 md:left-[0.625rem] top-[4.0625rem] md:top-[5.3125rem] md:rounded-[0.625rem] overflow-hidden rounded-r-[1.25rem] w-[0rem] md:w-[2.8125rem] bottom-[0.625rem] base font-semibold text-[0.875rem]" [isActive]="isClickOutsideActive" [onlyMobile]="true" (clickOutside)="closeSidebar()">
   <div>
     <ul [class.w-[16.25rem]]="isSidebarOpen" class="py-5">
       <li class="hover-up md:hidden"><a [routerLink]="['']" class="flex" [queryParams]="{ 'tokenA': null, 'tokenB': null }">

@@ -249,7 +249,7 @@ export const en = {
   //#endregion
 
   //#region Podcast Detail
-  donate_aboat: "Donate Aboat",
+  donate_aboat: "Tip Aboat",
   audio_time: 'Duration',
   published: 'Published',
   episodes: 'Episodes',
