@@ -19,5 +19,6 @@ export interface Episode {
   explicit_content?: boolean;
   maybe_audio_invalid?: boolean;
   listennotes_edit_url?: string;
+  playTime?: number;
   isLoading?: boolean;
 }

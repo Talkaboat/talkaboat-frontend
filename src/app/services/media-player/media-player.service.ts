@@ -24,6 +24,7 @@ export class MediaPlayerService {
       this.track = JSON.parse(trackJson);
       this.onTrackChanged.emit(this.track);
     }
+
     const playlistJson = localStorage.getItem("last_playlist");
     if (playlistJson) {
       this.playlist = JSON.parse(playlistJson);
@@ -57,6 +58,7 @@ export class MediaPlayerService {
 
     localStorage.setItem("last_track", JSON.stringify(episodeData));
     this.track = episodeData;
+
     this.onTrackChanged.emit(this.track);
     await this.delay(500);
     this.setPlayState(autoplay);

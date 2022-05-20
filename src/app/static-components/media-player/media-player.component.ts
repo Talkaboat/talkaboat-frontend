@@ -79,6 +79,9 @@ export class MediaPlayerComponent implements OnInit {
 
   onPlayerReady(api: VgApiService) {
     this.api = api;
+    if (this.track && this.track.value.playTime) {
+      this.api.getDefaultMedia().currentTime = this.track.value.playTime;
+    }
     this.api.getDefaultMedia().subscriptions.ended.subscribe(
       () => {
         // Set the video to the beginning
@@ -188,6 +191,9 @@ export class MediaPlayerComponent implements OnInit {
 
   changeSource(nextTrack: Episode) {
     this.track.next(nextTrack);
+    if (this.api && nextTrack.playTime) {
+      this.api.currentTime = nextTrack.playTime;
+    }
   }
 
 }
