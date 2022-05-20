@@ -47,7 +47,7 @@
             <div class="flex justify-between">
               <a tab-index="0" class="track-cover hidden md:inline-table mr-4 rounded-lg overflow-hidden cursor-pointer"
                 [routerLink]="['./search/podcast' + (currentTrack.podcast ? '/episode' : '')]"
-                [queryParams]="currentTrack.podcast ? { 'ep': currentTrack.id, 'pd': null} : { 'pd': currentTrack.id, 'ep': null }"
+                [queryParams]="currentTrack.podcast ? { 'ep': currentTrack.aboat_id, 'pd': null} : { 'pd': currentTrack.aboat_id, 'ep': null }"
                 queryParamsHandling="merge"
               >
                 <img class="object-cover object-center aspect-square max-w-[5rem] min-w-[5rem]"
@@ -57,7 +57,7 @@
                 <div id="track-title">
                   <a class="font-semibold text-ellipsis-1" tabindex="0"
                     [routerLink]="['./search/podcast' + (currentTrack.podcast ? '/episode' : '')]"
-                    [queryParams]="currentTrack.podcast ? { 'ep': currentTrack.id, 'pd': null} : { 'pd': currentTrack.id, 'ep': null }"
+                    [queryParams]="currentTrack.podcast ? { 'ep': currentTrack.aboat_id, 'pd': null} : { 'pd': currentTrack.aboat_id, 'ep': null }"
                     queryParamsHandling="merge"
                   >
                       {{ currentTrack.title }}
@@ -66,7 +66,7 @@
                 <div id="track-podcast">
                   <a class="text-ellipsis-1"
                     [routerLink]="['./search/podcast']"
-                    [queryParams]="{ 'pd': currentTrack.podcast.id, 'ep': '' }"
+                    [queryParams]="{ 'pd': currentTrack.podcast.aboat_id, 'ep': '' }"
                     queryParamsHandling="merge" tabindex="0"
                   >
                       {{ currentTrack.podcast.title_original ? currentTrack.podcast.title_original : currentTrack.podcast.title }}
