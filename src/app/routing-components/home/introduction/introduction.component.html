@@ -1,33 +1,5 @@
-<section class="w-auto md:max-w-[93.75em]  pt-3 px-5 mx-auto rounded-[0.625rem]">
-  <div class="flex w-full">
-    <div class=" pr-5 max-w-[53.75em] w-fit flex-auto">
-      <h1 class="intro-header text-left text-[3.125rem] md:text-[5rem]" [innerHtml]="'talkaboat_intro' | translate"></h1>
-      <div class="flex justify-between max-w-[45rem] mt-[0.625rem]">
-        <h3 [innerHtml]="'talkaboat_sub' | translate" class="mt-10 px-3 w-full flex justify-between"></h3>
-      </div>
 
-
-    </div>
-
-    <div
-      class="landing max-h-[18.75rem] h-[12.5rem] my-auto sm:h-full mx-auto absolute right-[0.625rem] top-[3.75em] sm:flex -z-10">
-      <img class="h-full w-auto my-auto mx-auto hover-up max-h-[18.75rem]" width="352" height="445"
-        src="./assets/images/podcast_2.png" alt="boat logo">
-    </div>
-  </div>
-
-
-  <div class="flex  justify-start mt-10 px-3">
-    <a tabindex="0" href="https://docs.google.com/forms/d/1hsTvo3cR8zzvN6SqDsZsBQuMg4TOBXtr6099z636yYM" target="_blank"
-      class="text-center text-[1.25rem] mr-3 md:mr-10 flex items-center w-[13.75em] py-3 md:w-[22.5rem] rounded-[0.625rem] font-semibold btn primary ring-1 ring-shadow-700"><span
-        class="mx-auto">{{ 'join_seed' | translate }}</span></a>
-    <a tabindex="0" [routerLink]="['/register']"
-      class="text-center text-[1.25rem] mr-3 md:mr-10 flex items-center w-[13.75em] py-3 md:w-[22.5rem] rounded-[0.625rem] font-semibold btn primary ring-1 ring-shadow-700"><span
-        class="mx-auto">{{ 'register_now' | translate }}</span></a>
-    <a tabindex="0" [routerLink]="['/']" fragment="get-started" rel="noopener noreferrer nofollow"
-      class="text-center text-[1.25rem] w-[13.75em] py-3 flex items-center md:w-[22.5rem] font-semibold rounded-[0.625rem] btn secondary ring-1 ring-main-500"><span
-        class="mx-auto">{{ 'get_started' | translate }}</span></a>
-  </div>
+<section class="w-auto md:max-w-[60rem]  pt-3 px-5 mx-auto rounded-[0.625rem]">
   <div class="grid md:grid-cols-2 grid-cols-1 gap-3 mt-[1.25rem] px-3">
     <h4 [innerHtml]="'info_description' | translate" class="max-w-[60rem] mt-[1.25rem]"></h4>
     <app-youtube [videoId]=" 'home_title_video_id' | translate"></app-youtube>
@@ -92,7 +64,7 @@
   </div>
 
 </section>
-<section id="get-started" class="mt-[6.25rem] w-full md:max-w-[93.75em] text-left  mx-auto px-5 ">
+<section id="get-started" class="mt-[6.25rem] w-full md:max-w-[60rem]  text-left  mx-auto px-5 ">
   <h2>{{ 'how_to_start_with_talkaboat' | translate }}</h2>
   <ol class="mt-5 text-lg flex justify-between text-center h-[6.3.75em]">
     <li class="w-[25rem] px-1 h-full">
@@ -114,7 +86,7 @@
 </section>
 
 
-<section class="mt-[6.25rem] w-full md:max-w-[93.75em]  mx-auto px-5 text-center">
+<section class="mt-[6.25rem] w-full md:max-w-[60rem]   mx-auto px-5 text-center">
   <div class="w-full flex justify-between mt-4">
     <button [class.active-selection]="!isCreator" (mouseover)="isCreator = false" (click)="isCreator = false"
       class="mx-auto text-[1.25rem] w-[13.75em] py-3 px-5 md:w-[22.5rem] font-semibold rounded-[0.625rem] bg-shadow-500  ring-1 ring-main-500">
@@ -139,15 +111,15 @@
   <app-fan-home></app-fan-home>
 </div>
 
-<section class="mt-10 w-full md:max-w-[48rem] flex  px-5 mx-auto">
+<section class="mt-10 w-full md:max-w-[48rem] flex justify-center  px-5 mx-auto">
   <div class="mx-auto w-full">
 
     <app-youtube [videoId]="'aboat_token_usecase_video_id' | translate"></app-youtube>
   </div>
 </section>
 
-<section class="mt-10 w-full md:max-w-[93.75em]  mx-auto px-5">
-  <div class="card glass">
+<section class="mt-10 w-full md:max-w-[60rem]  mx-auto px-5">
+  <div class="card ">
     <h2 [class.creator]="isCreator" [class.fan]="!isCreator" [innerHtml]=" 'equality_home' | translate "></h2>
     <h4 [innerHtml]=" 'equality_home_benefit' | translate"></h4>
     <img width="910" height="295" loading="lazy" class="mt-8 w-full hover-up"
@@ -163,8 +135,8 @@
 
 
 
-<section class="mt-10 w-full md:max-w-[93.75em]  mx-auto px-5">
-  <div class="card glass">
+<section class="mt-10 w-full md:max-w-[60rem]   mx-auto px-5">
+  <div class="card ">
     <h2 [class.creator]="isCreator" [class.fan]="!isCreator" [innerHtml]=" 'team_home' | translate"></h2>
     <h4 [innerHtml]="'team_feedback_home' | translate"></h4>
     <ul @list class="mt-10 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
