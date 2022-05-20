@@ -27,7 +27,12 @@ export const en = {
   copy_referral_info: "Copied invitation link!",
   //#region Home
   or: "or",
-  get_started: "Get Started",
+  get_started_header: "Get Started",
+  get_started_question: "Do you want to start earning?",
+  get_started_action: "Yes, I want!",
+  lets_talkaboat_header: "Let's Talkaboat",
+  lets_talkaboat_question: "What does Talkaboat do for you?",
+  lets_talkaboat_action: "Learn now!",
   how_to_start_with_talkaboat: "How to start with Talkaboat:",
   get_started_first: 'Register',
   get_started_second: 'Discover',

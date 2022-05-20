@@ -30,6 +30,12 @@ export const de = {
   copy_referral_info: "Einladungslink kopiert!",
   //#region Home
   or: "oder",
+  get_started_header: "Los geht's",
+  get_started_question: "Willst du anfangen Token zu verdienen?",
+  get_started_action: "Ja, ich will!",
+  lets_talkaboat_header: "Let's Talkaboat",
+  lets_talkaboat_question: "Was macht Talkaboat für dich?",
+  lets_talkaboat_action: "Erfahre es jetzt!",
   get_started: "Durchstarten",
   how_to_start_with_talkaboat: "Wie du mit Talkaboat startest:",
   get_started_first: 'Registrieren',

@@ -1,4 +1,249 @@
-<div class="center-section">
-  <h1>{{ 'welcome_talkaboat' | translate }}</h1>
-  <h3>{{ 'welcome_intro_short' | translate }}</h3>
+<section class="w-auto md:max-w-[93.75em]  pt-3 px-5 mx-auto rounded-[0.625rem]">
+  <div class="flex w-full">
+    <div class=" pr-5 max-w-[53.75em] w-fit flex-auto">
+      <h1 class="intro-header text-left text-[3.125rem] md:text-[5rem]" [innerHtml]="'talkaboat_intro' | translate"></h1>
+      <div class="flex justify-between max-w-[45rem] mt-[0.625rem]">
+        <h3 [innerHtml]="'talkaboat_sub' | translate" class="mt-10 px-3 w-full flex justify-between"></h3>
+      </div>
+
+
+    </div>
+
+    <div
+      class="landing max-h-[18.75rem] h-[12.5rem] my-auto sm:h-full mx-auto absolute right-[0.625rem] top-[3.75em] sm:flex -z-10">
+      <img class="h-full w-auto my-auto mx-auto hover-up max-h-[18.75rem]" width="352" height="445"
+        src="./assets/images/podcast_2.png" alt="boat logo">
+    </div>
+  </div>
+
+
+  <div class="flex  justify-start mt-10 px-3">
+    <a tabindex="0" href="https://docs.google.com/forms/d/1hsTvo3cR8zzvN6SqDsZsBQuMg4TOBXtr6099z636yYM" target="_blank"
+      class="text-center text-[1.25rem] mr-3 md:mr-10 flex items-center w-[13.75em] py-3 md:w-[22.5rem] rounded-[0.625rem] font-semibold btn primary ring-1 ring-shadow-700"><span
+        class="mx-auto">{{ 'join_seed' | translate }}</span></a>
+    <a tabindex="0" [routerLink]="['/register']"
+      class="text-center text-[1.25rem] mr-3 md:mr-10 flex items-center w-[13.75em] py-3 md:w-[22.5rem] rounded-[0.625rem] font-semibold btn primary ring-1 ring-shadow-700"><span
+        class="mx-auto">{{ 'register_now' | translate }}</span></a>
+    <a tabindex="0" [routerLink]="['/']" fragment="get-started" rel="noopener noreferrer nofollow"
+      class="text-center text-[1.25rem] w-[13.75em] py-3 flex items-center md:w-[22.5rem] font-semibold rounded-[0.625rem] btn secondary ring-1 ring-main-500"><span
+        class="mx-auto">{{ 'get_started' | translate }}</span></a>
+  </div>
+  <div class="grid md:grid-cols-2 grid-cols-1 gap-3 mt-[1.25rem] px-3">
+    <h4 [innerHtml]="'info_description' | translate" class="max-w-[60rem] mt-[1.25rem]"></h4>
+    <app-youtube [videoId]=" 'home_title_video_id' | translate"></app-youtube>
+  </div>
+
+  <div class="mt-[1.875rem] px-5  max-w-[50rem]">
+    <h2 class="text-center md:text-left">{{ 'social_header' | translate }}</h2>
+    <div class="bg-shadow-300 rounded-[0.625rem] flex justify-between p-3 md:px-8 max-w-[50rem] mt-[0.625rem]">
+      <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://twitter.com/talkaboat"
+        target="_blank" rel="noopener noreferrer nofollow">
+        <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+          <img class="w-full h-full" width="30px" height="30px" alt="twitter"
+            src="./assets/images/social/twitter.png" />
+        </div>
+      </a>
+      <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://t.me/talkaboat"
+        target="_blank" rel="noopener noreferrer nofollow">
+        <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+          <img class="w-full h-full" width="30px" height="30px" alt="telegram"
+            src="./assets/images/social/telegram.png" />
+        </div>
+      </a>
+      <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://discord.gg/mMud94kxNJ"
+        target="_blank" rel="noopener noreferrer nofollow">
+        <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+          <img class="w-full h-full" width="30px" height="30px" alt="discord"
+            src="./assets/images/social/discord.png" />
+        </div>
+      </a>
+      <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
+        href="https://medium.com/aboat-entertainment" target="_blank" rel="noopener noreferrer nofollow">
+        <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+          <img class="w-full h-full" width="30px" height="30px" alt="medium" src="./assets/images/social/medium.png" />
+        </div>
+      </a>
+      <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
+        href="https://www.youtube.com/channel/UCe7zpIIZcgqQJ9n7G9ZgtYQ" target="_blank"
+        rel="noopener noreferrer nofollow">
+        <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+          <img class="w-full h-full" width="30px" height="30px" alt="youtube"
+            src="./assets/images/social/youtube.png" />
+        </div>
+      </a>
+      <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
+        href="https://www.instagram.com/talkaboat/" target="_blank" rel="noopener noreferrer nofollow">
+        <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto ">
+          <img class="w-full h-full" width="30px" height="30px" alt="instagram"
+            src="./assets/images/social/instagram.png" />
+        </div>
+      </a>
+      <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
+        href="https://www.linkedin.com/company/aboat-entertainment" target="_blank" rel="noopener noreferrer nofollow">
+        <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+          <img class="w-full h-full" width="30px" height="30px" alt="linkedin"
+            src="./assets/images/social/linkedin.png" />
+        </div>
+      </a>
+    </div>
+
+
+
+  </div>
+
+</section>
+<section id="get-started" class="mt-[6.25rem] w-full md:max-w-[93.75em] text-left  mx-auto px-5 ">
+  <h2>{{ 'how_to_start_with_talkaboat' | translate }}</h2>
+  <ol class="mt-5 text-lg flex justify-between text-center h-[6.3.75em]">
+    <li class="w-[25rem] px-1 h-full">
+      <a class="rounded-[0.625rem] h-full bg-shadow-600 flex w-full justify-center text-center px-3 py-4" [routerLink]="['./register']">
+        <h4 class="my-auto">{{ 'get_started_first' | translate }} ></h4>
+
+      </a>
+    </li>
+    <li class="w-[25rem]  h-full  px-1">
+      <a class="rounded-[0.625rem] h-full bg-shadow-400 flex justify-center w-full px-3 py-4" [routerLink]="['/']" fragment="discover">
+        <h4 class="my-auto">{{ 'get_started_second' | translate }} ></h4>
+      </a>
+    </li>
+    <li class="w-[25rem] h-full  px-1">
+      <a class="rounded-[0.625rem] h-full bg-shadow-200 text-shadow-800  flex justify-center w-full px-3 py-4" [routerLink]="['./register']">
+        <h4 class="my-auto"><strong>{{ 'get_started_third' | translate }}</strong></h4></a>
+    </li>
+  </ol>
+</section>
+
+
+<section class="mt-[6.25rem] w-full md:max-w-[93.75em]  mx-auto px-5 text-center">
+  <div class="w-full flex justify-between mt-4">
+    <button [class.active-selection]="!isCreator" (mouseover)="isCreator = false" (click)="isCreator = false"
+      class="mx-auto text-[1.25rem] w-[13.75em] py-3 px-5 md:w-[22.5rem] font-semibold rounded-[0.625rem] bg-shadow-500  ring-1 ring-main-500">
+      <img width="256" height="256" src="./assets/images/home/fan.png">
+      <p>{{ 'home_fan' | translate }}</p>
+    </button>
+    <button [class.active-selection]="isCreator" (mouseover)="isCreator = true" (click)="isCreator = true"
+      class="mx-auto text-[1.25rem] w-[13.75em] py-3 px-5 md:w-[22.5rem] font-semibold rounded-[0.625rem] bg-shadow-500  ring-1 ring-main-500">
+      <img width="256" height="256" src="./assets/images/home/creator.png">
+      <p> {{ 'home_creator' | translate }}</p>
+    </button>
+  </div>
+</section>
+
+
+
+<div *ngIf="isCreator">
+  <app-creator-home></app-creator-home>
+</div>
+
+<div *ngIf="!isCreator">
+  <app-fan-home></app-fan-home>
+</div>
+
+<section class="mt-10 w-full md:max-w-[48rem] flex  px-5 mx-auto">
+  <div class="mx-auto w-full">
+
+    <app-youtube [videoId]="'aboat_token_usecase_video_id' | translate"></app-youtube>
+  </div>
+</section>
+
+<section class="mt-10 w-full md:max-w-[93.75em]  mx-auto px-5">
+  <div class="card glass">
+    <h2 [class.creator]="isCreator" [class.fan]="!isCreator" [innerHtml]=" 'equality_home' | translate "></h2>
+    <h4 [innerHtml]=" 'equality_home_benefit' | translate"></h4>
+    <img width="910" height="295" loading="lazy" class="mt-8 w-full hover-up"
+      src="./assets/images/infos/reward_system.png" alt="reward system info graphic" />
+  </div>
+</section>
+
+<div class="px-3">
+  <a tabindex="0" href="https://docs.google.com/forms/d/1hsTvo3cR8zzvN6SqDsZsBQuMg4TOBXtr6099z636yYM" target="_blank"
+    class="text-center text-[1.25rem] mx-auto flex items-center w-[13.75em] py-6 md:w-[32rem] rounded-[0.625rem] font-semibold btn primary ring-1 my-10 ring-shadow-700"><span
+      class="mx-auto">{{ 'join_seed' | translate }}</span></a>
+</div>
+
+
+
+<section class="mt-10 w-full md:max-w-[93.75em]  mx-auto px-5">
+  <div class="card glass">
+    <h2 [class.creator]="isCreator" [class.fan]="!isCreator" [innerHtml]=" 'team_home' | translate"></h2>
+    <h4 [innerHtml]="'team_feedback_home' | translate"></h4>
+    <ul @list class="mt-10 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+      <li @listItem *ngFor="let item of team"
+        class="mb-5 flex flex-col bg-shadow-700 rounded-[0.625rem] shadow-lg hover-up">
+        <div class="mx-auto w-full h-auto relative rounded-[0.625rem]">
+
+          <div class="shadow-lg relative overflow-hidden rounded-[0.625rem]">
+            <img width="200" height="200" loading="lazy" [class.hidden]="item.isLoading" (load)="item.isLoading = false"
+              [alt]="item.name +' portrait'" class="w-full mx-auto h-full hover-up rounded-[0.625rem]" [src]="item.image">
+            <a [href]="item.linkedin"
+              class="absolute w-full opacity-0 hover:bg-main-800 hover:opacity-75 focus-visible:bg-main-800 focus-visible:opacity-75 h-full top-0 right-0 left-0 bottom-0 rounded-[0.625rem]"></a>
+            <div *ngIf="item.isLoading"
+              class="w-full absolute left-0 right-0 top-0 bottom-0 mx-auto h-full rounded-[0.625rem]">
+              <app-loading-animation></app-loading-animation>
+            </div>
+          </div>
+          <div class="px-3 py-4">
+            <h3 class="truncate">{{ item.name }}</h3>
+
+            <h5 class="truncate">{{ item.role }}</h5>
+          </div>
+
+
+        </div>
+    </ul>
+  </div>
+</section>
+
+<div class="mt-[1.875rem] px-5 mx-auto w-fit max-w-[50rem]">
+  <h2 class="text-center">{{ 'social_header' | translate }}</h2>
+  <div class="bg-shadow-300 rounded-[0.625rem] flex justify-between p-3 md:px-8 max-w-[50rem] mt-[0.625rem]">
+    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://twitter.com/talkaboat"
+      target="_blank" rel="noopener noreferrer nofollow">
+      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+        <img class="w-full h-full" width="30px" height="30px" alt="twitter" src="./assets/images/social/twitter.png" />
+      </div>
+    </a>
+    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://t.me/talkaboat"
+      target="_blank" rel="noopener noreferrer nofollow">
+      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+        <img class="w-full h-full" width="30px" height="30px" alt="telegram"
+          src="./assets/images/social/telegram.png" />
+      </div>
+    </a>
+    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://discord.gg/mMud94kxNJ"
+      target="_blank" rel="noopener noreferrer nofollow">
+      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+        <img class="w-full h-full" width="30px" height="30px" alt="discord" src="./assets/images/social/discord.png" />
+      </div>
+    </a>
+    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
+      href="https://medium.com/aboat-entertainment" target="_blank" rel="noopener noreferrer nofollow">
+      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+        <img class="w-full h-full" width="30px" height="30px" alt="medium" src="./assets/images/social/medium.png" />
+      </div>
+    </a>
+    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
+      href="https://www.youtube.com/channel/UCe7zpIIZcgqQJ9n7G9ZgtYQ" target="_blank"
+      rel="noopener noreferrer nofollow">
+      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+        <img class="w-full h-full" width="30px" height="30px" alt="youtube" src="./assets/images/social/youtube.png" />
+      </div>
+    </a>
+    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
+      href="https://www.instagram.com/talkaboat/" target="_blank" rel="noopener noreferrer nofollow">
+      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto ">
+        <img class="w-full h-full" width="30px" height="30px" alt="instagram"
+          src="./assets/images/social/instagram.png" />
+      </div>
+    </a>
+    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
+      href="https://www.linkedin.com/company/aboat-entertainment" target="_blank" rel="noopener noreferrer nofollow">
+      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+        <img class="w-full h-full" width="30px" height="30px" alt="linkedin"
+          src="./assets/images/social/linkedin.png" />
+      </div>
+    </a>
+  </div>
+
+
 </div>

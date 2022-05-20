@@ -24,19 +24,19 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
       <div class="card max-w-[20rem] px-3 mx-auto">
         <div class="card-body p-0">
-          <h2 class="card-title">Let's Talkaboat</h2>
-          <p>What does Talkaboat do for you?</p>
+          <h2 class="card-title">{{ 'get_started_header' | translate }}</h2>
+          <p>{{ 'get_started_question' | translate }}</p>
           <div class="card-actions justify-end">
-            <a [routerLink]="['./intro']" class="btn btn-primary">Learn now!</a>
+            <a [routerLink]="['./register']" class="btn btn-primary">{{ 'get_started_action' | translate }}</a>
           </div>
         </div>
       </div>
       <div class="card max-w-[20rem] px-3 mx-auto">
         <div class="card-body p-0">
-          <h2 class="card-title">Get started</h2>
-          <p>How to get started?</p>
+          <h2 class="card-title">{{ 'lets_talkaboat_header' | translate }}</h2>
+          <p>{{ 'lets_talkaboat_question' | translate }}</p>
           <div class="card-actions justify-end">
-            <a class="btn btn-secondary">Start now!</a>
+            <a [routerLink]="['./intro']" class="btn btn-secondary">{{ 'lets_talkaboat_action' | translate }}</a>
           </div>
         </div>
       </div>
