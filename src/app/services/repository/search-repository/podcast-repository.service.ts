@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Genre } from 'src/constants/media/models/genre.model.dto';
 import { RepositoryService } from '../repository.service';
 import { Episode } from './models/episode.model';
@@ -66,14 +66,24 @@ export class PodcastRepositoryService extends RepositoryService {
   }
 
   public addPlaylist(name: string, image: string = '', tracks: any[] = []): Observable<Playlist> {
-    const api = PODCAST_API.URL;
-    return this.post(api);
+    const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_ADD_URL;
+    const body = { name, image, tracks}
+    return this.post(api, body);
   }
 
   public addEpisodeToPlaylist(playlist_id: number, episode_id: number): Observable<PlaylistTrack> {
     const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_ADD_EPISODE_URL.replace("{id}", playlist_id.toString()).replace("{episode}", episode_id.toString());
     return this.post(api);
   }
+
+  deletePlaylist(playlist_id: number | undefined): Observable<any> {
+    if (!playlist_id) {
+      return throwError(() => "Error From ThrowError observable")
+    }
+    const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_DELETE_URL.replace("{id}", playlist_id.toString());
+    return this.delete(api);
+  }
+
 
   addBookmark(aboat_id: number): Observable<any> {
     const api = PODCAST_API.URL + PODCAST_API.LIBRARY_ADD_URL.replace("{id}", aboat_id.toString());

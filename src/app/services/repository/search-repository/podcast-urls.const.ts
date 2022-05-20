@@ -11,6 +11,7 @@ export const PODCAST_API = {
   LIBRARY_REMOVE_URL: "/library/remove/{id}",
   PLAYLIST_ADD_URL: "/playlist",
   PLAYLIST_ADD_EPISODE_URL: "/playlist/{id}/add/{episode}",
+  PLAYLIST_DELETE_URL: "/playlist/{id}",
   PLAYLIST_GET_URL: "/playlist/{id}",
   PLAYLIST_GET_ALL_URL: "/playlist",
   PODCAST_RANDOM_URL: "/random/{amount}",

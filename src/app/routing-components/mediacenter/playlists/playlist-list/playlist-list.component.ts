@@ -13,6 +13,7 @@ export class PlaylistListComponent implements OnInit {
 
   @Output() playPlaylistEvent = new EventEmitter<Playlist>();
   @Output() viewPlaylistEvent = new EventEmitter<Playlist>();
+  @Output() deletePlaylistEvent = new EventEmitter<Playlist>();
 
   playlistPlayClicked(clickedPlaylist: Playlist, event: Event) {
     event.preventDefault();
@@ -22,6 +23,10 @@ export class PlaylistListComponent implements OnInit {
 
   playlistViewClicked(clickedPlaylist: Playlist) {
     this.viewPlaylistEvent.emit(clickedPlaylist);
+  }
+
+  deletePlaylist(clickedPlaylist: Playlist) {
+    this.deletePlaylistEvent.emit(clickedPlaylist);
   }
 
   constructor() { }

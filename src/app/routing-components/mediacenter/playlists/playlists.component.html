@@ -1,26 +1,49 @@
 <ng-container *ngIf="loggedIn then loggedInSection else showLoginSection"></ng-container>
 
 <ng-template #loggedInSection>
-    <section>
-        <h2>Your playlists</h2>
+  <section>
+    <h2>Your playlists</h2>
 
-        <p *ngIf="userPlaylists == null">It looks like you dont have any playlists yet.</p>
-        <button class="btn rounded-full px-8 py-4 mt-4 max-w-[120px] mb-3">Add playlist</button>
-        <app-playlist-list (viewPlaylistEvent)="handleViewPlaylist($event)" (playPlaylistEvent)="handlePlayPlaylist($event)" [playlists]="userPlaylists" *ngIf="userPlaylists && userPlaylists.length > 0"></app-playlist-list>
-    </section>
+    <p *ngIf="userPlaylists == null">It looks like you dont have any playlists yet.</p>
+    <div id="add-playlist mb-10 mt-5">
+      <form class="flex mb-10 mt-5" >
+        <input type="text" class="input input-bordered input-primary w-full max-w-xs" [placeholder]="'add_playlist_placeholder' | translate" [formControl]="playlistName"/>
+        <button (click)="createPlaylist()" type="submit" [disabled]="playlistName.invalid" class="btn-primary w-10 h-10 text-4xl my-auto ml-2">+</button>
+      </form>
+    </div>
+
+    <app-playlist-list (viewPlaylistEvent)="handleViewPlaylist($event)" (playPlaylistEvent)="handlePlayPlaylist($event)"
+      [playlists]="userPlaylists" *ngIf="userPlaylists && userPlaylists.length > 0"></app-playlist-list>
+  </section>
 </ng-template>
 <ng-template #showLoginSection>
-    <section>
-        <h2>Playlists</h2>
-        <p>Please login to create a playlist</p>
-        <button [routerLink]="['/login']" class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">Login</button>
-    </section>
+  <section>
+    <h2>Playlists</h2>
+    <p>Please login to create a playlist</p>
+    <button [routerLink]="['/login']" class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">Login</button>
+  </section>
 </ng-template>
 <ng-container *ngIf="recommendationPlaylists && recommendationPlaylists.length > 0">
   <section>
-      <h2>Community recommendations</h2>
-      <app-playlist-list (viewPlaylistEvent)="handleViewPlaylist($event)" (playPlaylistEvent)="handlePlayPlaylist($event)" [playlists]="recommendationPlaylists" *ngIf="recommendationPlaylists"></app-playlist-list>
+    <h2>Community recommendations</h2>
+    <app-playlist-list (deletePlaylistEvent)="handleDeletePlaylist($event)"
+      (viewPlaylistEvent)="handleViewPlaylist($event)" (playPlaylistEvent)="handlePlayPlaylist($event)"
+      [playlists]="recommendationPlaylists" *ngIf="recommendationPlaylists"></app-playlist-list>
   </section>
   <!-- playlist(s) nach themen? -->
   <!-- playlist(s) von freunden? -->
 </ng-container>
+<input #modalToggle type="checkbox" id="deletePlaylistModal" class="modal-toggle" />
+<label for="deletePlaylistModal" class="modal cursor-pointer" (click)="cancelDeletion()">
+  <div class="fixed top-20" for="">
+    <div class="modal-box relative w-[20rem]">
+      <label for="deletePlaylistModal" class="absolute cursor-pointer right-2 top-2 rounded-full w-6 h-6 btn-outline btn-error text-center" (click)="cancelDeletion()">X</label>
+      {{ 'confirm_deletion_modal' }}:<br>
+      <h5>{{ playlistToDelete?.name }}</h5>
+      <div class="modal-action">
+        <label for="deletePlaylistModal" (click)="confirmDeletion()" class="btn">Yes, I'm sure!</label>
+      </div>
+    </div>
+
+  </div>
+</label>

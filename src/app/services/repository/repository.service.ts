@@ -40,6 +40,6 @@ export class RepositoryService {
 
   public delete(api: string, header?: HttpHeaders): Observable<any> {
     const requestUrl = this.url + api;
-    return this.http.get(requestUrl,  { 'headers': header ? header : this.jsonHeaders });
+    return this.http.delete(requestUrl,  { 'headers': header ? header : this.jsonHeaders });
   }
 }

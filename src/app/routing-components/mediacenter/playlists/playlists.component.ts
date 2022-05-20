@@ -1,5 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { TranslateService } from 'src/app/services/i18n/translate.service';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
 import { Playlist } from 'src/app/services/repository/search-repository/models/playlist/playlist.model.dto';
 import { PodcastRepositoryService } from 'src/app/services/repository/search-repository/podcast-repository.service';
@@ -16,9 +20,12 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
   loggedIn : boolean | null = null;
   fetchedUserPlaylists: boolean | null = null;
   userPlaylists : Playlist[] | null = null;
-  recommendationPlaylists : Playlist[] | null = null;
+  recommendationPlaylists: Playlist[] | null = null;
+  playlistToDelete: Playlist | null = null;
 
-  constructor(private podcastService : PodcastRepositoryService, private readonly userService: UserService, private readonly mediaPlayer: MediaPlayerService) {
+  playlistName = new FormControl('', [Validators.required, Validators.maxLength(24)]);
+
+  constructor(private podcastService : PodcastRepositoryService, private readonly userService: UserService, private readonly mediaPlayer: MediaPlayerService, private readonly translationService: TranslateService, private readonly toastrService: ToastrService, private readonly loadingService: LoaderService) {
     // this.recommendationPlaylists = PLAYLIST_ARRAY_MOCK;
   }
 
@@ -26,21 +33,27 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
     this.loggedIn = this.userService.isUserLoggedIn();
     this.userService.onUserStateChanged.subscribe(state => {
       this.loggedIn = state;
-      this.getPlaylist();
+      this.getPlaylists();
     });
-    this.getPlaylist();
+    this.getPlaylists();
 
   }
 
-  getPlaylist() {
+  getPlaylists() {
     this.userPlaylists = [];
     this.fetchedUserPlaylists = false;
     if (!this.loggedIn) {
       return;
     }
-    this.playlistSubscription = this.podcastService.getPlaylists().subscribe((data) => {
-      this.fetchedUserPlaylists = true;
-      this.userPlaylists = data;
+    this.loadingService.show();
+    this.playlistSubscription = this.podcastService.getPlaylists().subscribe({
+      next: (data) => {
+        this.fetchedUserPlaylists = true;
+        this.userPlaylists = data;
+      },
+      complete: () => {
+        this.loadingService.hide();
+      }
     });
   }
 
@@ -54,7 +67,55 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
     }
   }
 
-  handleViewPlaylist(playlist : Playlist) : void {
+  handleViewPlaylist(playlist: Playlist): void {
+    this.playlistToDelete = playlist;
     // TODO ACTUALLY VIEW PLAYLIST
+  }
+
+  handleDeletePlaylist(playlist: Playlist): void {
+    this.playlistToDelete = playlist;
+  }
+
+  createPlaylist() {
+    if (!this.playlistName.valid) {
+      return;
+    }
+    this.loadingService.show();
+    this.podcastService.addPlaylist(this.playlistName.value).subscribe({
+      next: (_) => {
+        this.toastrService.success(this.translationService.transform("success_create_playlist"));
+      },
+      error: (e) => {
+        this.toastrService.error(this.translationService.transform("error_create_playlist"));
+      },
+      complete: () => {
+        this.loadingService.hide();
+        this.getPlaylists();
+      }
+    });
+  }
+
+  confirmDeletion() {
+    this.loadingService.show();
+    this.podcastService.deletePlaylist(this.playlistToDelete?.playlist_Id).subscribe({
+      next: (_) => {
+        this.toastrService.success(this.translationService.transform("success_delete_playlist"));
+      },
+      error: (e) => {
+        this.toastrService.error(this.translationService.transform("error_delete_playlist"));
+      },
+      complete: () => {
+        this.loadingService.hide();
+        this.getPlaylists();
+      }
+    });
+    this.playlistToDelete = null;
+  }
+
+  cancelDeletion() {
+    if (this.playlistToDelete) {
+      this.playlistToDelete = null;
+      this.toastrService.info(this.translationService.transform("cancelled_deletion_playlist"));
+    }
   }
 }
