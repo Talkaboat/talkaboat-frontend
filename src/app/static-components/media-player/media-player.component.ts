@@ -79,7 +79,7 @@ export class MediaPlayerComponent implements OnInit {
 
   onPlayerReady(api: VgApiService) {
     this.api = api;
-    if (this.track && this.track.value.playTime) {
+    if (this.track && this.track.value.playTime && this.track.value.playTime + 30 < this.track.value.audio_length_sec) {
       this.api.getDefaultMedia().currentTime = this.track.value.playTime;
     }
     this.api.getDefaultMedia().subscriptions.ended.subscribe(
@@ -89,7 +89,6 @@ export class MediaPlayerComponent implements OnInit {
           this.mediaRepositoryService.stop(this.track.value.podcast_id, this.track.value.aboat_id, this.api.getDefaultMedia().currentTime).subscribe(
             rewards => this.userService.updateRewards(rewards)
           );
-          this.api.getDefaultMedia().currentTime = 0;
         }
         this.mediaPlayerService.nextTrack();
       }
@@ -102,6 +101,9 @@ export class MediaPlayerComponent implements OnInit {
           this.mediaRepositoryService.heartbeat(this.track.value.podcast_id, this.track.value.aboat_id, this.api!.getDefaultMedia().currentTime).subscribe(
             rewards => this.userService.updateRewards(rewards)
           );
+
+          this.track.value.playTime = this.api?.getDefaultMedia().currentTime;
+          this.mediaPlayerService.updateLocalStoragePlaylist(this.track.value)
         }
       });
     this.api.getDefaultMedia().subscriptions.playing.subscribe(
@@ -162,7 +164,12 @@ export class MediaPlayerComponent implements OnInit {
 
 
   play() {
-    this.api?.play();
+    if (this.api) {
+      if(this.track.value.playTime) {
+        this.api.currentTime = this.track.value.playTime;
+      }
+      this.api.play();
+    }
   }
 
   pause() {
@@ -191,8 +198,10 @@ export class MediaPlayerComponent implements OnInit {
 
   changeSource(nextTrack: Episode) {
     this.track.next(nextTrack);
-    if (this.api && nextTrack.playTime) {
+    if (this.api && nextTrack.playTime && nextTrack.playTime + 30 < nextTrack.audio_length_sec) {
       this.api.currentTime = nextTrack.playTime;
+    } else if(this.api) {
+      this.api!.currentTime = 0;
     }
   }
 

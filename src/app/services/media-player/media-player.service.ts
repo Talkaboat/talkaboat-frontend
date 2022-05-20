@@ -19,15 +19,12 @@ export class MediaPlayerService {
   public changedPlayState = new EventEmitter<boolean>();
   constructor() {
 
-    const trackJson = localStorage.getItem("last_track");
-    if (trackJson) {
-      this.track = JSON.parse(trackJson);
-      this.onTrackChanged.emit(this.track);
-    }
-
+    this.currentTrackIndex = Number.parseInt(localStorage.getItem("last_track") || "0") ;
     const playlistJson = localStorage.getItem("last_playlist");
     if (playlistJson) {
       this.playlist = JSON.parse(playlistJson);
+      this.track = this.playlist[this.currentTrackIndex];
+      this.onTrackChanged.emit(this.track);
     }
   }
 
@@ -39,8 +36,8 @@ export class MediaPlayerService {
   }
 
   nextTrack() {
-
     this.currentTrackIndex += 1;
+    localStorage.setItem("last_track", this.currentTrackIndex >= this.playlist.length ? "0" : this.currentTrackIndex.toString());
     if (this.playlist && this.playlist.length > 1 && this.currentTrackIndex < this.playlist.length) {
       this.setTrack(this.playlist[this.currentTrackIndex], true)
    }
@@ -55,8 +52,8 @@ export class MediaPlayerService {
       this.playlist.push(episodeData);
       localStorage.setItem("last_playlist", JSON.stringify(this.playlist));
     }
+    localStorage.setItem("last_track", this.currentTrackIndex.toString());
 
-    localStorage.setItem("last_track", JSON.stringify(episodeData));
     this.track = episodeData;
 
     this.onTrackChanged.emit(this.track);
@@ -64,19 +61,26 @@ export class MediaPlayerService {
     this.setPlayState(autoplay);
   }
 
-  SetPlaylist(playlist: Playlist, autoplay: boolean) {
-    var init = false;
+  updateLocalStoragePlaylist(currentTrackData: Episode) {
+    this.playlist[this.currentTrackIndex] = currentTrackData;
+    localStorage.setItem("last_track", this.currentTrackIndex.toString());
+    localStorage.setItem("last_playlist", JSON.stringify(this.playlist));
+  }
+
+  SetPlaylist(playlist: Playlist, autoplay: boolean, startFromTrack = 0) {
+    this.currentTrackIndex = startFromTrack;
+    var init = 0;
     if (playlist.tracks) {
       for (var track of playlist.tracks) {
         if (!track.episode) {
           continue;
         }
-        if (!init) {
-          init = true;
+        if (init == startFromTrack) {
           this.setTrack(track.episode, autoplay, track.episode.podcast, true);
         } else {
           this.AddEpisodesToList([track.episode], track.episode.podcast);
         }
+        init++;
       }
     }
   }
