@@ -1,4 +1,4 @@
-<ul class="mx-auto max-w-[68.75rem] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+<ul class="md:max-w-[55rem] sm:max-w-[40rem] max-w-[25rem] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
     <li *ngFor="let item of items">
         <app-podcast-list-view-item (toggleLibrary)="toggleLibraryHandler($event)" [item]="item" class="mb-5 py-0 flex flex-col bg-shadow-700 rounded-[0.625rem] shadow-lg"></app-podcast-list-view-item>
     </li>
