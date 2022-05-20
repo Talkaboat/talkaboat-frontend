@@ -17,20 +17,24 @@ export class MediaRepositoryService extends RepositoryService  {
   }
 
   //Which information do we need?
-  public play(owner: number, asset: number):  Observable<Reward> {
+  public play(owner: number, asset: number, playtime: number):  Observable<Reward> {
     if (!this.userService.isUserLoggedIn() || !owner || !asset) {
       return of({vested: 0, total: 0, unvested: 0});
     }
     const api = MEDIA_API.URL + MEDIA_API.PLAY_URL;
-    return this.post<Reward>(api, {owner: owner, asset: asset});
+    return this.post<Reward>(api, this.getMediaTrackingBody(owner, asset, playtime));
   }
 
-  public pause(owner: number, asset: number):  Observable<Reward> {
+  getMediaTrackingBody(owner: number, asset: number, playtime: number) {
+    return  {owner: owner, asset: asset, playTime: Math.floor(playtime)}
+  }
+
+  public pause(owner: number, asset: number, playtime: number):  Observable<Reward> {
     if (!this.userService.isUserLoggedIn() || !owner || !asset) {
       return of({vested: 0, total: 0, unvested: 0});
     }
     const api = MEDIA_API.URL + MEDIA_API.PAUSE_URL;
-    return this.post<Reward>(api, {owner: owner, asset: asset});
+    return this.post<Reward>(api, this.getMediaTrackingBody(owner, asset, playtime));
   }
 
   public token(): Observable<number> {
@@ -38,36 +42,36 @@ export class MediaRepositoryService extends RepositoryService  {
     return this.get(api);
   }
 
-  public mute(owner: number, asset: number): Observable<Reward> {
+  public mute(owner: number, asset: number, playtime: number): Observable<Reward> {
     if (!this.userService.isUserLoggedIn() || !owner || !asset) {
       return of({vested: 0, total: 0, unvested: 0});
     }
     const api = MEDIA_API.URL + MEDIA_API.MUTE_URL;
-    return this.post<Reward>(api, {owner: owner, asset: asset});
+    return this.post<Reward>(api, this.getMediaTrackingBody(owner, asset, playtime));
   }
 
-  public unmute(owner: number, asset: number): Observable<Reward> {
+  public unmute(owner: number, asset: number, playtime: number): Observable<Reward> {
     if (!this.userService.isUserLoggedIn() || !owner || !asset) {
       return of({vested: 0, total: 0, unvested: 0});
     }
     const api = MEDIA_API.URL + MEDIA_API.UNMUTE_URL;
-    return this.post<Reward>(api, {owner: owner, asset: asset});
+    return this.post<Reward>(api, this.getMediaTrackingBody(owner, asset, playtime));
   }
 
-  public heartbeat(owner: number, asset: number): Observable<Reward> {
+  public heartbeat(owner: number, asset: number, playtime: number): Observable<Reward> {
     if (!this.userService.isUserLoggedIn() || !owner || !asset) {
       return of({vested: 0, total: 0, unvested: 0});
     }
     const api = MEDIA_API.URL + MEDIA_API.HEARTBEAT_URL;
-    return this.post<Reward>(api, { owner: owner, asset: asset });
+    return this.post<Reward>(api, this.getMediaTrackingBody(owner, asset, playtime));
   }
 
-  public stop(owner: number, asset: number):  Observable<Reward> {
+  public stop(owner: number, asset: number, playtime: number):  Observable<Reward> {
     if (!this.userService.isUserLoggedIn() || !owner || !asset) {
       return of({vested: 0, total: 0, unvested: 0});
     }
     const api = MEDIA_API.URL + MEDIA_API.STOP_URL;
-    return this.post<Reward>(api, {owner: owner, asset: asset});
+    return this.post<Reward>(api, this.getMediaTrackingBody(owner, asset, playtime));
   }
 
 }

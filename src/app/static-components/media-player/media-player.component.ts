@@ -83,7 +83,7 @@ export class MediaPlayerComponent implements OnInit {
       () => {
         // Set the video to the beginning
         if (this.api) {
-          this.mediaRepositoryService.stop(this.track.value.podcast_id, this.track.value.aboat_id).subscribe(
+          this.mediaRepositoryService.stop(this.track.value.podcast_id, this.track.value.aboat_id, this.api.getDefaultMedia().currentTime).subscribe(
             rewards => this.userService.updateRewards(rewards)
           );
           this.api.getDefaultMedia().currentTime = 0;
@@ -96,14 +96,14 @@ export class MediaPlayerComponent implements OnInit {
         this.updates++;
         if (this.updates > this.updatesBetweenHeartbeat) {
           this.updates = 0;
-          this.mediaRepositoryService.heartbeat(this.track.value.podcast_id, this.track.value.aboat_id).subscribe(
+          this.mediaRepositoryService.heartbeat(this.track.value.podcast_id, this.track.value.aboat_id, this.api!.getDefaultMedia().currentTime).subscribe(
             rewards => this.userService.updateRewards(rewards)
           );
         }
       });
     this.api.getDefaultMedia().subscriptions.playing.subscribe(
       () => {
-        this.mediaRepositoryService.play(this.track.value.podcast_id, this.track.value.aboat_id).subscribe(
+        this.mediaRepositoryService.play(this.track.value.podcast_id, this.track.value.aboat_id, this.api!.getDefaultMedia().currentTime).subscribe(
           result => this.userService.updateRewards(result)
         );
         this.isPlaying = true;
@@ -111,7 +111,7 @@ export class MediaPlayerComponent implements OnInit {
     )
     this.api.getDefaultMedia().subscriptions.pause.subscribe(
       () => {
-        this.mediaRepositoryService.pause(this.track.value.podcast_id, this.track.value.aboat_id).subscribe(
+        this.mediaRepositoryService.pause(this.track.value.podcast_id, this.track.value.aboat_id, this.api!.getDefaultMedia().currentTime).subscribe(
           result => this.userService.updateRewards(result)
         );
         this.isPlaying = false;
@@ -121,7 +121,7 @@ export class MediaPlayerComponent implements OnInit {
       () => {
         if (this.api?.volume === 0) {
           if (this.currentVolume != Volume.Muted) {
-            this.mediaRepositoryService.mute(this.track.value.podcast_id, this.track.value.aboat_id).subscribe(
+            this.mediaRepositoryService.mute(this.track.value.podcast_id, this.track.value.aboat_id, this.api.getDefaultMedia().currentTime).subscribe(
               result => this.userService.updateRewards(result)
             );
           }
@@ -129,7 +129,7 @@ export class MediaPlayerComponent implements OnInit {
 
         } else if (this.api?.volume > 0) {
           if (this.currentVolume == Volume.Muted) {
-            this.mediaRepositoryService.unmute(this.track.value.podcast_id, this.track.value.aboat_id).subscribe(
+            this.mediaRepositoryService.unmute(this.track.value.podcast_id, this.track.value.aboat_id, this.api!.getDefaultMedia().currentTime).subscribe(
               result => this.userService.updateRewards(result)
             );
           }
