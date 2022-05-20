@@ -276,5 +276,24 @@ export const de = {
   //#region Header
   language_flag: "./assets/images/header/languages/de.png",
   //#endregion
+
+  //#region Mediacenter
+  //#region Mediacenter - Playlist
+  success_create_playlist: "Neue Playlist angelegt",
+  error_create_playlist: "Fehler beim anlegen der Playlist",
+  success_delete_playlist: "Playlist gelöscht",
+  error_delete_playlist: "Fehler beim löschen der Playlist",
+  cancelled_deletion_playlist: "Löschen der Playlist abgebrochen",
+  add_playlist_placeholder: "Name der neuen Playlist...",
+  playlist_header: "Deine Playlists",
+  no_playlists_info: "Sieht so aus, als hättest du noch keine Playlists angelegt",
+  confirm_deletion_modal: "Willst du die Playlist wirklich löschen?",
+  confirm_playlist_deletion_button: "Ja, will ich!",
+  playlist_login_info: "Du musst angemeldet sein, um deine Playlists verwalten zu können.",
+  created: "Erstellt",
+  play: "Abspielen",
+  //#endregion
+
+  //#endregion
 }
 

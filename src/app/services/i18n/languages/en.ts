@@ -271,4 +271,24 @@ export const en = {
   //#region Header
   language_flag: "./assets/images/header/languages/en.png",
   //#endregion
+
+
+  //#region Mediacenter
+  //#region Mediacenter - Playlist
+  success_create_playlist: "New playlist created",
+  error_create_playlist: "Error creating playlist",
+  success_delete_playlist: "Playlist deleted",
+  error_delete_playlist: "Error deleting playlist",
+  cancelled_deletion_playlist: "Playlist deletion cancelled",
+  add_playlist_placeholder: "Name of the new playlist...",
+  playlist_header: "Your playlists",
+  no_playlists_info: "Looks like you haven't created playlists yet,",
+  confirm_deletion_modal: "Are you sure you want to delete the playlist?",
+  confirm_playlist_deletion_button: "Yes, I am!",
+  playlist_login_info: "You must be logged in to manage your playlists.",
+  created: "Created",
+  play: "Play",
+  //#endregion
+
+  //#endregion
 }

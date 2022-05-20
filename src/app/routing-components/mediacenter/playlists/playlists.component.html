@@ -2,9 +2,9 @@
 
 <ng-template #loggedInSection>
   <section>
-    <h2>Your playlists</h2>
+    <h2>{{ 'playlist_header' | translate }}</h2>
 
-    <p *ngIf="userPlaylists == null">It looks like you dont have any playlists yet.</p>
+    <p *ngIf="userPlaylists == null">{{ 'no_playlists_info' | translate}}</p>
     <div id="add-playlist mb-10 mt-5">
       <form class="flex mb-10 mt-5" >
         <input type="text" class="input input-bordered input-primary w-full max-w-xs" [placeholder]="'add_playlist_placeholder' | translate" [formControl]="playlistName"/>
@@ -19,7 +19,7 @@
 <ng-template #showLoginSection>
   <section>
     <h2>Playlists</h2>
-    <p>Please login to create a playlist</p>
+    <p>{{ 'playlist_login_info' | translate}}</p>
     <button [routerLink]="['/login']" class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">Login</button>
   </section>
 </ng-template>
@@ -38,10 +38,10 @@
   <div class="fixed top-20" for="">
     <div class="modal-box relative w-[20rem]">
       <label for="deletePlaylistModal" class="absolute cursor-pointer right-2 top-2 rounded-full w-6 h-6 btn-outline btn-error text-center" (click)="cancelDeletion()">X</label>
-      {{ 'confirm_deletion_modal' }}:<br>
+      {{ 'confirm_deletion_modal' | translate }}:<br>
       <h5>{{ playlistToDelete?.name }}</h5>
       <div class="modal-action">
-        <label for="deletePlaylistModal" (click)="confirmDeletion()" class="btn">Yes, I'm sure!</label>
+        <label for="deletePlaylistModal" (click)="confirmDeletion()" class="btn">{{ 'confirm_playlist_deletion_button' | translate }}</label>
       </div>
     </div>
 
