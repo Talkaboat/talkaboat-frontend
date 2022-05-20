@@ -72,7 +72,7 @@ export const de = {
   changed_slippage_hint: '<h5>Hinweis</h5><p class="small">Wir haben deine slippage angepasst, damit der Trade erfolgreich durchgeführt werden kann!</p>',
   liquidity: 'Liquidität',
   lounge: 'Lounge',
-  mediacenter: 'Mediacenter',
+  mediacenter: 'Mediathek',
 
   favorites: 'Favoriten',
   playlists: 'Playlists',
