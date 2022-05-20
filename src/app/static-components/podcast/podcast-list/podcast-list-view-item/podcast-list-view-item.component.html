@@ -1,6 +1,6 @@
 
 <div class="px-2">
-  <div class="bg-shadow-700 h-[18.75rem] sm:h-[18.75rem] md:h-[21.875rem] rounded-[0.625rem]">
+  <div class="bg-shadow-700 h-[19.75rem] sm:h-[19.75rem] md:h-[21.875rem] rounded-[0.625rem]">
     <div class="py-0 p-0 flex flex-col bg-shadow-700 rounded-[0.625rem] shadow-lg h-full">
       <div class="mx-auto w-full h-auto flex sm:grid relative rounded-[0.625rem]">
         <div
@@ -20,15 +20,15 @@
         </div>
       </div>
       <!-- METADATA -->
-      <div class="px-3 w-full mt-3 grid">
+      <div class="px-3 w-full mt-3 mb-3 grid">
         <h5 class="line-clamp-1 text-info overflow-hidden my-auto text-ellipsis text-base"><a tabindex="0"
-            [routerLink]="['search/podcast']" [queryParams]="{ 'pd': item.aboat_id, 'ep': null }"
+            [routerLink]="['/search/podcast']" [queryParams]="{ 'pd': item.aboat_id, 'ep': null }"
             queryParamsHandling="merge">{{ item.title }}</a></h5>
         <p class="text-gray-700 line-clamp-2 sm:line-clamp-3 max-h-[2.8125rem] overflow-hidden text-ellipsis text-xs mt-2"
           [innerHtml]="item.description ">
         </p>
       </div>
-      <div class="sm:pb-3 sm:flex sm:mx-auto sm:px-3 mt-auto mb-3" >
+      <div class="sm:pb-3 flex mx-auto sm:px-3 mt-auto mb-3" >
         <button aria-label="add to playlist or library"
           class="btn rounded-[0.625rem] sm:mx-auto max-w-fit px-4 sm:px-8 py-3 text-main-300 border-main-300 border-1 font-semibold"
           (click)="toggleLibraryClicked()">

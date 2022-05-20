@@ -2,8 +2,8 @@
 <ng-container *ngIf="loggedIn then loggedInSection else showLoginSection"></ng-container>
 <!--
  page content ideas:
- episoden nach themen? 
- aktuell aktiv gehörte episoden - andere hören aktuell...? 
+ episoden nach themen?
+ aktuell aktiv gehörte episoden - andere hören aktuell...?
  von freunden?
 <ng-container *ngIf="recommendationPodcasts && recommendationPodcasts.length > 0">
     <section>
@@ -20,13 +20,13 @@
 </ng-container>
 -->
 <ng-template #loggedInSection>
-    <section>
+    <section class="px-1 sm:px-0">
         <h2>{{ 'favourite_podcasts_heading' | translate}}</h2>
         <ng-container *ngIf="userLibraryEpisodes != null && userLibraryEpisodes.length > 0 then userContent else userNoContent"></ng-container>
     </section>
 </ng-template>
 <ng-template #showLoginSection>
-    <section>
+    <section class="px-1 sm:px-0">
         <h2>{{ 'favourite_podcasts_heading' | translate}}</h2>
         <p>{{ 'favourite_podcasts_login_hint' | translate}}</p>
         <button [routerLink]="['/login']" class="btn rounded-full px-8 py-4 mt-4 max-w-[120px]">Login</button>

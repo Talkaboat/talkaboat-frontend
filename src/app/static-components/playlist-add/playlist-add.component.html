@@ -1,0 +1,12 @@
+<input #modalToggle type="checkbox" id="playlistAddModal" class="modal-toggle" />
+<label for="playlistAddModal" class="modal cursor-pointer">
+  <label class="modal-box flex flex-col fixed top-20 min-h-[31rem]" for="" *ngIf="playlists && playlists.length > 0">
+    <div class="h-full w-full">
+      <p>Select Playlist to add Episode</p>
+      <ng-multiselect-dropdown class="border-info mt-4" [settings]="dropdownSettings" [data]="playlists"
+      [(ngModel)]="selectedPlaylist" ngDefaultControl>
+    </ng-multiselect-dropdown>
+    </div>
+      <label class="mt-auto btn btn-primary" *ngIf="selectedPlaylist && selectedPlaylist.length > 0" for="playlistAddModal" (click)="addToPlaylist()" >Add</label>
+  </label>
+</label>

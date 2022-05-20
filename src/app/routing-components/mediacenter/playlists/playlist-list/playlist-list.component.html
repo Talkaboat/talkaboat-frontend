@@ -1,13 +1,16 @@
-<ul class="flex gap-4 flex-grow-0 flex-wrap box-border">
-    <li (click)="playlistViewClicked(item)" *ngFor="let item of playlists" class="p-0 card card-neutral min-w-[16rem] max-w-[16rem] box-border relative">
-      <label for="deletePlaylistModal" class="absolute cursor-pointer right-2 top-2 rounded-full w-6 h-6 btn-outline btn-error text-center" (click)="deletePlaylist(item)">X</label>
-        <div class="flex flex-col max-w-xs card-body">
-            <img [src]="item.image ? item.image : '/assets/images/podcast.png'" class="h-[10rem] w-[10rem]">
-            <h3 class="whitespace-nowrap text-ellipsis overflow-hidden mt-4 flex-grow">
+<ul class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 flex-wrap box-border">
+    <li (click)="playlistViewClicked(item)" *ngFor="let item of playlists" class="p-0 card card-neutral w-[10rem] sm:w-[16rem]  box-border relative">
+      <label for="deletePlaylistModal" class="absolute cursor-pointer right-1 top-1 rounded-full w-6 h-6 btn-outline btn-error text-center" (click)="deletePlaylist(item)">X</label>
+        <div class="flex flex-col max-w-xs card-body p-0 text-center sm:text-left">
+            <img [src]="item.image ? item.image : '/assets/images/podcast.png'" class="w-full mx-auto aspect-square" height="100" width="100">
+            <h3 class="whitespace-nowrap text-ellipsis overflow-hidden mt-2 flex-grow">
                 {{item.name}}
             </h3>
-            <p class="opacity-25 mt-4 flex-grow-0">{{ 'created' | translate}}: 22.03.2022</p>
-            <p class="opacity-25 flex-grow-0">{{'episodes' | translate }}: {{item.tracks?.length}}</p>
+            <div class="text-center sm:text-left">
+
+              <p class="opacity-25 mt-2 flex-grow-0">{{ 'created' | translate}}: 22.03.2022</p>
+              <p class="opacity-25 flex-grow-0">{{'episodes' | translate }}: {{item.tracks?.length}}</p>
+            </div>
             <button (click)="playlistPlayClicked(item, $event)" class="btn btn-primary rounded-full px-8 py-4 mt-4">{{ 'play' | translate}}</button>
         </div>
     </li>

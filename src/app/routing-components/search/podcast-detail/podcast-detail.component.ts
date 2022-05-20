@@ -111,7 +111,7 @@ export class PodcastDetailComponent implements OnInit {
   }
 
   addToPlaylist(episode: Episode) {
-
+    this.mediaService.initPlaylistAdd(episode);
   }
 
   toggleSorting() {

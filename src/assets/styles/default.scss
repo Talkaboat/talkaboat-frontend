@@ -58,6 +58,10 @@ h6 {
   @apply font-semibold text-[1rem] md:text-[1.1rem];
 }
 
+section {
+  padding: 4px !important;
+}
+
 .center-section {
   @apply max-w-[75rem] mx-auto;
 }

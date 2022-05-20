@@ -1,4 +1,4 @@
-<div class="mx-auto max-w-[80rem] px-[0.625rem]">
+<div class="mx-auto max-w-[80rem] px-1 sm:px-0">
   <button aria-label="back navigation" *ngIf="canNavigateBack"
     class="btn max-w-[24rem] rounded-[0.625rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
     (click)="backNavigation()">{{ 'back_nav' | translate}}</button>
@@ -41,9 +41,9 @@
           </p>
         </button>
       </div>
-      <div class="flex justify-start grid-cols-3 gap-3 mt-2">
-        <div class="text-sm px-5 py-3 bg-shadow-500 rounded-[0.625rem]" *ngFor="let genre of genreNames">
-          <p class="text-main-100 leading-none">{{ genre }}</p>
+      <div class="grid max-w-[20rem] sm:max-w-[25rem] justify-start grid-cols-2 sm:grid-cols-3 gap-3 mt-2">
+        <div class="text-xs px-5 py-3 bg-shadow-500 rounded-[0.625rem] text-center" *ngFor="let genre of genreNames">
+          <p class="text-main-100 leading-none ">{{ genre }}</p>
         </div>
       </div>
     </div>
@@ -106,11 +106,11 @@
               </p>
               <!-- Add to Playlist -->
               <div class="sm:ml-none sm:pb-3 ml-auto sm:mx-auto my-auto sm:px-3 sm:mt-3">
-                <button aria-label="add to playlist or library"
+                <label aria-label="add to playlist or library" for="playlistAddModal"
                   class="btn rounded-[0.625rem] px-4 sm:px-8 py-3 bg-shadow-500 text-main-300 border-main-300 border-1 font-semibold"
                   (click)="addToPlaylist(episode)">
                   <span>Add</span>
-                </button>
+              </label>
               </div>
             </div>
 

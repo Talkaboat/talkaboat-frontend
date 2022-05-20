@@ -1,5 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Genre } from 'src/constants/media/models/genre.model.dto';
+import { Episode } from '../repository/search-repository/models/episode.model';
+import { Playlist } from '../repository/search-repository/models/playlist/playlist.model.dto';
 import { Podcast } from '../repository/search-repository/models/podcast.model';
 import { PodcastRepositoryService } from '../repository/search-repository/podcast-repository.service';
 import { UserService } from '../user/user.service';
@@ -12,8 +14,14 @@ export class MediaHelperService {
   library: number[] = [];
   isManipulating: number[] = [];
   lastPodcastDetail: Podcast | undefined = undefined;
+  episodeToAddToPlaylist: Episode | null = null;
+
+  userPlaylists: Playlist[] = [];
+
   onGenreDataChanged: EventEmitter<Genre[]> = new EventEmitter<Genre[]>();
   onLibraryChanged: EventEmitter<number[]> = new EventEmitter<number[]>();
+  onItemAddedToPlaylist: EventEmitter<boolean> = new EventEmitter<boolean>();
+  onPlaylistsChanged: EventEmitter<Playlist[]> = new EventEmitter<Playlist[]>();
   constructor(private readonly podcastRepositoryService: PodcastRepositoryService, private readonly userService: UserService) {
     podcastRepositoryService.getGenres().subscribe((genres: Genre[]) => {
       this.genreData = genres;
@@ -34,6 +42,29 @@ export class MediaHelperService {
 
   public setup() {
     this.getLibrary();
+    this.getPlaylistOverviews();
+  }
+
+  public getPlaylistOverviews() {
+    this.podcastRepositoryService.getPlaylists().subscribe(data => {
+      this.userPlaylists = data;
+      this.onPlaylistsChanged.emit(this.userPlaylists);
+    });
+  }
+
+  public initPlaylistAdd(episodeToAddToPlaylist: Episode) {
+    this.episodeToAddToPlaylist = episodeToAddToPlaylist;
+  }
+
+  public cancelPlaylistAdd() {
+    this.episodeToAddToPlaylist = null;
+  }
+
+  public confirmPlaylistAdd(playlistId: number) {
+    if (this.episodeToAddToPlaylist) {
+      this.podcastRepositoryService.addEpisodeToPlaylist(playlistId, this.episodeToAddToPlaylist.aboat_id).subscribe(_ => this.onItemAddedToPlaylist.emit(true));
+      this.episodeToAddToPlaylist = null;
+    }
   }
 
   public reset() {
