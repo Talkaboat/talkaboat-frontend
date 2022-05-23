@@ -23,6 +23,7 @@ import { PodcastCarouselComponent } from './podcast-carousel/podcast-carousel.co
 import { PodcastListViewItemComponent } from "./podcast/podcast-list/podcast-list-view-item/podcast-list-view-item.component";
 import { PodcastListComponent } from './podcast/podcast-list/podcast-list.component';
 import { SidebarComponent } from "./sidebar/sidebar.component";
+import { TokenClaimComponent } from './token-claim/token-claim.component';
 import { YoutubeComponent } from './youtube/youtube.component';
 
 
@@ -42,6 +43,7 @@ import { YoutubeComponent } from './youtube/youtube.component';
     PodcastListComponent,
     PodcastCarouselComponent,
     PlaylistAddComponent,
+    TokenClaimComponent,
 
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
@@ -72,7 +74,8 @@ import { YoutubeComponent } from './youtube/youtube.component';
     PodcastListViewItemComponent,
     PodcastListComponent,
     PodcastCarouselComponent,
-    PlaylistAddComponent
+    PlaylistAddComponent,
+    TokenClaimComponent,
   ],
 })
 export class SharedModule { }
