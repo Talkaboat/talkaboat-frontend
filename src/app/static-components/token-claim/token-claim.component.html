@@ -1,9 +1,33 @@
-<input type="checkbox" id="tokenClaimModal" class="modal-toggle" />
+<input #tokenClaimCheckbox type="checkbox" id="tokenClaimModal" class="modal-toggle" />
 <label for="tokenClaimModal" class="modal cursor-pointer">
-  <label class="modal-box flex flex-col fixed top-20 min-h-[31rem]" for="">
-    <div class="h-full w-full">
+  <label class="modal-box flex flex-col fixed top-20 min-h-[25rem]" for="">
+      <h4>{{ 'claim_header' | translate }}</h4>
+      <div class="mt-10">
+        <p>{{ 'token_total_claim' | translate }}: {{ totalTokens | number:'1.2-2' }}</p>
+        <p>{{ 'token_available_for_claim' | translate }}: <b>{{ vestedTokens | number:'1.2-2' }}</b></p>
+      </div>
+      <div class="mt-10">
+        <form class="flex">
+          <label hidden for="amount">{{ "amount" | translate }}</label>
+          <input [formControl]="claimAmount" (input)="claimMode = -1"  id="amount" name="amount" type="number" required class="input input-primary"  [class.disabled]="claimMode > 0" placeholder="{{ 'amount' | translate }}"/>
+          <button class="btn btn-outline max-w-[3rem] max-h-10 my-auto ml-2 px-2" (click)="setToMaxClaimableAmount()">MAX</button>
+        </form>
+      </div>
+      <div class="flex w-full mt-auto h-20" [class.hidden]="claimMode > 0">
 
-    </div>
-      <label class="mt-auto btn btn-primary" for="tokenClaimModal" (click)="claimAboat()" >Claim</label>
+        <div class="grid h-20 flex-grow card btn-primary cursor-pointer rounded-box place-items-center"
+          (click)="claimAboat()">{{ 'claim_aboat' | translate }}</div>
+        <div class="divider divider-horizontal">OR</div>
+        <label for="" class="grid h-20 flex-grow card btn-secondary cursor-pointer rounded-box place-items-center"
+          (click)="claimBnb()">{{ 'claim_bnb' | translate }}</label>
+      </div>
+      <div class="flex w-full mt-auto h-20" [class.hidden]="claimMode <= 0">
+
+        <label for="" class="grid h-20 flex-grow card btn-success cursor-pointer rounded-box place-items-center"
+          (click)="confirmClaim()">{{ 'confirm_claim' | translate}}</label>
+        <div class="divider divider-horizontal">OR</div>
+        <label for="" class="grid h-20 max-w-[7.5rem] flex-grow card btn-error cursor-pointer rounded-box place-items-center"
+          (click)="claimMode = -1">{{ 'abort_claim' | translate}}</label>
+      </div>
   </label>
 </label>
