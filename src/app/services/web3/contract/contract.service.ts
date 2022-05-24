@@ -9,10 +9,8 @@ import { rewardSystem } from 'src/constants/contracts/reward.contract';
 import { router } from 'src/constants/contracts/router';
 import { Web3Service } from '../web3.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ContractService {
-
-
   private readonly api = 'https://api.bscscan.com/api?module=contract&action=getabi&address={0}';
   private readonly routerContractAddress = '0xD48745E39BbED146eEC15b79cBF964884F9877c2';
   private readonly factoryContractAddress = '0xb42e3fe71b7e0673335b3331b3e1053bd9822570';
@@ -23,7 +21,8 @@ export class ContractService {
   private readonly masterEntertainerTestnetContractAddress = '0x7EED120eF26267691DbE7692ee326A0896D6cC2A';
   private readonly registerTestnetContractAddress = '0x0582dF774186fA5cD73a094022bD88A350649378';
   private readonly faucetTestnetContractAddress = '0x173248954B79BB666F6F88C8947eD7B2C2fc3714';
-  private readonly rewardTestnetContractAddress = '0x52CA0D372a8897Fc00D14555Be962B1f4223790B';
+  private readonly rewardTestnetContractAddress = '0x77dC10eB4Ae7733571aAB05cEA6455C98dda5fC1';
+  private readonly rewardTestnetKAIContractAddress = '0x77dC10eB4Ae7733571aAB05cEA6455C98dda5fC1';
   private readonly privateSaleTestnetContractAddress = '0xaC8227fA38E0fb3d10bAa32B077B6125E7ae4F2c';
   private readonly masterEntertainerKAIContractAddress = '0x319Cbc449E622Ef53b06dD1b720649207e5D13B4';
   constructor(private readonly web3Service: Web3Service) { }
@@ -65,6 +64,7 @@ export class ContractService {
   public getRewardContractAddress(): string {
     switch (this.web3Service.chainId) {
       case 97: return this.rewardTestnetContractAddress;
+      case 242: return this.rewardTestnetKAIContractAddress;
     }
     return "";
   }

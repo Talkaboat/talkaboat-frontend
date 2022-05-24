@@ -5,7 +5,7 @@
     <audio #myMedia [vgMedia]="$any(myMedia)" id="audio" src="{{currentTrack.audio}}" type="audio/mp3"
     [attr.autoplay]="initialized ? '' : null">
   </audio>
-    <div class="z-30 fixed rounded-full shadow-shadow-500 shadow-md inset-x-5 m-[0%_auto] bottom-8 md:bottom-4 max-w-[500px] md:max-w-screen-sm h-[4.375rem] md:h-[6.25rem] transition-all ease-in-out duration-500">
+    <div class="z-30 fixed rounded-full shadow-shadow-500 shadow-md inset-x-5 m-[0%_auto] bottom-2 md:bottom-4 max-w-[500px] md:max-w-screen-sm h-[5rem] md:h-[6.25rem] transition-all ease-in-out duration-500">
       <vg-scrub-bar class="w-full scrub-bar-height place-items-start overflow-hidden">
         <vg-scrub-bar-current-time class="bg-[#333] h-full rounded-t-full overflow-hidden"></vg-scrub-bar-current-time>
         <vg-scrub-bar-buffering-time class="rounded-t-full overflow-hidden"></vg-scrub-bar-buffering-time>
@@ -82,7 +82,7 @@
                 <span class="w-fit px-1 text-xs">/</span>
                 <vg-time-display vgProperty="total" vgFormat="hh:mm:ss"></vg-time-display>
               </div>
-              <label for="tokenClaimModal" [class.invisible]="!isLoggedIn" id="token-area" class="flex items-center justify-end pt-1 cursor-pointer">
+              <label for="tokenClaimModal" [class.invisible]="!isLoggedIn" id="token-area" class="flex sm:items-center items-baseline justify-end pt-1 cursor-pointer">
                 <span>{{getRoundedTotalReward()}}</span><img src="../../../assets/images/aboat.png" [class.playing]="isPlaying" class="w-8 md:w-12 ml-2">
               </label>
               <div id="volume-area" [hidden]="isMobile" class="hidden md:flex justify-end items-center mt-auto">

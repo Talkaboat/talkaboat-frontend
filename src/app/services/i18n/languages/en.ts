@@ -177,7 +177,6 @@ export const en = {
   claimable: "Available",
   vesting: "Bound",
   claim: "Claim ABOAT",
-  claim_bnb: "Claim BNB",
   info_header_text: "The Aboat Entertainment fundraising process is currently active. To submit an application as a VC or Angel Investor, <u>click here.</u>",
   info_header_url: "https://forms.gle/naDTxxXvbxeLbvNA9",
   load_more: "Load more",
@@ -226,7 +225,7 @@ export const en = {
 
   social_header: 'Come on board and be social!',
 
-
+  feature_not_available: "This feature is currently not available.",
   //#region Videos
   home_title_video_id: 'eCryl3DhEtk',
   consumer_explainer_video_id: 'ro6BKVtsmsQ',
@@ -296,4 +295,13 @@ export const en = {
   //#endregion
 
   //#endregion
+
+    //#region Claim Token
+    confirm_claim: "Confirm",
+    claim_aboat: "Claim Aboat",
+    claim_bnb: "Convert to KAI",
+    token_total_claim: "Total Token",
+    token_available_for_claim: "Available Token",
+    claim_header: "Claim Token"
+    //#endregion
 }

@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, lastValueFrom } from 'rxjs';
 import { TranslateService } from '../i18n/translate.service';
 import { LoaderService } from '../loader/loader.service';
 import { AuthorizationResponse } from '../repository/user-repository/models/authorization-response.model';
@@ -11,6 +11,7 @@ import { UserAuthorizationRequestResponse } from '../repository/user-repository/
 import { UserData } from '../repository/user-repository/models/user-data.model';
 import { UserProfileData } from '../repository/user-repository/models/user-profile-data.model';
 import { UserRepositoryService } from '../repository/user-repository/user-repository.service';
+import { ContractService } from '../web3/contract/contract.service';
 import { Web3Service } from '../web3/web3.service';
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,8 @@ export class UserService {
     private readonly web3Service: Web3Service,
     private readonly loaderService: LoaderService,
     private readonly translateService: TranslateService,
-    private readonly toastrService: ToastrService) {
+    private readonly toastrService: ToastrService,
+  private readonly contractService: ContractService) {
     this.web3Service.accountsObservable.subscribe(changed => {
       // if (this.userData.addresses && this.userData.addresses.length > 0 && !this.userData.addresses.includes(changed[0])) {
       //   toastrService.info(translateService.transform('sign_out_address_mismatch'));
@@ -57,6 +59,44 @@ export class UserService {
       this.rewardDetails = rewards;
       this.onRewardDetailsChanged.emit(rewards);
     })
+  }
+
+  async claimAboat(amount: number): Promise<any> {
+    if (!this.web3Service.accounts || this.web3Service.accounts.length <= 0) {
+      //Not connected
+    }
+    if (!this.userData.addresses.includes(this.web3Service.accounts[0])) {
+      //Connected not included in account
+    }
+    this.loaderService.show();
+    if (!(await this.canClaimReward(this.web3Service.accounts[0]))) {
+      await this.sendClaimRequest(this.web3Service.accounts[0]);
+    }
+    return lastValueFrom(this.userRepositoryService.claim(this.web3Service.accounts[0], amount))
+      .then(data => {
+        this.updateRewards(data, true);
+        return data;
+      }).finally(() => this.loaderService.hide());
+  }
+
+  public async canClaimReward(address: string): Promise<boolean> {
+    const contract = this.contractService.getRewardContract();
+    if (!contract) {
+      return Promise.resolve(false);
+    }
+    return await contract.methods._rewards(address).call();
+  }
+
+  async sendClaimRequest(from: string): Promise<any> {
+    const contract = this.contractService.getRewardContract();
+    if (!contract) {
+      Promise.resolve(false);
+      return;
+    }
+    const method = contract.methods.claim();
+    const cost = await contract.methods._gasCost().call();
+    const gas = (await this.web3Service.getEstimatedGas(method, from, cost));
+    return method.send({ from, gas: gas, value: cost });
   }
 
 

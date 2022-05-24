@@ -178,7 +178,6 @@ export const de = {
   claimable: "Verfügbar",
   vesting: "Gebunden",
   claim: "ABOAT Abheben",
-  claim_bnb: "Als BNB Abheben",
   info_header_text: "Der Fundraising-Prozess von Aboat Entertainment ist derzeit aktiv. Um eine Bewerbung als VC oder Angel Investor einzureichen, <u>klicken Sie hier.</u>",
   info_header_url: "https://forms.gle/naDTxxXvbxeLbvNA9",
   load_more: "Weitere anzeigen",
@@ -226,6 +225,7 @@ export const de = {
   got_you_fan: 'Dann bist du bei uns richtig! Wir bieten...',
   got_you_fan_sub: '<ul><li>... <span class="text-main-300">Belohnungen</span> für die <span class="text-main-300">Benutzung</span> unserer Plattform!</li><li>... <span class="text-main-300">Gamification</span> für <span class="text-main-300">Spaß</span> bei der Benutzung!</li><li>... unser <span class="text-main-300">Blockchain-basiertes Ökosystem</span>!</li><li>... einfache und schnelle <span class="text-main-300">Unterstützung</span> deiner Lieblingskünstler!</li><li>... <span class="text-main-300">gleichberechtige Monetarisierung/Einnahmen für <u>alle</u></span>!</li></ul>',
   whitepaper_url: 'https://drive.google.com/file/d/1XOblscYmjDA6yTrfPoiveMuxf5TgLFp4/view?usp=sharing',
+  feature_not_available: "Das Feature steht aktuell nicht zur Verfügung.",
   //#region Login/Logout
   new_address_detected: 'Deine verbundene Krypto-Addresse hat sich geändert.',
   sign_out_address_mismatch: 'Die neue Addresse ist nicht mit deinem Account verbunden!',
@@ -300,6 +300,15 @@ export const de = {
   play: "Abspielen",
   //#endregion
 
+  //#endregion
+
+  //#region Claim Token
+  confirm_claim: "Genehmigen",
+  claim_aboat: "Aboat abheben",
+  claim_bnb: "Zu KAI konvertieren",
+  token_total_claim: "Gesamtanzahl Token",
+  token_available_for_claim: "Verfügbare Token",
+  claim_header: "Token abheben"
   //#endregion
 }
 

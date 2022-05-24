@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from 'src/app/services/i18n/translate.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -14,7 +16,7 @@ export class TokenClaimComponent implements OnInit {
   totalTokens = 0;
   claimMode = -1;
   claimAmount = new FormControl('', [Validators.required, Validators.maxLength(24)]);
-  constructor(private readonly userService: UserService) { }
+  constructor(private readonly userService: UserService, private readonly toastrService: ToastrService, private readonly translateService: TranslateService) { }
 
   ngOnInit(): void {
     this.updateTokens();
@@ -24,6 +26,7 @@ export class TokenClaimComponent implements OnInit {
 
   setToMaxClaimableAmount() {
     this.claimMode = -1;
+    this.claimAmount.enable();
     this.claimAmount.setValue(this.vestedTokens);
   }
 
@@ -33,6 +36,8 @@ export class TokenClaimComponent implements OnInit {
   }
 
   claimBnb() {
+    this.toastrService.warning(this.translateService.transform("feature_not_available"));
+    return;
     this.claimMode = 2;
     this.claimAmount.disable();
   }
@@ -44,5 +49,10 @@ export class TokenClaimComponent implements OnInit {
 
   confirmClaim() {
     this.claimAmount.enable();
+    this.claimMode = -1;
+    //TODO: Claim-Anfrage an Claim Contract senden
+
+    this.userService.claimAboat(this.claimAmount.value).then(_ => console.log(_)).catch(_ => "error 2");
+
   }
 }
