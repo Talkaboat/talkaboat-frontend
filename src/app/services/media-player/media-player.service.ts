@@ -19,8 +19,8 @@ export class MediaPlayerService {
   public changedPlayState = new EventEmitter<boolean>();
   constructor() {
 
-    this.currentTrackIndex = Number.parseInt(localStorage.getItem("last_track") || "0") ;
-    const playlistJson = localStorage.getItem("last_playlist");
+    this.currentTrackIndex = Number.parseInt(localStorage.getItem("last_track_index") || "0") ;
+    const playlistJson = localStorage.getItem("playlist");
     if (playlistJson) {
       this.playlist = JSON.parse(playlistJson);
       this.track = this.playlist[this.currentTrackIndex];
@@ -37,7 +37,7 @@ export class MediaPlayerService {
 
   nextTrack() {
     this.currentTrackIndex += 1;
-    localStorage.setItem("last_track", this.currentTrackIndex >= this.playlist.length ? "0" : this.currentTrackIndex.toString());
+    localStorage.setItem("last_track_index", this.currentTrackIndex >= this.playlist.length ? "0" : this.currentTrackIndex.toString());
     if (this.playlist && this.playlist.length > 1 && this.currentTrackIndex < this.playlist.length) {
       this.setTrack(this.playlist[this.currentTrackIndex], true)
    }
@@ -50,9 +50,9 @@ export class MediaPlayerService {
     if (clearPlaylist) {
       this.playlist = [];
       this.playlist.push(episodeData);
-      localStorage.setItem("last_playlist", JSON.stringify(this.playlist));
+      localStorage.setItem("playlist", JSON.stringify(this.playlist));
     }
-    localStorage.setItem("last_track", this.currentTrackIndex.toString());
+    localStorage.setItem("last_track_index", this.currentTrackIndex.toString());
 
     this.track = episodeData;
 
@@ -63,8 +63,8 @@ export class MediaPlayerService {
 
   updateLocalStoragePlaylist(currentTrackData: Episode) {
     this.playlist[this.currentTrackIndex] = currentTrackData;
-    localStorage.setItem("last_track", this.currentTrackIndex.toString());
-    localStorage.setItem("last_playlist", JSON.stringify(this.playlist));
+    localStorage.setItem("last_track_index", this.currentTrackIndex.toString());
+    localStorage.setItem("playlist", JSON.stringify(this.playlist));
   }
 
   SetPlaylist(playlist: Playlist, autoplay: boolean, startFromTrack = 0) {

@@ -18,7 +18,7 @@ import { MediaPlayerState } from './mediaplayer-state';
 })
 export class MediaPlayerComponent implements OnInit {
 
-  currentTrack: any;
+  currentTrack:any;
   track = new BehaviorSubject<Episode>(DefaultEpisode);
   currentVolume: Volume = Volume.Loud;
 
@@ -81,6 +81,8 @@ export class MediaPlayerComponent implements OnInit {
     this.api = api;
     if (this.track && this.track.value.playTime && this.track.value.playTime + 30 < this.track.value.audio_length_sec) {
       this.api.getDefaultMedia().currentTime = this.track.value.playTime;
+    } else {
+      this.api.getDefaultMedia().currentTime = 0;
     }
     this.api.getDefaultMedia().subscriptions.ended.subscribe(
       () => {
@@ -151,8 +153,10 @@ export class MediaPlayerComponent implements OnInit {
     this.api.getDefaultMedia().subscriptions.seeking.subscribe(
       // Fired when a seek operation begins.
     )
-    this.api.getDefaultMedia().subscriptions.seeked.subscribe(
-      // Fired when a seek operation completes.
+    this.api.getDefaultMedia().subscriptions.seeked.subscribe(time => {
+
+      this.track.value.playTime = this.api?.currentTime;
+    }
     )
     this.api.getDefaultMedia().subscriptions.canPlay.subscribe(
       () => {
@@ -198,11 +202,14 @@ export class MediaPlayerComponent implements OnInit {
 
   changeSource(nextTrack: Episode) {
     this.track.next(nextTrack);
-    if (this.api && nextTrack.playTime && nextTrack.playTime + 30 < nextTrack.audio_length_sec) {
+    if (this.api && nextTrack.playTime && (nextTrack.playTime + 30) < nextTrack.audio_length_sec) {
       this.api.currentTime = nextTrack.playTime;
-    } else if(this.api) {
+    } else if (this.api) {
+      nextTrack.playTime = 0;
       this.api!.currentTime = 0;
+      this.track.next(nextTrack);
     }
+
   }
 
 }
