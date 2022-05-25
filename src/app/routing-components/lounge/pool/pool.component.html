@@ -76,7 +76,7 @@
         <button *ngIf="!poolInfo.allowance || (poolInfo.allowance | bigEqualizer: 0 : 'lte'); else hasAllowance"
           class="rounded-[0.625rem] px-4 bg-shadow-300" (click)="approve()"> {{ 'approve' | translate }}</button>
         <ng-template #hasAllowance>
-          <button class="btn btn-success text-[2rem] px-1 max-w-[2rem]" (click)="stake = true; withdraw = false">+</button>
+          <button class="btn btn-success text-[2rem] px-1 max-w-[2rem]" (click)="stake = true; withdraw = false;">+</button>
           <button class="btn btn-error text-[2rem] px-1 max-w-[2rem]" (click)="stake = false; withdraw = true">-</button>
         </ng-template>
       </div>
@@ -99,6 +99,7 @@
   </div>
 
   <div *ngIf="stake || withdraw">
+    <div class="fixed bg-fan-50 h-10 w-10 top-0"></div>
     <app-stake-modal [poolInfo]="poolInfo" [isWithdrawal]="withdraw" (close)="closedModal($event)"></app-stake-modal>
   </div>
 
