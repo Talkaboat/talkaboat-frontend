@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { listAnimation, listItemAnimation } from 'src/app/animations';
 import { MediaHelperService } from 'src/app/services/media-helper/media-helper.service';
@@ -14,7 +14,7 @@ import { SearchService } from 'src/app/services/search/search.service';
   styleUrls: ['./search.component.scss'],
   animations: [listAnimation, listItemAnimation]
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
 
@@ -24,12 +24,19 @@ export class SearchComponent implements OnInit {
   constructor(private readonly searchService: SearchService, private readonly mediaHelper: MediaHelperService, private readonly mediaPlayerService: MediaPlayerService) { }
 
   ngOnInit(): void {
-    this.searchService.onChangedSearchResponse.subscribe(searchResponse => this.setSearchResponse(searchResponse));
+    this.subscriptions.push(this.searchService.onChangedSearchResponse.subscribe(searchResponse => this.setSearchResponse(searchResponse)));
     this.setSearchResponse(this.searchService.searchResponse);
-    if (!this.searchService.isSearching && this.searchService.searchTerm) {
+    if (!this.searchService.isSearching
+      && this.searchService.searchTerm
+      && (!this.searchResponse
+      || this.searchResponse.results.length <= 0)) {
       this.isSearching = true;
       this.searchService.executeSearch(this.searchService.searchTerm);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
   setSearchResponse(searchResponse: PodcastSearchResponse) {
@@ -43,14 +50,14 @@ export class SearchComponent implements OnInit {
     if (this.searchResponse.results.some(i => i.aboat_id <= -1)) {
       return;
     }
-    const newElement: PodcastSearchResult = { aboat_id: -1, id: "-1", rss: "ad", pub_date_ms: -1, image: "ad", title_original: "ad", audio_length_sec: -1, title_highlighted: "ad", description_original: "ad" }
-    const n = searchResponse.count < 23 ? searchResponse.results.length / 2 + 1 : 11;
-    const res = this.searchResponse.results.reduce((list: any, elem, i) => {
-      list.push(elem);
-      if((i+1) % n === 0) list.push(newElement);
-      return list;
-    }, []);
-    this.searchResponse.results = res;
+    // const newElement: PodcastSearchResult = { aboat_id: -1, id: "-1", rss: "ad", pub_date_ms: -1, image: "ad", title_original: "ad", audio_length_sec: -1, title_highlighted: "ad", description_original: "ad" }
+    // const n = searchResponse.count < 23 ? searchResponse.results.length / 2 + 1 : 11;
+    // const res = this.searchResponse.results.reduce((list: any, elem, i) => {
+    //   list.push(elem);
+    //   if((i+1) % n === 0) list.push(newElement);
+    //   return list;
+    // }, []);
+    // this.searchResponse.results = res;
   }
 
   play(track: PodcastSearchResult) {

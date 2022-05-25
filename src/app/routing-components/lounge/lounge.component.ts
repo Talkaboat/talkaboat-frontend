@@ -37,6 +37,10 @@ export class LoungeComponent implements OnInit, OnDestroy {
     })
   }
 
+  windowSize() {
+    return window.innerWidth;
+  }
+
   async initPools(pools: PoolInfo[]) {
 
     this.pools = pools;

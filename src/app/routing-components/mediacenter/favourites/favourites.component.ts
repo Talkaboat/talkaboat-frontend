@@ -70,6 +70,10 @@ export class FavouritesComponent implements OnInit {
     this.subscriptions.forEach(item => item.unsubscribe());
   }
 
+  windowSize() {
+    return window.innerWidth;
+  }
+
   handleLibraryPodcastRemoved(removedItem : Podcast) {
     if(this.userLibraryEpisodes) {
       for(let i = 0; i < this.userLibraryEpisodes.length; i++) {

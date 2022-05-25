@@ -22,6 +22,8 @@
 <ng-template #loggedInSection>
     <section class="px-1 sm:px-0">
         <h2>{{ 'favourite_podcasts_heading' | translate}}</h2>
+
+        <iframe class="w-full mt-3" [src]=" (windowSize() >= 760 ? './assets/ads/728x90.html' : './assets/ads/320x50.html') | sanitizeUrl"></iframe>
         <ng-container *ngIf="userLibraryEpisodes != null && userLibraryEpisodes.length > 0 then userContent else userNoContent"></ng-container>
     </section>
 </ng-template>

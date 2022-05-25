@@ -4,14 +4,15 @@
   <section>
     <h2>{{ 'playlist_header' | translate }}</h2>
 
-    <p *ngIf="userPlaylists == null">{{ 'no_playlists_info' | translate}}</p>
     <div id="add-playlist mb-10 mt-5">
       <form class="flex mb-10 mt-5" >
         <input type="text" class="input input-bordered input-primary w-full max-w-xs" [placeholder]="'add_playlist_placeholder' | translate" [formControl]="playlistName"/>
         <button (click)="createPlaylist()" type="submit" [disabled]="playlistName.invalid" class="btn-primary w-10 h-10 text-4xl my-auto ml-2">+</button>
       </form>
     </div>
+    <iframe class="w-full mt-3 mb-3" [src]=" (windowSize() >= 760 ? './assets/ads/728x90.html' : './assets/ads/320x50.html') | sanitizeUrl"></iframe>
 
+    <p *ngIf="userPlaylists == null">{{ 'no_playlists_info' | translate}}</p>
     <app-playlist-list (viewPlaylistEvent)="handleViewPlaylist($event)" (playPlaylistEvent)="handlePlayPlaylist($event)"
       [playlists]="userPlaylists" *ngIf="userPlaylists && userPlaylists.length > 0"></app-playlist-list>
   </section>

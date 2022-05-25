@@ -39,6 +39,10 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
 
   }
 
+  windowSize() {
+    return window.innerWidth;
+  }
+
   getPlaylists() {
     this.userPlaylists = [];
     this.fetchedUserPlaylists = false;

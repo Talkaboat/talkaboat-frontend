@@ -1,4 +1,8 @@
 <div class="w-auto md:max-w-[67.5rem]  pt-3 px-10 mx-auto rounded-[0.625rem]">
+  <div id="container-de7d826c66c7e17cd0cddf6523e5509d" class="flex w-[20.625rem] md:w-full md:max-w-[47.5rem] max-h-[6.875rem] mx-auto justify-center mb-5">
+
+    <iframe class="w-full" [src]=" (windowSize() >= 760 ? './assets/ads/728x90.html' : './assets/ads/320x50.html') | sanitizeUrl"></iframe>
+  </div>
   <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <li class="h-fit rounded-[0.625rem]" *ngFor="let pool of selectedPools"><app-pool [poolInfo]="pool" [gotWallet]="gotWallet"></app-pool></li>
   </ul>
