@@ -11,7 +11,7 @@
               <p class="opacity-25 mt-2 flex-grow-0">{{ 'created' | translate}}: 22.03.2022</p>
               <p class="opacity-25 flex-grow-0">{{'episodes' | translate }}: {{item.tracks?.length}}</p>
             </div>
-            <button (click)="playlistPlayClicked(item, $event)" class="btn btn-primary rounded-full px-8 py-4 mt-4">{{ 'play' | translate}}</button>
+            <button [class.btn-success]="item.playlist_Id | isPlaying:2" (click)="playlistPlayClicked(item, $event)" class="btn btn-primary rounded-full px-8 py-4 mt-4">{{ 'play' | translate}}</button>
         </div>
     </li>
 </ul>

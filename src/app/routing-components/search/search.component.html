@@ -16,7 +16,7 @@
       <iframe class="w-full h-full" [src]="(windowSize() > 860 ? './assets/ads/120x240.html' : './assets/ads/320x50.html') | sanitizeUrl"></iframe>
     </div>
 
-    <div class="mx-auto w-full h-auto flex sm:grid relative rounded-[0.625rem]" *ngIf="item.aboat_id >= 0">
+    <div [class.bg-success-content]="item.aboat_id | isPlaying:item.podcast ? 1: 0" class="mx-auto w-full h-auto flex sm:grid relative rounded-[0.625rem]" *ngIf="item.aboat_id >= 0">
 
       <div
         class="shadow-lg relative overflow-hidden rounded-[0.625rem] sm:min-w-none sm:max-w-none sm:max-h-full min-w-[2.5rem] max-w-[2.5rem] max-h-[2.5rem] my-auto">

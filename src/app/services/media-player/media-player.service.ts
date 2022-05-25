@@ -13,13 +13,15 @@ export class MediaPlayerService {
   public isPlaying: boolean = false;
   public track?: Episode;
   public playlist: Episode[] = [];
+  public playlistId: any = -1;
   public currentTrackIndex = 0;
   public estimatedReward: number = 0;
   public onTrackChanged = new EventEmitter<Episode>();
   public changedPlayState = new EventEmitter<boolean>();
   constructor() {
 
-    this.currentTrackIndex = Number.parseInt(localStorage.getItem("last_track_index") || "0") ;
+    this.currentTrackIndex = Number.parseInt(localStorage.getItem("last_track_index") || "0");
+    this.playlistId = Number.parseInt(localStorage.getItem("last_playlist_id") || "0") ;
     const playlistJson = localStorage.getItem("playlist");
     if (playlistJson) {
       this.playlist = JSON.parse(playlistJson);
@@ -41,6 +43,16 @@ export class MediaPlayerService {
     if (this.playlist && this.playlist.length > 1 && this.currentTrackIndex < this.playlist.length) {
       this.setTrack(this.playlist[this.currentTrackIndex], true)
    }
+  }
+
+  isCurrentlyPlayedFromPodcast(podcastId: any): boolean {
+    if (!this.track) return false;
+    return this.track && this.track.podcast_id == podcastId;
+  }
+
+  isCurrentlyPlayedTrack(episodeId: any): boolean {
+    if (!this.track) return false;
+    return this.track.aboat_id == episodeId;
   }
 
   async setTrack(episodeData: Episode, autoplay: boolean, podcastData: any = null, clearPlaylist?: boolean) {
@@ -68,6 +80,9 @@ export class MediaPlayerService {
   }
 
   SetPlaylist(playlist: Playlist, autoplay: boolean, startFromTrack = 0) {
+
+    this.playlistId = playlist.playlist_Id;
+    localStorage.setItem("last_playlist_id", this.playlistId);
     this.currentTrackIndex = startFromTrack;
     var init = 0;
     if (playlist.tracks) {

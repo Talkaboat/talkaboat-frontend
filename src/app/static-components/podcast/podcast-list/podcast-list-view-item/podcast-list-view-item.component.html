@@ -1,7 +1,7 @@
 
 <div class="px-2">
   <div class="bg-shadow-700 h-[19.75rem] sm:h-[19.75rem] md:h-[21.875rem] rounded-[0.625rem]">
-    <div class="py-0 p-0 flex flex-col bg-shadow-700 rounded-[0.625rem] shadow-lg h-full">
+    <div [class.bg-success-content]="item.aboat_id | isPlaying:0" class="py-0 p-0 flex flex-col bg-shadow-700 rounded-[0.625rem] shadow-lg h-full">
       <div class="mx-auto w-full h-auto flex sm:grid relative rounded-[0.625rem]">
         <div
           class="shadow-lg relative overflow-hidden rounded-[0.625rem] sm:min-w-none sm:max-w-none sm:max-h-full mx-auto w-full h-[10.3125rem] my-auto">
