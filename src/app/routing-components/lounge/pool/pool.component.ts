@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import Big from 'big.js';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 import { PoolInfo } from 'src/app/services/repository/smart-contract-repository/models/pool-info.model';
 import { LoungeService } from 'src/app/services/web3/lounge/lounge.service';
 import { Web3Service } from 'src/app/services/web3/web3.service';
@@ -16,7 +17,7 @@ export class PoolComponent implements OnInit {
   approving = false;
   withdraw = false;
   stake = false;
-  constructor(private readonly loungeService: LoungeService, private readonly web3Service: Web3Service) { }
+  constructor(private readonly loungeService: LoungeService, private readonly web3Service: Web3Service, private readonly loaderService: LoaderService) { }
 
   ngOnInit(): void {
     if (this.poolInfo) {
@@ -37,11 +38,12 @@ export class PoolComponent implements OnInit {
   }
 
   claim() {
+    this.loaderService.show();
     this.loungeService.harvest(this.poolInfo!).then(async result => {
       if (result) {
         this.loungeService.setupPool(this.poolInfo!);
       }
-    });
+    }).finally(() => this.loaderService.hide());
   }
 
   approve() {

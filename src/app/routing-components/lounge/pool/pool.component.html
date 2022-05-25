@@ -99,7 +99,6 @@
   </div>
 
   <div *ngIf="stake || withdraw">
-    <div class="fixed bg-fan-50 h-10 w-10 top-0"></div>
     <app-stake-modal [poolInfo]="poolInfo" [isWithdrawal]="withdraw" (close)="closedModal($event)"></app-stake-modal>
   </div>
 

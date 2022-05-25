@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Big, { RoundingMode } from 'big.js';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 import { PoolInfo } from 'src/app/services/repository/smart-contract-repository/models/pool-info.model';
 import { LoungeService } from 'src/app/services/web3/lounge/lounge.service';
 import { TokenService } from 'src/app/services/web3/token/token.service';
@@ -23,7 +24,7 @@ export class StakeModalComponent implements OnInit {
 
 
   @Output() close = new EventEmitter<boolean>();
-  constructor(private readonly tokenService: TokenService, private readonly loungeService: LoungeService, private readonly formBuilder: FormBuilder) { }
+  constructor(private readonly tokenService: TokenService,private readonly loaderService: LoaderService , private readonly loungeService: LoungeService, private readonly formBuilder: FormBuilder) { }
 
   async ngOnInit() {
     if (this.poolInfo) {
@@ -43,6 +44,7 @@ export class StakeModalComponent implements OnInit {
       liquidityAmount = new Big(this.walletBalance.raw);
     }
     //Start Loading
+    this.loaderService.show();
     this.loungeService.addLiquidity(this.poolInfo!, liquidityAmount).then(result => {
       if (result) {
         this.amount = "0";
@@ -51,7 +53,7 @@ export class StakeModalComponent implements OnInit {
       this.close.emit(true);
       }
     }).finally(() => {
-      //End Loading
+      this.loaderService.hide();
     });
   }
 
@@ -63,12 +65,14 @@ export class StakeModalComponent implements OnInit {
       }
 
       let success = false;
+      this.loaderService.show();
       this.loungeService.removeLiquidity(this.poolInfo, liquidityAmount).then(result => {
         if (result) {
           this.close.emit(true);
         }
       }).finally(() => {
         //End Loading
+        this.loaderService.hide();
       });
     }
   }
