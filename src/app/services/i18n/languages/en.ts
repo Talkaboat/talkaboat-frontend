@@ -302,6 +302,8 @@ export const en = {
     claim_bnb: "Convert to KAI",
     token_total_claim: "Total Token",
     token_available_for_claim: "Available Token",
-    claim_header: "Claim Token"
+    claim_header: "Claim Token",
+    success_claim: "Token successfully claimed!",
+    error_claim: "An error occured while claiming tokens!",
     //#endregion
 }

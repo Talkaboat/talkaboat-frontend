@@ -70,12 +70,24 @@ export class UserService {
     }
     this.loaderService.show();
     if (!(await this.canClaimReward(this.web3Service.accounts[0]))) {
-      await this.sendClaimRequest(this.web3Service.accounts[0]);
+      return this.sendClaimRequest(this.web3Service.accounts[0])
+        .then(_ => this.sendClaimToBackend(amount))
+        .catch(_ => {
+          this.loaderService.hide();
+          this.toastrService.error(this.translateService.transform('error_claim'));
+        });
     }
+    return this.sendClaimToBackend(amount);
+  }
+
+  public sendClaimToBackend(amount: number): Promise<any> {
     return lastValueFrom(this.userRepositoryService.claim(this.web3Service.accounts[0], amount))
       .then(data => {
         this.updateRewards(data, true);
+        this.toastrService.success(this.translateService.transform('success_claim'));
         return data;
+      }).catch(_ => {
+        this.toastrService.error(this.translateService.transform('error_claim'));
       }).finally(() => this.loaderService.hide());
   }
 

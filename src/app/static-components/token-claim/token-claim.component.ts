@@ -47,12 +47,10 @@ export class TokenClaimComponent implements OnInit {
     this.vestedTokens = this.userService.currentRewards.vested;
   }
 
-  confirmClaim() {
+  async confirmClaim() {
+    await this.userService.claimAboat(this.claimAmount.value);
     this.claimAmount.enable();
     this.claimMode = -1;
-    //TODO: Claim-Anfrage an Claim Contract senden
-
-    this.userService.claimAboat(this.claimAmount.value).then(_ => console.log(_)).catch(_ => "error 2");
 
   }
 }
