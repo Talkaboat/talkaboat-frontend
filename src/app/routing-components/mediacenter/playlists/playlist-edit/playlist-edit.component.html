@@ -1,5 +1,6 @@
 <div *ngIf="playlist && playlist.tracks" cdkDropList [cdkDropListData]="playlist.tracks" cdkDropListOrientation="vertical" class="example-container"
   (cdkDropListDropped)="drop($event)">
+  <h3 class="mb-1">{{ playlist.name }}</h3>
   <div class="overflow-x-auto overflow-y-hidden w-full">
     <table class="table w-full table-fixed rounded-[0.625rem] border border-shadow-600">
       <!-- head -->
