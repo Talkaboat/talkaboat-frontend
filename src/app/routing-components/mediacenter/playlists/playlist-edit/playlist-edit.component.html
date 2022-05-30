@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="hover rounded-[0.625rem]" [cdkDragData]="track.episode?.title" *ngFor="let track of playlist.tracks; let i = index" cdkDrag>
+        <tr class="hover rounded-md" [cdkDragData]="track.episode?.title" *ngFor="let track of playlist.tracks; let i = index" cdkDrag>
           <td class="overflow-hidden w-[2rem]">{{track.position + 1}}</td>
           <td class="overflow-hidden"  [class.bg-success-content]="track.episode_Id| isPlaying:1 ">
             <div class="flex items-center sm:space-x-3">
@@ -28,14 +28,18 @@
             </div>
           </td>
           <td class="sm:table-cell hidden overflow-hidden">{{track.created | date}}</td>
-          <td class="overflow-hidden">
+          <td class="overflow-hidden relative ">
+            <label for="deleteEpisodeFromPlaylist" (click)="delete(track)" class="absolute cursor-pointer right-1 top-1 h-6 w-6 rounded-full">
+                X
+            </label>
             <div class="flex justify-between my-auto px-1">
-              <button class="my-auto" (click)="play(track)">
+
+              <button class="my-auto rounded-md" (click)="play(track)">
                 <img width="40" height="32" alt="play/pause"
                 class="max-w-[1.5rem] my-auto rounded-[0.625rem]"
                 [src]="(track.episode_Id| isPlaying:1:true) ? './assets/images/player/pause.png' : './assets/images/player/play.png'">
               </button>
-              <button class="w-[1.5rem] h-[1.5rem]">
+              <button class="w-[1.5rem] rounded-md h-[1.5rem]">
                 <div class="mb-2">...</div>
               </button>
             </div>
@@ -45,3 +49,17 @@
       </tbody>
     </table>
   </div>
+  <input #modalToggle type="checkbox" id="deleteEpisodeFromPlaylist" class="modal-toggle" />
+  <label for="deleteEpisodeFromPlaylist" class="modal cursor-pointer" (click)="cancelDeletion()">
+    <div class="fixed top-20" for="">
+      <div class="modal-box relative w-[20rem]">
+        <label for="deleteEpisodeFromPlaylist" class="absolute cursor-pointer right-2 top-2 rounded-full w-6 h-6 btn-outline btn-error text-center" (click)="cancelDeletion()">X</label>
+        {{ 'confirm_playlist_episode_deletion_modal' | translate }}:<br>
+        <h5>{{ trackToDelete?.episode?.title }}</h5>
+        <div class="modal-action">
+          <label for="deleteEpisodeFromPlaylist" (click)="confirmDeletion()" class="btn">{{ 'confirm_playlist_deletion_button' | translate }}</label>
+        </div>
+      </div>
+
+    </div>
+  </label>

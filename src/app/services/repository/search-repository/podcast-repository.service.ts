@@ -15,6 +15,7 @@ import { PODCAST_API } from './podcast-urls.const';
 })
 export class PodcastRepositoryService extends RepositoryService {
 
+
   public getEpisode(id: string): Observable<Episode> {
     const api = PODCAST_API.URL + PODCAST_API.EPISODE_DETAILS.replace("{id}", id);
     return this.post(api, null);
@@ -74,6 +75,11 @@ export class PodcastRepositoryService extends RepositoryService {
   public addEpisodeToPlaylist(playlist_id: number, episode_id: number): Observable<PlaylistTrack> {
     const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_ADD_EPISODE_URL.replace("{id}", playlist_id.toString()).replace("{episode}", episode_id.toString());
     return this.post(api);
+  }
+
+  removeEpisodeFromPlaylist(playlistId: number, playlistTrack_Id: number | undefined): Observable<Playlist> {
+    const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_REMOVE_EPISODE_URL.replace("{id}", playlistId.toString()).replace("{trackId}", playlistTrack_Id!.toString());
+    return this.delete(api);
   }
 
   public updateEpisodePositionInPlaylist(playlist_id: number, trackId: number, position: number): Observable<Playlist> {

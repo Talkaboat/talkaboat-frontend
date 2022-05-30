@@ -298,6 +298,7 @@ export const de = {
   playlist_login_info: "Du musst angemeldet sein, um deine Playlists verwalten zu können.",
   created: "Erstellt",
   play: "Abspielen",
+  confirm_playlist_episode_deletion_modal: "Willst du die Episode wirklich aus der Playlist entfernen?",
   //#endregion
 
   //#endregion

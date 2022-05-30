@@ -12,6 +12,7 @@ export const PODCAST_API = {
   PLAYLIST_ADD_URL: "/playlist",
   PLAYLIST_ADD_EPISODE_URL: "/playlist/{id}/add/{episode}",
   PLAYLIST_UPDATE_EPISODE_URL: "/playlist/{id}/update/{trackId}/{position}",
+  PLAYLIST_REMOVE_EPISODE_URL: "/playlist/{id}/delete/{trackId}",
   PLAYLIST_DELETE_URL: "/playlist/{id}",
   PLAYLIST_GET_URL: "/playlist/{id}",
   PLAYLIST_GET_ALL_URL: "/playlist",

@@ -292,6 +292,7 @@ export const en = {
   playlist_login_info: "You must be logged in to manage your playlists.",
   created: "Created",
   play: "Play",
+  confirm_playlist_episode_deletion_modal: "Are you sure that you want to remove this episode from your playlist?",
   //#endregion
 
   //#endregion

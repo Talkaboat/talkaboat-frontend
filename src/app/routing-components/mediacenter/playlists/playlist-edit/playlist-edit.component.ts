@@ -16,6 +16,7 @@ export class PlaylistEditComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   private playlistId: number = -1;
   public playlist: Playlist | null = null;
+  public trackToDelete: PlaylistTrack | null = null;
   constructor(private readonly route: ActivatedRoute,
     private readonly podcastRepositoryService: PodcastRepositoryService,
   private readonly mediaPlayerService: MediaPlayerService) { }
@@ -49,6 +50,24 @@ export class PlaylistEditComponent implements OnInit, OnDestroy {
       return;
     }
     this.mediaPlayerService.SetPlaylist(this.playlist, true, track.position);
+  }
+
+  delete(track: PlaylistTrack) {
+    this.trackToDelete = track;
+  }
+
+  cancelDeletion() {
+    this.trackToDelete = null;
+  }
+
+  confirmDeletion() {
+    if (this.trackToDelete) {
+      this.podcastRepositoryService.removeEpisodeFromPlaylist(this.playlistId, this.trackToDelete.playlistTrack_Id).subscribe((playlist: Playlist) => {
+        this.playlist = playlist;
+        this.sortPlaylist();
+      })
+      this.trackToDelete = null;
+    }
   }
 
   drop(event: any) {
