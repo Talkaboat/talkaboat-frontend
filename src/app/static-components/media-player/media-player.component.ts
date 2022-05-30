@@ -52,9 +52,9 @@ export class MediaPlayerComponent implements OnInit {
     })
     this.mediaPlayerService.changedPlayState.subscribe(state => {
       if (state) {
-        this.play();
+        this.apiPlay();
       } else {
-        this.pause();
+        this.apiPause();
       }
     });
 
@@ -67,7 +67,7 @@ export class MediaPlayerComponent implements OnInit {
     }
 
     this.track.subscribe(value => {
-      this.pause();
+      this.apiPause();
       this.audio = value.audio;
       this.currentTrack = value;
     });
@@ -168,6 +168,11 @@ export class MediaPlayerComponent implements OnInit {
 
 
   play() {
+
+    this.mediaPlayerService.setPlayState(true);
+  }
+
+  apiPlay() {
     if (this.api) {
       if(this.track.value.playTime) {
         this.api.currentTime = this.track.value.playTime;
@@ -176,8 +181,12 @@ export class MediaPlayerComponent implements OnInit {
     }
   }
 
-  pause() {
+  apiPause() {
     this.api?.pause();
+  }
+
+  pause() {
+    this.mediaPlayerService.setPlayState(false);
   }
 
   forward() {

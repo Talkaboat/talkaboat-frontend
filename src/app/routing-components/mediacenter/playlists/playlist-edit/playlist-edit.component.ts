@@ -75,6 +75,7 @@ export class PlaylistEditComponent implements OnInit, OnDestroy {
     }
 
     track.position = newIndex;
+    this.sortPlaylist();
     this.podcastRepositoryService.updateEpisodePositionInPlaylist(this.playlistId, track.playlistTrack_Id!, newIndex).subscribe(playlist => {
       this.playlist = playlist;
       this.sortPlaylist();

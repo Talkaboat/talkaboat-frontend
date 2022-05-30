@@ -1,20 +1,20 @@
 <div *ngIf="playlist && playlist.tracks" cdkDropList [cdkDropListData]="playlist.tracks" cdkDropListOrientation="vertical" class="example-container"
   (cdkDropListDropped)="drop($event)">
   <div class="overflow-x-auto overflow-y-hidden w-full">
-    <table class="table w-full table-fixed">
+    <table class="table w-full table-fixed rounded-[0.625rem] border border-shadow-600">
       <!-- head -->
       <thead>
         <tr>
           <th class="w-[2rem]"></th>
           <th>Name</th>
           <th class="w-[10rem] hidden sm:table-cell">Hinzugefügt</th>
-          <th class="w-[7.5rem]">Menu</th>
+          <th class="w-[6rem]">Menu</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="hover" [cdkDragData]="track.episode?.title" *ngFor="let track of playlist.tracks" cdkDrag [class.active]="track.episode_Id| isPlaying:1 ">
+        <tr class="hover rounded-[0.625rem]" [cdkDragData]="track.episode?.title" *ngFor="let track of playlist.tracks; let i = index" cdkDrag>
           <td class="overflow-hidden w-[2rem]">{{track.position + 1}}</td>
-          <td class="overflow-hidden">
+          <td class="overflow-hidden"  [class.bg-success-content]="track.episode_Id| isPlaying:1 ">
             <div class="flex items-center sm:space-x-3">
               <div class="avatar hidden sm:inline-block">
                 <button class="mask mask-squircle w-12 h-12" (click)="play(track)">
@@ -30,10 +30,10 @@
           <td class="sm:table-cell hidden overflow-hidden">{{track.created | date}}</td>
           <td class="overflow-hidden">
             <div class="flex justify-between my-auto px-1">
-              <button class="my-auto">
+              <button class="my-auto" (click)="play(track)">
                 <img width="40" height="32" alt="play/pause"
                 class="max-w-[1.5rem] my-auto rounded-[0.625rem]"
-                src="./assets/images/player/play.png">
+                [src]="(track.episode_Id| isPlaying:1:true) ? './assets/images/player/pause.png' : './assets/images/player/play.png'">
               </button>
               <button class="w-[1.5rem] h-[1.5rem]">
                 <div class="mb-2">...</div>
