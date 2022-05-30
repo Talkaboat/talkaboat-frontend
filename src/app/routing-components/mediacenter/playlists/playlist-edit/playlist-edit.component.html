@@ -1,1 +1,12 @@
-<p>playlist-edit works!</p>
+<div
+*ngIf="playlist && playlist.tracks"
+  cdkDropList
+  cdkDropListOrientation="vertical"
+  class="example-container"
+  (cdkDropListDropped)="drop($event)"
+>
+  <div class="example-box" *ngFor="let track of playlist.tracks" cdkDrag>
+    <p>Episode: {{track.episode?.title}}</p>
+    Position: {{track.position}}
+  </div>
+</div>

@@ -76,6 +76,11 @@ export class PodcastRepositoryService extends RepositoryService {
     return this.post(api);
   }
 
+  public updateEpisodePositionInPlaylist(playlist_id: number, trackId: number, position: number): Observable<Playlist> {
+    const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_UPDATE_EPISODE_URL.replace("{id}", playlist_id.toString()).replace("{trackId}", trackId.toString()).replace("{position}", position.toString());
+    return this.put(api);
+  }
+
   deletePlaylist(playlist_id: number | undefined): Observable<any> {
     if (!playlist_id) {
       return throwError(() => "Error From ThrowError observable")

@@ -13,21 +13,57 @@ export class PlaylistEditComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
   private playlistId: number = -1;
-  private playlist: Playlist | null = null;
+  public playlist: Playlist | null = null;
   constructor(private readonly route: ActivatedRoute, private readonly podcastRepositoryService: PodcastRepositoryService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.subscriptions.push(this.route.params.subscribe(params => {
       this.playlistId = params['pid'];
-      this.podcastRepositoryService.getPlaylist(this.playlistId).subscribe(playlist => {
-        this.playlist = playlist;
-        console.log(this.playlist);
-      });
+      this.getPlaylist();
+    }));
+  }
+
+  getPlaylist() {
+    this.podcastRepositoryService.getPlaylist(this.playlistId).subscribe(playlist => {
+      this.playlist = playlist;
+      this.sortPlaylist();
     });
+  }
+
+  sortPlaylist() {
+    if (this.playlist && this.playlist.tracks) {
+      this.playlist.tracks = this.playlist.tracks?.sort((a, b) => a.position - b.position);
+    }
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe);
+  }
+
+  drop(event: any) {
+    if (!this.playlist || !this.playlist.tracks) {
+      return;
+    }
+    var previous = event.previousIndex;
+    var newIndex = event.currentIndex;
+    var track = this.playlist.tracks[previous];
+    if (previous < newIndex) {
+      for (var index = previous; index <= newIndex; index++) {
+        this.playlist.tracks[index].position--;
+      }
+    } else if(previous > newIndex) {
+      for (var i = previous; i >= newIndex; i--) {
+        if (i >= this.playlist.tracks.length) {
+          continue;
+        }
+        this.playlist.tracks[i].position++;
+      }
+    }
+    track.position = newIndex;
+    this.podcastRepositoryService.updateEpisodePositionInPlaylist(this.playlistId, track.playlistTrack_Id!, newIndex).subscribe(playlist => {
+      this.playlist = playlist;
+      this.sortPlaylist();
+    })
   }
 
 }

@@ -1,3 +1,4 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,7 +21,8 @@ import { PlaylistsComponent } from './playlists.component';
     PlaylistsRoutingModule,
     PipeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule
   ]
 })
 export class PlaylistsModule { }
