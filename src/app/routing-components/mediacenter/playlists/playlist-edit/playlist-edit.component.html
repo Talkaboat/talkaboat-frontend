@@ -1,12 +1,47 @@
-<div
-*ngIf="playlist && playlist.tracks"
-  cdkDropList
-  cdkDropListOrientation="vertical"
-  class="example-container"
-  (cdkDropListDropped)="drop($event)"
->
-  <div class="example-box" *ngFor="let track of playlist.tracks" cdkDrag>
-    <p>Episode: {{track.episode?.title}}</p>
-    Position: {{track.position}}
+<div *ngIf="playlist && playlist.tracks" cdkDropList [cdkDropListData]="playlist.tracks" cdkDropListOrientation="vertical" class="example-container"
+  (cdkDropListDropped)="drop($event)">
+  <div class="overflow-x-auto overflow-y-hidden w-full">
+    <table class="table w-full table-fixed">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th class="w-[2rem]"></th>
+          <th>Name</th>
+          <th class="w-[10rem] hidden sm:table-cell">Hinzugefügt</th>
+          <th class="w-[7.5rem]">Menu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="hover" [cdkDragData]="track.episode?.title" *ngFor="let track of playlist.tracks" cdkDrag [class.active]="track.episode_Id| isPlaying:1 ">
+          <td class="overflow-hidden w-[2rem]">{{track.position + 1}}</td>
+          <td class="overflow-hidden">
+            <div class="flex items-center sm:space-x-3">
+              <div class="avatar hidden sm:inline-block">
+                <button class="mask mask-squircle w-12 h-12" (click)="play(track)">
+                  <img [src]="track.episode?.image" alt="Avatar Tailwind CSS Component" />
+                </button>
+              </div>
+              <div>
+                <div class="font-bold">{{track.episode?.title}}</div>
+                <div class="text-sm opacity-50">{{track.episode?.podcast?.title}}</div>
+              </div>
+            </div>
+          </td>
+          <td class="sm:table-cell hidden overflow-hidden">{{track.created | date}}</td>
+          <td class="overflow-hidden">
+            <div class="flex justify-between my-auto px-1">
+              <button class="my-auto">
+                <img width="40" height="32" alt="play/pause"
+                class="max-w-[1.5rem] my-auto rounded-[0.625rem]"
+                src="./assets/images/player/play.png">
+              </button>
+              <button class="w-[1.5rem] h-[1.5rem]">
+                <div class="mb-2">...</div>
+              </button>
+            </div>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</div>
