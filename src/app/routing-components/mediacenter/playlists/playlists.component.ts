@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { TranslateService } from 'src/app/services/i18n/translate.service';
 import { LoaderService } from 'src/app/services/loader/loader.service';
+import { MediaHelperService } from 'src/app/services/media-helper/media-helper.service';
 import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
 import { Playlist } from 'src/app/services/repository/search-repository/models/playlist/playlist.model.dto';
 import { PodcastRepositoryService } from 'src/app/services/repository/search-repository/podcast-repository.service';
@@ -25,7 +26,7 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
 
   playlistName = new FormControl('', [Validators.required, Validators.maxLength(24)]);
 
-  constructor(private podcastService : PodcastRepositoryService, private readonly userService: UserService, private readonly mediaPlayer: MediaPlayerService, private readonly translationService: TranslateService, private readonly toastrService: ToastrService, private readonly loadingService: LoaderService) {
+  constructor(private podcastService : PodcastRepositoryService, private readonly userService: UserService, private readonly mediaPlayer: MediaPlayerService, private readonly translationService: TranslateService, private readonly toastrService: ToastrService, private readonly loadingService: LoaderService, private readonly mediaHelperService: MediaHelperService) {
     // this.recommendationPlaylists = PLAYLIST_ARRAY_MOCK;
   }
 
@@ -54,6 +55,8 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
       next: (data) => {
         this.fetchedUserPlaylists = true;
         this.userPlaylists = data;
+        this.mediaHelperService.userPlaylists = this.userPlaylists;
+        this.mediaHelperService.onPlaylistsChanged.emit(this.userPlaylists);
       },
       complete: () => {
         this.loadingService.hide();
