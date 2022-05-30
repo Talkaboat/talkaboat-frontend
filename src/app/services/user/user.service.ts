@@ -96,7 +96,9 @@ export class UserService {
     if (!contract) {
       return Promise.resolve(false);
     }
-    return await contract.methods._rewards(address).call();
+    var canClaim = await contract.methods._rewards(address).call();
+    console.log(canClaim);
+    return canClaim;
   }
 
   async sendClaimRequest(from: string): Promise<any> {
