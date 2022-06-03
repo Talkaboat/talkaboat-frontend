@@ -1,7 +1,7 @@
 <div data-theme="night" class="bg-transparent mt-[1.875rem]">
   <img class="mx-auto max-w-[20rem] px-10 mb-4" src="assets/images/talkaboat_light.png">
   <h3 class="flex mb-8 justify-center text-center intro-header" [innerHtml]="'talkaboat_intro' | translate"></h3>
-  <section id="search" class=" mx-auto max-w-[25rem] justify-center px-3 mb-10">
+  <section id="search" class=" mx-auto max-w-[20rem] justify-center px-3 mb-10">
     <form class="w-full h-full relative" (submit)="search()">
       <input type="text"  list="searchResults" autofocus class="input input-bordered w-full input-info"
         [placeholder]="'search_podcast_placeholder' | translate" [formControl]="searchTerm" />
