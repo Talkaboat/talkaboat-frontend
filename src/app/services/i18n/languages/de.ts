@@ -116,7 +116,7 @@ export const de = {
   your_liquidity: 'Deine Liquidität',
   add_liquidity_to_receive: 'Füge Liquidität hinzu, um LP tokens zu bekommen',
   connect_liquidity_to_wallet: 'Verbinde einen Wallet, damit du deine Liquidität sehen kannst.',
-  withdrawal_title: 'Abheben:',
+  withdrawal_title: 'Claimen:',
   deposit_title: 'Hinzufügen:',
   cancel_btn: 'Abbrechen',
   deposit_btn: 'Hinzufügen',
@@ -147,7 +147,7 @@ export const de = {
   password: "Passwort",
   username: "Benutzername",
   remember_me_label: "Login speichern",
-  connect_wallet: "Brieftasche verbinden",
+  connect_wallet: "Wallet verbinden",
   login: "Anmelden",
   register: "Registrieren",
   register_now: "Jetzt mitmachen!",
@@ -177,7 +177,7 @@ export const de = {
   claim_rewards: "Belohnung erhalten",
   claimable: "Verfügbar",
   vesting: "Gebunden",
-  claim: "ABOAT Abheben",
+  claim: "ABOAT Claimen",
   info_header_text: "Der Fundraising-Prozess von Aboat Entertainment ist derzeit aktiv. Um eine Bewerbung als VC oder Angel Investor einzureichen, <u>klicken Sie hier.</u>",
   info_header_url: "https://forms.gle/naDTxxXvbxeLbvNA9",
   load_more: "Weitere anzeigen",
@@ -211,7 +211,7 @@ export const de = {
   got_you_creator: 'Wir unterstützen dich mit...',
   got_you_creator_sub: '<ul><li>... <span class="text-main-300">kostenloser Aggregation und Hosting</span>!</li><li>... unserem <span class="text-main-300">Blockchain-basiertem Ökosystem</span>!</li><li>... <span class="text-main-300">neuen Monetarisierungsmethoden</span>!</li><li>... <span class="text-main-300">gleichberechtiger Monetarisierung für <u>alle</u></span>!</li><li>... <span class="text-main-300">Ansporn für aktivere Communities</span>!</li></ul>',
   login_welcome: 'Willkommen an Bord!',
-  login_info: 'Wenn du bereits registriert bist, musst du dich nur mit deiner Krypto-Brieftasche verbinden',
+  login_info: 'Wenn du bereits registriert bist, musst du dich nur mit deiner Krypto-Wallet verbinden',
   not_registered: 'Noch nicht an Bord?',
   register_sub: 'Bitte fülle das nachfolgende Formular aus.',
   invalid_email: 'Bitte gib eine gültige E-Mail an.',
@@ -253,8 +253,8 @@ export const de = {
   earned: 'Verdient',
   stake_modal: 'Token anlegen',
   stake_button: 'Anlegen',
-  withdraw_modal: 'Token abheben',
-  withdraw_button: 'Abheben',
+  withdraw_modal: 'Token claimen',
+  withdraw_button: 'Claimen',
   liquidity_worth: 'Liquiditätswert',
   //#endregion
 
@@ -305,13 +305,13 @@ export const de = {
 
   //#region Claim Token
   confirm_claim: "Genehmigen",
-  claim_aboat: "Aboat abheben",
+  claim_aboat: "Aboat claimen",
   claim_bnb: "Zu KAI konvertieren",
   token_total_claim: "Gesamtanzahl Token",
   token_available_for_claim: "Verfügbare Token",
-  claim_header: "Token abheben",
+  claim_header: "Token claimen",
   success_claim: "Token erfolgreich abgehoben!",
-  error_claim: "Beim abheben der Token ist ein Fehler aufgetreten!",
+  error_claim: "Beim claimen der Token ist ein Fehler aufgetreten!",
   //#endregion
 }
 

@@ -17,9 +17,11 @@
       </button>
       <a class="my-auto h-fit hidden text-[1.875rem] md:block cursor-pointer" tabindex="0" [routerLink]="['']">Talkaboat</a>
     </div>
-    <!-- <div *ngIf="headerState != 'home'"  id="search-slot-area" class="sm:pl-[2.5rem] md:pl-0 md:pr-[3.75rem] my-auto h-fit">
-      <app-search-slot></app-search-slot>
-    </div> -->
+    <div id="supermarquee" class="h-full pointer-events-auto -ml-[3rem] sm:max-w-[15rem] max-w-[10rem] sm:pl-[2.5rem] md:pl-0 md:pr-[3.75rem] my-auto hwrap">
+      <div class="hmove">
+        <a tabindex="0" target="_blank" href="https://docs.google.com/forms/d/1hsTvo3cR8zzvN6SqDsZsBQuMg4TOBXtr6099z636yYM" class="hitem w-full"><pre class="text-xl text-info">{{ 'join_seed' | translate }}</pre></a>
+      </div>
+    </div>
     <div id="icons" class="my-auto pointer-events-auto flex justify-end text-center h-[2.1875rem] mr-3">
       <label *ngIf="headerState != 'home'" aria-label="search" for="search-modal"
         class="btn modal-button max-[2.1875rem] h-[2.1875rem] min-h-[2.1875rem] px-0 max-w-[2.1875rem] w-[2.1875rem] mr-2">

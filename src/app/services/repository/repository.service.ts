@@ -7,7 +7,7 @@ import { Web3Service } from '../web3/web3.service';
   providedIn: 'root'
 })
 export class RepositoryService {
-  protected static readonly repository_prod = "https://talkaboat.azurewebsites.net/";
+  protected static readonly repository_prod = "https://api.talkaboat.online/";
   protected static readonly repository_dev = "https://localhost:5001/";
   protected readonly use_dev_repository = false;
   protected static readonly version = "v1/";

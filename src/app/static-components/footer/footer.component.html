@@ -1,14 +1,66 @@
 <div class="relative -mt-[6.25rem]">
 
-  <svg class="left-0 right-0 w-full h-[22rem]  md:h-[21.875rem]" preserveAspectRatio="none"
+  <svg class="left-0 right-0 md:w-full h-[22rem] w-[50rem] -mb-[5rem] sm:-mb-[1rem] md:h-[21.875rem]" preserveAspectRatio="none"
     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
     <path fill="#0099ff" fill-opacity="1"
       d="M0,96L40,90.7C80,85,160,75,240,90.7C320,107,400,149,480,154.7C560,160,640,128,720,133.3C800,139,880,181,960,165.3C1040,149,1120,75,1200,64C1280,53,1360,107,1400,133.3L1440,160L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
     </path>
   </svg>
 
-  <footer class="relative -top-[6.25rem] md:-top-[9.375rem] pl-[0.625rem] mx-auto max-w-[25rem]">
+  <footer class="relative -top-[6.25rem] md:-top-[9.375rem] pl-[0.625rem] mx-auto max-w-[35rem]">
+    <div class="mt-[1.875rem] pr-5 sm:px-0 mx-auto w-fit sm:ml-10 max-w-[50rem] absolute -top-[15rem]">
+      <h2 class="text-center">{{ 'social_header' | translate }}</h2>
+      <div class="bg-shadow-300 rounded-[0.625rem] flex justify-between p-3 md:px-8 max-w-[50rem] mt-[0.625rem]">
+        <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://twitter.com/talkaboat"
+          target="_blank" rel="noopener noreferrer nofollow">
+          <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+            <img class="w-full h-full" width="30px" height="30px" alt="twitter" src="./assets/images/social/twitter.png" />
+          </div>
+        </a>
+        <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://t.me/talkaboat"
+          target="_blank" rel="noopener noreferrer nofollow">
+          <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+            <img class="w-full h-full" width="30px" height="30px" alt="telegram"
+              src="./assets/images/social/telegram.png" />
+          </div>
+        </a>
+        <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://discord.gg/mMud94kxNJ"
+          target="_blank" rel="noopener noreferrer nofollow">
+          <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+            <img class="w-full h-full" width="30px" height="30px" alt="discord" src="./assets/images/social/discord.png" />
+          </div>
+        </a>
+        <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
+          href="https://medium.com/aboat-entertainment" target="_blank" rel="noopener noreferrer nofollow">
+          <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+            <img class="w-full h-full" width="30px" height="30px" alt="medium" src="./assets/images/social/medium.png" />
+          </div>
+        </a>
+        <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
+          href="https://www.youtube.com/channel/UCe7zpIIZcgqQJ9n7G9ZgtYQ" target="_blank"
+          rel="noopener noreferrer nofollow">
+          <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+            <img class="w-full h-full" width="30px" height="30px" alt="youtube" src="./assets/images/social/youtube.png" />
+          </div>
+        </a>
+        <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
+          href="https://www.instagram.com/talkaboat/" target="_blank" rel="noopener noreferrer nofollow">
+          <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto ">
+            <img class="w-full h-full" width="30px" height="30px" alt="instagram"
+              src="./assets/images/social/instagram.png" />
+          </div>
+        </a>
+        <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
+          href="https://www.linkedin.com/company/aboat-entertainment" target="_blank" rel="noopener noreferrer nofollow">
+          <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
+            <img class="w-full h-full" width="30px" height="30px" alt="linkedin"
+              src="./assets/images/social/linkedin.png" />
+          </div>
+        </a>
+      </div>
 
+
+    </div>
     <div class="flex justify-between">
       <a [routerLink]="['/general-terms']" queryParamsHandling="merge" tabindex="0"
       class="my-auto cursor-pointer mx-auto px-5 py-3 bg-shadow-700 rounded-[0.625rem] text-main-500 font-semibold ring-1 ring-main-500">{{ 'general_terms' | translate}}</a>
