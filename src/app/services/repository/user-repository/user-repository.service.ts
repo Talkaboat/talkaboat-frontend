@@ -15,12 +15,12 @@ import { USER_API } from './user-urls.const';
 export class UserRepositoryService  extends RepositoryService {
 
     //Which information do we need?
-  public register(mailAdress: string, userName: string, address: string, referrer: string = ""): Observable<UserAuthorizationRequestResponse> {
+  public register(mailAdress: string, userName: string, address: string, newsletter: boolean, referrer: string = ""): Observable<UserAuthorizationRequestResponse> {
     if (!this.web3Service.accounts) {
       return of();
     }
     const api = USER_API.URL + USER_API.REGISTER_URL;
-    const body = { address, mailAdress, userName, referrer };
+    const body = { address, mailAdress, userName, newsletter, referrer };
     return this.post<UserAuthorizationRequestResponse>(api, body);
   }
 

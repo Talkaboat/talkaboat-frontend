@@ -180,12 +180,12 @@ export class UserService {
     this.loaderService.hide();
   }
 
-  async register(email: string, username: string, referrer: string = "") {
+  async register(email: string, username: string, emailOptIn: boolean, referrer: string = "") {
 
     await this.web3Service.connect(true);
     if (this.web3Service.accounts) {
       this.loaderService.show();
-      this.userRepositoryService.register(email, username, this.web3Service.accounts[0], referrer).subscribe({
+      this.userRepositoryService.register(email, username, this.web3Service.accounts[0], emailOptIn, referrer).subscribe({
         next: v => {
           this.signAuthorizationRequestAndConfirmWallet(v);
         },

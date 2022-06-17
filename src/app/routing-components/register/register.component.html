@@ -21,6 +21,14 @@
           {{ 'invalid_username' | translate }}
         </p>
       </div>
+            <div class="mt-5 text-left w-[18.75rem] mx-auto px-3">
+
+        <input type="checkbox"
+          class="bg-shadow-500 px-[0.625rem] mr-3  text-main-100 font-semibold"
+          formControlName="emailOptInt" id="emailOptInt" name="emailOptInt" required />
+          <label for="emailOptInt" [innerHtml]=" 'newsletter_opt_out' | translate"></label>
+      </div>
+      <p class="mt-3" [innerHtml]="'register_hint' | translate"></p>
       <button aria-label="connect wallet" (click)="connect()"
         class="mt-10 mx-auto text-[1.25rem] py-5 w-[17.5rem] font-semibold bg-main-500 rounded ring-1 ring-shadow-500">{{
         'connect_wallet' | translate }}</button>

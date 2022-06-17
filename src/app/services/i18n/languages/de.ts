@@ -214,6 +214,8 @@ export const de = {
   login_info: 'Wenn du bereits registriert bist, musst du dich nur mit deiner Krypto-Wallet verbinden',
   not_registered: 'Noch nicht an Bord?',
   register_sub: 'Bitte fülle das nachfolgende Formular aus.',
+  register_hint: 'Indem Sie ein Konto erstellen, stimmen Sie unseren <u><a href="https://talkaboat.online/general-terms" target="_blank" >Allgemeinen Geschäftsbedingungen</a></u> zu. Außerdem bestätigen Sie, sich über die <u><a href="https://talkaboat.online/privacy target="_blank">Globale Datenschutzerklärung</a></u> informiert zu haben.',
+  newsletter_opt_out: "Ich möchte <u>keine</u> Neuigkeiten per E-Mail erhalten!",
   invalid_email: 'Bitte gib eine gültige E-Mail an.',
   invalid_username: 'Bitte gib einen Alphanumerischen Benutzernamen mit min. 3 und max. 16 Zeichen an.',
   already_registered: 'Bereits an Bord?',

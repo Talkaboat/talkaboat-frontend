@@ -150,6 +150,9 @@ export const en = {
   login: "Login",
   register: "Register",
   register_now: "Join now!",
+  register_hint: 'By creating an account, you agree to our <u><a href="https://talkaboat.online/general-terms" target="_blank" >Terms</a></u> and have read and acknowledge the <u><a href="https://talkaboat.online/privacy target="_blank"> Global Privacy Statement</a></u>.',
+  newsletter_opt_out: "I <u>don't</u> want to receive a newsletter per email!",
+
   join_seed: "Join Pre-Sale",
   agree_terms: "Accept the",
   terms_of_service: "Terms",
