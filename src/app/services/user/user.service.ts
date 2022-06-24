@@ -65,12 +65,14 @@ export class UserService {
     if (!this.web3Service.accounts || this.web3Service.accounts.length <= 0) {
       //Not connected
     }
-    if (!this.userData.addresses.includes(this.web3Service.accounts[0])) {
+
+    var wallet = this.web3Service.accounts[0];
+    if (!this.userData.addresses.includes(wallet)) {
       //Connected not included in account
     }
     this.loaderService.show();
-    if (!(await this.canClaimReward(this.web3Service.accounts[0]))) {
-      return this.sendClaimRequest(this.web3Service.accounts[0])
+    if (!(await this.canClaimReward(wallet))) {
+      return this.sendClaimRequest(wallet)
         .then(_ => this.sendClaimToBackend(amount))
         .catch(_ => {
           this.loaderService.hide();
@@ -92,13 +94,7 @@ export class UserService {
   }
 
   public async canClaimReward(address: string): Promise<boolean> {
-    const contract = this.contractService.getRewardContract();
-    if (!contract) {
-      return Promise.resolve(false);
-    }
-    var canClaim = await contract.methods._rewards(address).call();
-    console.log(canClaim);
-    return canClaim;
+    return await lastValueFrom(this.userRepositoryService.canClaim(address));
   }
 
   async sendClaimRequest(from: string): Promise<any> {

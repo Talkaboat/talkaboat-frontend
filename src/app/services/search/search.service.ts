@@ -13,7 +13,7 @@ import { SEARCH_TYPE } from './models/search.type';
 export class SearchService {
   public searchTerm: string = '';
   public searchType = SEARCH_TYPE.EPISODE;
-  public searchResponse: PodcastSearchResponse = { took: 0, count: 0, total: 0, results: [], next_offset: 0};
+  public searchResponse: PodcastSearchResponse[] = [];
   public searchLanguages = [];
   public searchGenres = [];
   private rawSearchGenres: string = "";
@@ -29,7 +29,7 @@ export class SearchService {
   public onChangedGenres = new EventEmitter<string[]>();
   public onChangedMinLength = new EventEmitter<number>();
   public onChangedMaxLength = new EventEmitter<number>();
-  public onChangedSearchResponse = new EventEmitter<PodcastSearchResponse>();
+  public onChangedSearchResponse = new EventEmitter<PodcastSearchResponse[]>();
   public onReset = new EventEmitter();
   constructor(
     private readonly podcastRepositoryService: PodcastRepositoryService,
@@ -42,7 +42,7 @@ export class SearchService {
         this.searchTerm = queryParams['q'];
       } else {
         this.lastSearch = { searchTerm: '' };
-        this.searchResponse = { took: 0, count: 0, total: 0, results: [], next_offset: 0};
+        this.searchResponse = [];
         this.searchTerm = "";
       }
       this.searchLengthMin = Number(queryParams['qminlen']);
@@ -75,22 +75,6 @@ export class SearchService {
 
   getTypeahead(term: any): Observable<string[]> {
     return this.podcastRepositoryService.getTypeahead(term);
-  }
-
-  getMoreResults(){
-    if (this.searchResponse.results.length >= this.searchResponse.total || this.searchResponse.next_offset <= 0) {
-      this.onChangedSearchResponse.emit(this.searchResponse);
-      return;
-    }
-    var searchQuery = this.getSearchQuery();
-    searchQuery.offset = this.searchResponse.next_offset;
-    this.podcastRepositoryService.search(searchQuery).subscribe((response: PodcastSearchResponse) => {
-      response.results.forEach(element => {
-        this.searchResponse.results.push(element);
-      });
-      this.searchResponse.next_offset = response.next_offset;
-      this.onChangedSearchResponse.emit(this.searchResponse);
-    });
   }
 
   public Reset() {

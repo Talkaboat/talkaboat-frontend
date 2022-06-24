@@ -46,9 +46,9 @@ export class PodcastRepositoryService extends RepositoryService {
   }
 
     //Which information do we need?
-  public search(query: PodcastSearch): Observable<PodcastSearchResponse> {
-    const api = PODCAST_API.URL + PODCAST_API.SEARCH_URL;
-    return this.post(api, query);
+  public search(query: PodcastSearch): Observable<PodcastSearchResponse[]> {
+    const api = PODCAST_API.URL + PODCAST_API.SEARCH_URL.replace("{queue}", query.searchTerm);
+    return this.get(api);
   }
 
   getTypeahead(term: any): Observable<string[]> {

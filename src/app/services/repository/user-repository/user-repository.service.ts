@@ -57,6 +57,11 @@ export class UserRepositoryService  extends RepositoryService {
     return this.get(api);
   }
 
+  public canClaim(address: string): Observable<boolean> {
+    const api = USER_API.URL + USER_API.CLAIM_URL + address;
+    return this.get(api);
+  }
+
   public claim(address: string, amount: number): Observable<Reward> {
     const api = USER_API.URL + USER_API.CLAIM_URL + address + "/" + amount.toString();
     return this.post(api, null);

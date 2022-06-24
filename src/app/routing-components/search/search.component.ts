@@ -4,7 +4,6 @@ import { listAnimation, listItemAnimation } from 'src/app/animations';
 import { MediaHelperService } from 'src/app/services/media-helper/media-helper.service';
 import { MediaPlayerService } from 'src/app/services/media-player/media-player.service';
 import { PodcastSearchResponse } from 'src/app/services/repository/search-repository/models/podcast-search-response.model';
-import { PodcastSearchResult } from 'src/app/services/repository/search-repository/models/podcast-search-result.model';
 import { SearchService } from 'src/app/services/search/search.service';
 
 
@@ -19,7 +18,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   isSearching = false;
-  searchResponse: PodcastSearchResponse = { took: -1, count: 0, total: 0, results: [], next_offset: 0}
+  searchResponse: PodcastSearchResponse[] = []
   type = 0;
   constructor(private readonly searchService: SearchService, private readonly mediaHelper: MediaHelperService, private readonly mediaPlayerService: MediaPlayerService) { }
 
@@ -29,7 +28,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (!this.searchService.isSearching
       && this.searchService.searchTerm
       && (!this.searchResponse
-      || this.searchResponse.results.length <= 0)) {
+      || this.searchResponse.length <= 0)) {
       this.isSearching = true;
       this.searchService.executeSearch(this.searchService.searchTerm);
     }
@@ -39,15 +38,15 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
-  setSearchResponse(searchResponse: PodcastSearchResponse) {
+  setSearchResponse(searchResponse: PodcastSearchResponse[]) {
     this.searchResponse = searchResponse;
     this.isSearching = false;
-    if (searchResponse == null || searchResponse.count <= 0) {
+    if (searchResponse == null || searchResponse.length <= 0) {
       return;
     }
 
-    this.searchResponse.results.forEach(entry => entry.isLoading = true);
-    if (this.searchResponse.results.some(i => i.aboat_id <= -1)) {
+    this.searchResponse.forEach(entry => entry.isLoading = true);
+    if (this.searchResponse.some(i => i.id <= -1)) {
       return;
     }
     // const newElement: PodcastSearchResult = { aboat_id: -1, id: "-1", rss: "ad", pub_date_ms: -1, image: "ad", title_original: "ad", audio_length_sec: -1, title_highlighted: "ad", description_original: "ad" }
@@ -60,13 +59,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     // this.searchResponse.results = res;
   }
 
-  play(track: PodcastSearchResult) {
-    this.mediaPlayerService.setTrackFromPodcastSearchResult(track, true);
-  }
-
-  add(track: PodcastSearchResult) {
-    if (!track.podcast) {
-      this.mediaHelper.addOrRemoveBookmark(track.aboat_id);
+  add(track: PodcastSearchResponse) {
+    if (track) {
+      this.mediaHelper.addOrRemoveBookmark(track.id);
     }
   }
 

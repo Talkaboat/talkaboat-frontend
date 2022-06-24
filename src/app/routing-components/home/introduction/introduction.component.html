@@ -64,27 +64,6 @@
   </div>
 
 </section>
-<section id="get-started" class="mt-[6.25rem] w-full md:max-w-[60rem]  text-left  mx-auto px-5 ">
-  <h2>{{ 'how_to_start_with_talkaboat' | translate }}</h2>
-  <ol class="mt-5 text-lg flex justify-between text-center h-[6.3.75em]">
-    <li class="w-[25rem] px-1 h-full">
-      <a class="rounded-[0.625rem] h-full bg-shadow-600 flex w-full justify-center text-center px-3 py-4" [routerLink]="['./register']">
-        <h4 class="my-auto">{{ 'get_started_first' | translate }} ></h4>
-
-      </a>
-    </li>
-    <li class="w-[25rem]  h-full  px-1">
-      <a class="rounded-[0.625rem] h-full bg-shadow-400 flex justify-center w-full px-3 py-4" [routerLink]="['/']" fragment="discover">
-        <h4 class="my-auto">{{ 'get_started_second' | translate }} ></h4>
-      </a>
-    </li>
-    <li class="w-[25rem] h-full  px-1">
-      <a class="rounded-[0.625rem] h-full bg-shadow-200 text-shadow-800  flex justify-center w-full px-3 py-4" [routerLink]="['./register']">
-        <h4 class="my-auto"><strong>{{ 'get_started_third' | translate }}</strong></h4></a>
-    </li>
-  </ol>
-</section>
-
 
 <section class="mt-[6.25rem] w-full md:max-w-[60rem]   mx-auto px-5 text-center">
   <div class="w-full flex justify-between mt-4">
@@ -101,6 +80,10 @@
   </div>
 </section>
 
+<section class="mt-[6.25rem] w-full md:max-w-[60rem]   mx-auto px-5 text-center">
+  <h1>Mobile Earning</h1>
+
+</section>
 
 
 <div *ngIf="isCreator">
@@ -127,11 +110,6 @@
   </div>
 </section>
 
-<div class="px-3">
-  <a tabindex="0" href="https://docs.google.com/forms/d/1hsTvo3cR8zzvN6SqDsZsBQuMg4TOBXtr6099z636yYM" target="_blank"
-    class="text-center text-[1.25rem] mx-auto flex items-center w-[13.75em] py-6 md:w-[32rem] rounded-[0.625rem] font-semibold btn primary ring-1 my-10 ring-shadow-700"><span
-      class="mx-auto">{{ 'join_seed' | translate }}</span></a>
-</div>
 
 
 
@@ -166,56 +144,3 @@
   </div>
 </section>
 
-<div class="mt-[1.875rem] px-5 mx-auto w-fit max-w-[50rem]">
-  <h2 class="text-center">{{ 'social_header' | translate }}</h2>
-  <div class="bg-shadow-300 rounded-[0.625rem] flex justify-between p-3 md:px-8 max-w-[50rem] mt-[0.625rem]">
-    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://twitter.com/talkaboat"
-      target="_blank" rel="noopener noreferrer nofollow">
-      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
-        <img class="w-full h-full" width="30px" height="30px" alt="twitter" src="./assets/images/social/twitter.png" />
-      </div>
-    </a>
-    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://t.me/talkaboat"
-      target="_blank" rel="noopener noreferrer nofollow">
-      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
-        <img class="w-full h-full" width="30px" height="30px" alt="telegram"
-          src="./assets/images/social/telegram.png" />
-      </div>
-    </a>
-    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer" href="https://discord.gg/mMud94kxNJ"
-      target="_blank" rel="noopener noreferrer nofollow">
-      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
-        <img class="w-full h-full" width="30px" height="30px" alt="discord" src="./assets/images/social/discord.png" />
-      </div>
-    </a>
-    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
-      href="https://medium.com/aboat-entertainment" target="_blank" rel="noopener noreferrer nofollow">
-      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
-        <img class="w-full h-full" width="30px" height="30px" alt="medium" src="./assets/images/social/medium.png" />
-      </div>
-    </a>
-    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
-      href="https://www.youtube.com/channel/UCe7zpIIZcgqQJ9n7G9ZgtYQ" target="_blank"
-      rel="noopener noreferrer nofollow">
-      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
-        <img class="w-full h-full" width="30px" height="30px" alt="youtube" src="./assets/images/social/youtube.png" />
-      </div>
-    </a>
-    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
-      href="https://www.instagram.com/talkaboat/" target="_blank" rel="noopener noreferrer nofollow">
-      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto ">
-        <img class="w-full h-full" width="30px" height="30px" alt="instagram"
-          src="./assets/images/social/instagram.png" />
-      </div>
-    </a>
-    <a tabindex="0" class="rounded-full p-1 hover:bg-shadow-200 cursor-pointer"
-      href="https://www.linkedin.com/company/aboat-entertainment" target="_blank" rel="noopener noreferrer nofollow">
-      <div class="w-[1.875rem] h-[1.875rem] sm:w-[1.5625rem] sm:h-[1.5625rem] mx-auto my-auto">
-        <img class="w-full h-full" width="30px" height="30px" alt="linkedin"
-          src="./assets/images/social/linkedin.png" />
-      </div>
-    </a>
-  </div>
-
-
-</div>

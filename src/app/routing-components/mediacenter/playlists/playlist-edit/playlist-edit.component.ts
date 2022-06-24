@@ -49,7 +49,12 @@ export class PlaylistEditComponent implements OnInit, OnDestroy {
     if (!track || !this.playlist) {
       return;
     }
-    this.mediaPlayerService.SetPlaylist(this.playlist, true, track.position);
+    console.log(track);
+    if (this.mediaPlayerService.isCurrentlyPlayedTrack(track.episode_Id) && this.mediaPlayerService.isPlaying) {
+      this.mediaPlayerService.setPlayState(false);
+    } else {
+      this.mediaPlayerService.SetPlaylist(this.playlist, true, track.position);
+    }
   }
 
   delete(track: PlaylistTrack) {

@@ -58,6 +58,13 @@ team = [
     isLoading: false
   },
   {
+    name: 'David Merbitz',
+    role: 'Chief Marketing Officer',
+    linkedin: 'https://www.linkedin.com/in/david-merbitz-6b8836232/',
+    image: './assets/images/team/david.jpg',
+    isLoading: false
+  },
+  {
     name: 'Felix Wildt',
     role: 'Technical Lead',
     linkedin: 'https://www.linkedin.com/in/felix-wildt-9b5124227/',
@@ -92,24 +99,10 @@ team = [
     isLoading: false
   },
   {
-    name: 'Alex Völkl',
-    role: 'Frontend Developer',
-    linkedin: 'https://www.linkedin.com/in/alexander-v%C3%B6lkl-9b6b7838/',
-    image: './assets/images/team/alex_v.png',
-    isLoading: false
-  },
-  {
     name: 'Joscha Reichenberg',
     role: 'App & Game Developer',
     linkedin: 'https://www.linkedin.com/in/joscha-reichenberg-323396227/',
     image: './assets/images/team/joscha.png',
-    isLoading: false
-  },
-  {
-    name: 'David Merbitz',
-    role: 'Social Media Marketing',
-    linkedin: 'https://www.linkedin.com/in/david-merbitz-6b8836232/',
-    image: './assets/images/team/david.png',
     isLoading: false
   },
 ];
