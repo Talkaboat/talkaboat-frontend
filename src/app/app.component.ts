@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { slider } from './animations';
+import { AuthService } from './services/auth/auth.service';
 import { MediaHelperService } from './services/media-helper/media-helper.service';
 import { UserService } from './services/user/user.service';
 import { WebsiteStateService } from './services/website-state/website-state.service';
@@ -16,7 +17,7 @@ import { WebsiteStateService } from './services/website-state/website-state.serv
 export class AppComponent implements OnInit {
 
   isSidebarOpen = true;
-  constructor(private readonly userService: UserService, private readonly toastr: ToastrService, private readonly websiteStateService: WebsiteStateService, private readonly mediaHelperService: MediaHelperService) {
+  constructor(private readonly userService: UserService, private readonly authService: AuthService, private readonly toastr: ToastrService, private readonly websiteStateService: WebsiteStateService, private readonly mediaHelperService: MediaHelperService) {
 
   }
 
@@ -27,7 +28,8 @@ export class AppComponent implements OnInit {
     this.isSidebarOpen = this.websiteStateService.isSidebarOpen;
     this.websiteStateService.onSidebarStateChanged.subscribe(state => this.isSidebarOpen = state);
     this.websiteStateService.closeSidebarIfSmallerThanDefinedPixel();
-    this.userService.autoConnect();
+    //this.userService.autoConnect();
+    this.authService.googleSignIn();
   }
 
   @HostListener('window:resize', ['$event'])

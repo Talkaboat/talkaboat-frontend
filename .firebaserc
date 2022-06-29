@@ -4,18 +4,11 @@
       "hosting": {
         "talkaboat": [
           "enodi-bc"
-        ],
-        "prod": [
-          "enodi-bc"
-        ],
-        "dev": [
-          "talkaboat-dev"
         ]
       }
     }
   },
   "projects": {
-    "prod": "enodi-bc",
-    "dev": "talkaboat-dev"
+    "default": "enodi-bc"
   }
 }

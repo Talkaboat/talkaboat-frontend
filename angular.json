@@ -114,8 +114,6 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "buildOptimizer": true,
-            "optimization": true,
             "browserTarget": "talkaboat:build:production",
             "firebaseProject": "enodi-bc",
             "firebaseHostingSite": "enodi-bc"
