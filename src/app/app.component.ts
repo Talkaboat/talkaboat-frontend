@@ -17,6 +17,7 @@ import { WebsiteStateService } from './services/website-state/website-state.serv
 export class AppComponent implements OnInit {
 
   isSidebarOpen = true;
+  isLoginModalOpen = false;
   constructor(private readonly userService: UserService, private readonly authService: AuthService, private readonly toastr: ToastrService, private readonly websiteStateService: WebsiteStateService, private readonly mediaHelperService: MediaHelperService) {
 
   }
@@ -27,9 +28,10 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     this.isSidebarOpen = this.websiteStateService.isSidebarOpen;
     this.websiteStateService.onSidebarStateChanged.subscribe(state => this.isSidebarOpen = state);
+    this.websiteStateService.onLoginModalStateChanged.subscribe(state => this.isLoginModalOpen = state);
     this.websiteStateService.closeSidebarIfSmallerThanDefinedPixel();
-    //this.userService.autoConnect();
-    this.authService.googleSignIn();
+    this.userService.autoConnect();
+    // this.authService.googleSignIn();
   }
 
   @HostListener('window:resize', ['$event'])

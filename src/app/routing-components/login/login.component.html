@@ -4,8 +4,8 @@
     <h4>{{ 'login_info' | translate }}</h4><!--If you are already registered you only have to connect your wallet.-->
     <button aria-label="connect wallet" class="mt-10 mx-auto text-base py-5 w-[17.5rem] font-semibold bg-main-500 rounded ring-1 ring-shadow-500" (click)="connect()">{{ 'connect_wallet' | translate }}</button>
     <div class="grid grid-cols-2 w-[12rem] mx-auto gap-5">
-      <button aria-label="connect wallet" class="mt-10 mx-auto text-base py-2 font-semibold bg-main-800 rounded ring-1 ring-shadow-500 w-full" (click)="connect()"><img class="h-8 mx-auto" src="./assets/images/social/google_color.png"/></button>
-      <button aria-label="connect wallet" class="mt-10 mx-auto text-base py-2 font-semibold bg-main-800 rounded ring-1 ring-shadow-500 w-full" (click)="connect()"><img class="h-8 mx-auto" src="./assets/images/social/facebook_color.png"/></button>
+      <button aria-label="connect wallet" class="mt-10 mx-auto text-base py-2 font-semibold bg-main-800 rounded ring-1 ring-shadow-500 w-full" (click)="connectGoogle()"><img class="h-8 mx-auto" src="./assets/images/social/google_color.png"/></button>
+      <button aria-label="connect wallet" class="mt-10 mx-auto text-base py-2 font-semibold bg-main-800 rounded ring-1 ring-shadow-500 w-full" (click)="connectFacebook()"><img class="h-8 mx-auto" src="./assets/images/social/facebook_color.png"/></button>
     </div>
     <p class="mt-10">{{ 'not_registered' | translate }} <a class="underline font-semibold" [routerLink]="['/register']">{{ 'register' | translate}}</a></p><!--Not on board yet? -->
   </div>

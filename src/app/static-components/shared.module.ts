@@ -18,6 +18,7 @@ import { SearchSlotComponent } from "./header/search-slot/search-slot.component"
 import { LoadingAnimationComponent } from "./loading/loading-animation/loading-animation.component";
 import { LoadingComponent } from "./loading/loading.component";
 import { MediaPlayerComponent } from "./media-player/media-player.component";
+import { ModalComponent } from './modal/modal.component';
 import { PlaylistAddComponent } from './playlist-add/playlist-add.component';
 import { PodcastCarouselComponent } from './podcast-carousel/podcast-carousel.component';
 import { PodcastListViewItemComponent } from "./podcast/podcast-list/podcast-list-view-item/podcast-list-view-item.component";
@@ -44,6 +45,7 @@ import { YoutubeComponent } from './youtube/youtube.component';
     PodcastCarouselComponent,
     PlaylistAddComponent,
     TokenClaimComponent,
+    ModalComponent,
 
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
@@ -76,6 +78,7 @@ import { YoutubeComponent } from './youtube/youtube.component';
     PodcastCarouselComponent,
     PlaylistAddComponent,
     TokenClaimComponent,
+    ModalComponent
   ],
 })
 export class SharedModule { }

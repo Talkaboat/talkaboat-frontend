@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MediaPlayerState } from 'src/app/static-components/media-player/mediaplayer-state';
+import { ModalState } from 'src/app/static-components/modal/models/modal-state.model';
 import { LoaderService } from '../loader/loader.service';
 import { UserRepositoryService } from '../repository/user-repository/user-repository.service';
 
@@ -14,10 +15,12 @@ export class WebsiteStateService {
 
   isSidebarOpen = true;
   headerState = 'home';
+  modalState: ModalState = { title: '', onClose: () => { }, onSubmit: () => { }};
   navigationHistory: string[] = [];
   public onSidebarStateChanged = new EventEmitter<boolean>();
   public onHeaderStateChanged = new EventEmitter<string>();
   public onMediaPlayerStateChanged: EventEmitter<MediaPlayerState> = new EventEmitter<MediaPlayerState>();
+  public onLoginModalStateChanged = new EventEmitter<boolean>();
   constructor(private readonly router: Router, private readonly loaderService: LoaderService, private readonly location: Location, private readonly titleService: Title, private readonly route: ActivatedRoute, private readonly userRepository: UserRepositoryService, private readonly toastr: ToastrService) {
     this.route.queryParams.subscribe((params: Params) => {
       if (params['ref']) {
@@ -53,6 +56,10 @@ export class WebsiteStateService {
         this.navigationHistory.push(ev.urlAfterRedirects);
       }
     });
+  }
+
+  openModal() {
+
   }
 
   evaluateHeaderState(page: string) {

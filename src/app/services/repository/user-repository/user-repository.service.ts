@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { RepositoryService } from '../repository.service';
 import { AuthorizationResponse } from './models/authorization-response.model';
+import { ResponseModel } from './models/response.model';
 import { RewardDetail } from './models/reward-detail.model';
 import { Reward } from './models/reward.model';
 import { UserAuthorizationRequestResponse } from './models/user-authorization-request.response.model';
@@ -82,6 +83,33 @@ export class UserRepositoryService  extends RepositoryService {
     const api = USER_API.URL + USER_API.LOGIN_URL;
     const body = { address: wallet, signature };
     return this.post<AuthorizationResponse>(api, body);
+  }
+
+  loginFirebase(token: string): Observable<ResponseModel> {
+    if (!token) {
+      return of();
+    }
+    const api = USER_API.URL + USER_API.REQUEST_FIREBASE_LOGIN_URL;
+    const body = { text: token };
+    return this.post<ResponseModel>(api, body);
+  }
+
+  verifyFirebase(token: string, pin: string): Observable<ResponseModel> {
+    if (!token) {
+      return of();
+    }
+    const api = USER_API.URL + USER_API.VERIFY_FIREBASE_LOGIN_URL.replace("{pin}", pin);
+    const body = { text: token };
+    return this.post<ResponseModel>(api, body);
+  }
+
+  registerFirebase(token: string, userName: string): Observable<ResponseModel> {
+    if (!token) {
+      return of();
+    }
+    const api = USER_API.URL + USER_API.REQUEST_FIREBASE_REGISTER_URL;
+    const body = { signature: token, address: 'default', userName: userName};
+    return this.post<ResponseModel>(api, body);
   }
 
   getUser(): Observable<UserData> {

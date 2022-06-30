@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { WebsiteStateService } from 'src/app/services/website-state/website-state.service';
 
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   subscriptions: Subscription[] = [];
 
-  constructor(private readonly userService: UserService, private readonly router: Router, private readonly websiteStateService: WebsiteStateService) { }
+  constructor(private readonly userService: UserService, private readonly authService: AuthService, private readonly router: Router, private readonly websiteStateService: WebsiteStateService) { }
 
   ngOnInit(): void {
     if (this.userService.isUserLoggedIn()) {
@@ -42,5 +43,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   async connect() {
     await this.userService.connect();
+  }
+
+  async connectGoogle() {
+    this.authService.googleSignIn();
+  }
+
+  async connectFacebook() {
+    this.authService.facebookSignIn();
   }
 }
