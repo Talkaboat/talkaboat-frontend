@@ -163,7 +163,7 @@ export class UserService {
   }
 
   async autoConnect() {
-    if (localStorage.getItem('aboat_access')) {
+    if (!localStorage.getItem('social_login') && localStorage.getItem('aboat_access')) {
       await this.web3Service.connect();
       if (this.web3Service.accounts) {
 

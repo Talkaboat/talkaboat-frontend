@@ -231,6 +231,10 @@ export const de = {
   //#region Login/Logout
   new_address_detected: 'Deine verbundene Krypto-Addresse hat sich geändert.',
   sign_out_address_mismatch: 'Die neue Addresse ist nicht mit deinem Account verbunden!',
+  new_user: "Neuen Benutzer anlegen",
+  verify_pin: "E-Mail verifizieren",
+  submit: "Absenden",
+  cancel: "Abbrechen",
   //#endregion
   social_header: 'Come on board and be social!',
 
