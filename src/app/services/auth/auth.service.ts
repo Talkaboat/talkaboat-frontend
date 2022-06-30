@@ -65,7 +65,7 @@ export class AuthService {
   }
 
   googleSignIn() {
-    if (!getAuth().currentUser) {
+    if (getAuth().currentUser) {
       return;
     }
     const provider = new GoogleAuthProvider();
@@ -75,7 +75,7 @@ export class AuthService {
   }
 
   facebookSignIn() {
-    if (!getAuth().currentUser) {
+    if (getAuth().currentUser) {
       return;
     }
     const provider = new FacebookAuthProvider();

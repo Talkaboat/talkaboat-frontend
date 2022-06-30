@@ -45,11 +45,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     await this.userService.connect();
   }
 
-  async connectGoogle() {
+  connectGoogle() {
     this.authService.googleSignIn();
   }
 
-  async connectFacebook() {
+  connectFacebook() {
     this.authService.facebookSignIn();
   }
 }
