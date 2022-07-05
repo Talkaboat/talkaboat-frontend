@@ -1,6 +1,6 @@
 import {
-  Component, Input,
-  OnInit
+    Component, Input,
+    OnInit
 } from "@angular/core";
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Subscription } from "rxjs";
@@ -54,7 +54,7 @@ export class PodcastCarouselComponent implements OnInit {
 
   add(podcast: Podcast) {
     if (podcast) {
-      this.mediaHelper.addOrRemoveBookmark(podcast.aboat_id);
+      this.mediaHelper.addOrRemoveBookmark(podcast.podcastId);
     }
   }
 

@@ -1,9 +1,9 @@
 <ul class="flex gap-4 flex-grow-0 flex-wrap box-border">
-    <li *ngFor="let item of episodes" [ngClass]="{'activePlaying' : item.aboat_id === activeEpisodeId}"  class="p-4 bg-[rgba(1,30,71,0.4)] hover:bg-[rgba(1,30,71,0.8)] min-w-[12.5rem] max-w-[12.5rem] box-border">
+    <li *ngFor="let item of episodes" [ngClass]="{'activePlaying' : item.episodeId === activeEpisodeId}"  class="p-4 bg-[rgba(1,30,71,0.4)] hover:bg-[rgba(1,30,71,0.8)] min-w-[12.5rem] max-w-[12.5rem] box-border">
         <div  class="flex flex-col max-w-xs">
             <div class="imageWrapper">
                 <div class="innerPosWrapper">
-                    <img class="playingImage" *ngIf="item.aboat_id === activeEpisodeId" src="../../../../../assets/images/aboat.png">
+                    <img class="playingImage" *ngIf="item.episodeId === activeEpisodeId" src="../../../../../assets/images/aboat.png">
                 </div>
                 <img [src]="item.image" class="max-h-70 border-[rgba(1,30,71,0.6)] border-solid border">
             </div>

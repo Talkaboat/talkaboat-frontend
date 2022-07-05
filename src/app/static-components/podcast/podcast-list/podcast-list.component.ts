@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Podcast } from 'src/app/services/repository/search-repository/models/podcast.model';
 import { PodcastRepositoryService } from 'src/app/services/repository/search-repository/podcast-repository.service';
-import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-podcast-list',
@@ -26,12 +25,12 @@ export class PodcastListComponent implements OnInit {
 
   toggleLibraryHandler(clickedPodcast : Podcast) : void {
     this.podcastService.getLibrary().subscribe((data) => {
-      if (data.indexOf(clickedPodcast.aboat_id) == -1) {
-          this.podcastService.addBookmark(clickedPodcast.aboat_id).subscribe((data) => {
+      if (data.indexOf(clickedPodcast.podcastId) == -1) {
+          this.podcastService.addBookmark(clickedPodcast.podcastId).subscribe((data) => {
             this.addedToLibrary.emit(clickedPodcast);
           });
       } else {
-        this.podcastService.removeBookmark(clickedPodcast.aboat_id).subscribe((data) => {
+        this.podcastService.removeBookmark(clickedPodcast.podcastId).subscribe((data) => {
           this.removedFromLibrary.emit(clickedPodcast);
         });
       }

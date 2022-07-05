@@ -104,7 +104,7 @@ export class PlaylistsComponent implements OnInit, OnDestroy {
 
   confirmDeletion() {
     this.loadingService.show();
-    this.podcastService.deletePlaylist(this.playlistToDelete?.playlist_Id).subscribe({
+    this.podcastService.deletePlaylist(this.playlistToDelete?.playlistId).subscribe({
       next: (_) => {
         this.toastrService.success(this.translationService.transform("success_delete_playlist"));
       },

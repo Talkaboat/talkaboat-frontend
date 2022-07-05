@@ -12,7 +12,7 @@ export class PlaylistAddComponent implements OnInit {
 
   playlists: Playlist[] = [];
   dropdownSettings: IDropdownSettings = {
-    idField: 'playlist_Id',
+    idField: 'playlistId',
     defaultOpen: false,
     enableCheckAll: false,
     allowSearchFilter: true,
@@ -31,8 +31,9 @@ export class PlaylistAddComponent implements OnInit {
   }
 
   addToPlaylist() {
+    console.log(this.selectedPlaylist);
     if (this.selectedPlaylist && this.selectedPlaylist.length > 0) {
-      this.mediaService.confirmPlaylistAdd(this.selectedPlaylist[0].playlist_Id)
+      this.mediaService.confirmPlaylistAdd(this.selectedPlaylist[0].playlistId)
     }
   }
 

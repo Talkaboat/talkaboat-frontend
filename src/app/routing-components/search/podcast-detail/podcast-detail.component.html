@@ -69,12 +69,12 @@
       <ul @list class="mt-3 sm:grid sm:grid-cols-4 lg:grid-cols-5 gap-4">
         <li @listItem class="mb-5 py-0 px-2 sm:p-0 flex flex-col bg-shadow-700 rounded-[0.625rem] shadow-lg"
           *ngFor="let episode of podcastData!.episodes">
-          <div [class.bg-success-content]="episode.aboat_id | isPlaying:1" class="mx-auto w-full h-full flex sm:grid relative rounded-[0.625rem]">
+          <div [class.bg-success-content]="episode.episodeId | isPlaying:1" class="mx-auto w-full h-full flex sm:grid relative rounded-[0.625rem]">
             <!-- Image -->
             <div
               class="shadow-lg relative overflow-hidden rounded-[0.625rem] p-0 sm:min-w-none sm:max-w-none sm:max-h-full min-w-[2.5rem] max-w-[2.5rem] max-h-[2.5rem] my-auto sm:my-0">
               <img width="40px" height="40px" [alt]="episode.title + ' portrait'" (load)="episode.isLoading = false"
-                class="w-full mx-auto aspect-square img-placeholder image-full rounded-[0.625rem]" [src]="episode.image">
+                class="w-full mx-auto aspect-square img-placeholder image-full rounded-[0.625rem]" [src]="episode.image ? episode.image : podcastData.image">
               <button aria-label="play track" *ngIf="episode.audio" [class.hidden]="episode.isLoading"
                 class="btn opacity-30 hover:opacity-75 hover:bg-main-800 focus-visible:bg-main-800 focus-visible:opacity-75 absolute w-full h-full top-0 right-0 left-0 bottom-0 bg-shadow-500 rounded-[0.625rem]"
                 (click)="play(episode)">

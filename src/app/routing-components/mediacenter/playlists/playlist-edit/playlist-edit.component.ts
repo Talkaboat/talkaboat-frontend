@@ -50,7 +50,7 @@ export class PlaylistEditComponent implements OnInit, OnDestroy {
       return;
     }
     console.log(track);
-    if (this.mediaPlayerService.isCurrentlyPlayedTrack(track.episode_Id) && this.mediaPlayerService.isPlaying) {
+    if (this.mediaPlayerService.isCurrentlyPlayedTrack(track.episodeId) && this.mediaPlayerService.isPlaying) {
       this.mediaPlayerService.setPlayState(false);
     } else {
       this.mediaPlayerService.SetPlaylist(this.playlist, true, track.position);
@@ -67,7 +67,7 @@ export class PlaylistEditComponent implements OnInit, OnDestroy {
 
   confirmDeletion() {
     if (this.trackToDelete) {
-      this.podcastRepositoryService.removeEpisodeFromPlaylist(this.playlistId, this.trackToDelete.playlistTrack_Id).subscribe((playlist: Playlist) => {
+      this.podcastRepositoryService.removeEpisodeFromPlaylist(this.playlistId, this.trackToDelete.playlistTrackId).subscribe((playlist: Playlist) => {
         this.playlist = playlist;
         this.sortPlaylist();
       })
@@ -100,7 +100,7 @@ export class PlaylistEditComponent implements OnInit, OnDestroy {
 
     track.position = newIndex;
     this.sortPlaylist();
-    this.podcastRepositoryService.updateEpisodePositionInPlaylist(this.playlistId, track.playlistTrack_Id!, newIndex).subscribe(playlist => {
+    this.podcastRepositoryService.updateEpisodePositionInPlaylist(this.playlistId, track.playlistTrackId!, newIndex).subscribe(playlist => {
       this.playlist = playlist;
       this.sortPlaylist();
     })

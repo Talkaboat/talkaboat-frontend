@@ -1,10 +1,10 @@
 import { Episode } from "../episode.model";
 
 export interface PlaylistTrack {
-  playlistTrack_Id?: number;
-  playlist_id: number;
+  playlistTrackId?: number;
+  playlistId: number;
   created: Date;
-  episode_Id: number;
+  episodeId: number;
   episode?: Episode;
   position: number;
 }

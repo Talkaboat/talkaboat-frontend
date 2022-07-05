@@ -2,10 +2,10 @@ import { Episode } from "./episode.model";
 import { PodcastExtras } from "./podcast-extras.model";
 
 export interface Podcast {
-  aboat_id: number;
+  podcastId: number;
   id: string;
   image: string;
-  intro_audio?: string;
+  intro?: string;
   genre_ids: number[];
   thumbnail?: string;
   listen_score?: number;
@@ -27,7 +27,7 @@ export interface Podcast {
   itunes_id?: number;
   is_claimed?: boolean;
   description?: string;
-  total_episodes?: number;
+  totalEpisodes?: number;
   explicit_content?: boolean;
   latest_pub_date_ms?: number;
   earliest_pub_date_ms?: number;

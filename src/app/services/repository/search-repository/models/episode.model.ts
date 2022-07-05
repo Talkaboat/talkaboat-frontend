@@ -1,8 +1,8 @@
 import { Podcast } from "./podcast.model";
 
 export interface Episode {
-  aboat_id: number;
-  podcast_id: number;
+  episodeId: number;
+  podcastId: number;
   id: string;
   link?: string;
   audio: string;

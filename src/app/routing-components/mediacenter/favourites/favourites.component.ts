@@ -77,7 +77,7 @@ export class FavouritesComponent implements OnInit {
   handleLibraryPodcastRemoved(removedItem : Podcast) {
     if(this.userLibraryEpisodes) {
       for(let i = 0; i < this.userLibraryEpisodes.length; i++) {
-        if (this.userLibraryEpisodes[i].aboat_id === removedItem.aboat_id) {
+        if (this.userLibraryEpisodes[i].podcastId === removedItem.podcastId) {
             this.userLibraryEpisodes.splice(i,1);
             break;
         }

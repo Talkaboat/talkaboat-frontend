@@ -47,12 +47,12 @@ export class MediaPlayerService {
 
   isCurrentlyPlayedFromPodcast(podcastId: any): boolean {
     if (!this.track) return false;
-    return this.track && this.track.podcast_id == podcastId;
+    return this.track && this.track.podcastId == podcastId;
   }
 
   isCurrentlyPlayedTrack(episodeId: any): boolean {
     if (!this.track) return false;
-    return this.track.aboat_id == episodeId;
+    return this.track.episodeId == episodeId;
   }
 
   async setTrack(episodeData: Episode, autoplay: boolean, podcastData: any = null, clearPlaylist?: boolean) {
@@ -81,7 +81,7 @@ export class MediaPlayerService {
 
   SetPlaylist(playlist: Playlist, autoplay: boolean, startFromTrack = 0) {
 
-    this.playlistId = playlist.playlist_Id;
+    this.playlistId = playlist.playlistId;
     localStorage.setItem("last_playlist_id", this.playlistId);
     this.currentTrackIndex = startFromTrack;
     var init = 0;
@@ -103,7 +103,7 @@ export class MediaPlayerService {
   async AddEpisodesToList(playlistEpisodes: Episode[], podcastData: any = null, relyingEpisode?: Episode) {
 
     if (relyingEpisode) {
-      if (this.track?.aboat_id != relyingEpisode.aboat_id) {
+      if (this.track?.episodeId != relyingEpisode.episodeId) {
         return;
       }
     }
@@ -132,8 +132,8 @@ export class MediaPlayerService {
       return undefined;
     }
     return {
-      aboat_id: podcastSearchResult.aboat_id,
-      podcast_id: podcastSearchResult.podcast?.aboat_id,
+      episodeId: podcastSearchResult.aboat_id,
+      podcastId: podcastSearchResult.podcast?.podcastId,
       id: podcastSearchResult.id,
       link: podcastSearchResult.link!,
       audio: podcastSearchResult.audio,
@@ -150,10 +150,10 @@ export class MediaPlayerService {
 
   public podcastConverted(podcast: Podcast): Podcast {
     return {
-      aboat_id: podcast.aboat_id,
+      podcastId: podcast.podcastId,
       id: podcast.id,
       image: podcast.image,
-      intro_audio: podcast.intro_audio,
+      intro: podcast.intro,
       genre_ids: podcast.genre_ids,
       thumbnail: podcast.thumbnail,
       listen_score: podcast.listen_score,

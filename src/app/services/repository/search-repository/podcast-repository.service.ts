@@ -21,14 +21,14 @@ export class PodcastRepositoryService extends RepositoryService {
     return this.post(api, null);
   }
 
-  public getEpisodes(podcastId: string, sort = "desc", amount = -1, pubdate = 0,): Observable<Episode[]> {
-    const api = PODCAST_API.URL + PODCAST_API.PODCAST_EPISODES.replace("{id}", podcastId).replace("{sort}", sort).replace("{amount}", amount.toString()).replace("{pubdate}", pubdate.toString());
-    return this.get(api);
+  public getEpisodes(podcastId: string, sort = "desc", amount = -1, offset = 0,): Observable<Episode[]> {
+    const api = PODCAST_API.URL + PODCAST_API.PODCAST_EPISODES;
+    return this.post(api, { id: podcastId, amount, offset, sort});
   }
 
-  public getPodcast(id: string, sort = "desc", pubdate = 0, amount = 10): Observable<Podcast> {
-    const api = PODCAST_API.URL + PODCAST_API.PODCAST_DETAILS.replace("{id}", id).replace("{sort}", sort).replace("{amount}", amount.toString()).replace("{pubdate}", pubdate.toString());
-    return this.post(api, null);
+  public getPodcast(id: string, sort = "desc", offset = 0, amount = 10): Observable<Podcast> {
+    const api = PODCAST_API.URL + PODCAST_API.PODCAST_DETAILS;
+    return this.post(api, { id, amount, offset, sort});
   }
 
   public getRandomPodcast(amount = 10): Observable<Podcast[]> {
@@ -61,8 +61,8 @@ export class PodcastRepositoryService extends RepositoryService {
     return this.get(api);
   }
 
-  public getPlaylist(playlist_id: number): Observable<Playlist> {
-    const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_GET_URL.replace("{id}", playlist_id.toString());
+  public getPlaylist(playlistId: number): Observable<Playlist> {
+    const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_GET_URL.replace("{id}", playlistId.toString());
     return this.get(api);
   }
 
@@ -72,8 +72,8 @@ export class PodcastRepositoryService extends RepositoryService {
     return this.post(api, body);
   }
 
-  public addEpisodeToPlaylist(playlist_id: number, episode_id: number): Observable<PlaylistTrack> {
-    const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_ADD_EPISODE_URL.replace("{id}", playlist_id.toString()).replace("{episode}", episode_id.toString());
+  public addEpisodeToPlaylist(playlistId: number, episodeId: number): Observable<PlaylistTrack> {
+    const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_ADD_EPISODE_URL.replace("{id}", playlistId.toString()).replace("{episode}", episodeId.toString());
     return this.post(api);
   }
 
@@ -82,16 +82,16 @@ export class PodcastRepositoryService extends RepositoryService {
     return this.delete(api);
   }
 
-  public updateEpisodePositionInPlaylist(playlist_id: number, trackId: number, position: number): Observable<Playlist> {
-    const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_UPDATE_EPISODE_URL.replace("{id}", playlist_id.toString()).replace("{trackId}", trackId.toString()).replace("{position}", position.toString());
+  public updateEpisodePositionInPlaylist(playlistId: number, trackId: number, position: number): Observable<Playlist> {
+    const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_UPDATE_EPISODE_URL.replace("{id}", playlistId.toString()).replace("{trackId}", trackId.toString()).replace("{position}", position.toString());
     return this.put(api);
   }
 
-  deletePlaylist(playlist_id: number | undefined): Observable<any> {
-    if (!playlist_id) {
+  deletePlaylist(playlistId: number | undefined): Observable<any> {
+    if (!playlistId) {
       return throwError(() => "Error From ThrowError observable")
     }
-    const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_DELETE_URL.replace("{id}", playlist_id.toString());
+    const api = PODCAST_API.URL + PODCAST_API.PLAYLIST_DELETE_URL.replace("{id}", playlistId.toString());
     return this.delete(api);
   }
 

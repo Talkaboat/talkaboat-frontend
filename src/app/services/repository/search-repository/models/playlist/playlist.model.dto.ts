@@ -1,7 +1,7 @@
 import { PlaylistTrack } from "./playlist-track.model.dto";
 
 export interface Playlist {
-  playlist_Id: number;
+  playlistId: number;
   name: string;
   image?: string;
   tracks?: PlaylistTrack[];

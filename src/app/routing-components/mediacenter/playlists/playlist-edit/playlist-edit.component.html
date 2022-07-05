@@ -15,7 +15,7 @@
       <tbody>
         <tr class="hover rounded-md" [cdkDragData]="track.episode?.title" *ngFor="let track of playlist.tracks; let i = index" cdkDrag>
           <td class="overflow-hidden w-[2rem]">{{track.position + 1}}</td>
-          <td class="overflow-hidden"  [class.bg-success-content]="track.episode_Id| isPlaying:1 ">
+          <td class="overflow-hidden"  [class.bg-success-content]="track.episodeId| isPlaying:1 ">
             <div class="flex items-center sm:space-x-3">
               <div class="avatar hidden sm:inline-block">
                 <button class="mask mask-squircle w-12 h-12" (click)="play(track)">
@@ -38,7 +38,7 @@
               <button class="my-auto rounded-md" (click)="play(track)">
                 <img width="40" height="32" alt="play/pause"
                 class="max-w-[1.5rem] my-auto rounded-[0.625rem]"
-                [src]="(track.episode_Id| isPlaying:1:true) ? './assets/images/player/pause.png' : './assets/images/player/play.png'">
+                [src]="(track.episodeId| isPlaying:1:true) ? './assets/images/player/pause.png' : './assets/images/player/play.png'">
               </button>
               <button class="w-[1.5rem] rounded-md h-[1.5rem]">
                 <div class="mb-2">...</div>

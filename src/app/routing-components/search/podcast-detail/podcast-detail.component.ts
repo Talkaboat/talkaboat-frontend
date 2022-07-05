@@ -81,6 +81,7 @@ export class PodcastDetailComponent implements OnInit {
     if (!episode) {
       episode = this.podcastData.episodes[0];
     }
+    console.log(episode);
     this.mediaPlayerService.setTrack(episode, true, this.podcastData, true);
     this.podcastRepository.getEpisodes(this.podcastId, this.sort, 0, episode.pub_date_ms).subscribe(playlistEpisodes => {
       this.mediaPlayerService.AddEpisodesToList(playlistEpisodes, episode);
@@ -92,14 +93,15 @@ export class PodcastDetailComponent implements OnInit {
   }
 
   isBookmarked() {
-    return this.podcastData ? this.mediaService.isBookmarked(this.podcastData.aboat_id) : false;
+    return this.podcastData ? this.mediaService.isBookmarked(this.podcastData.podcastId) : false;
   }
 
   loadMoreEpisodes() {
-    if (!this.podcastData || !this.podcastData.episodes || !this.podcastData.total_episodes || this.podcastData.episodes.length >= this.podcastData.total_episodes) {
+    if (!this.podcastData || !this.podcastData.episodes || !this.podcastData.totalEpisodes || this.podcastData.episodes.length >= this.podcastData.totalEpisodes) {
+      console.log("No more episodes")
       return;
     }
-    this.podcastRepository.getPodcast(this.podcastId, this.sort, this.podcastData.episodes[this.podcastData.episodes.length - 1].pub_date_ms).subscribe((result: Podcast) => {
+    this.podcastRepository.getPodcast(this.podcastId, this.sort, this.podcastData.episodes.length).subscribe((result: Podcast) => {
       if (result && result.episodes) {
         result.episodes.forEach(element => {
           if (this.podcastData && this.podcastData.episodes) {
@@ -135,11 +137,11 @@ export class PodcastDetailComponent implements OnInit {
       return;
     }
     if (this.isBookmarked()) {
-      this.podcastRepository.removeBookmark(this.podcastData.aboat_id).subscribe(() => {
+      this.podcastRepository.removeBookmark(this.podcastData.podcastId).subscribe(() => {
         this.mediaService.getLibrary();
       });
     } else {
-      this.podcastRepository.addBookmark(this.podcastData.aboat_id).subscribe(() => {
+      this.podcastRepository.addBookmark(this.podcastData.podcastId).subscribe(() => {
         this.mediaService.getLibrary();
       });
     }
