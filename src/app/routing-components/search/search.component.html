@@ -19,7 +19,7 @@
     <div [class.bg-success-content]="item.id | isPlaying: 0" class="mx-auto w-full h-auto flex sm:grid relative rounded-[0.625rem]" *ngIf="item.id >= 0">
 
       <div
-        class="shadow-lg relative overflow-hidden rounded-[0.625rem] sm:min-w-none sm:max-w-none sm:max-h-full min-w-[2.5rem] max-w-[2.5rem] max-h-[2.5rem] my-auto">
+        class="shadow-lg relative overflow-hidden rounded-[0.625rem] sm:min-w-none sm:max-w-none sm:max-h-full min-w-[2.5rem] max-w-[2.5rem] min-h-[2.5rem] max-h-[2.5rem] my-auto">
         <img width="40px" height="40px" [alt]="item.title + ' portrait'" (load)="item.isLoading = false"
           class="w-full mx-auto h-full img-placeholder rounded-[0.625rem]" [src]="item.image">
         <a [routerLink]="['./podcast']" [queryParams]="{ 'pd': item.id }"

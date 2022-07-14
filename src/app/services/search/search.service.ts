@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { LoaderService } from '../loader/loader.service';
 import { PodcastSearchResponse } from '../repository/search-repository/models/podcast-search-response.model';
 import { PodcastSearch } from '../repository/search-repository/models/podcast-search.model';
@@ -118,18 +118,20 @@ export class SearchService {
     this.onChangedGenres.emit(this.searchGenres);
   }
 
-  private getSearchQuery(): PodcastSearch {
+  private getSearchQuery(amount: number = 100, offset: number = 0): PodcastSearch {
     return {
       searchTerm: this.searchTerm,
       minLength: this.searchLengthMin,
       type: this.searchType.toLowerCase(),
       maxLength: this.searchLengthMax != 240 ? this.searchLengthMax : undefined,
       language: this.rawSearchLanguages && this.rawSearchLanguages.length > 0 ? this.rawSearchLanguages : undefined,
-      genres: this.rawSearchGenres && this.rawSearchGenres.length > 0  ? this.rawSearchGenres : undefined
+      genres: this.rawSearchGenres && this.rawSearchGenres.length > 0  ? this.rawSearchGenres : undefined,
+      amount,
+      offset
     };
   }
 
-  public async search(searchTerm: string, navigate: boolean = false) {
+  public async search(searchTerm: string, navigate: boolean = false, amount: number = 100, offset: number = 0) {
     if (searchTerm) {
       this.searchTerm = searchTerm;
     }
@@ -144,10 +146,10 @@ export class SearchService {
           'q': searchTerm, 'view': 'viewer', 'qtype': this.searchType, 'qlang': this.rawSearchLanguages, 'qgenre': this.rawSearchGenres, 'qminlen': this.searchLengthMin, 'qmaxlen': this.searchLengthMax
         }, queryParamsHandling: 'merge'
       }).then(v => {
-        this.executeSearch(searchTerm)
+        this.executeSearch(searchTerm, amount, offset)
       });
     } else {
-      this.executeSearch(searchTerm);
+      this.executeSearch(searchTerm, amount, offset);
     }
   }
 
@@ -160,15 +162,17 @@ export class SearchService {
       && searchQuery.type == this.lastSearch.type
       && searchQuery.maxLength == this.lastSearch.maxLength
       && searchQuery.minEpisodes == this.lastSearch.minEpisodes
+      && searchQuery.amount == this.lastSearch.amount
+      && searchQuery.offset == this.lastSearch.offset
       && searchQuery.maxEpisodes == this.lastSearch.maxEpisodes;
   }
 
-  executeSearch(searchTerm: string) {
+  executeSearch(searchTerm: string, amount: number = 100, offset: number = 0) {
     if (this.isSearchEqualToLastSearch()) {
       this.loaderService.hide();
       return;
     }
-    this.lastSearch = this.getSearchQuery();
+    this.lastSearch = this.getSearchQuery(amount, offset);
     this.loaderService.show();
     this.podcastRepositoryService.search(this.lastSearch).subscribe({
       next: result => {

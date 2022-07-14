@@ -150,3 +150,10 @@ Thumbs.db
 .firebase
 *-debug.log
 .runtimeconfig.json
+.vs/Talkaboat_Frontend/v17/.suo
+.vs/Talkaboat_Frontend/FileContentIndex/read.lock
+.vs/Talkaboat_Frontend/FileContentIndex/a189c7bc-00a0-4f3a-8fe0-918cfe5b4b05.vsidx
+.vs/Talkaboat_Frontend/config/applicationhost.config
+.vs/VSWorkspaceState.json
+.vs/tasks.vs.json
+.vs/slnx.sqlite

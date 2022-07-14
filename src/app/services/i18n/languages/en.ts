@@ -13,6 +13,7 @@ export const en = {
   further_information: 'Further information',
   estimated_reward_tooltip: 'Estimated reward',
   presale_token_amount: "Overall: ",
+  presale_open: 'Our pre-sale is open!',
   bought: 'Bought',
   resend_email: 'Resend email',
   aboat: './assets/images/aboat.png',

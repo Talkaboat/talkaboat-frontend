@@ -19,6 +19,12 @@
       </button>
     </form>
   </section>
+  <div id="supermarquee" class="h-full pointer-events-auto sm:max-w-[15rem] max-w-[15rem] mx-auto sm:pl-[2.5rem] my-auto hwrap">
+    <div class="hmove">
+      <a tabindex="0" target="_blank" href="https://docs.google.com/forms/d/1hsTvo3cR8zzvN6SqDsZsBQuMg4TOBXtr6099z636yYM" class="hitem w-full"><pre class="text-xl text-info">{{ 'presale_open' | translate }}</pre></a>
+    </div>
+    <a tabindex="0" target="_blank" href="https://docs.google.com/forms/d/1hsTvo3cR8zzvN6SqDsZsBQuMg4TOBXtr6099z636yYM" class="btn"><pre class="text-xl text-info">{{ 'join_seed' | translate }}</pre></a>
+  </div>
 
   <section id="info" class="mx-auto max-w-[50rem] justify-center px-3 mb-10">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -60,11 +66,11 @@
   </section>
   <section id="discover" class="mx-auto max-w-[50rem] justify-center px-3 text-center">
     <h2 class="hidden">{{ 'discover_podcasts' | translate }}</h2>
-    <div class="w-[18.75rem] mx-auto bg-shadow-700 mt-5">
+    <!-- <div class="w-[18.75rem] mx-auto bg-shadow-700 mt-5">
       <ng-multiselect-dropdown class="border-info" [settings]="dropdownSettings" [data]="genres"
         [(ngModel)]="selectedGenres" (onSelect)="apply()" (onDeSelect)="apply()" ngDefaultControl>
       </ng-multiselect-dropdown>
-    </div>
+    </div> -->
 
     <div class="mt-5 relative w-full min-h-[18.75rem] text-left">
       <div *ngIf="podcastDiscoveryIsLoading"

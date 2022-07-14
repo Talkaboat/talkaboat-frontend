@@ -16,6 +16,7 @@ export const de = {
   learn_more_token: "Let's Talkaboat!",
   presale_token_amount: "Insgesamt: ",
   bought: 'Gekauft',
+  presale_open: 'Der Vorverkauf ist geöffnet!',
   resend_email: 'Email erneut senden',
   claimable_percentage: 'Freigegebener Prozentsatz',
   claimed_percentage: 'Erhaltener Prozentsatz',

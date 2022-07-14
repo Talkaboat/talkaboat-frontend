@@ -10,6 +10,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { GetStartedComponent } from './get-started/get-started.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [

@@ -9,7 +9,7 @@ export interface PodcastSearch {
     maxEpisodes?: number;
     genres?: any;
     publishedBefore?: number;
-    publishedAfter?: number;
+    amount?: number;
     searchOnlyIn?: any;
     language?: any;
     region?: any;

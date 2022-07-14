@@ -1,54 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { listAnimation, listItemAnimation } from 'src/app/animations';
 
 @Component({
   templateUrl: './introduction.component.html',
-  styleUrls: ['./introduction.component.scss']
+  styleUrls: ['./introduction.component.scss'],
+  animations: [listAnimation, listItemAnimation]
 })
 export class IntroductionComponent implements OnInit {
-partners = [
-  {
-    name: 'The Moon',
-    role: 'Investor',
-    url: 'https://twitter.com/TheMoonCarl',
-    image: './assets/images/partners/themoon.jpg',
-    isLoading: false
-  },
-  {
-    name: 'AMCrypto',
-    role: 'Investor',
-    url: 'https://www.youtube.com/channel/UCNvJ5QckHYb3CeRBbbZry-A',
-    image: './assets/images/partners/amc.png',
-    isLoading: false
-  },
-  {
-    name: 'Cryptobeard',
-    role: 'Advisor',
-    url: 'https://www.linkedin.com/in/roman-engel-9809141ba',
-    image: './assets/images/partners/cryptobeard.png',
-    isLoading: false
-  },
-  {
-    name: 'Cryptospacefleet',
-    role: 'Partnership',
-    url: 'https://www.cryptospacefleet.com/',
-    image: './assets/images/partners/csf.png',
-    isLoading: false
-  },
-  {
-    name: 'Blockster',
-    role: 'Partnership',
-    url: 'https://blockster.com/aboat',
-    image: './assets/images/partners/bxr.png',
-    isLoading: false
-  },
-  {
-    name: "Instincy",
-    role: "Advisor & Partner",
-    url: 'https://www.instincy.com/',
-    image: './assets/images/partners/david.jpg',
-    isLoading: false
-  }
-];
+
 team = [
   {
     name: "Fabian Reichenberg",
@@ -59,7 +18,7 @@ team = [
   },
   {
     name: 'David Merbitz',
-    role: 'Chief Marketing Officer',
+    role: 'CMO',
     linkedin: 'https://www.linkedin.com/in/david-merbitz-6b8836232/',
     image: './assets/images/team/david.jpg',
     isLoading: false
@@ -94,8 +53,14 @@ team = [
   },
   {
     name: 'Alex',
-    role: 'Marketing',
+    role: 'Partnership',
     image: './assets/images/team/alex.png',
+    isLoading: false
+  },
+  {
+    name: 'Marcel',
+    role: 'Marketing',
+    image: './assets/images/team/marcel.svg',
     isLoading: false
   },
   {
