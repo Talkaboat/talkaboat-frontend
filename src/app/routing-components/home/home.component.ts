@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   isCreator: boolean = false;
   items: Podcast[] = [];
   genres: Genre[] = [];
+  newcomers: Podcast[] = [];
 
   selectedGenres: Genre[] = [];
   podcastDiscoveryIsLoading = true;
@@ -53,6 +54,7 @@ export class HomeComponent implements OnInit {
         this.typeAheadEntries = [];
       }
     }));
+    this.podcastRepo.getRandomPodcastByRank(0, 10).subscribe(results => this.newcomers = results);
     this.searchService.onChangedSearch.subscribe(term => this.searchTerm.setValue(term));
     this.searchTerm.setValue(this.searchService.searchTerm);
     this.genres = this.mediaHelperService.genreData;

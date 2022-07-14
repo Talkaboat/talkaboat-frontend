@@ -17,6 +17,7 @@ export const PODCAST_API = {
   PLAYLIST_GET_URL: "/playlist/{id}",
   PLAYLIST_GET_ALL_URL: "/playlist",
   PODCAST_RANDOM_URL: "/search/random/{amount}",
+  PODCAST_RANDOM_RANK_URL: "/search/random/{amount}/rank/{rank}",
   PODCAST_RANDOM_W_GENRES_URL: "/search/random/{amount}/{genres}",
   GENRES_URL: "/genres",
 }

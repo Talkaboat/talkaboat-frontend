@@ -17,6 +17,7 @@ export const de = {
   presale_token_amount: "Insgesamt: ",
   bought: 'Gekauft',
   presale_open: 'Der Vorverkauf ist geöffnet!',
+  might_be_interesting: 'Das könnt dich interessieren',
   resend_email: 'Email erneut senden',
   claimable_percentage: 'Freigegebener Prozentsatz',
   claimed_percentage: 'Erhaltener Prozentsatz',

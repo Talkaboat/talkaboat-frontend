@@ -20,6 +20,7 @@ export const en = {
   talkaboat_intro: '<p class="text-info">Podcast&nbsp;</p><p class="text-neutral-content">Meets&nbsp;</p><p class="text-info">Crypto</p>',
   learn_more_token: "Let's Talkaboat!",
   power_info_top: 'Full Control',
+  might_be_interesting: 'That might be of interest',
   power_info_bottom: 'Strong Connection',
   how_to_register_youtube: 'How to register for Talkaboat?',
   info_description: "Aboat Entertainment is a content aggregator with blockchain-based ecosystem to bust the common monetization and bring benefits for creators and consumers alike",

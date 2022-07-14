@@ -36,6 +36,11 @@ export class PodcastRepositoryService extends RepositoryService {
     return this.get(api);
   }
 
+  public getRandomPodcastByRank(rank: number, amount = 10): Observable<Podcast[]> {
+    const api = PODCAST_API.URL + PODCAST_API.PODCAST_RANDOM_RANK_URL.replace("{amount}", amount.toString()).replace("{rank}", rank.toString());
+    return this.get(api);
+  }
+
   public getRandomPodcastWithGenre(genres: Genre[], amount = 10): Observable<Podcast[]> {
     var genreIds: number[] = [];
     genres.forEach(genre => {

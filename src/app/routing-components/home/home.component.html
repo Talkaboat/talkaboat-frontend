@@ -77,6 +77,12 @@
         class="w-full absolute left-0 right-0 top-0 bottom-0 mx-auto h-full rounded-[0.625rem] z-10">
         <app-loading-animation></app-loading-animation>
       </div>
+      <h3>Newcomers</h3>
+      <div *ngIf="items">
+        <app-podcast-carousel [items]="newcomers"></app-podcast-carousel>
+      </div>
+      
+      <h3 class="mt-10">{{ 'might_be_interesting' | translate }}</h3>
       <div *ngIf="items">
         <app-podcast-carousel [items]="items"></app-podcast-carousel>
       </div>
