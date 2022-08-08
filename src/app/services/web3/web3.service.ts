@@ -12,11 +12,11 @@ export class Web3Service {
   public web3: any;
   public provider: any;
   public accounts: any;
-  public chainId: number = 242;
+  public chainId: number = 24;
   web3Modal: Web3Modal = new Web3Modal();
   public chainIdObservable = new EventEmitter<number>();
   public accountsObservable = new EventEmitter<string[]>();
-  private readonly baseRPC = 'https://dev.kardiachain.io';
+  private readonly baseRPC = 'https://rpc.kardiachain.io';
   constructor() {
     this.createModal();
   }
@@ -30,11 +30,12 @@ export class Web3Service {
           bridge: 'https://bridge.walletconnect.org',
           rpc: {
             1: "https://bsc-dataseed.binance.org/",
+            24: "https://rpc.kardiachain.io",
             56: "https://bsc-dataseed.binance.org/",
             97: "https://data-seed-prebsc-1-s1.binance.org:8545/",
             242: "https://dev.kardiachain.io"
           },
-          chainId: 242
+          chainId: 24
         }
       },
     };
@@ -66,7 +67,7 @@ export class Web3Service {
   }
 
   async switchNetwork() {
-      return window.ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0xF2' /*'0x38'*/}]});
+      return window.ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x18' /*'0x38'*/}]});
   }
 
   async isBraveBrowser() {

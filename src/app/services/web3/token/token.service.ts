@@ -10,13 +10,13 @@ import { Web3Service } from '../web3.service';
 export class TokenService {
 
   tokens: TokenModel[] = [];
-  readonly wbnbContract = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c".toLowerCase();
-  readonly aboatContract = "0x013b705e27F21EdC2040465841439bb65575b2DC";//"0x50Fa913d111099C78Ec25c1e0B1D98566C80886C".toLowerCase();
+  readonly wethContract = "0xAF984E23EAA3E7967F3C5E007fbe397D8566D23d".toLowerCase();
+  readonly aboatContract = "0x186B1B6CE63932a34FAa8D08bB11B775591Fd6f4";//"0x50Fa913d111099C78Ec25c1e0B1D98566C80886C".toLowerCase();
   readonly stableCoins = [
-    "0xB20A3ae67b8C32782eDcc73611Fc2273BF8017a3".toLowerCase()
+    "0x551A5dcAC57C66aA010940c2dcFf5DA9c53aa53b".toLowerCase()
     //"0x97731fCA94A1a3d0392f9Be6ff030f8047669ae0".toLowerCase()
   ]
-  public BUSD: TokenModel = { name: "USDT Token", symbol: "USDT", decimals: 18, balance: Big(0), address: "0x97731fCA94A1a3d0392f9Be6ff030f8047669ae0", priceInBusd: 1, swapAmount: Big(0) };
+  public USDT: TokenModel = { name: "USDT Token", symbol: "USDT", decimals: 18, balance: Big(0), address: "0x551A5dcAC57C66aA010940c2dcFf5DA9c53aa53b", priceInBusd: 1, swapAmount: Big(0) };
   constructor(private readonly contractService: ContractService, private readonly web3Service: Web3Service, private readonly http: HttpClient) { }
 
   isStableUSD(tokenAddress: string | undefined): boolean {
@@ -33,7 +33,7 @@ export class TokenService {
       if (this.isStableUSD(token.address)) {
         token.priceInBusd = 1;
       } else {
-        token.priceInBusd = await this.getQuote(token, this.BUSD, Big(1));
+        token.priceInBusd = await this.getQuote(token, this.USDT, Big(1));
       }
     }
     return Promise.resolve(token);
@@ -44,8 +44,8 @@ export class TokenService {
       return undefined;
     }
     identifier = identifier.toLowerCase();
-    if (replaceWbnb && identifier === 'wbnb' || identifier === this.wbnbContract) {
-      identifier = 'bnb';
+    if (replaceWbnb && identifier === 'wkai' || identifier === this.wethContract) {
+      identifier = 'kai';
     }
     let temp: TokenModel | undefined = this.tokens.find(el => el.address?.toLowerCase() == identifier || el.symbol.toLowerCase() == identifier);
     if (temp == undefined && identifier.startsWith('0x')) {
@@ -68,20 +68,14 @@ export class TokenService {
     if (tokenA && swapAmount.lte(0) && tokenA.swapAmount) {
       swapAmount = Big(tokenA.swapAmount);
     }
-    if (!swapAmount || !tokenA || !tokenA.decimals || !tokenB || tokenA.name == "WaultSwap LP" || tokenB.name == "WaultSwap LP" || swapAmount.lte(0)) {
+    if (!swapAmount || !tokenA || !tokenA.decimals || !tokenB || tokenA.name.includes("LP") || tokenB.name.includes("LP")|| swapAmount.lte(0)) {
       return Promise.resolve(0);
     }
     const amount = swapAmount.mul((10 ** tokenA?.decimals));
-    // switch (this.web3Service.chainId) {
-    //   case 56: return this.getQuoteBSCMainnet(tokenA, tokenB, amount);
-    //   case 97: return this.getQuoteBySmartContract(tokenA, tokenB, amount);
-    // }
-    return Promise.resolve(0.000015);
-  }
-
-  private getWETH(): Promise<string> {
-    const router = this.contractService.getRouterContract();
-    return router.methods.WETH().call();
+    switch (this.web3Service.chainId) {
+      case 24: return this.getQuoteBySmartContract(tokenA, tokenB, amount);
+    }
+    return Promise.resolve(0.000018);
   }
 
   public async getAboatToken(): Promise<TokenModel | undefined> {
@@ -90,8 +84,8 @@ export class TokenService {
 
   private async getQuoteBySmartContract(tokenA: TokenModel, tokenB: TokenModel, amount: Big): Promise<number> {
     const factory = this.contractService.getFactoryContract();
-    const addressA = tokenA.symbol == "BNB" ? await this.getWETH() : tokenA.address;
-    const addressB = tokenB.symbol == "BNB" ? await this.getWETH() : tokenB.address;
+    const addressA = tokenA.symbol == "KAI" ? await this.wethContract : tokenA.address;
+    const addressB = tokenB.symbol == "KAI" ? await this.wethContract: tokenB.address;
     const pairAddress = await factory.methods.getPair(addressA, addressB).call();
     if (pairAddress == BLOCKCHAIN.ZERO_ADDRESS) {
       return 0;
@@ -107,11 +101,6 @@ export class TokenService {
     ).call();
     return quote / (10 ** tokenB.decimals);
   }
-
-  private getQuoteBSCMainnet(tokenA: TokenModel, tokenB: TokenModel, amount: Big): Promise<number> {
-    return Promise.resolve(0.000015);
-  }
-
 
   public getName(tokenAddress: string): Promise<string> {
     if (tokenAddress == BLOCKCHAIN.ZERO_ADDRESS) {
@@ -168,7 +157,7 @@ export class TokenService {
   public getSymbol(tokenAddress: string, poolInfo: PoolInfo | undefined): Promise<string[]> {
     return this.contractService.getTokenContract(tokenAddress)?.methods.symbol().call().then((name: string) => {
       let convertedName = name.toLowerCase();
-      if (convertedName.includes("wlp") || convertedName.includes("cake-lp")) {
+      if (convertedName.includes("kdxlp") || convertedName.includes("wlp") || convertedName.includes("cake-lp")) {
         return poolInfo ? this.getSymbolFromPoolInfo(poolInfo) : this.getSymbols(tokenAddress);
       } else {
         let symbols = [];
