@@ -314,7 +314,7 @@ export const de = {
   //#region Claim Token
   confirm_claim: "Genehmigen",
   claim_aboat: "Aboat claimen",
-  claim_bnb: "Zu KAI konvertieren",
+  claim_bnb: "Zu {token} konvertieren",
   token_total_claim: "Gesamtanzahl Token",
   token_available_for_claim: "Verfügbare Token",
   claim_header: "Token claimen",

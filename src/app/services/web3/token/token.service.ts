@@ -6,24 +6,47 @@ import { PoolInfo } from '../../repository/smart-contract-repository/models/pool
 import { TokenModel } from '../../repository/smart-contract-repository/models/token.model';
 import { ContractService } from '../contract/contract.service';
 import { Web3Service } from '../web3.service';
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class TokenService {
 
   tokens: TokenModel[] = [];
-  readonly wethContract = "0xAF984E23EAA3E7967F3C5E007fbe397D8566D23d".toLowerCase();
-  readonly aboatContract = "0x186B1B6CE63932a34FAa8D08bB11B775591Fd6f4";//"0x50Fa913d111099C78Ec25c1e0B1D98566C80886C".toLowerCase();
-  readonly stableCoins = [
-    "0x551A5dcAC57C66aA010940c2dcFf5DA9c53aa53b".toLowerCase()
-    //"0x97731fCA94A1a3d0392f9Be6ff030f8047669ae0".toLowerCase()
-  ]
-  public USDT: TokenModel = { name: "USDT Token", symbol: "USDT", decimals: 18, balance: Big(0), address: "0x551A5dcAC57C66aA010940c2dcFf5DA9c53aa53b", priceInBusd: 1, swapAmount: Big(0) };
+  readonly wethContracts = new Map<number, string>([
+    [24, "0xAF984E23EAA3E7967F3C5E007fbe397D8566D23d".toLowerCase()],
+    [80001, "0x462C98Cae5AffEED576c98A55dAA922604e2D875".toLowerCase()]
+  ]);
+  readonly aboatContracts = new Map<number, string>([
+    [24, "0x186B1B6CE63932a34FAa8D08bB11B775591Fd6f4".toLowerCase()],
+    [80001, "0x319Cbc449E622Ef53b06dD1b720649207e5D13B4".toLowerCase()]
+  ]);
+  readonly stableCoinContracts = new Map<number, string[]>([
+    [24, ["0x186B1B6CE63932a34FAa8D08bB11B775591Fd6f4".toLowerCase()]],
+    [80001, ["0x0fa8781a83e46826621b3bc094ea2a0212e71b23".toLowerCase()]]
+  ]);
+  readonly gasIdentifiers = new Map<number, string>([
+    [24, "KAI"],
+    [80001, "MATIC"]
+  ]);
+  readonly usdtTokens = new Map<number, TokenModel>([
+    [24, { name: "USDT Token", symbol: "USDT", decimals: 18, balance: Big(0), address: "0x551A5dcAC57C66aA010940c2dcFf5DA9c53aa53b", priceInBusd: 1, swapAmount: Big(0) }]
+  ]);
   constructor(private readonly contractService: ContractService, private readonly web3Service: Web3Service, private readonly http: HttpClient) { }
 
   isStableUSD(tokenAddress: string | undefined): boolean {
-    return tokenAddress != undefined && this.stableCoins.includes(tokenAddress.toLowerCase());
+    var chain = this.web3Service.chainId;
+    if(this.stableCoinContracts && this.stableCoinContracts.get(chain)) {
+      return tokenAddress != undefined && this.stableCoinContracts &&  this.stableCoinContracts.get(chain)!.includes(tokenAddress.toLowerCase());
+    }
+    return false;
+  }
+
+  getCurrentGasToken(): string {
+    return this.gasIdentifiers.get(this.web3Service.chainId) ?? "Not allowed!";
   }
 
   public async addToken(token: TokenModel, calculatePrice = true, calculateTokenBalance = true): Promise<TokenModel | undefined> {
+
     let temp: TokenModel | undefined = this.tokens.find(el => el.address?.toLowerCase() == token?.address?.toLowerCase());
     if (temp) {
       this.tokens.push(token);
@@ -33,7 +56,9 @@ export class TokenService {
       if (this.isStableUSD(token.address)) {
         token.priceInBusd = 1;
       } else {
-        token.priceInBusd = await this.getQuote(token, this.USDT, Big(1));
+        var chain = this.web3Service.chainId;
+        var usdt = this.usdtTokens!.get(chain);
+        token.priceInBusd = usdt ? await this.getQuote(token, usdt, Big(1)): 0;
       }
     }
     return Promise.resolve(token);
@@ -44,7 +69,9 @@ export class TokenService {
       return undefined;
     }
     identifier = identifier.toLowerCase();
-    if (replaceWbnb && identifier === 'wkai' || identifier === this.wethContract) {
+    var chain = this.web3Service.chainId;
+    var wethContract = this.wethContracts!.get(chain)!;
+    if (replaceWbnb && identifier === 'wkai' || identifier === wethContract) {
       identifier = 'kai';
     }
     let temp: TokenModel | undefined = this.tokens.find(el => el.address?.toLowerCase() == identifier || el.symbol.toLowerCase() == identifier);
@@ -79,13 +106,16 @@ export class TokenService {
   }
 
   public async getAboatToken(): Promise<TokenModel | undefined> {
-    return this.addTokenByIdentifier(this.aboatContract, true);
+    var chain = this.web3Service.chainId;
+
+    return this.addTokenByIdentifier(this.aboatContracts.get(chain)!, true);
   }
 
   private async getQuoteBySmartContract(tokenA: TokenModel, tokenB: TokenModel, amount: Big): Promise<number> {
+    var chain = this.web3Service.chainId;
     const factory = this.contractService.getFactoryContract();
-    const addressA = tokenA.symbol == "KAI" ? await this.wethContract : tokenA.address;
-    const addressB = tokenB.symbol == "KAI" ? await this.wethContract: tokenB.address;
+    const addressA = tokenA.symbol == this.gasIdentifiers!.get(chain) ? await this.aboatContracts.get(chain)! : tokenA.address;
+    const addressB = tokenB.symbol == this.gasIdentifiers!.get(chain) ? await this.aboatContracts.get(chain)!: tokenB.address;
     const pairAddress = await factory.methods.getPair(addressA, addressB).call();
     if (pairAddress == BLOCKCHAIN.ZERO_ADDRESS) {
       return 0;

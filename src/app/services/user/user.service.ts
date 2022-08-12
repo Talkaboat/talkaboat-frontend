@@ -163,8 +163,9 @@ export class UserService {
   }
 
   async autoConnect() {
+    await this.web3Service.connect();
     if (!localStorage.getItem('social_login') && localStorage.getItem('aboat_access')) {
-      await this.web3Service.connect();
+
       if (this.web3Service.accounts) {
 
         this.loaderService.show();

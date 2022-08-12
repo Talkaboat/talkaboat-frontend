@@ -309,7 +309,7 @@ export const en = {
     //#region Claim Token
     confirm_claim: "Confirm",
     claim_aboat: "Claim Aboat",
-    claim_bnb: "Convert to KAI",
+    claim_bnb: "Convert to {token}",
     token_total_claim: "Total Token",
     token_available_for_claim: "Available Token",
     claim_header: "Claim Token",

@@ -1,6 +1,6 @@
 export const USER_API = {
   URL: "user",
-  CLAIM_URL: "/claim/",
+  CLAIM_URL: "/{chain}/claim/",
   REGISTER_URL: "/register",
   CONFIRMATION_URL: "/register/confirm/",
   LOGIN_URL: "/login",

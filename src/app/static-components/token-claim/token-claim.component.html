@@ -20,7 +20,7 @@
           (click)="claimAboat()">{{ 'claim_aboat' | translate }}</button>
         <div class="divider divider-horizontal">OR</div>
         <button [class.btn-disabled]="claimAmount.value <= 0" [disabled]="claimAmount.value <= 0" class="grid h-20 flex-grow card btn-secondary cursor-pointer rounded-box place-items-center"
-          (click)="claimBnb()">{{ 'claim_bnb' | translate }}</button>
+          (click)="claimBnb()">{{ getNativeTokenText('claim_bnb' | translate) }}</button>
       </div>
       <div class="flex w-full mt-auto h-20" [class.hidden]="claimMode <= 0">
 

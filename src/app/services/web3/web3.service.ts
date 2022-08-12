@@ -12,7 +12,7 @@ export class Web3Service {
   public web3: any;
   public provider: any;
   public accounts: any;
-  public chainId: number = 24;
+  public chainId: number = 0;
   web3Modal: Web3Modal = new Web3Modal();
   public chainIdObservable = new EventEmitter<number>();
   public accountsObservable = new EventEmitter<string[]>();
@@ -33,9 +33,9 @@ export class Web3Service {
             24: "https://rpc.kardiachain.io",
             56: "https://bsc-dataseed.binance.org/",
             97: "https://data-seed-prebsc-1-s1.binance.org:8545/",
-            242: "https://dev.kardiachain.io"
+            242: "https://dev.kardiachain.io",
+            9001: "https://eth.bd.evmos.org:8545",
           },
-          chainId: 24
         }
       },
     };
@@ -90,8 +90,11 @@ export class Web3Service {
     }
     this.provider = await this.web3Modal.connect();
     if (this.provider) {
+      console.log("connected");
+
       this.configListeners();
       this.web3 = new Web3(this.provider);
+      this.chainId = await this.web3.eth.getChainId()
       await this.configChainOnMetaMask();
     } else {
       await this.disconnect();
@@ -120,10 +123,10 @@ export class Web3Service {
   }
 
   async configChainOnMetaMask() {
-    if (this.provider.isMetaMask) {
-      await this.addNetwork();
-      await this.switchNetwork();
-    }
+    // if (this.provider.isMetaMask) {
+    //   await this.addNetwork();
+    //   await this.switchNetwork();
+    // }
   }
 
   public async getEstimatedGas(method: any, from: string, bnbAmount = "0"): Promise<string> {
@@ -141,9 +144,11 @@ export class Web3Service {
       if (this.provider) {
         this.accounts = accounts;
         this.accountsObservable.emit(this.accounts);
+        this.checkChain(parseInt(this.accounts, 16));
       }
     });
     this.provider.on("chainChanged", async (chainId: number) => {
+      console.log(chainId);
       if (this.provider) {
         this.checkChain(parseInt(chainId.toString(), 16));
       }
