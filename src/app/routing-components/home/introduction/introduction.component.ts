@@ -18,16 +18,9 @@ team = [
   },
   {
     name: 'David Merbitz',
-    role: 'CMO',
+    role: 'Marketing',
     linkedin: 'https://www.linkedin.com/in/david-merbitz-6b8836232/',
     image: './assets/images/team/david.jpg',
-    isLoading: false
-  },
-  {
-    name: 'Felix Wildt',
-    role: 'Technical Lead',
-    linkedin: 'https://www.linkedin.com/in/felix-wildt-9b5124227/',
-    image: './assets/images/team/felix.jpg',
     isLoading: false
   },
   {
@@ -38,28 +31,8 @@ team = [
     isLoading: false
   },
   {
-    name: 'Arianit Gecaj',
-    role: 'Frontend Developer',
-    linkedin: 'https://www.linkedin.com/in/arianit-gecaj-4955b4156/',
-    image: './assets/images/team/ari.png',
-    isLoading: false
-  },
-  {
-    name: 'Dennis Lange',
-    role: 'Backend-Developer',
-    linkedin: 'https://www.linkedin.com/in/dennis-lange-186003227/',
-    image: './assets/images/team/dennis.png',
-    isLoading: false
-  },
-  {
-    name: 'Alex',
-    role: 'Partnership',
-    image: './assets/images/team/alex.png',
-    isLoading: false
-  },
-  {
     name: 'Marcel',
-    role: 'Marketing',
+    role: 'Partnership',
     image: './assets/images/team/marcel.svg',
     isLoading: false
   },

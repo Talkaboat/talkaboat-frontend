@@ -41,7 +41,7 @@ export class PoolComponent implements OnInit {
     this.loaderService.show();
     this.loungeService.harvest(this.poolInfo!).then(async result => {
       if (result) {
-        this.loungeService.setupPool(this.poolInfo!);
+        this.loungeService.setupPool(this.poolInfo!).then(newPoolInfo => this.poolInfo = newPoolInfo);
       }
     }).finally(() => this.loaderService.hide());
   }
@@ -62,5 +62,8 @@ export class PoolComponent implements OnInit {
   closedModal(isFinished: boolean) {
     this.stake = false;
     this.withdraw = false;
+    if(isFinished) {
+      this.loungeService.setupPool(this.poolInfo!).then(newPoolInfo => this.poolInfo = newPoolInfo);
+    }
   }
 }

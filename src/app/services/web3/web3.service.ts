@@ -33,8 +33,10 @@ export class Web3Service {
             24: "https://rpc.kardiachain.io",
             56: "https://bsc-dataseed.binance.org/",
             97: "https://data-seed-prebsc-1-s1.binance.org:8545/",
+            137: "https://polygon-rpc.com/",
             242: "https://dev.kardiachain.io",
             9001: "https://eth.bd.evmos.org:8545",
+            80001: "https://matic-mumbai.chainstacklabs.com",
           },
         }
       },
@@ -133,7 +135,7 @@ export class Web3Service {
     try {
 
         const gas = Big(await method.estimateGas({ from, value: bnbAmount }));
-        return gas.mul(1.1).toFixed(0);
+        return gas.mul(1.25).toFixed(0);
     } catch(error) {
         return (await Promise.resolve(BLOCKCHAIN.GAS_PRICE)).toFixed(0);
     }

@@ -12,19 +12,23 @@ export class ContractService {
   private readonly api = 'https://api.bscscan.com/api?module=contract&action=getabi&address={0}';
   readonly routerContracts = new Map<number, string>([
     [24, "0xbafcdabe65a03825a131298be7670c0aec77b37f".toLowerCase()],
-    [80001, "0xbdd4e5660839a088573191A9889A262c0Efc0983".toLowerCase()]
+    [80001, "0xbdd4e5660839a088573191A9889A262c0Efc0983".toLowerCase()],
+    [137, "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff".toLowerCase()]
   ]);
   readonly factoryContracts = new Map<number, string>([
     [24, "0xc9567a8b6b622cdc8076c6b4432ade0e11f50da1".toLowerCase()],
-    [80001, "0x69004509291F4a4021fA169FafdCFc2d92aD02Aa".toLowerCase()]
+    [80001, "0x69004509291F4a4021fA169FafdCFc2d92aD02Aa".toLowerCase()],
+    [137, "0x69004509291F4a4021fA169FafdCFc2d92aD02Aa".toLowerCase()]
   ]);
   readonly masterEntertainerContracts = new Map<number, string>([
     [24, "0x319Cbc449E622Ef53b06dD1b720649207e5D13B4".toLowerCase()],
-    [80001, "0xDcA93da4C19ec94433EDB14c4EDF7e0b736461Ee".toLowerCase()]
+    [80001, "0x50Fa913d111099C78Ec25c1e0B1D98566C80886C".toLowerCase()],
+    [137, "0x50Fa913d111099C78Ec25c1e0B1D98566C80886C".toLowerCase()]
   ]);
   readonly rewardSystemContracts = new Map<number, string>([
     [24, "0x77dC10eB4Ae7733571aAB05cEA6455C98dda5fC1".toLowerCase()],
-    [80001, "0x6399C7CF7D72332645A27422bEBB8Cf0523B0229".toLowerCase()]
+    [80001, "0x31e9204c50Ce886638c1746a86e478f62f55B68D".toLowerCase()],
+    [137, "0x31e9204c50Ce886638c1746a86e478f62f55B68D".toLowerCase()]
   ]);
 
   constructor(private readonly web3Service: Web3Service) { }
