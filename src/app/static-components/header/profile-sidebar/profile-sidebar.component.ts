@@ -25,7 +25,11 @@ export class ProfileSidebarComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.userData.userName) {
-      this.userRepositoryService.isUserKyced().subscribe(isKyced => this.isUserKyced = isKyced);
+      this.userRepositoryService.isUserKyced().subscribe(isKyced => {
+        this.isUserKyced = isKyced
+        this.userService.isKyced = isKyced;
+        this.userService.onUserStateChanged.emit(true);
+      });
     }
   }
 

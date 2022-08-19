@@ -14,10 +14,16 @@
             {{ 'home' | translate}}
           </span>
         </a></li>
-      <li class="hover-up"><a [routerLink]="['/swap']" class="flex" queryParamsHandling="">
+      <!-- <li class="hover-up"><a [routerLink]="['/swap']" class="flex" queryParamsHandling="">
           <img src="./assets/images/sidebar/swap.png"  alt="swap"/>
           <span [class.hidden]="!isSidebarOpen" >
             {{ 'swap' | translate}}
+          </span>
+        </a></li> -->
+        <li class="hover-up"><a [routerLink]="['/marketplace']" class="flex" queryParamsHandling="">
+          <img src="./assets/images/sidebar/market.png"  alt="market"/>
+          <span [class.hidden]="!isSidebarOpen" >
+            {{ 'market' | translate}}
           </span>
         </a></li>
       <li class="hover-up"><a [routerLink]="['/lounge']" class="flex" queryParamsHandling="">

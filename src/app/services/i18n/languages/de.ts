@@ -81,7 +81,7 @@ export const de = {
   liquidity: 'Liquidität',
   lounge: 'Lounge',
   mediacenter: 'Mediathek',
-
+  market: "Marktplatz",
   favorites: 'Favoriten',
   playlists: 'Playlists',
   favourite_podcasts_heading: 'Favorisierte Podcasts',

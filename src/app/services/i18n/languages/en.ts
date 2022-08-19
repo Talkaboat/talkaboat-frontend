@@ -78,6 +78,7 @@ export const en = {
   swap_error_message: 'Trade aborted or error in the transaction.',
   liquidity: 'Liquidity',
   lounge: 'Lounge',
+  market: "Marketplace",
   mediacenter: 'Media Library',
   favorites: 'Favorites',
   playlists: 'Playlists',

@@ -17,6 +17,7 @@ import { Web3Service } from '../web3/web3.service';
   providedIn: 'root'
 })
 export class UserService {
+  isKyced = false;
   userData: UserData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
   currentRewards: Reward = { total: 0, vested: 0, unvested: 0 };
   rewardDetails: RewardDetail[] = [];
@@ -156,6 +157,7 @@ export class UserService {
     this.userData = { userName: '', addresses: [], email: '', rewards: 0, verified: false };
     this.userLoggedIn.next(false);
     this.rewardDetails = [];
+    this.isKyced = false;
     this.onRewardDetailsChanged.emit([]);
     this.updateRewards({ total: 0, vested: 0, unvested: 0 }, true);
     this.onUserStateChanged.emit(false);

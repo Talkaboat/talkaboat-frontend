@@ -1,0 +1,25 @@
+<div class="max-w-[80rem] mx-auto px-3 md:px-6">
+  <h1 class="text-center">Explore NFTs</h1>
+  <div class="w-[17rem] mx-auto mt-5">
+    <div class="px-3 bg-shadow-500 rounded-xl">
+    <div class="tabs tabs-boxed grid grid-cols-3 justify-center bg-shadow-500">
+      <button class="tab rounded-xl" [class.tab-active]="selectedTab == 0" (click)="selectTab(0)">All</button>
+      <button class="tab rounded-xl" [class.tab-active]="selectedTab == 1" (click)="selectTab(1)">Buy</button>
+      <button class="tab rounded-xl" [class.tab-active]="selectedTab == 2" (click)="selectTab(2)">Subscribe</button>
+    </div>
+    <div class="form-control grid grid-cols-2">
+        <label class="label cursor-pointer justify-center">
+          <input type="checkbox" checked="checked" class="checkbox checkbox-primary" />
+          <span class="ml-3 label-text">Bid</span>
+        </label>
+        <label class="label cursor-pointer justify-center">
+          <input type="checkbox" checked="checked" class="checkbox checkbox-primary" />
+          <span class="ml-3 label-text">Direct</span>
+        </label>
+    </div>
+  </div>
+</div>
+<div class="mt-5">
+  <app-marketplace-preview-list [items]="filteredItems"></app-marketplace-preview-list>
+</div>
+</div>

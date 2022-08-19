@@ -12,7 +12,16 @@ module.exports = {
     require('@tailwindcss/line-clamp'),
   ],
   daisyui: {
-    themes: ["night"]
+    themes: [
+      {
+        night: {
+            ...require("daisyui/src/colors/themes")["[data-theme=night]"],
+            primary: "#64A4FD",
+            secondary: "#bc8c4b",// "#fdbd64",
+            accent: "#5f8d3e"
+        }
+      }
+    ]
   },
   theme: {
     extend: {

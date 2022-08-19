@@ -1,0 +1,18 @@
+<div class="bg-shadow-800 p-4 grid grid-cols-3 gap-4">
+  <a class="card w-96 bg-base-100 shadow-xl cursor-pointer hover-up" *ngFor="let item of items">
+    <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" class="rounded-xl" /></figure>
+    <div class="card-body">
+      <h4>
+        {{item.title}}
+      </h4>
+      <h6 class="description"><a [routerLink]="[item.sellerUrl ? '../../' + item.sellerUrl : '']" [queryParams]="item.sellerParams">{{item.seller}}</a></h6>
+      <p class="description">{{item.description}}</p>
+
+      <p class="description">Price: {{item.price}} {{item.priceCurrency}}</p>
+      <div class="card-actions justify-start mt-4">
+        <div class="badge badge-outline">{{ item.orderType }}</div>
+        <div class="badge badge-outline">{{ item.buyType }}</div>
+      </div>
+    </div>
+  </a>
+</div>
