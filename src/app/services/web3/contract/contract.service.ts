@@ -5,6 +5,7 @@ import { masterEntertainerAbi } from 'src/constants/contracts/master-entertainer
 import { pair } from 'src/constants/contracts/pair';
 import { rewardSystem } from 'src/constants/contracts/reward.contract';
 import { router } from 'src/constants/contracts/router';
+import { vestingAbi } from 'src/constants/contracts/vesting';
 import { Web3Service } from '../web3.service';
 
 @Injectable({ providedIn: 'root' })
@@ -30,6 +31,17 @@ export class ContractService {
     [80001, "0x31e9204c50Ce886638c1746a86e478f62f55B68D".toLowerCase()],
     [137, "0x31e9204c50Ce886638c1746a86e478f62f55B68D".toLowerCase()]
   ]);
+  readonly vestingContracts = new Map<number, Map<string, string>>([
+
+    [24, new Map<string, string>([
+      ["seed", "0x7659478eeab597574910402FC46697Bd115c14a2".toLowerCase()],
+      ["lucky", "0xDc6503f8dF758b6693ba6f25F9de9AEb1a8EBbb3".toLowerCase()],
+      ["public", "0x30764AC6245813C686F179829578BcbD03180dF3".toLowerCase()],
+      ["advisor", "0x11B12c99B99F31Be74B5D65858c76C69f31E054A".toLowerCase()],
+      ["marketing", "0xabA21dA0b2676A067eE1e3D26b1D0f559aeFDf6c".toLowerCase()],
+      ["team", "0xFe25425ca70484CdE2834475Bb1601891AcF8Ab1".toLowerCase()],
+    ])]
+  ]);
 
   constructor(private readonly web3Service: Web3Service) { }
 
@@ -43,6 +55,10 @@ export class ContractService {
 
   getMasterEntertainerAbi(): any {
     return masterEntertainerAbi;
+  }
+
+  getVestingAbi(): any {
+    return vestingAbi;
   }
 
   getMasterEntertainerContractAddress(): string {
@@ -76,6 +92,12 @@ export class ContractService {
     }
     return "";
   }
+  public getVestingContractAddress(type: string) {
+    if(this.vestingContracts.get(this.web3Service.chainId)) {
+      return this.vestingContracts.get(this.web3Service.chainId)!;
+    }
+    return "";
+  }
 
   public getRewardContract() {
     if (!this.web3Service.web3) {
@@ -84,6 +106,8 @@ export class ContractService {
     const contractAddress = this.getRewardContractAddress();
     return contractAddress ? new this.web3Service.web3.eth.Contract(rewardSystem, contractAddress) : undefined;
   }
+
+
 
   getFactoryAbi(): any {
     return factory;
@@ -105,6 +129,14 @@ export class ContractService {
     }
     const contractAddress = this.getFactoryContractAddress();
     return contractAddress ? new this.web3Service.web3.eth.Contract(this.getFactoryAbi(), contractAddress) : undefined;
+  }
+
+  public getVestingContract(type: string) {
+    if (!this.web3Service.web3) {
+      return undefined;
+    }
+    const contractAddress = this.getVestingContractAddress(type);
+    return contractAddress ? new this.web3Service.web3.eth.Contract(this.getVestingAbi(), contractAddress) : undefined;
   }
 
   public getRouterContract() {
