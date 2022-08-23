@@ -21,45 +21,51 @@ export class VestingService {
     }
     const method = contract.methods.claim();
     const from = this.web3.accounts[0];
-    const gas = await this.web3.getEstimatedGas(method, from);
+    var gas = "";
+    try {
+    gas = await this.web3.getEstimatedGas(method, from);
+    } catch(error) {
+      return Promise.reject(error);
+    }
+
     return method.send({from: from, gas: gas});
   }
 
-  totalAmount(type: string): Promise<Big> {
+  async totalAmount(type: string): Promise<Big> {
     const contract = this.contractService.getVestingContract(type);
     const from = this.web3.accounts[0];
     if(!contract || !from) {
       return Promise.resolve(Big(0));
     }
-    return contract.methods.bought(from).call();
+    return Big(await contract.methods.bought(from).call());
   }
 
-  claimedAmount(type: string): Promise<Big> {
+  async claimedAmount(type: string): Promise<Big> {
     const contract = this.contractService.getVestingContract(type);
     const from = this.web3.accounts[0];
     if(!contract || !from) {
       return Promise.resolve(Big(0));
     }
-    return contract.methods.claimedTokens(from).call();
+    return Big(await contract.methods.claimedTokens(from).call());
   }
 
-  claimedPercentage(type: string): Promise<Big> {
+  async claimedPercentage(type: string): Promise<Big> {
     const contract = this.contractService.getVestingContract(type);
     const from = this.web3.accounts[0];
     if(!contract || !from) {
       return Promise.resolve(Big(0));
     }
-    return contract.methods.claimed(from).call();
+    return Big(await contract.methods.claimed(from).call());
   }
 
 
-  getCurrentPercentage(type: string): Promise<Big> {
+  async getCurrentPercentage(type: string): Promise<Big> {
     const contract = this.contractService.getVestingContract(type);
     const from = this.web3.accounts[0];
     if(!contract || !from) {
       return Promise.resolve(Big(0));
     }
-    return contract.methods.getCurrentPercentage().call();
+    return Big(await contract.methods.getCurrentPercentage().call());
 
 
   }

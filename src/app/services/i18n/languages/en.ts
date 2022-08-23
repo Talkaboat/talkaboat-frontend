@@ -280,6 +280,10 @@ export const en = {
   lucky_sale: 'Lucky Sale',
   bought_token: 'Bought Token',
   bought_usd: 'Price in USD',
+  claimable_percentage: 'Claimable percentage',
+  claimed_percentage: 'Claimed percentage',
+  claimed_token: 'Claimed Aboat Token',
+  claim_not_open: 'Vesting is not yet open!',
   //#endregion
 
   //#region Header

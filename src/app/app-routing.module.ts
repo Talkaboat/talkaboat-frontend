@@ -18,6 +18,7 @@ export const routes: Routes = [
   { path: 'privacy', component: PrivacyComponent },
   { path: 'imprint', component: ImprintComponent },
   { path: 'marketplace', loadChildren: () => import('./routing-components/marketplace/marketplace.module').then(m => m.MarketplaceModule) },
+  { path: 'settings', loadChildren: () => import('./routing-components/settings/settings.module').then(m => m.SettingsModule) },
   { path: '**',redirectTo: '' }
 ];
 

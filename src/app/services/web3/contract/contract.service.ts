@@ -94,7 +94,7 @@ export class ContractService {
   }
   public getVestingContractAddress(type: string) {
     if(this.vestingContracts.get(this.web3Service.chainId)) {
-      return this.vestingContracts.get(this.web3Service.chainId)!;
+      return this.vestingContracts.get(this.web3Service.chainId)?.get(type)!;
     }
     return "";
   }

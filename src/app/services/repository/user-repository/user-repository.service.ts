@@ -140,4 +140,16 @@ export class UserRepositoryService  extends RepositoryService {
     const api = USER_API.URL + USER_API.REQUEST_WHITELIST.replace("{campaign}", campaign).replace("{wallet}", wallet);
     return this.get(api);
   }
+
+  connectFirebase(token: string) {
+    const api = USER_API.URL + USER_API.FIREBASE_CONNECT_URL;
+    return this.put(api, { text: token })
+  }
+
+  disconnectFirebase() {
+    const api = USER_API.URL + USER_API.FIREBASE_DISCONNECT_URL;
+    return this.put(api)
+  }
+
+
 }

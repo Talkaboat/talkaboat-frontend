@@ -19,10 +19,6 @@ export const de = {
   presale_open: 'Der Vorverkauf ist geöffnet!',
   might_be_interesting: 'Das könnt dich interessieren',
   resend_email: 'Email erneut senden',
-  claimable_percentage: 'Freigegebener Prozentsatz',
-  claimed_percentage: 'Erhaltener Prozentsatz',
-  claimed_tokens: 'Erhaltene Aboat Token',
-  next_claim: 'Nächste Freigabe',
   power_info_top: 'Volle Kontrolle',
   power_info_bottom: 'Starke Verbindung',
   how_to_register_youtube: 'Wie registriere ich mich für Talkaboat?',
@@ -84,6 +80,7 @@ export const de = {
   market: "Marktplatz",
   favorites: 'Favoriten',
   playlists: 'Playlists',
+
   favourite_podcasts_heading: 'Favorisierte Podcasts',
   favourite_podcasts_login_hint: 'Bitte anmelden um deine Favoriten einzusehen',
   favourite_podcasts_no_favourites_text_1: 'Du hast noch keine Podcasts favorisiert.',
@@ -285,6 +282,10 @@ export const de = {
   lucky_sale: 'Lucky Sale',
   bought_token: 'Gekaufte Token',
   bought_usd: 'Preis in USD',
+  claimable_percentage: 'Freigegebener Prozentsatz',
+  claimed_percentage: 'Erhaltener Prozentsatz',
+  claimed_token: 'Erhaltene Aboat Token',
+  claim_not_open: 'Das Vesting ist noch nicht freigegeben!',
   //#endregion
 
   //#region Header

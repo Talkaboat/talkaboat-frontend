@@ -36,9 +36,15 @@
             class="btn max-w-[24rem] rounded-[0.625rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
             (click)="selectedType='public'; totalInvest()">{{ 'public_sale' | translate}}</button>
         </div>
+        <div class="px-2 w-full">
+          <button aria-label="select advisor"
+          [class.selected]="selectedType=='advisor'"
+            class="btn max-w-[24rem] rounded-[0.625rem] px-5 py-3 bg-shadow-700 text-main-300 border-main-300 border-2"
+            (click)="selectedType='advisor'; totalInvest()">Advisor</button>
+        </div>
       </div>
     </div>
-    <div class="rounded-[0.625rem] p-5 bg-shadow-700 w-[50%] mx-auto">
+    <div class="rounded-[0.625rem] p-5 bg-shadow-700 sm:w-[50%] mx-auto">
       <div class="flex justify-between w-full">
         <p>{{ 'bought_token' | translate }}:</p>
         <p>{{ investmentToken | number }} ABOAT</p>
@@ -47,6 +53,25 @@
         <p>{{ 'bought_usd' | translate }}:</p>
         <p>{{ investmentUsd | number }}$</p>
       </div>
+      <hr>
+      <div class="flex justify-between w-full">
+        <p>{{ 'bought_token' | translate }} in Contract:</p>
+        <p>{{ totalAmount | number }} ABOAT</p>
+      </div>
+      <div class="flex justify-between w-full">
+        <p>{{ 'claimed_token' | translate }}:</p>
+        <p>{{ claimedAmount | number }} ABOAT</p>
+      </div>
+      <div class="flex justify-between w-full">
+        <p>{{ 'claimable_percentage' | translate }}:</p>
+        <p>{{ claimablePercentage | number }}%</p>
+      </div>
+      <div class="flex justify-between w-full">
+        <p>{{ 'claimed_percentage' | translate }}:</p>
+        <p>{{ claimedPercentage | number }}%</p>
+      </div>
+      <button class="mt-5 btn btn-primary" (click)="claim()" [disabled]="claimablePercentage <= 0">Claim</button>
+
     </div>
   </ng-template>
 </div>
