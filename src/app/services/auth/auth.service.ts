@@ -52,6 +52,7 @@ export class AuthService {
         this.toastrService.success(this.translateService.transform('connect_firebase_success'));
        },
       error: async (response) => {
+        this.loadingService.hide();
         this.toastrService.error(this.translateService.transform(response.error.message));
         await this.auth.signOut();
       },

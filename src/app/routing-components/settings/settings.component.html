@@ -2,20 +2,20 @@
   <h1>Settings</h1>
   <div class="mt-5">
     <h5>Wallets</h5>
-    <form class="flex mb-10 mt-5" >
-      <input type="text" class="input input-bordered input-primary w-full max-w-xs" [placeholder]="'wallet_address' | translate" [formControl]="walletAddress"/>
-      <button (click)="addWallet()" type="submit" [disabled]="walletAddress.invalid" class="btn-primary w-10 h-10 text-4xl my-auto ml-2">+</button>
-    </form>
-    <div class="flex justify-between max-w-md" *ngFor="let wallet of wallets">
+      <button (click)="addWallet()" type="submit" class="btn-primary px-3 my-5 py-2">Connect new wallet</button>
+    <div class="flex justify-between max-w-md p-2 rounded-md" [class.bg-shadow-500]="even" *ngFor="let wallet of wallets; let even = even">
       <span>{{ wallet }}</span>
-      <button (click)="removeWallet(wallet)">Test</button>
+      <button class="btn-error px-2 rounded-md" (click)="removeWallet(wallet)">X</button>
     </div>
   </div>
   <div class="mt-5">
     <h5>Connect Social Account</h5>
-    <div class="grid grid-cols-2">
-      <button (click)="connectWithGoogle()">Google</button>
-      <button (click)="connectWithFacebook()">Facebook</button>
+    <div class="grid grid-cols-2 gap-4 max-w-[15rem]">
+      <button aria-label="connect google" class="mt-10 mx-auto text-base py-2 font-semibold bg-main-800 rounded ring-1 ring-shadow-500 w-full" (click)="connectWithGoogle()"><img class="h-8 mx-auto" src="./assets/images/social/google_color.png"/></button>
+      <button aria-label="connect facebook" class="mt-10 mx-auto text-base py-2 font-semibold bg-main-800 rounded ring-1 ring-shadow-500 w-full" (click)="connectWithFacebook()"><img class="h-8 mx-auto" src="./assets/images/social/facebook_color.png"/></button>
+      <button class="btn-error px-2 rounded-md col-span-2" (click)="disconnectSocialAccount()">Disconnect All</button>
+
     </div>
+
   </div>
 </div>

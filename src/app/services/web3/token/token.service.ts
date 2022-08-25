@@ -15,26 +15,31 @@ export class TokenService {
   readonly wethContracts = new Map<number, string>([
     [24, "0xAF984E23EAA3E7967F3C5E007fbe397D8566D23d".toLowerCase()],
     [80001, "0x462C98Cae5AffEED576c98A55dAA922604e2D875".toLowerCase()],
-    [137, "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270".toLowerCase()]
+    [137, "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270".toLowerCase()],
+    [9000, "0x0b67B0A0Ed150B9F06e0ee90D2f1d3c4b3016D5D".toLowerCase()]
   ]);
   readonly aboatContracts = new Map<number, string>([
     [24, "0x186B1B6CE63932a34FAa8D08bB11B775591Fd6f4".toLowerCase()],
     [80001, "0x4Ed73822C3c7986F11B3DBc6adbad0f0F01ff676".toLowerCase()],
     [137, "0x9BBF7aC8151f990294D29174a9d3a3272a87449b".toLowerCase()],
+    [9000, "0x9BBF7aC8151f990294D29174a9d3a3272a87449b".toLowerCase()]
   ]);
   readonly stableCoinContracts = new Map<number, string[]>([
     [24, ["0x186B1B6CE63932a34FAa8D08bB11B775591Fd6f4".toLowerCase()]],
     [80001, ["0x0fa8781a83e46826621b3bc094ea2a0212e71b23".toLowerCase()]],
-    [137, ["0x0fa8781a83e46826621b3bc094ea2a0212e71b23".toLowerCase()]]
+    [137, ["0x0fa8781a83e46826621b3bc094ea2a0212e71b23".toLowerCase()]],
+    [9000, ["0x56319B93cc71952c11Cf0FF6b13Ba418614eB648".toLowerCase()]]
   ]);
   readonly gasIdentifiers = new Map<number, string>([
     [24, "KAI"],
     [80001, "MATIC"],
-    [137, "MATIC"]
+    [137, "MATIC"],
+    [9000, "tEVMOS"]
   ]);
   readonly usdtTokens = new Map<number, TokenModel>([
     [24, { name: "USDT Token", symbol: "USDT", decimals: 18, balance: Big(0), address: "0x551A5dcAC57C66aA010940c2dcFf5DA9c53aa53b", priceInBusd: 1, swapAmount: Big(0) }],
-    [137, { name: "USDT Token", symbol: "USDT", decimals: 18, balance: Big(0), address: "0xc2132D05D31c914a87C6611C10748AEb04B58e8F", priceInBusd: 1, swapAmount: Big(0) }]
+    [137, { name: "USDT Token", symbol: "USDT", decimals: 18, balance: Big(0), address: "0xc2132D05D31c914a87C6611C10748AEb04B58e8F", priceInBusd: 1, swapAmount: Big(0) }],
+    [9000, { name: "USDT Token", symbol: "USDT", decimals: 18, balance: Big(0), address: "0x56319B93cc71952c11Cf0FF6b13Ba418614eB648", priceInBusd: 1, swapAmount: Big(0) }],
   ]);
   constructor(private readonly contractService: ContractService, private readonly web3Service: Web3Service, private readonly http: HttpClient) { }
 

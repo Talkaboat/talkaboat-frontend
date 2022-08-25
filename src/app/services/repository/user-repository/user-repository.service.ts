@@ -148,7 +148,30 @@ export class UserRepositoryService  extends RepositoryService {
 
   disconnectFirebase() {
     const api = USER_API.URL + USER_API.FIREBASE_DISCONNECT_URL;
-    return this.put(api)
+    return this.put(api);
+  }
+
+  addWallet(): Observable<ResponseModel> {
+    console.log(this.web3Service.accounts);
+    if(!this.web3Service.accounts)
+      return of();
+    const api = USER_API.URL + USER_API.ADD_WALLET_URL.replace("{wallet}", this.web3Service.accounts[0]);
+    return this.post<ResponseModel>(api)
+  }
+
+  confirmWalletAdd(signature: string, guid: string) {
+    if (!this.web3Service.accounts) {
+      return of();
+    }
+    const wallet = this.web3Service.accounts[0];
+    const body = { address: wallet, signature, guid };
+    const api = USER_API.URL + USER_API.CONFIRM_ADD_WALLET_URL.replace("{wallet}", wallet);
+    return this.post(api, body);
+  }
+
+  removeWallet(wallet: string) {
+    const api = USER_API.URL + USER_API.REMOVE_WALLET_URL.replace("{wallet}", wallet);
+    return this.delete(api,);
   }
 
 

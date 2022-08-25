@@ -112,4 +112,13 @@ export class WebsiteStateService {
       this.location.back();
     }
   }
+
+  public backOrRootNavigation(changedQueryParams = null) {
+    if (this.canNavigateBack()) {
+      this.navigationHistory.pop();
+      this.location.back();
+    } else {
+      this.router.navigate(['/']);
+    }
+  }
 }
