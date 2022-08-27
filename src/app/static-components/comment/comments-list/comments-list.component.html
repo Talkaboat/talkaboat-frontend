@@ -1,0 +1,4 @@
+<app-comments-write *ngIf="loggedIn()"></app-comments-write>
+<p *ngFor="let comment of comments">
+    <app-comment-item [comment]="comment"></app-comment-item>
+</p>

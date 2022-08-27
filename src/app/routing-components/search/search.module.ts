@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
 import { PipeModule } from "src/app/pipes/pipe.module";
+import { CommentModule } from "src/app/static-components/comment/comment.module";
 import { SharedModule } from "src/app/static-components/shared.module";
 import { EpisodeDetailComponent } from "./episode-detail/episode-detail.component";
 import { PodcastDetailComponent } from "./podcast-detail/podcast-detail.component";
@@ -17,7 +18,8 @@ import { SearchComponent } from "./search.component";
     CommonModule,
     PipeModule,
     SharedModule,
-    SearchRoutingModule
+    SearchRoutingModule,
+    CommentModule,
   ], exports: [
     SearchComponent,
     PodcastDetailComponent,
