@@ -1,4 +1,10 @@
-<p>
-    <input type="text" placeholder="Kommentar verfassen">
-    <button type="button" (click)="send()">Abschicken</button>
-</p>
+<div class="">
+    <section class="px-1 sm:px-0">
+        <input type="text" class="input input-bordered w-full input-info" (focus)="onFocus()"
+        [placeholder]="'Kommentar verfassen...'"/>
+        <p class="justify-end" *ngIf="isFocused" style="padding-top: 1rem">
+            <a class="btn btn-primary max-w-[10rem] px-8 py-4" (click)="looseFocus()" routerLinkActive="btn-active">Abbrechen</a>
+            <a class="btn btn-primary max-w-[10rem] px-8 py-4" (click)="send()" routerLinkActive="btn-active">Abschicken</a>
+        </p>
+    </section>
+</div>

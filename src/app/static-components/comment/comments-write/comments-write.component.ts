@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentsWriteComponent implements OnInit {
 
+  public isFocused = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -15,4 +17,14 @@ export class CommentsWriteComponent implements OnInit {
   public send(): void {
     console.log("Senden");
   }
+
+  public onFocus(): void {
+    console.log("Hallo")
+    this.isFocused = true;
+  }
+
+  public looseFocus(): void {
+    this.isFocused = false;
+  }
+
 }
