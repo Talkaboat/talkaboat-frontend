@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommentService } from '../services/comment.service';
 
 @Component({
   selector: 'app-comments-write',
@@ -8,14 +9,19 @@ import { Component, OnInit } from '@angular/core';
 export class CommentsWriteComponent implements OnInit {
 
   public isFocused = false;
+  public content = '';
 
-  constructor() { }
+  constructor(private readonly commentService: CommentService) { }
 
   ngOnInit(): void {
   }
 
   public send(): void {
     console.log("Senden");
+    this.commentService.post<object>(this.content)
+      .subscribe(res => {
+        console.log(res);
+      });
   }
 
   public onFocus(): void {

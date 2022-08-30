@@ -1,6 +1,6 @@
 <div class="">
     <section class="px-1 sm:px-0">
-        <input type="text" class="input input-bordered w-full input-info" (focus)="onFocus()"
+        <input type="text" class="input input-bordered w-full input-info" (focus)="onFocus()" [(ngModel)]="content"
         [placeholder]="'Kommentar verfassen...'"/>
         <p class="justify-end" *ngIf="isFocused" style="padding-top: 1rem">
             <a class="btn btn-primary max-w-[10rem] px-8 py-4" (click)="looseFocus()" routerLinkActive="btn-active">Abbrechen</a>
