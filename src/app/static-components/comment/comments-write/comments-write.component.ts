@@ -18,10 +18,12 @@ export class CommentsWriteComponent implements OnInit {
 
   public send(): void {
     console.log("Senden");
-    this.commentService.post<object>(this.content)
-      .subscribe(res => {
-        console.log(res);
-      });
+    if (this.content !== "") {
+      this.commentService.post<object>(this.content)
+        .subscribe(res => {
+          console.log(res);
+        });
+    }
   }
 
   public onFocus(): void {

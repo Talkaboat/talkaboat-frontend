@@ -18,6 +18,8 @@ export class CommentService extends RepositoryService {
     super(http, web3Service);
   }
 
+  //public override post(){  } //TODO
+  
   public writeComment(content: string, id: number, commentRoute: number = 0): Observable<object> {
     const url = this.baseUrl + CommentRoute[commentRoute] + "/" + id + "/write";
     return this.http.post(url, content);
