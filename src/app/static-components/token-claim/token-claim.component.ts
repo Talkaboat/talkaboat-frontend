@@ -41,8 +41,6 @@ export class TokenClaimComponent implements OnInit {
   }
 
   claimBnb() {
-    this.toastrService.warning(this.translateService.transform("feature_not_available"));
-    return;
     this.claimMode = 2;
     this.claimAmount.disable();
   }
@@ -53,7 +51,7 @@ export class TokenClaimComponent implements OnInit {
   }
 
   async confirmClaim() {
-    await this.userService.claimAboat(this.claimAmount.value);
+    await this.userService.claimAboat(this.claimAmount.value, this.claimMode);
     this.claimAmount.enable();
     this.claimMode = -1;
 

@@ -24,13 +24,13 @@ export class ContractService {
     //[9000, "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff".toLowerCase()]
   ]);
   readonly masterEntertainerContracts = new Map<number, string>([
-    // [24, "0x319Cbc449E622Ef53b06dD1b720649207e5D13B4".toLowerCase()],
+    [24, "0x91d827170b2EDc2d16A6CB0e8EB19c9b4d7283bc".toLowerCase()],
     [80001, "0x50Fa913d111099C78Ec25c1e0B1D98566C80886C".toLowerCase()],
     [137, "0x50Fa913d111099C78Ec25c1e0B1D98566C80886C".toLowerCase()],
     [9000, "0x013b705e27F21EdC2040465841439bb65575b2DC".toLowerCase()]
   ]);
   readonly rewardSystemContracts = new Map<number, string>([
-    [24, "0x77dC10eB4Ae7733571aAB05cEA6455C98dda5fC1".toLowerCase()],
+    [24, "0x983fded0Df08Bc7Da4622A8Ae2F674a949217341".toLowerCase()],
     [80001, "0x31e9204c50Ce886638c1746a86e478f62f55B68D".toLowerCase()],
     [137, "0x31e9204c50Ce886638c1746a86e478f62f55B68D".toLowerCase()],
     [9000, "0xF9CEe3BF737431A86F2021B98e8c6D09F2B77098".toLowerCase()]

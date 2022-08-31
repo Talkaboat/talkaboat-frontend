@@ -63,8 +63,11 @@ export class UserRepositoryService  extends RepositoryService {
     return this.get(api);
   }
 
-  public claim(address: string, amount: number): Observable<Reward> {
-    const api = USER_API.URL + USER_API.CLAIM_URL.replace("{chain}", this.web3Service.chainId.toString()) + address + "/" + amount.toString();
+  public claim(address: string, amount: number, mode: number): Observable<Reward> {
+    var api = USER_API.URL + USER_API.CLAIM_URL.replace("{chain}", this.web3Service.chainId.toString()) + address + "/" + amount.toString();
+    if(mode == 2) {
+      api += "/native";
+    }
     return this.post(api, null);
   }
 
