@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommentDtoModel } from '../models/comment-dto-model';
+import { CommentService } from '../services/comment.service';
 
 @Component({
   selector: 'app-comments-list',
@@ -10,7 +11,7 @@ export class CommentsListComponent implements OnInit {
 
   public comments: CommentDtoModel[] = [];
 
-  constructor() { }
+  constructor(private readonly commentService: CommentService) { }
 
   ngOnInit(): void {
     this.comments = MockComments;
@@ -18,6 +19,12 @@ export class CommentsListComponent implements OnInit {
 
   public loggedIn(): boolean {
     return true;
+  }
+
+  public readTest(): void {
+    this.commentService.readComments(89,3,0,1).subscribe(res => {
+      this.comments = res
+  })
   }
 
 }

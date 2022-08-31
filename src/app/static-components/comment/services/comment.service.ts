@@ -11,7 +11,7 @@ import { CommentRoute } from '../models/comment-route';
 })
 export class CommentService extends RepositoryService {
 
-  private baseUrl = 'v1/comments/';
+  private baseUrl = 'comments/';
 
   constructor(protected override readonly http: HttpClient,
     protected override readonly web3Service: Web3Service) {
@@ -21,12 +21,12 @@ export class CommentService extends RepositoryService {
   //public override post(){  } //TODO
   
   public writeComment(content: string, id: number, commentRoute: number = 0): Observable<object> {
-    const url = this.baseUrl + CommentRoute[commentRoute] + "/" + id + "/write";
-    return this.http.post(url, content);
+    const api = this.baseUrl + CommentRoute[commentRoute] + "/" + id + "/write";
+    return this.post(api, content);
   }
 
-  public readComments(id: number, amount: number, offset: number, commentRoute: number = 0): Observable<object[]> {
-    const url = this.baseUrl + CommentRoute[commentRoute] + "/" + id + "/write";
-    return this.http.get<object[]>(url);
+  public readComments(id: number, amount: number, offset: number, commentRoute: number = 0): Observable<CommentDtoModel[]> {
+    const api = this.baseUrl + CommentRoute[commentRoute] + "/" + id + "/" + amount + "/" + offset;
+    return this.get<object[]>(api);
   }
 }
