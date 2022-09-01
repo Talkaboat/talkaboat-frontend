@@ -4,6 +4,7 @@ import { CommentsListComponent } from './comments-list/comments-list.component';
 import { CommentsWriteComponent } from './comments-write/comments-write.component';
 import { CommentItemComponent } from './comment-item/comment-item.component';
 import { FormsModule } from '@angular/forms';
+import { CommentsMetaDataComponent } from './comments-meta-data/comments-meta-data.component';
 
 
 
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     CommentsListComponent,
     CommentsWriteComponent,
-    CommentItemComponent
+    CommentItemComponent,
+    CommentsMetaDataComponent
   ],
   imports: [
     CommonModule,
