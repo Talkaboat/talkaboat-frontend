@@ -39,4 +39,9 @@ export class CommentService extends RepositoryService {
     const api = this.baseUrl + CommentRoute[commentRoute] + "/" + id + "/edit";
     return this.put<CommentDtoModel>(api, comment);
   }
+
+  public deleteComment(id: number, commentRoute: number = 0): Observable<boolean> {
+    const api = this.baseUrl + CommentRoute[commentRoute] + "/" + id + "/delete";
+    return this.delete(api);
+  }
 }
