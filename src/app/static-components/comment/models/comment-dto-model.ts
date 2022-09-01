@@ -1,7 +1,7 @@
 export interface CommentDtoModel {
     commentId: number;
     userId: number;
-    username: string;
+    userName: string;
     timestamp: string;
     content: string;
     edited: boolean;

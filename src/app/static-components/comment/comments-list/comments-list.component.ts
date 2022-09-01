@@ -18,31 +18,36 @@ export class CommentsListComponent implements OnInit {
   public comments: CommentDtoModel[] = [];
   public commentCount: number = 0;
 
+  public currentOffset: number = 0;
+  public amount: number = 10;
+
   constructor(private readonly commentService: CommentService) { }
 
   ngOnInit(): void {
     this.comments = MockComments;
-    this.commentService.countComments(this.id, this.commentRoute).subscribe(res => {
-      console.log("kommentare gesamt: " + res);
-      this.commentCount = res;
-    });
+    this.commentService.countComments(this.id, this.commentRoute).subscribe(res => this.commentCount = res);
   }
 
   public loggedIn(): boolean {
     return true;
   }
 
-  public readTest(): void {
-    this.commentService.readComments(89, 3, 0, 1).subscribe(res => {
-      this.comments = res
+  public readComments(): void {
+    this.commentService.readComments(this.id, this.amount, this.currentOffset, this.commentRoute).subscribe(res => {
+      if (res != undefined && res != null && res.length > 0) {
+        res.forEach(element => {
+          this.comments.push(element);
+        });
+        this.currentOffset += this.amount;
+        console.log(this.currentOffset)
+      }
     })
   }
-
 }
 
 export const MockComments: CommentDtoModel[] = [
-  { userId: 21, commentId: 1, content: "first comment", edited: false, username: "Skyrac3", timestamp: new Date().toDateString() },
-  { userId: 21, commentId: 2, content: "second comment: ein super langer kommentar um das ghanzte mal suohjasdkjfnsd,mnfvikuh und immer und immer weiter laksjflaskjflköj", edited: false, username: "Skyrac3", timestamp: new Date().toDateString() },
-  { userId: 21, commentId: 3, content: "third comment", edited: true, username: "Skyrac3", timestamp: new Date().toDateString() },
-  { userId: 21, commentId: 4, content: "fourth comment", edited: false, username: "Skyrac3", timestamp: new Date().toDateString() },
+  { userId: 21, commentId: 1, content: "first comment", edited: false, userName: "Skyrac3", timestamp: new Date().toDateString() },
+  { userId: 21, commentId: 2, content: "second comment: ein super langer kommentar um das ghanzte mal suohjasdkjfnsd,mnfvikuh und immer und immer weiter laksjflaskjflköj", edited: false, userName: "Skyrac3", timestamp: new Date().toDateString() },
+  { userId: 21, commentId: 3, content: "third comment", edited: true, userName: "Skyrac3", timestamp: new Date().toDateString() },
+  { userId: 21, commentId: 4, content: "fourth comment", edited: false, userName: "Skyrac3", timestamp: new Date().toDateString() },
 ]
