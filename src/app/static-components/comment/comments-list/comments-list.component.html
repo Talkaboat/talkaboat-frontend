@@ -1,4 +1,5 @@
 <div class="card max-w-[60rem] px-3 mx-auto">
+    <app-comments-meta-data [commentCount]="commentCount"></app-comments-meta-data>
     <app-comments-write *ngIf="loggedIn()"></app-comments-write>
     <p *ngFor="let comment of comments" style="padding-top: 3rem">
         <app-comment-item [comment]="comment" ></app-comment-item>

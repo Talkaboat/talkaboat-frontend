@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-comments-meta-data',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./comments-meta-data.component.scss']
 })
 export class CommentsMetaDataComponent implements OnInit {
+
+  @Input()
+  public commentCount = 0;
 
   constructor() { }
 

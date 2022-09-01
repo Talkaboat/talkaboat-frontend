@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommentDtoModel } from '../models/comment-dto-model';
+import { CommentRoute } from '../models/comment-route';
 import { CommentService } from '../services/comment.service';
 
 @Component({
@@ -9,12 +10,22 @@ import { CommentService } from '../services/comment.service';
 })
 export class CommentsListComponent implements OnInit {
 
+  @Input()
+  public commentRoute: CommentRoute = CommentRoute.episode;
+  @Input()
+  public id: number = 89;
+
   public comments: CommentDtoModel[] = [];
+  public commentCount: number = 0;
 
   constructor(private readonly commentService: CommentService) { }
 
   ngOnInit(): void {
     this.comments = MockComments;
+    this.commentService.countComments(this.id, this.commentRoute).subscribe(res => {
+      console.log("kommentare gesamt: " + res);
+      this.commentCount = res;
+    });
   }
 
   public loggedIn(): boolean {
@@ -22,9 +33,9 @@ export class CommentsListComponent implements OnInit {
   }
 
   public readTest(): void {
-    this.commentService.readComments(89,3,0,1).subscribe(res => {
+    this.commentService.readComments(89, 3, 0, 1).subscribe(res => {
       this.comments = res
-  })
+    })
   }
 
 }
