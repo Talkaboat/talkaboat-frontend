@@ -29,4 +29,14 @@ export class CommentService extends RepositoryService {
     const api = this.baseUrl + CommentRoute[commentRoute] + "/" + id + "/" + amount + "/" + offset;
     return this.get<object[]>(api);
   }
+
+  public countComments(id: number, commentRoute: number = 0): Observable<number> {
+    const api = this.baseUrl + CommentRoute[commentRoute] + "/" + id + "/count";
+    return this.get<number>(api);
+  }
+
+  public editComment(id: number, comment: string, commentRoute: number = 0): Observable<CommentDtoModel> {
+    const api = this.baseUrl + CommentRoute[commentRoute] + "/" + id + "/edit";
+    return this.put<CommentDtoModel>(api, comment);
+  }
 }
