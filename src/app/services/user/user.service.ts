@@ -62,7 +62,7 @@ export class UserService {
     })
   }
 
-  async claimAboat(amount: number): Promise<any> {
+  async claimAboat(amount: number, mode: number): Promise<any> {
     if (!this.web3Service.accounts || this.web3Service.accounts.length <= 0) {
       //Not connected
     }
@@ -72,19 +72,20 @@ export class UserService {
       //Connected not included in account
     }
     this.loaderService.show();
+    if(mode == 1) {
     if (!(await this.canClaimReward(wallet))) {
       return this.sendClaimRequest(wallet)
-        .then(_ => this.sendClaimToBackend(amount))
+        .then(_ => this.sendClaimToBackend(amount, mode))
         .catch(_ => {
           this.loaderService.hide();
           this.toastrService.error(this.translateService.transform('error_claim'));
         });
-    }
-    return this.sendClaimToBackend(amount);
+    }}
+    return this.sendClaimToBackend(amount, mode);
   }
 
-  public sendClaimToBackend(amount: number): Promise<any> {
-    return lastValueFrom(this.userRepositoryService.claim(this.web3Service.accounts[0], amount))
+  public sendClaimToBackend(amount: number, mode: number): Promise<any> {
+    return lastValueFrom(this.userRepositoryService.claim(this.web3Service.accounts[0], amount, mode))
       .then(data => {
         this.updateRewards(data, true);
         this.toastrService.success(this.translateService.transform('success_claim'));
