@@ -3,6 +3,10 @@
 
     <iframe class="w-full" [src]=" (windowSize() >= 760 ? './assets/ads/728x90.html' : './assets/ads/320x50.html') | sanitizeUrl"></iframe>
   </div>
+  <div class="my-5">
+    <h3 class="text-error">Farm is not yet active. Rewards will activate on 27th Septembre 2022</h3>
+    <p class="text-info">Staking in pool will lock your staked tokens for the days shown by the different pools! Please act with caution as you can't unstake your staked tokens for this duration. Rewards can be claimed at any time.</p>
+  </div>
   <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <li class="h-fit rounded-[0.625rem]" *ngFor="let pool of selectedPools"><app-pool [poolInfo]="pool" [gotWallet]="gotWallet"></app-pool></li>
   </ul>

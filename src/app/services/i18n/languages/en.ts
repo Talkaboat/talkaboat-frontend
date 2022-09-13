@@ -320,5 +320,8 @@ export const en = {
     claim_header: "Claim Token",
     success_claim: "Token successfully claimed!",
     error_claim: "An error occured while claiming tokens!",
+    only_one_claim_per_day: "You can only claim once per day",
+    claim_fee_info: "Min. ABOAT to claim: 5000 ABOAT. The ABOAT claim incurs fees of 500 ABOAT. These will be deducted from your withdrawn amount. When withdrawing chain-native coins, there are fees of 10%."
+
     //#endregion
 }

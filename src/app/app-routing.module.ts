@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BuybackComponent } from './routing-components/buyback/buyback.component';
 import { GeneralTermsComponent } from './routing-components/general-terms/general-terms.component';
 import { ImprintComponent } from './routing-components/imprint/imprint.component';
 import { LoginComponent } from './routing-components/login/login.component';
@@ -17,6 +18,7 @@ export const routes: Routes = [
   { path: 'general-terms', component: GeneralTermsComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: 'imprint', component: ImprintComponent },
+  { path: 'buyback', component: BuybackComponent },
   { path: 'marketplace', loadChildren: () => import('./routing-components/marketplace/marketplace.module').then(m => m.MarketplaceModule) },
   { path: 'settings', loadChildren: () => import('./routing-components/settings/settings.module').then(m => m.SettingsModule) },
   { path: '**',redirectTo: '' }

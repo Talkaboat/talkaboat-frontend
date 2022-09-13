@@ -25,6 +25,7 @@ import { PrivacyComponent } from './routing-components/privacy/privacy.component
 import { RegisterComponent } from './routing-components/register/register.component';
 import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
 import { SharedModule } from './static-components/shared.module';
+import { BuybackComponent } from './routing-components/buyback/buyback.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SharedModule } from './static-components/shared.module';
     RegisterComponent,
     ImprintComponent,
     GeneralTermsComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    BuybackComponent
   ],
   imports: [
     BrowserModule,

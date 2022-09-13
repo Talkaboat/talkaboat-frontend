@@ -1,0 +1,27 @@
+<div class="mx-auto max-w-[41.25rem]  pb-[9.375rem] ">
+  <div *ngIf="isConnected">
+    <div class="flex mt-2">
+      {{ "balance" | translate }} (ABOAT)
+      <button class="rounded-[0.625rem] mb-3 ml-auto border-b-2 border-shadow-700 py-1 px-2" (click)="setAmountToBalance(); calculateEstimatedKai()">{{ walletBalance.formatted.toFixed(6) | number }}</button>
+    </div>
+    <form class="mt-1 mb-3" [formGroup]="modalForm">
+      <label hidden for="amount">{{ "amount" | translate }}</label>
+      <input id="amount" name="amount" type="number" [value]="amount" (change)="calculateEstimatedKai()" class="secondary py-2 w-full text-right rounded-[0.625rem] px-3 text-main-100" formControlName="amount" required>
+    </form>
+
+    <div class="mt-5">
+      Estimated KAI: {{ estimatedRevenue }}
+    </div>
+    <button *ngIf="allowance | bigEqualizer: 0 : 'gt'" class="btn btn-primary my-auto  text-sm mt-5 " (click)="swap()">
+      {{ 'swap' | translate }}
+    </button>
+    <button *ngIf="allowance | bigEqualizer: 0 : 'lte'" class="btn btn-primary my-auto  text-sm mt-5 " (click)="approve()">
+      {{ 'approve' | translate }}
+    </button>
+  </div>
+  <div *ngIf="!isConnected">
+    <button class="btn btn-primary my-auto  text-sm  " (click)="connectWallet()">
+      {{ 'connect_wallet' | translate }}
+    </button>
+  </div>
+</div>

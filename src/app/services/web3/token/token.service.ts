@@ -20,6 +20,7 @@ export class TokenService {
   ]);
   readonly aboatContracts = new Map<number, string>([
     [24, "0x186B1B6CE63932a34FAa8D08bB11B775591Fd6f4".toLowerCase()],
+    [242, "0x5fddDc6a283459B8faCe7C97606c94a0182EAEb8".toLowerCase()],
     [80001, "0x4Ed73822C3c7986F11B3DBc6adbad0f0F01ff676".toLowerCase()],
     [137, "0x9BBF7aC8151f990294D29174a9d3a3272a87449b".toLowerCase()],
     [9000, "0x9BBF7aC8151f990294D29174a9d3a3272a87449b".toLowerCase()]
