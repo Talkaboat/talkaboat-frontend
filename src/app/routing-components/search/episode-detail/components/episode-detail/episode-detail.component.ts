@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { listAnimation, listItemAnimation } from 'src/app/animations';
 import { WebsiteStateService } from 'src/app/services/website-state/website-state.service';
 import { EpisodeDetailModel } from '../../models/EpisodeModel';
@@ -15,6 +15,8 @@ export class EpisodeDetailComponent implements OnInit {
   canNavigateBack: boolean = false;
 
   episodes: EpisodeDetailModel[] = [];
+  @Input()
+  currentEpisode!: EpisodeDetailModel;
 
   constructor(private readonly websiteStateService: WebsiteStateService,
     private readonly episodeDetailService: EpisodeDetailService) { }
