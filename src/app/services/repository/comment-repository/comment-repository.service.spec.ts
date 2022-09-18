@@ -4,13 +4,13 @@ import { TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app-routing.module';
-import { CommentModule } from '../comment.module';
-import { CommentRoute } from '../models/comment-route';
+import { CommentModule } from '../../../static-components/comment/comment.module';
+import { CommentRoute } from '../../../static-components/comment/models/comment-route';
 
-import { CommentService } from './comment.service';
+import { CommentRepositoryService } from './comment-repository.service';
 
 describe('CommentService', () => {
-  let service: CommentService;
+  let service: CommentRepositoryService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -21,7 +21,7 @@ describe('CommentService', () => {
         CommentModule
       ]
     });
-    service = TestBed.inject(CommentService);
+    service = TestBed.inject(CommentRepositoryService);
   });
 
   it('should be created', () => {

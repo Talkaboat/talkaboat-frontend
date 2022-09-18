@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommentService } from '../services/comment.service';
+import { CommentRepositoryService } from '../../../services/repository/comment-repository/comment-repository.service';
 
 @Component({
   selector: 'app-comments-write',
@@ -11,7 +11,7 @@ export class CommentsWriteComponent implements OnInit {
   public isFocused = false;
   public content = '';
 
-  constructor(private readonly commentService: CommentService) { }
+  constructor(private readonly commentService: CommentRepositoryService) { }
 
   ngOnInit(): void {
   }

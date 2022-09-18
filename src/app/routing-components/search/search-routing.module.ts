@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
+import { EpisodeDetailComponent } from './episode-detail/components/episode-detail/episode-detail.component';
 import { PodcastDetailComponent } from './podcast-detail/podcast-detail.component';
 import { SearchComponent } from './search.component';
 

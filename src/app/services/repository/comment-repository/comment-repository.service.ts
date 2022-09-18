@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RepositoryService } from 'src/app/services/repository/repository.service';
 import { Web3Service } from 'src/app/services/web3/web3.service';
-import { CommentDtoModel } from '../models/comment-dto-model';
-import { CommentRoute } from '../models/comment-route';
+import { CommentDtoModel } from '../../../static-components/comment/models/comment-dto-model';
+import { CommentRoute } from '../../../static-components/comment/models/comment-route';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CommentService extends RepositoryService {
+export class CommentRepositoryService extends RepositoryService {
 
   private baseUrl = 'comments/';
 
