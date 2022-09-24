@@ -24,8 +24,8 @@ export class EpisodeDetailComponent implements OnInit {
   ngOnInit(): void {
     this.canNavigateBack = this.websiteStateService.canNavigateBack();
     this.episodeDetailService.test().subscribe(res => {
-      console.log(res);
       this.episodes = res;
+      this.currentEpisode = this.episodes[0];
     });
   }
 

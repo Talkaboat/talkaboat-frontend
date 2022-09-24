@@ -5,20 +5,23 @@
       <div class="grid grid-cols-3 gap-2">
         <div>
           <img width="150" height="150" loading="lazy"
-            class="mt-8 sm:mt-0 sm:order-2 px-3 max-w-[15rem] mx-auto w-full hover-up" src="./assets/images/podcast.png"
+            class="mt-8 sm:mt-0 sm:order-2 px-3 max-w-[15rem] mx-auto w-full hover-up" [src]="currentEpisode.image"
             alt="Podcast-Episode image" />
         </div>
         <div class="col-span-2">
-          <h3>Hier Steht der Name der Episode</h3>
-          <p>Veröffentlich am 40.20.1600</p>
-          <span>Hier steht die Beschreibung der Podcast Episode</span>
-          <a>Hier kommst du zur Podcast-Übersicht aller Episoden</a>
+          <h3>{{ currentEpisode.title }}</h3>
+          <p>Veröffentlicht am {{ currentEpisode.pubDateInMilliseconds | date }}</p>
+          <span>{{ currentEpisode.description }}</span>
+          <a>{{ currentEpisode.userName }}</a>
         </div>
       </div>
     </div>
-    <div class="overflow-y-auto h-64">
-      <!--TODO align right as kasten-->
-      <app-episode-list-view [episodes]="episodes"></app-episode-list-view>
+    <div>
+      <app-episode-list-view-header></app-episode-list-view-header>
+      <div class="overflow-y-auto h-64">
+        <!--TODO align right as kasten-->
+        <app-episode-list-view [episodes]="episodes"></app-episode-list-view>
+      </div>
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@ import { EpisodeListViewComponent } from './components/episode-list-view/episode
 import { EpisodeListItemComponent } from './components/episode-list-item/episode-list-item.component';
 import { EpisodeDetailComponent } from './components/episode-detail/episode-detail.component';
 import { CommentModule } from 'src/app/static-components/comment/comment.module';
+import { EpisodeListViewHeaderComponent } from './components/episode-list-view-header/episode-list-view-header.component';
 
 
 
@@ -11,7 +12,8 @@ import { CommentModule } from 'src/app/static-components/comment/comment.module'
   declarations: [
     EpisodeListItemComponent,
     EpisodeListViewComponent,
-    EpisodeDetailComponent
+    EpisodeDetailComponent,
+    EpisodeListViewHeaderComponent
   ],
   imports: [
     CommonModule,
