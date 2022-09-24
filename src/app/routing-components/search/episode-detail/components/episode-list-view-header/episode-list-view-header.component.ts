@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-episode-list-view-header',
@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./episode-list-view-header.component.scss']
 })
 export class EpisodeListViewHeaderComponent implements OnInit {
+
+  @Input()
+  public podcastName: string = 'unknown';
+  @Input()
+  public userName: string = 'unknown';
 
   constructor() { }
 

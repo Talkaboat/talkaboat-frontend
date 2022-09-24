@@ -10,6 +10,8 @@ import { EpisodeDetailModel } from '../models/EpisodeModel';
 })
 export class EpisodeDetailService extends RepositoryService { //TODO verschieben
 
+  public podcast: string = 'Podcastname';
+
   public episodeIds: number[] = [];
   public currentEpisodeId: number = -1;
 

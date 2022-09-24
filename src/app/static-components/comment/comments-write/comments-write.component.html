@@ -3,7 +3,7 @@
         <input type="text" class="input input-bordered w-full input-info" (focus)="onFocus()" [(ngModel)]="content"
         [placeholder]="'Kommentar verfassen...'"/>
         <p class="justify-end" *ngIf="isFocused" style="padding-top: 1rem">
-            <a class="btn btn-primary max-w-[10rem] px-8 py-4" (click)="looseFocus()" routerLinkActive="btn-active">Abbrechen</a>
+            <a class="btn btn-secondary max-w-[10rem] px-8 py-4 mr-5 mb-5" (click)="looseFocus()" routerLinkActive="btn-active">Abbrechen</a>
             <a class="btn btn-primary max-w-[10rem] px-8 py-4" (click)="send()" routerLinkActive="btn-active">Abschicken</a>
         </p>
     </section>

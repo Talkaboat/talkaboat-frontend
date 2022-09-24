@@ -19,7 +19,7 @@ export class EpisodeDetailComponent implements OnInit {
   currentEpisode!: EpisodeDetailModel;
 
   constructor(private readonly websiteStateService: WebsiteStateService,
-    private readonly episodeDetailService: EpisodeDetailService) { }
+    public readonly episodeDetailService: EpisodeDetailService) { }
 
   ngOnInit(): void {
     this.canNavigateBack = this.websiteStateService.canNavigateBack();

@@ -17,7 +17,7 @@
       </div>
     </div>
     <div>
-      <app-episode-list-view-header></app-episode-list-view-header>
+      <app-episode-list-view-header [podcastName]="episodeDetailService.podcast" [userName]="'Dieter'"></app-episode-list-view-header>
       <div class="overflow-y-auto h-64">
         <!--TODO align right as kasten-->
         <app-episode-list-view [episodes]="episodes"></app-episode-list-view>
