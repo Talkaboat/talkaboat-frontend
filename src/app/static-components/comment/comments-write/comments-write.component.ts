@@ -19,7 +19,7 @@ export class CommentsWriteComponent implements OnInit {
   public send(): void {
     console.log("Senden");
     if (this.content !== "") {
-      this.commentService.post<object>(this.content)
+      this.commentService.writeComment(this.content)
         .subscribe(res => {
           console.log(res);
         });
@@ -27,7 +27,6 @@ export class CommentsWriteComponent implements OnInit {
   }
 
   public onFocus(): void {
-    console.log("Hallo")
     this.isFocused = true;
   }
 
