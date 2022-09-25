@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommentRepositoryService } from '../../../services/repository/comment-repository/comment-repository.service';
+import { CommentDtoModel } from '../models/comment-dto-model';
 
 @Component({
   selector: 'app-comments-write',
@@ -21,7 +22,8 @@ export class CommentsWriteComponent implements OnInit {
     if (this.content !== "") {
       this.commentService.writeComment(this.content)
         .subscribe(res => {
-          console.log(res);
+          this.commentService.comments.push(res as CommentDtoModel);
+          this.commentService.commentCount += 1;
         });
     }
   }
