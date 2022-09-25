@@ -5,6 +5,7 @@ import { EpisodeListItemComponent } from './components/episode-list-item/episode
 import { EpisodeDetailComponent } from './components/episode-detail/episode-detail.component';
 import { CommentModule } from 'src/app/static-components/comment/comment.module';
 import { EpisodeListViewHeaderComponent } from './components/episode-list-view-header/episode-list-view-header.component';
+import { SearchRoutingModule } from '../search-routing.module';
 
 
 
@@ -17,7 +18,8 @@ import { EpisodeListViewHeaderComponent } from './components/episode-list-view-h
   ],
   imports: [
     CommonModule,
-    CommentModule
+    CommentModule,
+    SearchRoutingModule
   ]
 })
 export class EpisodeDetailModule { }
