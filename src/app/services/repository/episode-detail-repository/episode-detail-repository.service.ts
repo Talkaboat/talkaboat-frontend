@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { RepositoryService } from 'src/app/services/repository/repository.service';
 import { Web3Service } from 'src/app/services/web3/web3.service';
-import { EpisodeDetailModel } from '../../../routing-components/search/episode-detail/models/EpisodeModel';
+import { EpisodeDetailModel } from '../../../routing-components/search/episode-detail/models/EpisodeDetailModel';
 
 @Injectable({
   providedIn: 'root'

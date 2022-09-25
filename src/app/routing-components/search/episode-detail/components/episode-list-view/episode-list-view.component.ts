@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { EpisodeDetailModel } from '../../models/EpisodeModel';
+import { EpisodeDetailModel } from '../../models/EpisodeDetailModel';
 
 @Component({
   selector: 'app-episode-list-view',

@@ -35,6 +35,7 @@ export class CommentRepositoryService extends RepositoryService {
     this.id.subscribe(() => {
       this.currentOffset = 0;
       this.readComments().subscribe(res => {
+        this.comments = [];
         res.forEach(element => {
           this.comments.push(element);
         });

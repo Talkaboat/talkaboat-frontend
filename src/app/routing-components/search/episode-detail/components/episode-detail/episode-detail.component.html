@@ -7,6 +7,7 @@
           <img width="150" height="150" loading="lazy"
             class="mt-8 sm:mt-0 sm:order-2 px-3 max-w-[15rem] mx-auto w-full hover-up" [src]="currentEpisode.value.image"
             alt="Podcast-Episode image" />
+            <button (click)="play()">Play</button>
         </div>
         <div class="col-span-2 overflow-y-auto ">
           <h3>{{ currentEpisode.value.title }}</h3>
