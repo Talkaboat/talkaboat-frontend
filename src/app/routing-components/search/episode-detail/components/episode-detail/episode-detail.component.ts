@@ -17,27 +17,32 @@ export class EpisodeDetailComponent implements OnInit {
   episodes: EpisodeDetailModel[] = []; //TODO vorschau model erstellen
   @Input()
   currentEpisode!: EpisodeDetailModel;
+  private podcastId: number = -1;
 
   constructor(private readonly websiteStateService: WebsiteStateService,
     public readonly episodeDetailService: EpisodeDetailRepositoryService) { }
 
   ngOnInit(): void {
     this.canNavigateBack = this.websiteStateService.canNavigateBack();
-    this.episodeDetailService.getEpisodeDetails().subscribe(res => {
-      console.log("episode single");
-      console.log(res);
+    this.episodeDetailService.currentEpisodeId.subscribe(() => {
+      this.getEpisodeDetails();
+    });
+  }
 
+  private getEpisodeDetails(): void {
+    this.episodeDetailService.getEpisodeDetails().subscribe(res => {
       this.currentEpisode = res;
 
-      if (res != undefined && res != null) {
-        this.episodeDetailService.getPodcastEpisodesList(this.currentEpisode.podcastId).subscribe(res => {
-          console.log("podcast list");
-          console.log(res);
-          this.episodes = res;
-        });
+      if (res != undefined && res != null && this.podcastId != res.podcastId) {
+        this.getPodcastEpisodeList();
       }
     });
+  }
 
+  private getPodcastEpisodeList(): void {
+    this.episodeDetailService.getPodcastEpisodesList(this.currentEpisode.podcastId).subscribe(res => {
+      this.episodes = res;
+    });
   }
 
   backNavigation() {

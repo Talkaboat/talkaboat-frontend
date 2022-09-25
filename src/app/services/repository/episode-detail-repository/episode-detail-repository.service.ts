@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { RepositoryService } from 'src/app/services/repository/repository.service';
 import { Web3Service } from 'src/app/services/web3/web3.service';
 import { EpisodeDetailModel } from '../../../routing-components/search/episode-detail/models/EpisodeModel';
@@ -14,7 +14,7 @@ export class EpisodeDetailRepositoryService extends RepositoryService { //TODO v
   public podcast: string = 'Podcastname';
 
   public episodeIds: number[] = [];
-  public currentEpisodeId: number = -1;
+  public currentEpisodeId: BehaviorSubject<number> = new BehaviorSubject<number>(-1);
 
   private baseUrl = 'episodes';
   private episodeDetailUrl = this.baseUrl + '/episode';
@@ -25,13 +25,14 @@ export class EpisodeDetailRepositoryService extends RepositoryService { //TODO v
     super(http, web3Service);
 
     this.activatedRoute.queryParams.subscribe(params => {
-      this.currentEpisodeId = params['ep'];
+      this.currentEpisodeId.next(params['ep']);
     });
 
   }
 
   public getEpisodeDetails(): Observable<EpisodeDetailModel> {
-    const api = this.episodeDetailUrl + '/' + this.currentEpisodeId;
+    console.log(this.currentEpisodeId);
+    const api = this.episodeDetailUrl + '/' + this.currentEpisodeId.value;
     return this.get(api);
   }
 
