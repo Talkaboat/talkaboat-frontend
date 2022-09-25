@@ -3,6 +3,8 @@ import { listAnimation, listItemAnimation } from 'src/app/animations';
 import { WebsiteStateService } from 'src/app/services/website-state/website-state.service';
 import { EpisodeDetailModel } from '../../models/EpisodeModel';
 import { EpisodeDetailRepositoryService } from '../../../../../services/repository/episode-detail-repository/episode-detail-repository.service';
+import { CommentRepositoryService } from 'src/app/services/repository/comment-repository/comment-repository.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-episode-detail',
@@ -16,22 +18,22 @@ export class EpisodeDetailComponent implements OnInit {
 
   episodes: EpisodeDetailModel[] = []; //TODO vorschau model erstellen
   @Input()
-  currentEpisode!: EpisodeDetailModel;
+  currentEpisode: BehaviorSubject<EpisodeDetailModel> = new BehaviorSubject(new EpisodeDetailModel());
   private podcastId: number = -1;
 
   constructor(private readonly websiteStateService: WebsiteStateService,
-    public readonly episodeDetailService: EpisodeDetailRepositoryService) { }
+    public readonly episodeDetailRepositoryService: EpisodeDetailRepositoryService) { }
 
   ngOnInit(): void {
     this.canNavigateBack = this.websiteStateService.canNavigateBack();
-    this.episodeDetailService.currentEpisodeId.subscribe(() => {
+    this.episodeDetailRepositoryService.currentEpisodeId.subscribe(() => {
       this.getEpisodeDetails();
     });
   }
 
   private getEpisodeDetails(): void {
-    this.episodeDetailService.getEpisodeDetails().subscribe(res => {
-      this.currentEpisode = res;
+    this.episodeDetailRepositoryService.getEpisodeDetails().subscribe(res => {
+      this.currentEpisode.next(res);
 
       if (res != undefined && res != null && this.podcastId != res.podcastId) {
         this.getPodcastEpisodeList();
@@ -40,7 +42,7 @@ export class EpisodeDetailComponent implements OnInit {
   }
 
   private getPodcastEpisodeList(): void {
-    this.episodeDetailService.getPodcastEpisodesList(this.currentEpisode.podcastId).subscribe(res => {
+    this.episodeDetailRepositoryService.getPodcastEpisodesList(this.currentEpisode.value.podcastId).subscribe(res => {
       this.episodes = res;
     });
   }

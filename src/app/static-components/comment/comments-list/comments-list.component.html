@@ -1,8 +1,8 @@
 <div class="card max-w-[60rem] px-3 mx-auto">
-    <app-comments-meta-data [commentCount]="commentCount"></app-comments-meta-data>
+    <app-comments-meta-data [commentCount]="commentService.commentCount"></app-comments-meta-data>
     <app-comments-write *ngIf="loggedIn()"></app-comments-write>
-    <p *ngFor="let comment of comments" style="padding-top: 3rem">
+    <p *ngFor="let comment of commentService.comments" style="padding-top: 3rem">
         <app-comment-item [comment]="comment" ></app-comment-item>
     </p>
-    <button (click)="readComments()">Test</button>
+    <button (click)="commentService.readComments()">Read more comments</button>
 </div>

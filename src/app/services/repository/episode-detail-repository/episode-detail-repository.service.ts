@@ -31,7 +31,6 @@ export class EpisodeDetailRepositoryService extends RepositoryService { //TODO v
   }
 
   public getEpisodeDetails(): Observable<EpisodeDetailModel> {
-    console.log(this.currentEpisodeId);
     const api = this.episodeDetailUrl + '/' + this.currentEpisodeId.value;
     return this.get(api);
   }

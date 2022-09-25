@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommentDtoModel } from '../models/comment-dto-model';
-import { CommentRoute } from '../models/comment-route';
 import { CommentRepositoryService } from '../../../services/repository/comment-repository/comment-repository.service';
 
 @Component({
@@ -10,38 +9,14 @@ import { CommentRepositoryService } from '../../../services/repository/comment-r
 })
 export class CommentsListComponent implements OnInit {
 
-  @Input()
-  public commentRoute: CommentRoute = CommentRoute.episode;
-  @Input()
-  public id: number = 89;
-
-  public comments: CommentDtoModel[] = [];
-  public commentCount: number = 0;
-
-  public currentOffset: number = 0;
-  public amount: number = 10;
-
-  constructor(private readonly commentService: CommentRepositoryService) { }
+  constructor(public readonly commentService: CommentRepositoryService) { }
 
   ngOnInit(): void {
-    this.comments = MockComments;
-    this.commentService.countComments(this.id, this.commentRoute).subscribe(res => this.commentCount = res);
+    //this.comments = MockComments;
   }
 
   public loggedIn(): boolean {
     return true;
-  }
-
-  public readComments(): void {
-    this.commentService.readComments(this.id, this.amount, this.currentOffset, this.commentRoute).subscribe(res => {
-      if (res != undefined && res != null && res.length > 0) {
-        res.forEach(element => {
-          this.comments.push(element);
-        });
-        this.currentOffset += this.amount;
-        console.log(this.currentOffset)
-      }
-    })
   }
 }
 
