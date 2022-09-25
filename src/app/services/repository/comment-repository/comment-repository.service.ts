@@ -35,7 +35,9 @@ export class CommentRepositoryService extends RepositoryService {
     this.id.subscribe(() => {
       this.currentOffset = 0;
       this.readComments().subscribe(res => {
-        this.comments = res;
+        res.forEach(element => {
+          this.comments.push(element);
+        });
       });
       this.countComments().subscribe(res => {
         this.commentCount = res;
@@ -44,16 +46,18 @@ export class CommentRepositoryService extends RepositoryService {
   }
 
   //public override post(){  } //TODO
-  
+
   public writeComment(content: string): Observable<object> {
     const api = this.baseUrl + CommentRoute[this.commentRoute] + "/" + this.id.value + "/write";
     return this.post(api, content);
   }
 
-  public readComments(): Observable<CommentDtoModel[]> {
-    const api = this.baseUrl + CommentRoute[this.commentRoute] + "/" + this.id.value + "/" + this.amount + "/" + this.currentOffset;
-    this.currentOffset += this.amount;
-    return this.get<object[]>(api);
+  public readMoreComments(): void {
+    this.readComments().subscribe(res => {
+      res.forEach(element => {
+        this.comments.push(element);
+      });
+    })
   }
 
   public countComments(): Observable<number> {
@@ -69,5 +73,11 @@ export class CommentRepositoryService extends RepositoryService {
   public deleteComment(): Observable<boolean> {
     const api = this.baseUrl + CommentRoute[this.commentRoute] + "/" + this.id.value + "/delete";
     return this.delete(api);
+  }
+
+  private readComments(): Observable<CommentDtoModel[]> {
+    const api = this.baseUrl + CommentRoute[this.commentRoute] + "/" + this.id.value + "/" + this.amount + "/" + this.currentOffset;
+    this.currentOffset += this.amount;
+    return this.get<object[]>(api);
   }
 }
