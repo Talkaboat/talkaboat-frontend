@@ -23,14 +23,13 @@
           <h3>{{ currentEpisode.value.title }}</h3>
           <p>Veröffentlicht am {{ currentEpisode.value.pubDateInMilliseconds | date }}</p>
           <span>{{ currentEpisode.value.description }}</span>
-          <a>{{ currentEpisode.value.userName }}</a>
         </div>
       </div>
     </div>
     <div>
-      <app-episode-list-view-header [podcastName]="episodeDetailRepositoryService.podcast" [userName]="'Dieter'">
-      </app-episode-list-view-header>
-      <div class="overflow-y-auto h-64">
+      <!--<app-episode-list-view-header [podcastName]="episodeDetailRepositoryService.podcast" [userName]="episodeDetailRepositoryService.">
+      </app-episode-list-view-header>-->
+      <div class="overflow-y-auto h-80"><!--h-64-->
         <!--TODO align right as kasten-->
         <app-episode-list-view [episodes]="episodes"></app-episode-list-view>
       </div>

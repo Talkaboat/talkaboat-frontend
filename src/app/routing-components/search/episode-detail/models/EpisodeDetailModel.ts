@@ -14,5 +14,4 @@ export class EpisodeDetailModel {
     audioLengthInSeconds!: number;
     explicitContent!: boolean;
     audioInvalid!: boolean;
-    userName!: string;
 }

@@ -11,8 +11,6 @@ import { EpisodeDetailModel } from '../../../routing-components/search/episode-d
 })
 export class EpisodeDetailRepositoryService extends RepositoryService { //TODO verschieben
 
-  public podcast: string = 'Podcastname';
-
   public episodeIds: number[] = [];
   public currentEpisodeId: BehaviorSubject<number> = new BehaviorSubject<number>(-1);
 
