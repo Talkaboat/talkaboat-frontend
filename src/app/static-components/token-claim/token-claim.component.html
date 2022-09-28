@@ -14,13 +14,16 @@
           <button class="btn btn-outline max-w-[3rem] max-h-10 my-auto ml-2 px-2" (click)="setToMaxClaimableAmount()">MAX</button>
         </form>
       </div>
-      <div class="flex w-full mt-auto h-20" [class.hidden]="claimMode > 0">
-
-        <button [class.btn-disabled]="claimAmount.value <= 0" [disabled]="claimAmount.value <= 0" class="grid h-20 flex-grow card btn-primary cursor-pointer rounded-box place-items-center"
+      <div class="w-full my-3" [class.hidden]="claimMode > 0">
+        <p class="text-info">{{ 'claim_fee_info' | translate }}</p>
+        <div class="flex mt-3">
+          <button [class.btn-disabled]="claimAmount.value < 5000" [disabled]="claimAmount.value < 5000" class="grid h-20 flex-grow card btn-primary cursor-pointer rounded-box place-items-center"
           (click)="claimAboat()">{{ 'claim_aboat' | translate }}</button>
         <div class="divider divider-horizontal">OR</div>
-        <button [class.btn-disabled]="claimAmount.value <= 0" [disabled]="claimAmount.value <= 0" class="grid h-20 flex-grow card btn-secondary cursor-pointer rounded-box place-items-center"
+        <button [class.btn-disabled]="claimAmount.value < 5000" [disabled]="claimAmount.value < 5000" class="grid h-20 flex-grow card btn-secondary cursor-pointer rounded-box place-items-center"
           (click)="claimBnb()">{{ getNativeTokenText('claim_bnb' | translate) }}</button>
+        </div>
+
       </div>
       <div class="flex w-full mt-auto h-20" [class.hidden]="claimMode <= 0">
 

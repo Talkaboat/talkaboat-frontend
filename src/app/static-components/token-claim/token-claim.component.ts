@@ -51,6 +51,9 @@ export class TokenClaimComponent implements OnInit {
   }
 
   async confirmClaim() {
+    if(this.claimAmount.value < 5000) {
+      return;
+    }
     await this.userService.claimAboat(this.claimAmount.value, this.claimMode);
     this.claimAmount.enable();
     this.claimMode = -1;

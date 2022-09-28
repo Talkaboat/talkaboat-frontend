@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { bep20 } from 'src/constants/contracts/bep20';
+import { buybackABI } from 'src/constants/contracts/buyback';
 import { factory } from 'src/constants/contracts/factory';
 import { masterEntertainerAbi } from 'src/constants/contracts/master-entertainer';
 import { pair } from 'src/constants/contracts/pair';
@@ -47,10 +48,16 @@ export class ContractService {
     ])]
   ]);
 
+  readonly buybackContractAddress = "0xf6D6C54E0db70C9f10B7c1c83D4e3785372FFb6f";
+
   constructor(private readonly web3Service: Web3Service) { }
 
   private getStandardTokenAbi(): any {
     return bep20;
+  }
+
+  private getBuybackContractABI(): any {
+    return buybackABI;
   }
 
   getStandardLpAbi(): any {
@@ -74,6 +81,10 @@ export class ContractService {
 
   getRouterAbi(): any {
     return router;
+  }
+
+  getFactoryAbi(): any {
+    return factory;
   }
 
   getRouterContractAddress(): string {
@@ -110,14 +121,6 @@ export class ContractService {
     const contractAddress = this.getRewardContractAddress();
     return contractAddress ? new this.web3Service.web3.eth.Contract(rewardSystem, contractAddress) : undefined;
   }
-
-
-
-  getFactoryAbi(): any {
-    return factory;
-  }
-
-
 
   public getMasterEntertainerContract() {
     if (!this.web3Service.web3) {
@@ -157,6 +160,13 @@ export class ContractService {
       return undefined;
     }
     return new this.web3Service.web3.eth.Contract(this.getStandardTokenAbi(), address);
+  }
+
+  public getBuybackContract() {
+    if (!this.web3Service.web3) {
+      return undefined;
+    }
+    return new this.web3Service.web3.eth.Contract(this.getBuybackContractABI(), this.buybackContractAddress);
   }
 
   public getLpContract(address: string) {
