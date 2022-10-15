@@ -64,7 +64,7 @@ export class AuthService {
     switch (response.text) {
       case 'new_account': this.openNewUserModal(); break;
       case 'user_already_exist': this.openNewUserModal(); break;
-      case 'user_not_registered': this.openNewUserModal(); console.log("Error while creating user in database"); break;
+      case 'user_not_registered': this.openNewUserModal(); break;
       case 'username_invalid': this.openNewUserModal(); break;
       case 'user_registered': this.getLoginToken(response.data); break;
       case 'connected': this.getLoginToken(response.data); break;

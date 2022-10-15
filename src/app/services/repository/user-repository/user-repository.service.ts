@@ -155,7 +155,6 @@ export class UserRepositoryService  extends RepositoryService {
   }
 
   addWallet(): Observable<ResponseModel> {
-    console.log(this.web3Service.accounts);
     if(!this.web3Service.accounts)
       return of();
     const api = USER_API.URL + USER_API.ADD_WALLET_URL.replace("{wallet}", this.web3Service.accounts[0]);

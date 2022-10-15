@@ -35,7 +35,6 @@ export class EpisodeDetailComponent implements OnInit {
   }
 
   public play(): void { //TODO anders machen
-    console.log(this.currentEpisode);
     this.mediaService.setTrack({
       episodeId: this.currentEpisode.value.episodeId,
       podcastId: this.currentEpisode.value.podcastId,

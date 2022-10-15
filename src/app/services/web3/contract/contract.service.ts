@@ -143,7 +143,6 @@ export class ContractService {
       return undefined;
     }
     const contractAddress = this.getVestingContractAddress(type);
-    console.log(contractAddress);
     return contractAddress ? new this.web3Service.web3.eth.Contract(this.getVestingAbi(), contractAddress) : undefined;
   }
 

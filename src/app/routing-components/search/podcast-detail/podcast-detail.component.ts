@@ -81,7 +81,6 @@ export class PodcastDetailComponent implements OnInit {
     if (!episode) {
       episode = this.podcastData.episodes[0];
     }
-    console.log(episode);
     this.mediaPlayerService.setTrack(episode, true, this.podcastData, true);
     this.podcastRepository.getEpisodes(this.podcastId, this.sort, 0, episode.pub_date_ms).subscribe(playlistEpisodes => {
       this.mediaPlayerService.AddEpisodesToList(playlistEpisodes, episode);
@@ -98,7 +97,6 @@ export class PodcastDetailComponent implements OnInit {
 
   loadMoreEpisodes() {
     if (!this.podcastData || !this.podcastData.episodes || !this.podcastData.totalEpisodes || this.podcastData.episodes.length >= this.podcastData.totalEpisodes) {
-      console.log("No more episodes")
       return;
     }
     this.podcastRepository.getPodcast(this.podcastId, this.sort, this.podcastData.episodes.length).subscribe((result: Podcast) => {

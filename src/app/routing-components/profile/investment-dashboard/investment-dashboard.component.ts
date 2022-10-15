@@ -62,7 +62,6 @@ export class InvestmentDashboardComponent implements OnInit {
     var claimedPercentage = await this.vestingService.claimedPercentage(this.selectedType);
     var availablePercentage = await this.vestingService.getCurrentPercentage(this.selectedType);
     var totalAmount = await this.vestingService.totalAmount(this.selectedType);
-    console.log(totalAmount);
     this.claimedAmount = claimedAmount.div(10 ** 18).toNumber();
     this.claimedPercentage = claimedPercentage.toNumber() / 10;
     this.claimablePercentage = availablePercentage.toNumber() / 10 - this.claimedPercentage;

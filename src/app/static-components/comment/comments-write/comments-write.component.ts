@@ -18,7 +18,6 @@ export class CommentsWriteComponent implements OnInit {
   }
 
   public send(): void {
-    console.log("Senden");
     if (this.content !== "") {
       this.commentService.writeComment(this.content)
         .subscribe(res => {

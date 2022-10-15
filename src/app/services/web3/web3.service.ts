@@ -92,8 +92,6 @@ export class Web3Service {
     }
     this.provider = await this.web3Modal.connect();
     if (this.provider) {
-      console.log("connected");
-
       this.configListeners();
       this.web3 = new Web3(this.provider);
       this.chainId = await this.web3.eth.getChainId()
@@ -145,7 +143,6 @@ export class Web3Service {
       }
     });
     this.provider.on("chainChanged", async (chainId: number) => {
-      console.log(chainId);
       if (this.provider) {
         this.checkChain(parseInt(chainId.toString(), 16));
       }

@@ -72,7 +72,6 @@ export class RegisterComponent implements OnInit {
       if (localStorage.getItem('tab_ref')) {
         ref = localStorage.getItem('tab_ref')!;
       }
-      console.log(this.registerForm.get("emailOptInt"));
       this.userService.register(
         this.registerForm.get('email')?.value,
         this.registerForm.get('username')?.value,

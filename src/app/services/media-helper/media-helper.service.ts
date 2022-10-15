@@ -62,7 +62,6 @@ export class MediaHelperService {
 
   public confirmPlaylistAdd(playlistId: number) {
     if (this.episodeToAddToPlaylist) {
-      console.log(playlistId);
       this.podcastRepositoryService.addEpisodeToPlaylist(playlistId, this.episodeToAddToPlaylist.episodeId).subscribe(_ => this.onItemAddedToPlaylist.emit(true));
       this.episodeToAddToPlaylist = null;
     }

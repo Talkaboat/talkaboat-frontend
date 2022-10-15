@@ -58,7 +58,6 @@ export class MarketplaceBuyComponent implements OnInit {
       const newFilterItems = this.items.filter(item => item.buyType.includes("buy")
       && ((!this.isBidAllowed || item.orderType.includes('bid'))
       || (!this.isBidAllowed || item.orderType.includes('direct'))));
-      console.log(newFilterItems);
       this.fillFilteredItems(newFilterItems);
     } else {
       this.fillFilteredItems(this.items.filter(item => item.buyType.includes("subscribe")

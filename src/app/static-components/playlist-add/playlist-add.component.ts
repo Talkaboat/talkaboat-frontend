@@ -31,7 +31,6 @@ export class PlaylistAddComponent implements OnInit {
   }
 
   addToPlaylist() {
-    console.log(this.selectedPlaylist);
     if (this.selectedPlaylist && this.selectedPlaylist.length > 0) {
       this.mediaService.confirmPlaylistAdd(this.selectedPlaylist[0].playlistId)
     }

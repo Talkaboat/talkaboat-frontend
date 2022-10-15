@@ -93,8 +93,17 @@ export class UserService {
   }
 
   public async canClaimReward(address: string): Promise<boolean> {
-    return await lastValueFrom(this.userRepositoryService.canClaim(address));
+    try {
+      return await lastValueFrom(this.userRepositoryService.canClaim(address));
+    } catch(ex: any) {
+      if(ex.error.message) {
+        this.toastrService.error(this.translateService.transform(ex.error.message));
+      }
+      this.loaderService.hide();
+      return Promise.reject();
+    }
   }
+
 
 
   async getUserData() {
@@ -259,19 +268,16 @@ export class UserService {
   }
 
   signAuthorizationError(error: HttpErrorResponse) {
-    console.log(error);
     this.toastrService.error("signError: " + error.error);
     this.loaderService.hide();
   }
 
   loginError(error: HttpErrorResponse) {
-    console.log(error);
     this.toastrService.error("loginError: " + error.error);
     this.loaderService.hide();
   }
 
   profileError(error: HttpErrorResponse) {
-    console.log(error);
     // this.toastrService.error("profileError: " + error.error);
     this.loaderService.hide();
     localStorage.removeItem('aboat_access');

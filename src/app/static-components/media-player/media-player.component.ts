@@ -79,7 +79,6 @@ export class MediaPlayerComponent implements OnInit {
 
   onPlayerReady(api: VgApiService) {
     this.api = api;
-    console.log(this.track.value.playTime);
     if (this.track && this.track.value.playTime && this.track.value.playTime + 30 < this.track.value.audio_length_sec) {
       this.api.getDefaultMedia().currentTime = this.track.value.playTime;
     } else {

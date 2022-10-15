@@ -322,6 +322,7 @@ export const de = {
   success_claim: "Token erfolgreich abgehoben!",
   error_claim: "Beim claimen der Token ist ein Fehler aufgetreten!",
   only_one_claim_per_day: "Du kannst nur einmal am Tag claimen",
+  network_not_valid: "Du bist mit einem Netzwerk verbunden, dass wir aktuell nicht unterstützen.",
   claim_fee_info: "Min. ABOAT zum abheben: 5000 ABOAT.\nBeim ABOAT Claim fallen Gebühren in höhe von 500 ABOAT an. Diese werden von deinem abgehobenen Betrag abgezogen.\nBeim abheben von Chain-Nativen Coins fallen Gebühren in Höhe von 10% an."
   //#endregion
 }
