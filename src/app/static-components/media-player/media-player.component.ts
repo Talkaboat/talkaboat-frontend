@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { DefaultEpisode } from 'src/constants/mocks/episode-default.mock.constants';
 import { Volume } from '../../../constants/media/enums/volume.enum';
 import { MediaPlayerState } from './mediaplayer-state';
+import { RewardHubService } from '../../services/hubs/reward-hub/reward-hub.service';
 
 @Component({
   selector: 'app-media-player',
@@ -41,12 +42,21 @@ export class MediaPlayerComponent implements OnInit {
 
   constructor(
     private readonly mediaPlayerService: MediaPlayerService,
-    private readonly mediaRepositoryService: MediaRepositoryService,
-    private readonly userService: UserService) { }
+    private readonly mediaRepositoryService: RewardHubService,
+    private readonly userService: UserService) {
+
+    }
 
   ngOnInit(): void {
     this.isMobile = VgUtilsService.isMobileDevice() || VgUtilsService.isiOSDevice();
-    this.userService.userLoggedIn.subscribe(value => this.isLoggedIn = value);
+    this.userService.userLoggedIn.subscribe(value => {
+      this.isLoggedIn = value
+      if(this.isLoggedIn) {
+        this.mediaRepositoryService.connect();
+      } else {
+        this.mediaRepositoryService.disconnect();
+      }
+    });
     this.userService.onRewardsChanged.subscribe((rewards: Reward) => {
       this.rewards = rewards;
     })
@@ -88,9 +98,7 @@ export class MediaPlayerComponent implements OnInit {
       () => {
         // Set the video to the beginning
         if (this.api) {
-          this.mediaRepositoryService.stop(this.track.value.podcastId, this.track.value.episodeId, this.api.getDefaultMedia().currentTime).subscribe(
-            rewards => this.userService.updateRewards(rewards)
-          );
+          this.mediaRepositoryService.stop(this.track.value.podcastId, this.track.value.episodeId, this.api.getDefaultMedia().currentTime);
         }
         this.mediaPlayerService.nextTrack();
       }
@@ -100,9 +108,7 @@ export class MediaPlayerComponent implements OnInit {
         this.updates++;
         if (this.updates > this.updatesBetweenHeartbeat) {
           this.updates = 0;
-          this.mediaRepositoryService.heartbeat(this.track.value.podcastId, this.track.value.episodeId, this.api!.getDefaultMedia().currentTime).subscribe(
-            rewards => this.userService.updateRewards(rewards)
-          );
+          this.mediaRepositoryService.heartbeat(this.track.value.podcastId, this.track.value.episodeId, this.api!.getDefaultMedia().currentTime);
 
           this.track.value.playTime = this.api?.getDefaultMedia().currentTime;
           this.mediaPlayerService.updateLocalStoragePlaylist(this.track.value)
@@ -110,17 +116,13 @@ export class MediaPlayerComponent implements OnInit {
       });
     this.api.getDefaultMedia().subscriptions.playing.subscribe(
       () => {
-        this.mediaRepositoryService.play(this.track.value.podcastId, this.track.value.episodeId, this.api!.getDefaultMedia().currentTime).subscribe(
-          result => this.userService.updateRewards(result)
-        );
+        this.mediaRepositoryService.play(this.track.value.podcastId, this.track.value.episodeId, this.api!.getDefaultMedia().currentTime);
         this.isPlaying = true;
       }
     )
     this.api.getDefaultMedia().subscriptions.pause.subscribe(
       () => {
-        this.mediaRepositoryService.pause(this.track.value.podcastId, this.track.value.episodeId, this.api!.getDefaultMedia().currentTime).subscribe(
-          result => this.userService.updateRewards(result)
-        );
+        this.mediaRepositoryService.pause(this.track.value.podcastId, this.track.value.episodeId, this.api!.getDefaultMedia().currentTime);
         this.isPlaying = false;
       }
     )
@@ -128,17 +130,13 @@ export class MediaPlayerComponent implements OnInit {
       () => {
         if (this.api?.volume === 0) {
           if (this.currentVolume != Volume.Muted) {
-            this.mediaRepositoryService.mute(this.track.value.podcastId, this.track.value.episodeId, this.api.getDefaultMedia().currentTime).subscribe(
-              result => this.userService.updateRewards(result)
-            );
+            this.mediaRepositoryService.mute(this.track.value.podcastId, this.track.value.episodeId, this.api.getDefaultMedia().currentTime);
           }
           this.currentVolume = Volume.Muted
 
         } else if (this.api?.volume > 0) {
           if (this.currentVolume == Volume.Muted) {
-            this.mediaRepositoryService.unmute(this.track.value.podcastId, this.track.value.episodeId, this.api!.getDefaultMedia().currentTime).subscribe(
-              result => this.userService.updateRewards(result)
-            );
+            this.mediaRepositoryService.unmute(this.track.value.podcastId, this.track.value.episodeId, this.api!.getDefaultMedia().currentTime);
           }
           if (this.api?.volume < 0.33) {
             this.currentVolume = Volume.Reduced
