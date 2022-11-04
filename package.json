@@ -33,6 +33,7 @@
     "dashjs": "^4.5.0",
     "firebase": "^9.8.4",
     "fs": "^0.0.1-security",
+    "hls.js": "^1.2.4",
     "https-browserify": "^1.0.0",
     "ng-multiselect-dropdown": "^0.3.8",
     "ngx-owl-carousel-o": "^7.0.2",

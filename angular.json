@@ -40,7 +40,7 @@
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"
             ],
             "scripts": [
-              "node_modules/dashjs/dist/dash.all.min.js"
+              "node_modules/hls.js/dist/hls.min.js"
             ]
           },
           "configurations": {
@@ -108,7 +108,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": ["node_modules/dashjs/dist/dash.all.min.js"]
+            "scripts": [ "node_modules/hls.js/dist/hls.min.js"]
           }
         },
         "deploy": {
