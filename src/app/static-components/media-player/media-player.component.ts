@@ -172,6 +172,7 @@ export class MediaPlayerComponent implements OnInit {
 
   apiPlay() {
     if (this.api) {
+      console.log(this.currentTrack);
       if(this.track.value.playTime) {
         this.api.currentTime = this.track.value.playTime;
       }

@@ -1,6 +1,5 @@
 import { CommonModule } from "@angular/common";
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { VgControlsModule } from '@videogular/ngx-videogular/controls';
@@ -26,6 +25,8 @@ import { PodcastListComponent } from './podcast/podcast-list/podcast-list.compon
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { TokenClaimComponent } from './token-claim/token-claim.component';
 import { YoutubeComponent } from './youtube/youtube.component';
+import {VgStreamingModule} from '@videogular/ngx-videogular/streaming';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { YoutubeComponent } from './youtube/youtube.component';
     VgControlsModule,
     VgBufferingModule,
     VgOverlayPlayModule,
+    VgStreamingModule,
     CarouselModule
   ],
   exports: [

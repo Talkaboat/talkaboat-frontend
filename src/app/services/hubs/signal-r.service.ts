@@ -9,8 +9,7 @@ export class SignalRService {
   protected readonly baseUrl: string = 'https://localhost:5001/hubs/';
   protected readonly hubUrl: string = '';
   protected static readonly hubs_prod = "https://api.talkaboat.online/hubs/";
-  protected static readonly hubs_dev = "https://localhost:5001/hubs/";
-  protected readonly use_dev_hubs = false;
+  protected readonly use_dev_hubs = true;
   constructor(protected readonly auth: AuthService) {
     if (!isDevMode() || !this.use_dev_hubs) {
       this.baseUrl = SignalRService.hubs_prod;
@@ -27,6 +26,7 @@ export class SignalRService {
   protected startConnection() {
     this.hubConnection = new signalR.HubConnectionBuilder()
       .withUrl(this.baseUrl + this.hubUrl, this.options)
+      .withAutomaticReconnect()
       .build();
 
     return this.hubConnection

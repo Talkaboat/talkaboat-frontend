@@ -6,6 +6,7 @@ import { AuthService } from './services/auth/auth.service';
 import { MediaHelperService } from './services/media-helper/media-helper.service';
 import { UserService } from './services/user/user.service';
 import { WebsiteStateService } from './services/website-state/website-state.service';
+import { ChatHubService } from './services/hubs/chat-hub/chat-hub.service';
 
 
 @Component({
@@ -18,7 +19,9 @@ export class AppComponent implements OnInit {
 
   isSidebarOpen = true;
   isLoginModalOpen = false;
-  constructor(private readonly userService: UserService, private readonly authService: AuthService, private readonly toastr: ToastrService, private readonly websiteStateService: WebsiteStateService, private readonly mediaHelperService: MediaHelperService) {
+  constructor(private readonly userService: UserService,
+    private readonly websiteStateService: WebsiteStateService,
+    private readonly chat: ChatHubService) {
 
   }
 
@@ -26,6 +29,10 @@ export class AppComponent implements OnInit {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
   async ngOnInit() {
+    // await this.chat.connect();
+    // await this.chat.getHistory(3);
+    // // await this.chat.joinRoom(3);
+    // // await this.chat.sendMessage(3, 4);
     this.isSidebarOpen = this.websiteStateService.isSidebarOpen;
     this.websiteStateService.onSidebarStateChanged.subscribe(state => this.isSidebarOpen = state);
     this.websiteStateService.onLoginModalStateChanged.subscribe(state => this.isLoginModalOpen = state);

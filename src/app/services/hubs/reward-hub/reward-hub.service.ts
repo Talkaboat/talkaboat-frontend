@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HubConnectionState } from '@microsoft/signalr';
 import { AuthService } from '../../auth/auth.service';
 import { Reward } from '../../repository/user-repository/models/reward.model';
 import { UserService } from '../../user/user.service';
@@ -19,6 +20,12 @@ export class RewardHubService extends SignalRService {
   }
 
   heartbeat(owner: number, asset: number, playtime: number) {
+    if(this.hubConnection?.state != HubConnectionState.Connected) {
+      if(this.hubConnection?.state != HubConnectionState.Connecting && this.hubConnection?.state != HubConnectionState.Reconnecting) {
+        this.connect();
+      }
+      return;
+    }
     return this.hubConnection?.invoke('Heartbeat', this.getMediaTrackingBody(owner, asset, playtime)).then((_) => {
 
     }).catch(error => {
@@ -27,6 +34,12 @@ export class RewardHubService extends SignalRService {
   }
 
   play(owner: number, asset: number, playtime: number) {
+    if(this.hubConnection?.state != HubConnectionState.Connected) {
+      if(this.hubConnection?.state != HubConnectionState.Connecting && this.hubConnection?.state != HubConnectionState.Reconnecting) {
+        this.connect();
+      }
+      return;
+    }
     return this.hubConnection?.invoke('Play', this.getMediaTrackingBody(owner, asset, playtime)).then((_) => {
 
     }).catch(error => {
@@ -35,6 +48,12 @@ export class RewardHubService extends SignalRService {
   }
 
   pause(owner: number, asset: number, playtime: number) {
+    if(this.hubConnection?.state != HubConnectionState.Connected) {
+      if(this.hubConnection?.state != HubConnectionState.Connecting && this.hubConnection?.state != HubConnectionState.Reconnecting) {
+        this.connect();
+      }
+      return;
+    }
     return this.hubConnection?.invoke('Pause', this.getMediaTrackingBody(owner, asset, playtime)).then((_) => {
 
     }).catch(error => {
@@ -43,6 +62,12 @@ export class RewardHubService extends SignalRService {
   }
 
   stop(owner: number, asset: number, playtime: number) {
+    if(this.hubConnection?.state != HubConnectionState.Connected) {
+      if(this.hubConnection?.state != HubConnectionState.Connecting && this.hubConnection?.state != HubConnectionState.Reconnecting) {
+        this.connect();
+      }
+      return;
+    }
     return this.hubConnection?.invoke('Stop', this.getMediaTrackingBody(owner, asset, playtime)).then((_) => {
 
     }).catch(error => {
@@ -51,6 +76,12 @@ export class RewardHubService extends SignalRService {
   }
 
   mute(owner: number, asset: number, playtime: number) {
+    if(this.hubConnection?.state != HubConnectionState.Connected) {
+      if(this.hubConnection?.state != HubConnectionState.Connecting && this.hubConnection?.state != HubConnectionState.Reconnecting) {
+        this.connect();
+      }
+      return;
+    }
     return this.hubConnection?.invoke('Mute', this.getMediaTrackingBody(owner, asset, playtime)).then((_) => {
 
     }).catch(error => {
@@ -59,6 +90,13 @@ export class RewardHubService extends SignalRService {
   }
 
   unmute(owner: number, asset: number, playtime: number) {
+    if(this.hubConnection?.state != HubConnectionState.Connected) {
+      if(this.hubConnection?.state != HubConnectionState.Connecting && this.hubConnection?.state != HubConnectionState.Reconnecting) {
+        this.connect();
+      }
+      return;
+    }
+
     return this.hubConnection?.invoke('Unmute', this.getMediaTrackingBody(owner, asset, playtime)).then((_) => {
 
     }).catch(error => {

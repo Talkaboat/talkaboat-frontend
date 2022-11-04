@@ -2,7 +2,7 @@
   <vg-controls>
 
   </vg-controls>
-    <audio #myMedia [vgMedia]="$any(myMedia)" id="audio" src="{{currentTrack.audio}}" type="audio/mp3"
+    <audio #myMedia #vgDash="vgDash" [vgMedia]="$any(myMedia)" id="audio" [vgDash]="currentTrack.audio" [vgHls]="currentTrack.audio" preload="auto" crossorigin
     [attr.autoplay]="initialized ? '' : null">
   </audio>
     <div class="z-30 fixed rounded-full shadow-shadow-500 shadow-md inset-x-5 m-[0%_auto] bottom-2 md:bottom-4 max-w-[500px] md:max-w-screen-sm h-[5rem] md:h-[6.25rem] transition-all ease-in-out duration-500">
