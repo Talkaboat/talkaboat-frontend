@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
   async ngOnInit() {
-    // await this.chat.connect();
+
     // await this.chat.getHistory(3);
     // // await this.chat.joinRoom(3);
     // // await this.chat.sendMessage(3, 4);
@@ -37,7 +37,9 @@ export class AppComponent implements OnInit {
     this.websiteStateService.onSidebarStateChanged.subscribe(state => this.isSidebarOpen = state);
     this.websiteStateService.onLoginModalStateChanged.subscribe(state => this.isLoginModalOpen = state);
     this.websiteStateService.closeSidebarIfSmallerThanDefinedPixel();
-    this.userService.autoConnect();
+    await this.userService.autoConnect();
+    await this.chat.connect();
+    await this.chat.joinRoom(3);
     // this.authService.googleSignIn();
   }
 

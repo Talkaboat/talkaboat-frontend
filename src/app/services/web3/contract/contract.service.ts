@@ -31,7 +31,7 @@ export class ContractService {
     [9000, "0x013b705e27F21EdC2040465841439bb65575b2DC".toLowerCase()]
   ]);
   readonly rewardSystemContracts = new Map<number, string>([
-    [24, "0x983fded0Df08Bc7Da4622A8Ae2F674a949217341".toLowerCase()],
+    [24, "0x4FA8034CcF1B7C3c5BCa593c645798A6A5D2295F".toLowerCase()],
     [80001, "0x31e9204c50Ce886638c1746a86e478f62f55B68D".toLowerCase()],
     [137, "0x31e9204c50Ce886638c1746a86e478f62f55B68D".toLowerCase()],
     [9000, "0xF9CEe3BF737431A86F2021B98e8c6D09F2B77098".toLowerCase()]

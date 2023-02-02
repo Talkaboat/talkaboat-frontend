@@ -8,7 +8,7 @@ import { SignalRService } from '../signal-r.service';
   providedIn: 'root'
 })
 export class ChatHubService extends SignalRService {
-  protected override hubUrl: string = 'chat';
+  protected override hubUrl: string = 'live';
 
   constructor(private readonly userService: UserService, protected override readonly auth: AuthService) {
     super(auth);
@@ -28,7 +28,7 @@ export class ChatHubService extends SignalRService {
     if(!this.checkConnection()) {
       return;
     }
-    return this.hubConnection?.invoke('JoinRoom', { roomId: 3 }).then((room) => {
+    return this.hubConnection?.invoke('Join', '720cde37-6b46-479b-9d9d-32ed0ffa5013' ).then((room) => {
       console.log(room);
     }).catch(error => {
       console.log(error);
@@ -52,7 +52,7 @@ export class ChatHubService extends SignalRService {
       return;
     }
     return this.hubConnection?.invoke('SendMessage', { chatRoomId: 3, content: "testes", answerId }).then((message) => {
-      console.log(message);
+      //console.log(message);
     }).catch(error => {
       console.log(error);
     });
